@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		370F8DB71811E3970004E840 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 370F8DB61811E3970004E840 /* MainStoryboard.storyboard */; };
 		37AF5ABC18103A6200B86F79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37AF5ABB18103A6200B86F79 /* Foundation.framework */; };
 		37AF5ABE18103A6200B86F79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37AF5ABD18103A6200B86F79 /* CoreGraphics.framework */; };
 		37AF5AC018103A6200B86F79 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37AF5ABF18103A6200B86F79 /* UIKit.framework */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		370F8DB61811E3970004E840 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		37AF5AB818103A6200B86F79 /* PGN Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PGN Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37AF5ABB18103A6200B86F79 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		37AF5ABD18103A6200B86F79 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -84,6 +86,7 @@
 		37AF5AAF18103A6200B86F79 = {
 			isa = PBXGroup;
 			children = (
+				370F8DB61811E3970004E840 /* MainStoryboard.storyboard */,
 				37AF5AC318103A6200B86F79 /* PGN Reader */,
 				37AF5AE018103A6300B86F79 /* PGN ReaderTests */,
 				37AF5ABA18103A6200B86F79 /* Frameworks */,
@@ -229,6 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				370F8DB71811E3970004E840 /* MainStoryboard.storyboard in Resources */,
 				37AF5AC818103A6200B86F79 /* InfoPlist.strings in Resources */,
 				37AF5AD318103A6200B86F79 /* Images.xcassets in Resources */,
 			);
@@ -454,6 +458,7 @@
 				37AF5AEC18103A6300B86F79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		37AF5AED18103A6300B86F79 /* Build configuration list for PBXNativeTarget "PGN ReaderTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +467,7 @@
 				37AF5AEF18103A6300B86F79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
