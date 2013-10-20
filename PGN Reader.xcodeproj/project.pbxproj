@@ -24,6 +24,7 @@
 		37AF5ADD18103A6300B86F79 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37AF5AC118103A6200B86F79 /* CoreData.framework */; };
 		37AF5AE518103A6300B86F79 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37AF5AE318103A6300B86F79 /* InfoPlist.strings */; };
 		37AF5AE718103A6300B86F79 /* PGN_ReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AF5AE618103A6300B86F79 /* PGN_ReaderTests.m */; };
+		37F6225B1814967E0051012C /* JMAConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F6225A1814967E0051012C /* JMAConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		37AF5AE218103A6300B86F79 /* PGN ReaderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PGN ReaderTests-Info.plist"; sourceTree = "<group>"; };
 		37AF5AE418103A6300B86F79 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		37AF5AE618103A6300B86F79 /* PGN_ReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGN_ReaderTests.m; sourceTree = "<group>"; };
+		37F622591814967E0051012C /* JMAConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAConstants.h; sourceTree = "<group>"; };
+		37F6225A1814967E0051012C /* JMAConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 			children = (
 				37AF5ACC18103A6200B86F79 /* JMAAppDelegate.h */,
 				37AF5ACD18103A6200B86F79 /* JMAAppDelegate.m */,
+				37F622591814967E0051012C /* JMAConstants.h */,
+				37F6225A1814967E0051012C /* JMAConstants.m */,
 				37AF5AD218103A6200B86F79 /* Images.xcassets */,
 				37AF5ACF18103A6200B86F79 /* PGN_Reader.xcdatamodeld */,
 				370F8DB61811E3970004E840 /* MainStoryboard.storyboard */,
@@ -258,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37F6225B1814967E0051012C /* JMAConstants.m in Sources */,
 				37AF5ACA18103A6200B86F79 /* main.m in Sources */,
 				370F8DBA1811EE0F0004E840 /* JMADatabasesTableViewController.m in Sources */,
 				37AF5ACE18103A6200B86F79 /* JMAAppDelegate.m in Sources */,

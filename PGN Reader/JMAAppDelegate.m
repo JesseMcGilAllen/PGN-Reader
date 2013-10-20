@@ -7,6 +7,7 @@
 //
 
 #import "JMAAppDelegate.h"
+#import "JMAConstants.h"
 
 
 @implementation JMAAppDelegate
@@ -142,5 +143,30 @@
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    NSString *stringFromUrl = [self stringForURL:url];
+    
+    NSLog(@"%@", stringFromUrl);
+    
+    return YES;
+}
+
+- (NSString *)stringForURL:(NSURL *)url
+{
+    NSError *error = nil;
+    NSString *pgnFile = [NSString stringWithContentsOfURL:url
+                                                 encoding:NSUTF8StringEncoding
+                                                    error:&error];
+    
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+        return @"Error";
+    } else {
+        return pgnFile;
+    }
+}
+
 
 @end
