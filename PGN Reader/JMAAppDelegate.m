@@ -8,6 +8,7 @@
 
 #import "JMAAppDelegate.h"
 #import "JMAConstants.h"
+#import "JMAParser.h"
 
 
 @implementation JMAAppDelegate

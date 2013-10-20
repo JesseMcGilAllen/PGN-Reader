@@ -25,6 +25,7 @@
 		37AF5AE518103A6300B86F79 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37AF5AE318103A6300B86F79 /* InfoPlist.strings */; };
 		37AF5AE718103A6300B86F79 /* PGN_ReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AF5AE618103A6300B86F79 /* PGN_ReaderTests.m */; };
 		37F6225B1814967E0051012C /* JMAConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F6225A1814967E0051012C /* JMAConstants.m */; };
+		37F6226118149D4F0051012C /* JMAParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F6226018149D4F0051012C /* JMAParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		37AF5AE618103A6300B86F79 /* PGN_ReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGN_ReaderTests.m; sourceTree = "<group>"; };
 		37F622591814967E0051012C /* JMAConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAConstants.h; sourceTree = "<group>"; };
 		37F6225A1814967E0051012C /* JMAConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAConstants.m; sourceTree = "<group>"; };
+		37F6225F18149D4F0051012C /* JMAParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAParser.h; sourceTree = "<group>"; };
+		37F6226018149D4F0051012C /* JMAParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				37AF5AD218103A6200B86F79 /* Images.xcassets */,
 				370F8DB81811EE0F0004E840 /* JMADatabasesTableViewController.h */,
 				370F8DB91811EE0F0004E840 /* JMADatabasesTableViewController.m */,
+				37F6225F18149D4F0051012C /* JMAParser.h */,
+				37F6226018149D4F0051012C /* JMAParser.m */,
 				37AF5AC418103A6200B86F79 /* Supporting Files */,
 			);
 			path = "PGN Reader";
@@ -290,6 +295,7 @@
 				37F6225B1814967E0051012C /* JMAConstants.m in Sources */,
 				37AF5ACA18103A6200B86F79 /* main.m in Sources */,
 				370F8DBA1811EE0F0004E840 /* JMADatabasesTableViewController.m in Sources */,
+				37F6226118149D4F0051012C /* JMAParser.m in Sources */,
 				37AF5ACE18103A6200B86F79 /* JMAAppDelegate.m in Sources */,
 				37AF5AD118103A6200B86F79 /* PGN_Reader.xcdatamodeld in Sources */,
 			);
