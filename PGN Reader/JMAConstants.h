@@ -12,5 +12,5 @@
 
 extern NSInteger const ZERO;
 extern NSInteger const ONE;
-
+extern NSInteger const TWENTY_FIVE;
 @end

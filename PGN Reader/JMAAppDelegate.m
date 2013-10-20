@@ -153,10 +153,16 @@
     return YES;
 }
 
+
+/*
+    The method will initialize a string with the contents of a url parameter
+ and return the string.
+ 
+*/
 - (NSString *)stringForURL:(NSURL *)url
 {
     NSError *error = nil;
-    NSString *pgnFile = [NSString stringWithContentsOfURL:url
+    NSString *fileContents = [NSString stringWithContentsOfURL:url
                                                  encoding:NSUTF8StringEncoding
                                                     error:&error];
     
@@ -164,7 +170,7 @@
         NSLog(@"%@", [error localizedDescription]);
         return @"Error";
     } else {
-        return pgnFile;
+        return fileContents;
     }
 }
 

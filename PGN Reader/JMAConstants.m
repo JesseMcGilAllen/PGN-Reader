@@ -12,5 +12,6 @@
 
 NSInteger const ZERO = 0;
 NSInteger const ONE = 1;
+NSInteger const TWENTY_FIVE = 25;
 
 @end

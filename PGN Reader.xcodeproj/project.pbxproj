@@ -123,13 +123,12 @@
 		37AF5AC318103A6200B86F79 /* PGN Reader */ = {
 			isa = PBXGroup;
 			children = (
+				37F6225E18149A3D0051012C /* Storyboards */,
+				37F6225D18149A1F0051012C /* Constants */,
+				37F6225C18149A0A0051012C /* Core Data */,
 				37AF5ACC18103A6200B86F79 /* JMAAppDelegate.h */,
 				37AF5ACD18103A6200B86F79 /* JMAAppDelegate.m */,
-				37F622591814967E0051012C /* JMAConstants.h */,
-				37F6225A1814967E0051012C /* JMAConstants.m */,
 				37AF5AD218103A6200B86F79 /* Images.xcassets */,
-				37AF5ACF18103A6200B86F79 /* PGN_Reader.xcdatamodeld */,
-				370F8DB61811E3970004E840 /* MainStoryboard.storyboard */,
 				370F8DB81811EE0F0004E840 /* JMADatabasesTableViewController.h */,
 				370F8DB91811EE0F0004E840 /* JMADatabasesTableViewController.m */,
 				37AF5AC418103A6200B86F79 /* Supporting Files */,
@@ -164,6 +163,31 @@
 				37AF5AE318103A6300B86F79 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		37F6225C18149A0A0051012C /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				37AF5ACF18103A6200B86F79 /* PGN_Reader.xcdatamodeld */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		37F6225D18149A1F0051012C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				37F622591814967E0051012C /* JMAConstants.h */,
+				37F6225A1814967E0051012C /* JMAConstants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		37F6225E18149A3D0051012C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				370F8DB61811E3970004E840 /* MainStoryboard.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
