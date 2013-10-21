@@ -147,33 +147,13 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    NSString *stringFromUrl = [self stringForURL:url];
     
-    NSLog(@"%@", stringFromUrl);
+    JMAParser *parser = [[JMAParser alloc] init];
+    [parser parseFileForUrl:url];
     
     return YES;
 }
 
-
-/*
-    The method will initialize a string with the contents of a url parameter
- and return the string.
- 
-*/
-- (NSString *)stringForURL:(NSURL *)url
-{
-    NSError *error = nil;
-    NSString *fileContents = [NSString stringWithContentsOfURL:url
-                                                 encoding:NSUTF8StringEncoding
-                                                    error:&error];
-    
-    if (error) {
-        NSLog(@"%@", [error localizedDescription]);
-        return @"Error";
-    } else {
-        return fileContents;
-    }
-}
 
 
 @end

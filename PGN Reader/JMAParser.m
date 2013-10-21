@@ -12,17 +12,42 @@
 
 - (id)init
 {
-    return [self initWithUrl:nil];
-}
-
--(id)initWithUrl:(NSURL *)url
-{
     self = [super init];
-    
     if (self) {
         
     }
-    
     return self;
 }
+
+/*
+    This method acts as the controller for the class's
+    intended operation.
+*/
+
+- (void)parseFileForUrl:(NSURL *)url
+{
+    NSString *fileContents = [self stringForURL:url];
+}
+
+/*
+ The method will initialize a string with the contents of a url parameter
+ and return the string.
+ 
+ */
+- (NSString *)stringForURL:(NSURL *)url
+{
+    NSError *error = nil;
+    NSString *fileContents = [NSString stringWithContentsOfURL:url
+                                                      encoding:NSUTF8StringEncoding
+                                                         error:&error];
+    
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+        return @"Error";
+    } else {
+        return fileContents;
+    }
+}
+
+
 @end
