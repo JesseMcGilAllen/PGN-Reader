@@ -1,0 +1,3 @@
+Core Data!!!
+    I have to get Core Data to work this week
+    This is the goal.

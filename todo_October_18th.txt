@@ -1,0 +1,8 @@
+October 18th 2013
+
+    I have been able to get PGN Reader to appear in the Open in Action Sheet in Safari.
+    The next step is to handle the file that is coming in.
+    The application:openURL:sourceApplication:annotation: Method can be called in 
+    didFinishingLaunchingWithOptions when the app isn't already open.
+
+

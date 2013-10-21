@@ -1,0 +1,743 @@
+G-ch int"]
+
+[Site "Dortmund"]
+
+[Date "1973.??.??"]
+
+[Round "8"]
+
+[White "Dueball, Juergen"]
+
+[Black "Keene, Raymond"]
+
+[Result "1/2-1/2"]
+
+[ECO "E32"]
+
+[WhiteElo "2425"]
+
+[BlackElo "2435"]
+
+[Annotator "John Emms"]
+
+[PlyCount "65"]
+
+[EventDate "1973.??.??"]
+
+[EventRounds "15"]
+
+[EventCountry "GER"]
+
+[EventCategory "7"]
+
+[Source "ChessPublishing.com"]
+
+[SourceDate "2013.10.20"]
+
+
+
+{COPYRIGHT WARNING: This game has been prepared by Chess Publishing Ltd for the exclusive private use of Jesse M Allen, and may not be redistributed in any way without the prior written consent of Chess Publishing Ltd.}
+
+
+
+1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Qc2 O-O 5. a3 Bxc3+ 6. Qxc3 Qe8 $5 {This
+
+weird-looking queen move is the invention of Raymond Keene, and this game was
+
+its first appearance (at least was is on my database). The most obvious merit
+
+of ...Qe8 is that it discourages Bg5 - initially because it would run into ...
+
+Ne4 and sometimes later on because the knight on f6 won't be pinned.} 7. f3 {
+
+    A very logical response by White, preventing ...Ne4 and preparing to dominate
+
+    the centre with e2-e4.} d6 {Keene chooses a dark-square strategy.} ({More
+
+    recently some players have been trying} 7... d5 {- see Romanko, M-Hou, Y/Antakya
+
+    2010.}) 8. e4 e5 9. d5 (9. Be3 {is covered in Biriukov, I-Kulicov, O/Suvorov
+
+    2012.}) 9... Nfd7 $1 {Preparing ...f5, which Dueball decides to prevent.} 10.
+
+    g4 ({In his notes for Chess Informant Keene gives} 10. Bd3 f5 $1 11. exf5 (11.
+
+    Ne2 Nc5 12. Bc2 fxe4 13. fxe4 Qg6 $15) 11... Nc5 {intending ...Bxf5 and/or ...
+
+    e4. Botsari, A-Nikolaidis, I/Athens 2006, continued} 12. Bc2 (12. g4 e4 13. Be2
+
+    {is critical}) 12... Bxf5 13. b4 e4 $1 14. f4 Nd3+ 15. Bxd3 exd3+ 16. Kf1 Nd7
+
+    17. Bb2 Qg6 18. Re1 Ne5 19. Qd4 d2 20. Qxd2 Bd3+ 21. Kf2 Nxc4 22. Qc1 Nxb2 23.
+
+    Qxb2 Rxf4+ 24. Nf3 Raf8 {and Black won.}) 10... a5 11. b4 $1 {Somewhat brave, 
+
+    given that White's only developed piece is the queen, but maybe best anyway!} (
+
+    {If} 11. Be3 {then Black fixes the queenside:} a4 $1 12. Ne2 Na6 13. Ng3 Ndc5
+
+    14. h4 f6 15. Be2 Bd7 16. h5 b5 $1 {Black can't break with ...f5, so he goes
+
+    for queenside action.} 17. Nf5 Rb8 18. Kf2 bxc4 19. Bxc4 Bb5 20. Rab1 Bxc4 21.
+
+        Qxc4 Rb3 22. Rhd1 Qd7 23. Rd2 Rfb8 {This is very good for Black now.} 24. Qf1
+
+        g6 25. Ng3 Qg7 26. Qd1 Kf7 27. Qf1 Ke8 28. Qd1 Kd7 29. h6 Qf8 30. Qc2 Rxe3 31.
+
+        Kxe3 Qxh6+ 32. g5 Rb3+ {0-1 Labeckas, K-Getz, N/Porto Carras 2011.}) 11... axb4
+
+        12. axb4 Rxa1 13. Qxa1 Na6 14. Bd2 Qe7 15. Bd3 {If White can catch up in
+
+        development without nothing untoward happening, his space advantage will
+
+        promise him some advantage. So Keene strikes:} h5 $1 16. h3 ({Keene gives} 16.
+
+        g5 f5 17. exf5 e4 18. Bxe4 {and here} Ne5 {looks promising for Black.}) 16...
+
+        c5 17. dxc6 bxc6 18. Kf2 (18. c5 $2 {is met by} Nc7 {(Keene). White simply
+
+        can't afford to open the position before he completes his development.
+
+        Conversely, Black is seeking to blast open the position as soon as possible.})
+
+        18... d5 19. c5 Naxc5 $5 {A very tempting piece sac.} ({Keene didn't like} 
+
+        19... Nc7 {because of} 20. Qa5 {but Houdini thinks Black is doing fine here, 
+
+        even after} Nb8 $5 21. Ne2 dxe4 22. Bxe4 f5 23. gxf5 Bxf5) 20. bxc5 Nxc5 21.
+
+        Bc2 Nxe4+ $1 22. Bxe4 (22. fxe4 $2 Qc5+) 22... dxe4 23. fxe4 Qh4+ 24. Kg2 hxg4
+
+        25. Qxe5 gxh3+ 26. Nxh3 Qg4+ 27. Kf2 Qh4+ 28. Qg3 ({After} 28. Kg2 {Black
+
+        should repeat moves with} Qg4+) 28... Qxe4 29. Rg1 Qd4+ 30. Be3 Qb2+ 31. Kf3
+
+        Bxh3 32. Qxh3 Qf6+ 33. Kg2 1/2-1/2
+
+
+
+        [Event "Suvorov"]
+
+        [Site "Suvorov"]
+
+        [Date "2012.06.24"]
+
+        [Round "8"]
+
+        [White "Biriukov, Ilja"]
+
+        [Black "Kulicov, Oleg Anatolie"]
+
+        [Result "0-1"]
+
+        [ECO "E32"]
+
+        [WhiteElo "2398"]
+
+        [BlackElo "2429"]
+
+        [Annotator "John Emms"]
+
+        [PlyCount "76"]
+
+        [EventDate "2012.06.19"]
+
+        [EventRounds "15"]
+
+        [EventCountry "RUS"]
+
+        [EventCategory "6"]
+
+        [Source "ChessPublishing.com"]
+
+        [SourceDate "2013.10.20"]
+
+
+
+        1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Qc2 O-O 5. a3 Bxc3+ 6. Qxc3 Qe8 7. f3 d6 8. e4
+
+        e5 9. Be3 $1 {White keeps the tension in the centre for at least a little
+
+        while longer. In truth, I suspect it's this plan, rather than 9 d5, which has
+
+            discouraged Black players.} (9. d5 {is covered in Dueball, J-Keene, R/Dortmund
+
+            1973.}) 9... Nc6 ({Black has also tried} 9... Nfd7 {which is fine if White
+
+            plays quickly d4-d5 but there's no obligation to do so.} 10. Ne2 (10. c5 $5)
+
+            10... a5 (10... c5 11. d5 $14) 11. b3 Na6 12. Ng3 ({I don't see much wrong with
+
+            } 12. Qxa5) 12... exd4 13. Bxd4 Ne5 14. Be2 c5 15. Be3 Nc7 16. O-O $14 {
+
+                Brunner, N-Cornette, M/France 2010.}) 10. d5 ({White could play} 10. Ne2 {if he
+
+                wants to avoid Black's next move.} a5 (10... b6) (10... Nd7) 11. d5 Ne7 12. c5
+
+                $1 $14 {Leszczynski, K-Jurkiewicz, K/Wysowa 2007.}) 10... Nd4 $5 {Sac'ing a pawn
+
+                for some activity.} (10... Ne7 {is solid but rather uninspiring from Black's
+
+                    viewpoint.} 11. Ne2 Nd7 12. g4 a5 13. b3 b6 14. h4 Nc5 15. h5 c6 16. Ng3 $14 {
+
+                        Akhsharumova, A-Lalic, S/Thessaloniki 1988.}) 11. Bxd4 (11. Rd1 $5) 11... exd4
+
+                        12. Qxd4 Nd7 13. Bd3 f5 14. Ne2 Nc5 15. Bc2 (15. Rd1 $1 {looks like a
+
+                        significant improvement.} fxe4 16. Bxe4 $1 Bf5 17. Bxf5 Rxf5 18. Kf2 Ne4+ 19.
+
+                        Kg1 {and Black has some play, but perhaps not enough for a pawn.}) 15... fxe4
+
+                        16. fxe4 Bg4 $1 {Now White won't be allowed to castle either side. Black has
+
+                        secured excellent compensation.} 17. Ng3 Qg6 18. b4 Nd7 19. Kd2 Ne5 20. Kc3 c5
+
+                        $1 $17 {A key move, opening up more lines against the wandering white king.}
+
+                        21. bxc5 Rac8 22. c6 bxc6 23. Raf1 Rfe8 24. Ba4 cxd5 $1 25. Bxe8 Qxe8 26. Kd2
+
+                        Nxc4+ 27. Ke1 dxe4 28. h3 Be6 29. Qxe4 Ne5 30. Kf2 Rc3 31. Qd4 Rd3 32. Qxa7 Bd5
+
+                        33. Rd1 Qf8+ 34. Ke1 Bxg2 35. Rxd3 Nxd3+ 36. Kd2 Nc5 37. Re1 Qf2+ 38. Ne2 Ne4+
+
+                        {A nice win for Black, but overall this line with 9 Be3 looks like a small but
+
+                        comfortable edge for White.} 0-1
+
+
+
+                        [Event "WCh Women"]
+
+                        [Site "Antakya TUR"]
+
+                        [Date "2010.12.07"]
+
+                        [Round "2.1"]
+
+                        [White "Romanko, Marina"]
+
+                        [Black "Hou, Yifan"]
+
+                        [Result "0-1"]
+
+                        [ECO "E32"]
+
+                        [WhiteElo "2414"]
+
+                        [BlackElo "2591"]
+
+                        [Annotator "John Emms"]
+
+                        [PlyCount "110"]
+
+                        [EventDate "2010.12.04"]
+
+                        [EventRounds "6"]
+
+                        [EventCountry "TUR"]
+
+                        [Source "ChessPublishing.com"]
+
+                        [SourceDate "2013.10.20"]
+
+
+
+                        1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Qc2 O-O 5. a3 Bxc3+ 6. Qxc3 Qe8 7. f3 d5 $5 {
+
+                            This alternative to 7...d6 is logical: ...d7-d5 is often the desirable
+
+                            response, in the 4 Qc2 Nimzo-Indian at least, to an early f2-f3. Usually
+
+                            Black's queen is on d8 of course!} 8. cxd5 ({White's most popular response
+
+                            here has been} 8. Bg5 {, when play can become quite similar to the old main
+
+                            line 6...b6 7 Bg5 Bb7 8 f3 h6 9 Bh4 d5. For example, } Nbd7 9. e3 h6 (9... c6
+
+                            10. Bd3 dxc4 11. Bxc4 Nd5 12. Bxd5 cxd5 (12... exd5 $5) 13. Bf4 Qe7 14. Qb4
+
+                            Qxb4+ 15. axb4 Nb6 16. b3 Bd7 17. Ne2 $14 {Mchedlishvili, M-Harikrishna, P/
+
+                            Emsdetten 2013}) 10. Bh4 b6 11. cxd5 Nxd5 12. Qd2 Bb7 13. e4 Ne7 14. Bc4 c5 15.
+
+                            Rd1 Rc8 16. Ne2 Ng6 17. Bg3 cxd4 18. Qxd4 Nde5 $1 19. Bxe5 Nxe5 20. Qxe5 Rxc4
+
+                            21. O-O $11 {Balla, T-Lupulescu, C/ Baile Olanesti 2013.}) 8... Nxd5 9. Qc2 Qc6
+
+                            $5 ({This is not the only move, and} 9... f5 10. e4 Nf6 {certainly comes into
+
+                            consideration.}) (9... Nc6 10. e4 Nxd4 $5 11. Qd1 c5 12. exd5 exd5+ 13. Kf2 {
+
+                                probably doesn't give Black enough.}) 10. Qb3 (10. Qxc6 Nxc6 11. e3 e5 12. dxe5
+
+                                Nxe5 $11) 10... Qb6 $1 {'Arkelling' the queens!} 11. Qxb6 (11. Qd3 $5) 11...
+
+                                axb6 12. Bd2 Nc6 13. e3 e5 (13... Na5) 14. dxe5 Nxe5 15. e4 Ne7 $1 {The
+
+                                c6-square looks like a good place for this knight.} 16. Bc3 N7c6 17. Kf2 Be6 {
+
+                                    Chances look level to me, with White's bishop pair and extra central pawn
+
+                                    counterbalanced by Black's lead in development and active pieces.} 18. Nh3 $6 (
+
+                                    {I feel that White should make do with something like} 18. Bb5 Rfd8 19. Ne2 $11
+
+                                    ) 18... Bxh3 $1 {Hou Yifan seizes her chance to unbalance the position even
+
+                                    further.} 19. gxh3 f5 $1 {Black's structural and development advantages help
+
+                                    the two knights to outshine two bishops, even in a position as open as this.}
+
+                                    20. f4 fxe4 21. Ke3 Ng6 22. Bc4+ Kh8 23. Rad1 Nce7 24. Rd7 Nf5+ 25. Kxe4 Rae8+
+
+                                    26. Kd3 (26. Kd5 Nxf4 $1) 26... Rd8 $1 27. Rxd8 Rxd8+ 28. Ke2 Nxf4+ 29. Kf3
+
+                                    Nd5 30. Be5 c6 31. Rg1 Re8 $1 32. Ke4 $2 Nd6+ 33. Kd4 Nf5+ 34. Ke4 Nd6+ 35. Kd4
+
+                                    Rxe5 $1 36. Kxe5 Nxc4+ 37. Ke6 Kg8 38. b3 Nd2 39. Rg3 Ne4 40. Rg4 Nc5+ 41. Kd6
+
+                                    Nxb3 42. a4 Kf7 43. Rg3 Na5 44. Rf3+ Kg6 45. Rg3+ Kh6 46. Rg4 g6 47. Ke6 Kg7
+
+                                    48. Kd6 Kf6 49. h4 Kf5 50. h3 Nb3 51. Rg5+ Kf6 52. Rg4 Nc5 53. a5 Ne3 54. Rf4+
+
+                                    Nf5+ 55. Kc7 bxa5 {Hou Yifan's 7...d5 looks like a good idea. The evidence so
+
+                                    far suggests that Black has better chances of getting equality here than with
+
+                                    the older 7...d6.} 0-1
+
+
+
+                                    [Event "CHN-chT"]
+
+                                    [Site "Ningbo"]
+
+                                    [Date "2011.04.14"]
+
+                                    [Round "3"]
+
+                                    [White "Huang Qian"]
+
+                                    [Black "Hou, Yifan"]
+
+                                    [Result "0-1"]
+
+                                    [ECO "E32"]
+
+                                    [WhiteElo "2394"]
+
+                                    [BlackElo "2602"]
+
+                                    [Annotator "John Emms"]
+
+                                    [PlyCount "110"]
+
+                                    [EventDate "2011.04.12"]
+
+                                    [EventType "tourn"]
+
+                                    [EventRounds "18"]
+
+                                    [EventCountry "CHN"]
+
+                                    [Source "ChessPublishing.com"]
+
+                                    [SourceDate "2013.10.20"]
+
+
+
+                                    1. d4 e6 2. c4 Nf6 3. Nc3 Bb4 4. Qc2 O-O 5. a3 Bxc3+ 6. Qxc3 Qe8 7. Qc2 {
+
+                                        Another sensible move, along the same lines as 7 f3. White covers the
+
+                                        e4-square in preparation of either (or both) e2-e4 and Bg5.} d6 ({Although
+
+                                        possible, } 7... d5 {makes less sense here.} 8. Bg5 Ne4 9. Bf4 $14 {is one
+
+                                        decent response by White.}) 8. Bg5 {This has been White's most popular choice
+
+                                        here, albeit from only a handful of games, but I'm wondering whether White
+
+                                        should avoid or at least delay this bishop development. Certainly in this game
+
+                                        it actually becomes a hindrance for White.} (8. e4 Nc6 9. Ne2 e5 10. d5 Nd4 (
+
+                                        10... Ne7 11. Nc3 $14) 11. Nxd4 exd4 12. Bd3 Nxe4 {Black's play looks logical
+
+                                        but he actually ends up slightly worse:} 13. O-O $1 (13. Bxe4 $2 f5 $17) 13...
+
+                                        f5 14. Re1 Qf7 15. f3 $1 Nc5 16. b4 $1 Nxd3 17. Qxd3 a5 18. b5 Bd7 19. Qxd4 b6
+
+                                        20. Bb2 $14 {Romanko, M-Arun Prasad, S/Moscow 2012.}) 8... Nfd7 $1 (8... Nbd7 {
+
+                                            is also possible of course, but Hou Yifan wants to unblock the f-pawn's path.})
+
+                                        9. e3 (9. e4 e5 10. d5 a5 11. Rd1 (11. b3 Nc5 $1 {and ...f5}) 11... a4 ({but} 
+
+                                        11... Nc5 $1 {planning ...f5 looks fine for Black if} 12. b4 {then} Qa4 $1 13.
+
+                                        Qxa4 Nxa4 {and White's position looks stretched}) 12. Be3 Ra5 13. Ne2 Nc5 14.
+
+                                        Ng3 c6 (14... Nbd7) 15. Bxc5 dxc5 16. Be2 $14 {was Kharlov, A-Ward, C/Gausdal
+
+                                        1992.}) 9... e5 10. d5 $2 {This advance isn't at all consistent with White's
+
+                                        previous move. It should be either e4 with d5, or e3 and not d5!} (10. Ne2 a5
+
+                                        11. dxe5 dxe5 12. Nc3 f6 13. Bh4 Nc5 14. f3 Be6 15. Bf2 a4 16. Rd1 Nc6 17. Be2
+
+                                        $11 {looks fine for Black, Nijs, N-Wirig, A/La Fere 2008.}) (10. Nf3 $5)
+
+                                        10... f5 $1 {Black is already doing very well, something Huang Qian seems to
+
+                                        acknowledge with her next move. White's bishop on g5 is clearly vulnerable, to
+
+                                        both ...h6 and ...Qh5.} 11. g4 $5 (11. f3 Qh5 $1) 11... h6 ({The simple} 11...
+
+                                        fxg4 $1 {looks good. Black still has ...Qh5 in the air, and if} 12. Bh4 {there
+
+                                        follows} Qh5 13. Bg3 Nc5 {and ...Bf5.}) 12. Bh4 $1 g5 13. gxf5 gxh4 14. e4 {
+
+                                            Now it's by no means clear because Black's extra piece is counterbalanced, at
+
+                                            least to some extent, by the cramping pawn wedge on f5.} Rf7 15. Nf3 Rg7 16.
+
+                                            Nxh4 Qh5 17. Ng6 Nf8 18. h4 $1 Qg4 (18... Nxg6 19. Be2 $1) 19. h5 Nbd7 20. Qe2
+
+                                            Qxe2+ 21. Kxe2 Nf6 22. Ke3 Bd7 23. Bd3 a5 24. Rac1 b6 25. b3 Be8 26. a4 N8d7
+
+                                            27. Bc2 Nc5 28. Rcd1 Bd7 29. Rdg1 Kf7 30. f3 Rag8 31. Rd1 Ke8 32. Rd2 Kd8 33.
+
+                                            Rdd1 Be8 34. Rd2 Bf7 35. Rdh2 Rh7 36. Rg2 Ncd7 37. Bd1 Ne8 38. Rb2 Ng7 39. Rg2
+
+                                            Re8 $1 {After a long period of manoeuvring, Hou Yifan is finally ready to play
+
+                                            ...Nf6 winning the h5-pawn, thus inducing the following pawn break.} 40. f4
+
+                                            exf4+ 41. Kxf4 Nf6 42. Bf3 Bxg6 43. hxg6 Rhh8 44. Rgh2 h5 45. Rh4 Re5 46. Kg5
+
+                                            Ke7 47. R1h2 Rf8 48. Rf4 Rh8 49. Rfh4 Rf8 50. Rf4 (50. Rh1 c6 51. dxc6) 50...
+
+                                            c6 $1 {The only chance, and the effect is immediate.} 51. Kh6 $2 (51. dxc6 Ne6+
+
+                                            $1 {wins for Black.}) (51. Rb2 $1 {with b3-b4 ideas, and all three results
+
+                                            remain possible.}) 51... Nfe8 $2 (51... Nxd5 $1 52. cxd5 Kf6 53. Kh7 Ree8 {and
+
+                                            White is mated!}) 52. Rfh4 $4 (52. Kg5 $1 {Get outta there!}) 52... Kf6 $1 {
+
+                                                This time there's no second chances.} 53. Kh7 Re7 54. Rg2 Nxf5+ 55. g7 Nxh4 0-1
+
+
+
+                                                [Event "TATA 50th ch-IND National Premier 2012"]
+
+                                                [Site "Kolkata IND"]
+
+                                                [Date "2012.10.13"]
+
+                                                [Round "12.4"]
+
+                                                [White "Deepan, C."]
+
+                                                [Black "Arun Prasad, S."]
+
+                                                [Result "0-1"]
+
+                                                [ECO "E32"]
+
+                                                [WhiteElo "2523"]
+
+                                                [BlackElo "2510"]
+
+                                                [Annotator "John Emms"]
+
+                                                [PlyCount "72"]
+
+                                                [EventDate "2012.10.01"]
+
+                                                [EventRounds "13"]
+
+                                                [EventCountry "IND"]
+
+                                                [Source "ChessPublishing.com"]
+
+                                                [SourceDate "2013.10.20"]
+
+
+
+                                                1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Qc2 O-O 5. a3 Bxc3+ 6. Qxc3 Qe8 7. Nf3 {With
+
+                                                7 Nf3 White chooses quick kingside development and delays the battle for
+
+                                                central control.} d6 8. g3 a5 $5 {Black could develop modestly, in typical
+
+                                                fashion, with ...b6, ... Bb7 and ...Nbd7, etc, but Arun Prasad has something
+
+                                                more ambitious in mind.} (8... b6 9. Bg2 Bb7 10. O-O Nbd7 11. b4 Ne4 12. Qc2 f5
+
+                                                {looks like is should be okay for Black, although there are some hidden dangers.
+
+                                                For example, } 13. Ng5 Qg6 14. Nh3 e5 15. f3 Nef6 16. Ng5 Rae8 17. d5 c6 18. Bh3
+
+                                                $1 {and suddenly Black found himself in trouble in Kortschnoj, V-Lerner,
+
+                                                K/Lugano 1989.}) 9. b3 {Otherwise Black fixes the queenside with ...a4.} a4 10.
+
+                                                b4 b5 $1 {This is the idea! Black grabs some key light squares in the centre.}
+
+                                                11. c5 (11. cxb5 Ra7 ({or} 11... Nd5 12. Qc2 f5) 12. Qc2 Bb7 13. Bg5 Be4
+
+                                                14. Qb2 Nd5 {with compensation, Kolev, A-Pavlovic, M/Vrnjacka Banja 1990.
+
+                                                } (14... Nbd7 $5)) (11. Bg2 bxc4 12. Qxc4 Ra7 13. O-O Ba6 14. Qc2 Qb5 15. Re1
+
+                                                Nbd7 16. Rb1 Nb6 17. Nd2 d5 $11 {was Manoeuvre, A-Elbilia, J/Mulhouse 2011.})
+
+                                                11... Bb7 12. Bg2 Be4 (12... Bd5 {has also been played here:} 13. O-O Nc6 14.
+
+                                                Bb2 Ne7 15. Rfe1 ({Chernin suggests} 15. Nd2 {as an improvement, preventing
+
+                                                what Black does in the game}) 15... Ne4 $1 16. Qc2 f5 17. Nd2 Nxd2 18. Qxd2
+
+                                                Bxg2 19. Kxg2 Nd5 20. Qd3 Rf6 {and Black was fine, Gurevich, M-Adams, M/Palma de
+
+                                                Mallorca 1989.}) 13. O-O {White should probably play 13 Qe3, which prevents
+
+                                                the plan adopted by Arun Prasad in the game.} (13. Qe3 $1 Qc6 (13... Nc6 {
+
+                                                    intending ...Ne7-d5 looks very sensible it's not clear whether this queen
+
+                                                    manoeuvre helps Black}) 14. O-O Qd5 15. Bb2 Nc6 16. Rfc1 Ne7 17. Bf1 Qh5 18. h3
+
+                                                    Ned5 19. Qd2 h6 20. Qe1 $1 {(planning Nd2)} Bxf3 21. exf3 {with roughly level
+
+                                                    chances, Hauchard, A-Bauer, C/ Narbonne 1997.}) 13... Nd5 $1 14. Qd2 f5 $1 {Now
+
+                                                    I definitely prefer Black, who enjoys an iron-like grip on the light squares.}
+
+                                                    15. Ne1 ({Or} 15. Re1 f4 $1 16. Nh4 Bxg2 17. Nxg2 Qg6 18. Ra2 Nc6 19. e4 fxe3
+
+                                                    20. fxe3 dxc5 21. bxc5 b4 $1 {with a clear advantage for Black, Chekhov, 
+
+                                                    V-Sjoberg, M/Kecskemet 1991.}) 15... Bxg2 16. Nxg2 Nc6 17. Qd3 dxc5 18. dxc5 ({
+
+                                                        If} 18. bxc5 {Black might play} Na5) 18... Ne5 $1 19. Qc2 Nc4 {A second knight
+
+                                                        reaches a strong outpost. Black slowly builds up an irresistible attack on the
+
+                                                        kingside.} 20. Bb2 e5 21. Rad1 c6 22. Nh4 Qh5 23. Bc1 Rae8 24. Rd3 f4 25. Ng2
+
+                                                        Rf6 26. e4 fxe3 27. Nxe3 Ndxe3 28. fxe3 ({If} 28. Bxe3 e4 29. Rc3 Ne5 $1) 28...
+
+                                                        Rxf1+ 29. Kxf1 Rf8+ ({The immediate} 29... e4 $1 {prevents White's resource in
+
+                                                        the next note.}) 30. Kg1 e4 31. Rd4 (31. Qd1 $1 {is a better try.}) 31... Ne5
+
+                                                        32. Rxe4 Rd8 {Perhaps in time trouble, Black starts to miss a few wins.} ({
+
+                                                            Black can win by} 32... Nf3+ 33. Kh1 Nd2 $1 34. Qa2+ (34. Bxd2 Qf3+ 35. Kg1
+
+                                                            Qf1) 34... Nc4 $1) 33. Qa2+ Kh8 ({Or by} 33... Nc4 $1) 34. Qf2 h6 $2 (34...
+
+                                                            Qd1+ 35. Kg2 Nd3 36. Qf7 Qc2+ 37. Bd2 Ne1+ 38. Kh3 Qxe4 39. Bxe1 Qxe3 {still
+
+                                                            wins.}) 35. Rf4 $2 (35. Rd4 Nf3+ 36. Qxf3 Qxf3 37. Rxd8+ Kh7 {and White is
+
+                                                            still fighting.}) 35... Rd1+ 36. Kg2 Rxc1 {Black's light-square strategy of ...
+
+                                                            a4 and ...b5 looks is an attractive one for anyone playing 6...Qe8.} 0-1
+
+
+
+                                                            [Event "Istanbul ol (Men) 40th"]
+
+                                                            [Site "Istanbul"]
+
+                                                            [Date "2012.08.28"]
+
+                                                            [Round "1.2"]
+
+                                                            [White "Villegas, Pierre"]
+
+                                                            [Black "Bartel, Mateusz"]
+
+                                                            [Result "0-1"]
+
+                                                            [ECO "E32"]
+
+                                                            [WhiteElo "2249"]
+
+                                                            [BlackElo "2654"]
+
+                                                            [Annotator "John Emms"]
+
+                                                            [PlyCount "130"]
+
+                                                            [EventDate "2012.08.28"]
+
+                                                            [EventType "swiss"]
+
+                                                            [EventRounds "11"]
+
+                                                            [EventCountry "TUN"]
+
+                                                            [Source "ChessPublishing.com"]
+
+                                                            [SourceDate "2013.10.20"]
+
+
+
+                                                            1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Qc2 O-O 5. a3 Bxc3+ 6. Qxc3 Qe8 7. g3 ({
+
+                                                                White's move order in this game might be more accurate than} 7. Nf3 d6 8. g3 a5
+
+                                                                9. b3 a4 10. b4 b5 $1 {(see Deepan Chakkravarthy, J-Arun Prasad, S/Kolkata 2012.
+
+                                                                }) 7... d6 8. Bg2 a5 ({Black has also played} 8... e5 9. dxe5 dxe5 {on a number
+
+                                                                of occasions, but this feels a bit better for White. Compare the line 6...d6 7
+
+                                                                g3 e5! 8 dxe5 dxe5 9 Bg2. No-one would choose 9...Qe8 here over 9...Nc6, 9...
+
+                                                                Re8 or 9...Qe7.}) 9. b3 {The point is that with Bg2 (instead of Nf3) Black
+
+                                                                can't play ...b5 here, So...} Ra7 $5 {He prepares it!} 10. Nf3 (10. Bg5 {is
+
+                                                                covered in Navara, D-Harika, D/ Caleta 2013.}) 10... a4 11. b4 b5 $1 12. c5 Bb7
+
+                                                                13. O-O Ne4 $5 {Mateusz makes a virtue out of the necessity to play ...Ra7.
+
+                                                                With the b7-bishop protected, Black is better placed to play ...Ne4 without
+
+                                                                having to worry about tactics on the long diagonal.} ({Black can also play} 
+
+                                                                13... Be4 {of course, with very similar play to Deepan Chakkravarthy-Arun
+
+                                                                Prasad - the only difference being Black has spent a move on ...Ra7.}) 14. Qc2
+
+                                                                f5 15. Bb2 (15. Bf4 $5) 15... Bd5 $1 16. Ne1 {Intending Nd3-f4 and also f3
+
+                                                                followed by e4.} Nf6 $1 17. f3 {Keeping the bishops on. Black is fine, as
+
+                                                                usual, if White trades light-squares bishops.} Bb3 18. Qd2 e5 19. dxe5 dxe5 20.
+
+                                                                Nd3 Nc6 21. f4 $5 {As one bishop thrives, its partner suffers.} e4 $1 22. Ne5
+
+                                                                Ra8 23. Nxc6 Qxc6 24. Bd4 Rad8 25. e3 Rf7 26. Rfc1 Qe6 27. c6 $1 {Now Rc5 is a
+
+                                                                possibility for White.} (27. Bf1 c6 $1 $15) 27... Bc4 28. Bf1 $1 Bxf1 29. Kxf1
+
+                                                                h5 (29... Rd5 $1) 30. h4 (30. Rc5 $1 {would have seized the advantage. White
+
+                                                                doesn't get a second chance.}) 30... Rd5 $1 31. Qe2 Ng4 32. Rc5 $6 Rxc5 33.
+
+                                                                bxc5 Qb3 $1 34. Qd2 Kh7 (34... Rf8 $1 {is stronger.}) 35. Qa2 $1 Qd3+ 36. Qe2
+
+                                                                Rf8 37. Qxd3 exd3 38. Ke1 (38. Rd1 $1 {wouldn't have allowed the knight to
+
+                                                                reach e4.}) 38... Rb8 39. Rb1 Kg6 40. Kd2 Nf2 41. Rf1 Ne4+ 42. Kxd3 {Even
+
+                                                                though Black has lost the pawn on d3, Black is better in this endgame. The
+
+                                                                knight is a monster on e4 and the c6-pawn will drop off soon.} Kf7 43. Kc2 Ke6
+
+                                                                44. Be5 Nxc5 45. Bxc7 Rc8 46. Bb6 Rxc6 47. Bxc5 Rxc5+ 48. Kd3 Kd5 49. Rb1 Kc6
+
+                                                                50. Re1 Rc4 51. Rb1 {This rook endgame feels winning for Black. White can't do
+
+                                                                anything with his pawn majority, whereas ... b4 is coming soon.} (51. e4 fxe4+
+
+                                                                52. Rxe4 Rxe4 53. Kxe4 b4 $1) 51... Kb6 52. Re1 Kc5 53. Rb1 b4 54. axb4+ Kb5 $1
+
+                                                                55. Rd1 g6 56. Ra1 Rxb4 57. Kc3 Kc5 58. Kc2 Rc4+ 59. Kd3 Kb5 60. Rb1+ Rb4 61.
+
+                                                                Ra1 Rb3+ 62. Kd4 a3 63. Rc1 a2 64. Ra1 Ra3 65. Ke5 Kc4 0-1
+
+
+
+                                                                [Event "11th Gibraltar Masters"]
+
+                                                                [Site "Caleta ENG"]
+
+                                                                [Date "2013.01.25"]
+
+                                                                [Round "4.10"]
+
+                                                                [White "Navara, D."]
+
+                                                                [Black "Harika, D."]
+
+                                                                [Result "1-0"]
+
+                                                                [ECO "E32"]
+
+                                                                [WhiteElo "2710"]
+
+                                                                [BlackElo "2514"]
+
+                                                                [Annotator "John Emms"]
+
+                                                                [PlyCount "75"]
+
+                                                                [EventDate "2013.01.22"]
+
+                                                                [EventRounds "10"]
+
+                                                                [EventCountry "ENG"]
+
+                                                                [Source "ChessPublishing.com"]
+
+                                                                [SourceDate "2013.10.20"]
+
+
+
+                                                                1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Qc2 O-O 5. a3 Bxc3+ 6. Qxc3 Qe8 7. g3 a5 8. Bg2
+
+                                                                d6 9. b3 Ra7 ({In Moor, O-Pelletier, Y/Switzerland 2006, Black tried} 9... h6
+
+                                                                $5 10. Nf3 (10. a4 $5) 10... a4 11. b4 b5 $1 12. Nd2 Ra7 13. O-O Bb7 {and
+
+                                                                reached his desired set-up.}) 10. Bg5 ({For} 10. Nf3 {see Villegas, P-Bartel, M/
+
+                                                                Istanbul 2012.}) 10... Nbd7 11. e4 e5 ({Navara's e2-e4 puts a spanner in the
+
+                                                                works of Black's ...a4, ...b5 plan, and Harika is forced to change tack.} 11...
+
+                                                                a4 {can be met by} 12. e5 $1 {and if} dxe5 13. dxe5 Ng4 {White has the double
+
+                                                                attack} 14. Qd4 $1) 12. Ne2 (12. d5 {is also possible of course.}) 12... exd4
+
+                                                                13. Qxd4 Ra6 14. Nc3 h6 15. Bxf6 (15. Be3 Nc5 16. Rb1 Ng4 $1 {and the knights
+
+                                                                cause problems. e.g.} 17. Bd2 a4) 15... Nxf6 16. O-O Qe5 17. Qd2 $1 {White's
+
+                                                                only chance for an edge is to keep the queens on.} (17. Qxe5 dxe5 {is fine for
+
+                                                                Black.}) 17... Bd7 18. Nd5 Nxd5 19. cxd5 c6 ({Maybe Black should have gone for
+
+                                                                a Benoni set-up:} 19... c5 20. f4 Qe7 21. Rae1 f6) 20. Rfe1 Re8 ({If} 20...
+
+                                                                cxd5 21. exd5 Qf6 22. Rac1 {is a bit awkward for Black.}) 21. Rad1 Raa8 {
+
+                                                                    Harika gives up a pawn to free his position.} (21... c5 {is still possible.})
+
+                                                                    22. dxc6 Bxc6 23. Qxd6 Qb2 24. Rb1 (24. Re3 $1) 24... Qa2 25. e5 Re6 (25...
+
+                                                                    Rad8 $1 26. Qc5 Bxg2 27. Kxg2 Rd2 {looks much better for Black than what
+
+                                                                    happens.}) 26. Qc5 b6 $2 (26... Bxg2 $1) 27. Qc3 $1 Qxa3 ({Suddenly Black can
+
+                                                                    no longer swap bishops:} 27... Bxg2 28. Ra1 $1 {traps the queen.}) 28. Bh3 $1 {
+
+                                                                        Winning the exchange.} Qe7 (28... Rg6 29. Bf5) 29. Rbd1 Rc8 30. Bxe6 fxe6 31.
+
+                                                                        Rd6 Bb7 32. Qd3 Rf8 33. Qg6 Bc8 34. Rc1 b5 35. Rdc6 Bd7 36. Rc7 Qf7 37. Qxf7+
+
+                                                                        Rxf7 38. Ra7 {Navara's 10 Bg5 and 11 e4 cuts across Black's ...a4 and ...b5
+
+                                                                        plan. White is possibly a shade better after either 12 Ne2 or 12 d5.} 1-0
+
+
+
+

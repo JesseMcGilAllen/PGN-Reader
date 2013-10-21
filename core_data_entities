@@ -1,0 +1,125 @@
+Database
+--------
+    Name
+    Games
+    Date_Added
+
+Game
+----
+
+	Event
+	Site
+	Date
+	White
+	Black
+	Result
+	ECO
+	WhiteElo
+	BlackElo
+	
+
+    Chess Publishing Tags
+     Event
+     Site
+     Date
+     Round
+     White
+     Black
+     Result
+     ECO
+     WhiteElo
+     BlackElo
+     Annotator
+     PlyCount
+     EventDate
+     EventRounds
+     EventCountry
+     EventCategory
+     Source
+     SourceDate
+     Moves
+
+    HIARCS Tags
+     Event
+     Site
+     Date
+     Round
+     White
+     Black
+     Result
+     ECO
+     
+    TWIC Tags
+     Event
+     Site
+     Date
+     Round
+     White
+     Black
+     Result
+     WhiteTitle
+     BlackTitle
+     WhiteElo
+     BlackElo
+     ECO
+     Opening
+     Variation
+     WhiteFideId
+     BlackFideId
+     EventDate
+
+    Tal 1936 - 1992
+     Event
+     Site
+     Date
+     Round
+     White
+     Black
+     Result
+     ECO
+     PlyCount
+     EventDate
+     EventType
+     EventRound
+     EventCountry
+     Source
+     SourceData
+
+    Kasparov - Karpov
+     Event
+     Site
+     Date
+     Round
+     White
+     WhiteElo
+     Black
+     BlackElo
+     Result
+
+    Garry Kasparov - Chess for Real
+     Event
+     Site
+     Date
+     Round
+     White
+     Black
+     Result
+     ECO
+     PlyCount
+     EventDate
+     EventRounds
+     EventCountry
+     Source
+     SourceData
+
+    PGN Mentor
+     Event
+     Site
+     Date
+     Round
+     White
+     Black
+     Result
+     WhiteElo
+     BlackElo
+     ECO

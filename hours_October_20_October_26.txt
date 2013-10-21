@@ -1,0 +1,11 @@
+October 20th 2013
+-----------------
+- 5:45 pm - 7:00 pm: opened pgn file, created pgn parser class.
+ Moved file logic to that class, Created constants file, removed magic numbers
+ read about mogenerator.  
+
+ Next Up: Core Data/Mogenerator & File Parsing.
+ 
+October 21st 2013
+-----------------
+- 12:45 pm - 1pm:  started preparing for Mogenerator
