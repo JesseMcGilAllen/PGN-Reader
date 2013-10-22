@@ -10,6 +10,6 @@
 
 @interface JMAParser : NSObject
 
-- (void)parseFileForUrl:(NSURL *)url;
+- (void)parseFileWithUrl:(NSURL *)url;
 
 @end

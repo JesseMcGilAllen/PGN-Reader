@@ -1,0 +1,1 @@
+mogenerator --model PGN_Reader.xcdatamodeld/PGN_Reader.xcdatamodel --template-var arc=true

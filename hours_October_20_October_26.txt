@@ -25,3 +25,9 @@ October 21st 2013
 
     Daily Total: 6 hours 15 minutes
     Weekly Total: 7 hours 30 minutes
+    
+October 22nd 2013
+-----------------
+- 1:00 pm - 2:00 pm: installed Mogenerator into project and generated Core Data entities.
+
+    Daily Total: 1 hour

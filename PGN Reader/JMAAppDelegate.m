@@ -149,7 +149,7 @@
 {
     
     JMAParser *parser = [[JMAParser alloc] init];
-    [parser parseFileForUrl:url];
+    [parser parseFileWithUrl:url];
     
     return YES;
 }

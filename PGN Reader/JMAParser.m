@@ -24,8 +24,9 @@
     intended operation.
 */
 
-- (void)parseFileForUrl:(NSURL *)url
+- (void)parseFileWithUrl:(NSURL *)url
 {
+    NSString *fileName = [url lastPathComponent];
     NSString *fileContents = [self stringForURL:url];
 }
 
@@ -40,6 +41,8 @@
     NSString *fileContents = [NSString stringWithContentsOfURL:url
                                                       encoding:NSUTF8StringEncoding
                                                          error:&error];
+    
+    NSLog(@"%@", [url lastPathComponent]);
     
     if (error) {
         NSLog(@"%@", [error localizedDescription]);
