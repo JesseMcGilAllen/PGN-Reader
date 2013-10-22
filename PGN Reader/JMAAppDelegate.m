@@ -145,10 +145,14 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+
+// Handles pgn files as they enter the app
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     
     JMAParser *parser = [[JMAParser alloc] init];
+    
+    parser.managedObjectContext = self.managedObjectContext;
     [parser parseFileWithUrl:url];
     
     return YES;

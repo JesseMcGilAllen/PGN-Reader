@@ -29,5 +29,7 @@ October 21st 2013
 October 22nd 2013
 -----------------
 - 1:00 pm - 2:00 pm: installed Mogenerator into project and generated Core Data entities.
+- 2:00 pm - 4:00 pm: working on PGN Parser file, laying the foundation for
+                     implementing Core Data.
 
     Daily Total: 1 hour

@@ -7,6 +7,15 @@
 //
 
 #import "JMAParser.h"
+#import "Database.h"
+
+@interface JMAParser ()
+
+// array of game headers needed by app
+@property (strong, nonatomic) NSArray *headers;
+
+
+@end
 
 @implementation JMAParser
 
@@ -14,6 +23,10 @@
 {
     self = [super init];
     if (self) {
+        _headers = @[@"Event", @"Site", @"Date", @"White", @"Black",
+                     @"Result", @"ECO", @"WhiteElo", @"BlackElo"];
+        
+
         
     }
     return self;
@@ -23,12 +36,68 @@
     This method acts as the controller for the class's
     intended operation.
 */
-
 - (void)parseFileWithUrl:(NSURL *)url
 {
     NSString *fileName = [url lastPathComponent];
+    
+    Database *newDatabase = [self databaseFor:fileName];
+    
     NSString *fileContents = [self stringForURL:url];
+    
+    NSArray *linesInFile = [fileContents componentsSeparatedByString:@"\n"];
+    [self gamesFromFile:linesInFile for:newDatabase];
+    
+
 }
+
+/*
+ This method will create the Database for the file in Core Data.
+*/
+- (Database *)databaseFor:(NSString *)fileName
+{
+    Database *newDatabase =
+    [NSEntityDescription insertNewObjectForEntityForName:@"Database"
+                                  inManagedObjectContext:self.managedObjectContext];
+    
+    newDatabase.name = fileName;
+    
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"FAIL!!!: %@", [error localizedDescription]);
+    }
+    
+    return newDatabase;
+}
+
+/*
+ This method seperates the file contents into game strings to be saved
+*/
+- (void)gamesFromFile:(NSArray *)linesInFile for:(Database *)database
+{
+    NSMutableString *individualGame = [[NSMutableString alloc] init];
+    NSPredicate *predicate = [self predicateForResults];
+    
+    for (NSString *line in linesInFile) {
+        [individualGame appendString:line];
+        
+        if ([predicate evaluateWithObject:line]) {
+            [self createGameFrom:individualGame];
+            individualGame = [[NSMutableString alloc] init];
+        }
+        
+    }
+
+}
+
+
+/*
+ This method will create a Game object and save it into Core Data
+*/
+- (void)createGameFrom:(NSString *)individualGame
+{
+    
+}
+
 
 /*
  The method will initialize a string with the contents of a url parameter
@@ -52,5 +121,22 @@
     }
 }
 
+/*
+ This method creates a compound predicate that contains the possible results 
+ of a game and returns the predicate.
+*/
+- (NSPredicate *)predicateForResults
+{
+    NSMutableArray *subpredicates = [NSMutableArray array];
+    NSArray *results = @[@" 1-0", @" 1/2-1/2", @" 0-1", @" *"];
+    for (NSString *result in results)
+    {
+        [subpredicates addObject:[NSPredicate predicateWithFormat:@"SELF CONTAINS %@", result]];
+        
+        
+    }
+    
+    return [NSCompoundPredicate orPredicateWithSubpredicates:subpredicates];
+}
 
 @end

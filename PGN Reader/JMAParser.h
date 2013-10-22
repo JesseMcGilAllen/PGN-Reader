@@ -10,6 +10,8 @@
 
 @interface JMAParser : NSObject
 
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 - (void)parseFileWithUrl:(NSURL *)url;
 
 @end
