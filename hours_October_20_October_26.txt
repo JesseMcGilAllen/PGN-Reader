@@ -6,6 +6,22 @@ October 20th 2013
 
  Next Up: Core Data/Mogenerator & File Parsing.
  
+   Daily Total: 1 hour 15 minutes
+   Weekly Total: 1 hours 15 minutes
+
 October 21st 2013
 -----------------
 - 12:45 pm - 1pm:  started preparing for Mogenerator
+- 2:00 pm - 3:00 pm: installed Mogenerator, decided on Core Data entities
+- 3:00 pm - 4:00 pm: started reviewing Core Data
+- 4:00 pm - 4:45 pm: continuing study of Core Data
+- 6:00 pm - 8:00 pm: read Apple's Core Data .pdf
+- 8:00 pm - 9:15 pm: watched WWDC 2012 session 214: Core Data Best Practices
+                     I should think about my schema structure, ie whether
+                     to seperate fields like players, site, and event to 
+                     unique tables.  Also when it is time to implement
+                     search go big first and limit by math first
+                     (computers like math)
+
+    Daily Total: 6 hours 15 minutes
+    Weekly Total: 7 hours 30 minutes
