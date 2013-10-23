@@ -34,5 +34,12 @@ October 22nd 2013
 
 - 6:30 pm - 7:30 pm: continued working on PGN Parser file, save empty Database
 - 8:00 pm - 9:00 pm: PGN Parser File work
+- 10:20 pm - 11:20 pm: PGN Parser File Work
 
-    Daily Total: 5 hours
+    Daily Total: 6 hours
+    Weekly Total: 13 hours 30 minutes
+
+October 23rd 2013
+-----------------
+- 1:50 pm -
+

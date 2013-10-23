@@ -258,4 +258,9 @@ This method will compare the Prefix of an attribute with a game attribute saved
 
 }
 
+
+- (void)valueForBlackAttribute:(NSString *)attribute in:(Game *)newGame
+{
+    // NSString *valueForBlack = [attribute substringFromIndex:<#(NSUInteger)#>]
+}
 @end
