@@ -42,7 +42,7 @@
 {
     NSString *fileName = [url lastPathComponent];
     
-    Database *newDatabase = [self databaseFor:fileName];
+     Database *newDatabase = [self databaseFor:fileName];
     
     NSString *fileContents = [self stringForURL:url];
     
@@ -156,17 +156,23 @@
     return [NSCompoundPredicate orPredicateWithSubpredicates:subpredicates];
 }
 
+
+# pragma mark - left off
+
 - (Game *)populateData:(NSArray *)gameHeaders for:(Game *)newGame
 {
     NSCharacterSet *quoteSet =
     [NSCharacterSet characterSetWithCharactersInString:@"\""];
+    NSMutableDictionary *coreDataHeaders = [[NSMutableDictionary alloc] init];
     
     for (int index = 0; index < [gameHeaders count]; index++) {
         NSString *header = gameHeaders[index];
         header = [header stringByTrimmingCharactersInSet:quoteSet];
         for (NSString *neededHeader in self.headers) {
             if ([header hasPrefix:neededHeader]) {
-                NSLog(@"%@", header);
+                int startingIndex = [neededHeader length] + ONE;
+               NSString *headerValue = [header substringFromIndex:startingIndex];
+                [coreDataHeaders setObject:headerValue forKey:neededHeader];
             }
         }
         
