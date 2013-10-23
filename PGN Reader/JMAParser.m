@@ -8,6 +8,8 @@
 
 #import "JMAParser.h"
 #import "Database.h"
+#import "Game.h"
+#import "JMAConstants.h"
 
 @interface JMAParser ()
 
@@ -81,7 +83,8 @@
         [individualGame appendString:line];
         
         if ([predicate evaluateWithObject:line]) {
-            [self createGameFrom:individualGame];
+            Game *newGame = [self gameFrom:individualGame];
+            
             individualGame = [[NSMutableString alloc] init];
         }
         
@@ -93,10 +96,24 @@
 /*
  This method will create a Game object and save it into Core Data
 */
-- (void)createGameFrom:(NSString *)individualGame
+- (Game *)gameFrom:(NSString *)individualGame
 {
+    NSCharacterSet *bracketSet =
+    [NSCharacterSet characterSetWithCharactersInString:@"[]"];
     
+    NSArray *headerSeperatedData =
+    [individualGame componentsSeparatedByCharactersInSet:bracketSet];
+    
+    Game *newGame =
+    [NSEntityDescription insertNewObjectForEntityForName:@"Game"
+                                  inManagedObjectContext:self.managedObjectContext];
+    
+    
+    [self populateData:headerSeperatedData for:newGame];
+    
+    return newGame;
 }
+
 
 
 /*
@@ -137,6 +154,27 @@
     }
     
     return [NSCompoundPredicate orPredicateWithSubpredicates:subpredicates];
+}
+
+- (Game *)populateData:(NSArray *)gameHeaders for:(Game *)newGame
+{
+    NSCharacterSet *quoteSet =
+    [NSCharacterSet characterSetWithCharactersInString:@"\""];
+    
+    for (int index = 0; index < [gameHeaders count]; index++) {
+        NSString *header = gameHeaders[index];
+        header = [header stringByTrimmingCharactersInSet:quoteSet];
+        for (NSString *neededHeader in self.headers) {
+            if ([header hasPrefix:neededHeader]) {
+                NSLog(@"%@", header);
+            }
+        }
+        
+    }
+    
+    newGame.moves = [gameHeaders lastObject];
+    
+    return newGame;
 }
 
 @end
