@@ -13,10 +13,6 @@
 
 @interface JMAParser ()
 
-// array of game headers needed by app
-@property (strong, nonatomic) NSArray *headers;
-
-
 @end
 
 @implementation JMAParser
@@ -25,10 +21,6 @@
 {
     self = [super init];
     if (self) {
-        _headers = @[@"Event", @"Site", @"Date", @"White", @"Black",
-                     @"Result", @"ECO", @"WhiteElo", @"BlackElo"];
-        
-
         
     }
     return self;
@@ -41,80 +33,16 @@
 - (void)parseFileWithUrl:(NSURL *)url
 {
     NSString *fileName = [url lastPathComponent];
-    
-     Database *newDatabase = [self databaseFor:fileName];
-    
     NSString *fileContents = [self stringForURL:url];
+
+    Database *newDatabase = [self databaseFor:fileName];
     
     NSArray *linesInFile = [fileContents componentsSeparatedByString:@"\n"];
+    
     [self gamesFromFile:linesInFile for:newDatabase];
     
 
 }
-
-/*
- This method will create the Database for the file in Core Data.
-*/
-- (Database *)databaseFor:(NSString *)fileName
-{
-    Database *newDatabase =
-    [NSEntityDescription insertNewObjectForEntityForName:@"Database"
-                                  inManagedObjectContext:self.managedObjectContext];
-    
-    newDatabase.name = fileName;
-    
-    NSError *error;
-    if (![self.managedObjectContext save:&error]) {
-        NSLog(@"FAIL!!!: %@", [error localizedDescription]);
-    }
-    
-    return newDatabase;
-}
-
-/*
- This method seperates the file contents into game strings to be saved
-*/
-- (void)gamesFromFile:(NSArray *)linesInFile for:(Database *)database
-{
-    NSMutableString *individualGame = [[NSMutableString alloc] init];
-    NSPredicate *predicate = [self predicateForResults];
-    
-    for (NSString *line in linesInFile) {
-        [individualGame appendString:line];
-        
-        if ([predicate evaluateWithObject:line]) {
-            Game *newGame = [self gameFrom:individualGame];
-            
-            individualGame = [[NSMutableString alloc] init];
-        }
-        
-    }
-
-}
-
-
-/*
- This method will create a Game object and save it into Core Data
-*/
-- (Game *)gameFrom:(NSString *)individualGame
-{
-    NSCharacterSet *bracketSet =
-    [NSCharacterSet characterSetWithCharactersInString:@"[]"];
-    
-    NSArray *headerSeperatedData =
-    [individualGame componentsSeparatedByCharactersInSet:bracketSet];
-    
-    Game *newGame =
-    [NSEntityDescription insertNewObjectForEntityForName:@"Game"
-                                  inManagedObjectContext:self.managedObjectContext];
-    
-    
-    [self populateData:headerSeperatedData for:newGame];
-    
-    return newGame;
-}
-
-
 
 /*
  The method will initialize a string with the contents of a url parameter
@@ -139,9 +67,50 @@
 }
 
 /*
- This method creates a compound predicate that contains the possible results 
- of a game and returns the predicate.
+ This method will create the Database for the file in Core Data and return it.
 */
+- (Database *)databaseFor:(NSString *)fileName
+{
+    Database *newDatabase =
+    [NSEntityDescription insertNewObjectForEntityForName:@"Database"
+                                  inManagedObjectContext:self.managedObjectContext];
+    
+    newDatabase.name = fileName;
+    
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"FAIL!!!: %@", [error localizedDescription]);
+    }
+    
+    return newDatabase;
+}
+
+/*
+ This method seperates the file contents into game strings to be saved
+ as Game objects in a Database object
+*/
+- (void)gamesFromFile:(NSArray *)linesInFile for:(Database *)database
+{
+    NSMutableString *individualGame = [[NSMutableString alloc] init];
+    NSPredicate *predicate = [self predicateForResults];
+    
+    for (NSString *line in linesInFile) {
+        [individualGame appendString:line];
+        
+        if ([predicate evaluateWithObject:line]) {
+            // Game *newGame = [self gameFrom:individualGame];
+            
+            individualGame = [[NSMutableString alloc] init];
+        }
+        
+    }
+
+}
+
+/*
+ This method creates a compound predicate that contains the possible results
+ of a game and returns the predicate.
+ */
 - (NSPredicate *)predicateForResults
 {
     NSMutableArray *subpredicates = [NSMutableArray array];
@@ -156,29 +125,68 @@
     return [NSCompoundPredicate orPredicateWithSubpredicates:subpredicates];
 }
 
+/*
+ This method will create a Game object and populate it with a game and return it
+*/
+- (Game *)gameFrom:(NSString *)individualGame
+{
+    NSArray *attributesArray = [self seperateAttributesFrom:individualGame];
+    
+    Game *newGame =
+    [NSEntityDescription insertNewObjectForEntityForName:@"Game"
+                                  inManagedObjectContext:self.managedObjectContext];
+    
+    [self populateData:attributesArray for:newGame];
+    
+    return newGame;
+}
+
+/*
+    This method takes a string and seperates it into an array based on the 
+    location of square brackets.  It then returns the array.
+*/
+- (NSArray *)seperateAttributesFrom:(NSString *)gameString
+{
+    NSCharacterSet *bracketSet =
+    [NSCharacterSet characterSetWithCharactersInString:@"[]"];
+    
+    NSArray *attributesArray =
+    [gameString componentsSeparatedByCharactersInSet:bracketSet];
+    
+    return attributesArray;
+}
 
 # pragma mark - left off
 
-- (Game *)populateData:(NSArray *)gameHeaders for:(Game *)newGame
+/*
+    This method does the heavy lifting of the class.  an individual game's data
+ is seperated into seperate strings based on bracket location.  Then the required
+ game data is found and saved in the Game object.
+ 
+*/
+- (Game *)populateData:(NSArray *)attributes for:(Game *)newGame
 {
     NSCharacterSet *quoteSet =
     [NSCharacterSet characterSetWithCharactersInString:@"\""];
     NSMutableDictionary *coreDataHeaders = [[NSMutableDictionary alloc] init];
     
-    for (int index = 0; index < [gameHeaders count]; index++) {
-        NSString *header = gameHeaders[index];
+    for (int index = 0; index < [attributes count]; index++) {
+        NSString *header = attributes[index];
         header = [header stringByTrimmingCharactersInSet:quoteSet];
-        for (NSString *neededHeader in self.headers) {
-            if ([header hasPrefix:neededHeader]) {
-                int startingIndex = [neededHeader length] + ONE;
-               NSString *headerValue = [header substringFromIndex:startingIndex];
-                [coreDataHeaders setObject:headerValue forKey:neededHeader];
-            }
-        }
+        
+//        for (NSString *neededHeader in self.headers) {
+//            
+//            if ([header hasPrefix:neededHeader]) {
+//                int startingIndex = [neededHeader length] + ONE;
+//               NSString *headerValue = [header substringFromIndex:startingIndex];
+//                
+//                [coreDataHeaders setObject:headerValue forKey:neededHeader];
+//            }
+//        }
         
     }
     
-    newGame.moves = [gameHeaders lastObject];
+    newGame.moves = [attributes lastObject];
     
     return newGame;
 }

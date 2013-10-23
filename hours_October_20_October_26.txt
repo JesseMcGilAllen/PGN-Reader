@@ -33,6 +33,6 @@ October 22nd 2013
                      implementing Core Data.
 
 - 6:30 pm - 7:30 pm: continued working on PGN Parser file, save empty Database
+- 8:00 pm - 9:00 pm: PGN Parser File work
 
-
-    Daily Total: 4 hours
+    Daily Total: 5 hours
