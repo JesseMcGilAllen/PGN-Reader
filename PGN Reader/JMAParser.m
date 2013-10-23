@@ -156,7 +156,7 @@
     return attributesArray;
 }
 
-# pragma mark - left off
+
 
 /*
     This method does the heavy lifting of the class.  an individual game's data
@@ -166,14 +166,19 @@
 */
 - (Game *)populateData:(NSArray *)attributes for:(Game *)newGame
 {
-    NSCharacterSet *quoteSet =
-    [NSCharacterSet characterSetWithCharactersInString:@"\""];
-    NSMutableDictionary *coreDataHeaders = [[NSMutableDictionary alloc] init];
+    newGame.moves = [attributes lastObject];
     
-    for (int index = 0; index < [attributes count]; index++) {
-        NSString *header = attributes[index];
-        header = [header stringByTrimmingCharactersInSet:quoteSet];
-        
+    for (NSString *attribute in attributes) {
+        NSString *strippedAttribute = [self trimQuoteFrom:attribute];
+        [self assign:strippedAttribute for:newGame];
+    }
+    
+    //  NSMutableDictionary *coreDataHeaders = [[NSMutableDictionary alloc] init];
+    
+//    for (int index = 0; index < [attributes count]; index++) {
+//        NSString *header = attributes[index];
+//        header = [header stringByTrimmingCharactersInSet:quoteSet];
+//        
 //        for (NSString *neededHeader in self.headers) {
 //            
 //            if ([header hasPrefix:neededHeader]) {
@@ -184,11 +189,73 @@
 //            }
 //        }
         
-    }
+    //    }
     
-    newGame.moves = [attributes lastObject];
+
     
     return newGame;
+}
+
+
+/*
+ This method trims the " character from the beginning and end of the string
+ parameter and returns it.
+*/
+- (NSString *)trimQuoteFrom:(NSString *)attribute
+{
+    NSCharacterSet *quoteSet =
+    [NSCharacterSet characterSetWithCharactersInString:@"\""];
+    
+    NSString *newAttribute = [attribute stringByTrimmingCharactersInSet:quoteSet];
+    
+    return newAttribute;
+}
+
+
+/*
+This method will compare the Prefix of an attribute with a game attribute saved
+ in Core Data.  A boolean is returned with the result.
+*/
+- (BOOL)comparePrefixOf:(NSString *)attribute to:(NSString *)gameAttribute
+{
+    NSString *attributeLowerCase = [attribute lowercaseString];
+    
+    if ([attributeLowerCase hasPrefix:[gameAttribute lowercaseString]]) {
+        return YES;
+    }
+    return NO;
+}
+
+# pragma mark - left off
+
+/*
+  This method will call the comparePrefixOf method for the parameter until
+  The appropiate game attribute is found.  
+ Once found the appropiate method will be called to assign the attributes value.
+*/
+- (void)assign:(NSString *)attribute for:(Game *)game
+{
+    
+    if ([self comparePrefixOf:attribute to:@"black"]) {
+        
+    } else if ([self comparePrefixOf:attribute to:@"blackElo"]) {
+        
+    } else if ([self comparePrefixOf:attribute to:@"date"]) {
+        
+    } else if ([self comparePrefixOf:attribute to:@"eco"]) {
+        
+    } else if ([self comparePrefixOf:attribute to:@"event"]) {
+        
+    } else if ([self comparePrefixOf:attribute to:@"result"]) {
+        
+    } else if ([self comparePrefixOf:attribute to:@"site"]) {
+        
+    } else if ([self comparePrefixOf:attribute to:@"white"]) {
+        
+    } else if ([self comparePrefixOf:attribute to:@"whiteElo"]) {
+        
+    }
+
 }
 
 @end
