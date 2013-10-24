@@ -11,6 +11,6 @@
 @interface JMADatabasesTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end
