@@ -49,14 +49,17 @@
 {
 
     // Return the number of sections.
-    return ONE;
+    return [self.fetchedResultsController.sections count];
 }
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     // Return the number of rows in the section.
-    return TWENTY_FIVE;
+    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -65,13 +68,16 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    long currentRow = indexPath.row + ONE;
-    
-     cell.textLabel.text = [NSString stringWithFormat:@"Cell: %ld", currentRow];
+    [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [[object valueForKey:@"name"] description];
+}
 
 # pragma mark - NSFetchedResultsController
 
