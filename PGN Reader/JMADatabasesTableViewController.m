@@ -68,7 +68,6 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
@@ -76,6 +75,8 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [[object valueForKey:@"name"] description];
 }

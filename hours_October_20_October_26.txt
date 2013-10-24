@@ -49,4 +49,10 @@ October 23rd 2013
 
 October 24th 2013
 -----------------
-- 12:50 pm -
+- 12:50 pm - 2:35 pm: finished up PGN Parser file,
+                      connected DatabasesTableController to the Core Data store.
+- 2:35 pm - 3:05 pm: saved hard to find code snippet
+- 3:40 pm -
+
+    Daily Total: 2 hours 15 minutes
+    Weekly Total: 17 hours 30 minutes
