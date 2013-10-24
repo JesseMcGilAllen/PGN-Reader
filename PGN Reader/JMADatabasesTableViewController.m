@@ -65,8 +65,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DATABASES_CELL_IDENTIFIER forIndexPath:indexPath];
     
     [self configureCell:cell atIndexPath:indexPath];
     
@@ -78,7 +77,7 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"name"] description];
+    cell.textLabel.text = [[object valueForKey:NAME_CD] description];
 }
 
 # pragma mark - NSFetchedResultsController
@@ -158,16 +157,17 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:TO_DATABASE_SEGUE_IDENTIFIER]) {
+        
+    }
 }
 
- */
+
 
 @end

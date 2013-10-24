@@ -58,8 +58,8 @@
 
 /* Begin PBXFileReference section */
 		370F8DB61811E3970004E840 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard.storyboard; path = ../MainStoryboard.storyboard; sourceTree = "<group>"; };
-		370F8DB81811EE0F0004E840 /* JMADatabasesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JMADatabasesTableViewController.h; path = "PGN Reader/JMADatabasesTableViewController.h"; sourceTree = "<group>"; };
-		370F8DB91811EE0F0004E840 /* JMADatabasesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JMADatabasesTableViewController.m; path = "PGN Reader/JMADatabasesTableViewController.m"; sourceTree = "<group>"; };
+		370F8DB81811EE0F0004E840 /* JMADatabasesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMADatabasesTableViewController.h; sourceTree = "<group>"; };
+		370F8DB91811EE0F0004E840 /* JMADatabasesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMADatabasesTableViewController.m; sourceTree = "<group>"; };
 		3732B42118170182007467E8 /* _Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Database.h; sourceTree = "<group>"; };
 		3732B42218170182007467E8 /* _Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Database.m; sourceTree = "<group>"; };
 		3732B42318170182007467E8 /* _Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Game.h; sourceTree = "<group>"; };
@@ -132,11 +132,18 @@
 		377053571819BE3E00B2877B /* DatabaseTableView */ = {
 			isa = PBXGroup;
 			children = (
-				370F8DB81811EE0F0004E840 /* JMADatabasesTableViewController.h */,
-				370F8DB91811EE0F0004E840 /* JMADatabasesTableViewController.m */,
 			);
 			name = DatabaseTableView;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		377053581819BFE600B2877B /* DatabasesTableView */ = {
+			isa = PBXGroup;
+			children = (
+				370F8DB81811EE0F0004E840 /* JMADatabasesTableViewController.h */,
+				370F8DB91811EE0F0004E840 /* JMADatabasesTableViewController.m */,
+			);
+			name = DatabasesTableView;
 			sourceTree = "<group>";
 		};
 		37AF5AAF18103A6200B86F79 = {
@@ -173,6 +180,7 @@
 		37AF5AC318103A6200B86F79 /* PGN Reader */ = {
 			isa = PBXGroup;
 			children = (
+				377053581819BFE600B2877B /* DatabasesTableView */,
 				377053571819BE3E00B2877B /* DatabaseTableView */,
 				37F6225E18149A3D0051012C /* Storyboards */,
 				37F6225D18149A1F0051012C /* Constants */,

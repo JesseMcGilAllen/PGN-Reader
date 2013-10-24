@@ -33,4 +33,10 @@ NSString *const NAME_CD = @"name";
 // Entity Names
 NSString *const DATABASE_CD_ENTITY = @"Database";
 NSString *const GAME_CD_ENTITY = @"Game";
+
+// Identifiers
+NSString *const DATABASES_CELL_IDENTIFIER = @"databasesCell";
+NSString *const DATABASE_CELL_IDENTIFIER = @"databaseCell";
+NSString *const TO_DATABASE_SEGUE_IDENTIFIER = @"ToDatabase";
+
 @end

@@ -37,6 +37,11 @@ extern NSString *const NAME_CD;
 extern NSString *const DATABASE_CD_ENTITY;
 extern NSString *const GAME_CD_ENTITY;
 
+// Identifiers
+extern NSString *const DATABASES_CELL_IDENTIFIER;
+extern NSString *const DATABASE_CELL_IDENTIFIER;
+extern NSString *const TO_DATABASE_SEGUE_IDENTIFIER;
+
 
 
 
