@@ -9,6 +9,7 @@
 #import "JMAAppDelegate.h"
 #import "JMAConstants.h"
 #import "JMAParser.h"
+#import "JMADatabasesTableViewController.h"
 
 
 @implementation JMAAppDelegate
@@ -19,7 +20,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-        return YES;
+    
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    
+    JMADatabasesTableViewController *databasesTableViewController = (JMADatabasesTableViewController *)navigationController.topViewController;
+    databasesTableViewController.managedObjectContext = self.managedObjectContext;
+    
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
