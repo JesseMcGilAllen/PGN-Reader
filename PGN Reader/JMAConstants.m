@@ -37,6 +37,6 @@ NSString *const GAME_CD_ENTITY = @"Game";
 // Identifiers
 NSString *const DATABASES_CELL_IDENTIFIER = @"databasesCell";
 NSString *const DATABASE_CELL_IDENTIFIER = @"databaseCell";
-NSString *const TO_DATABASE_SEGUE_IDENTIFIER = @"ToDatabase";
+NSString *const TO_DATABASE_SEGUE_IDENTIFIER = @"toDatabase";
 
 @end

@@ -52,7 +52,8 @@ October 24th 2013
 - 12:50 pm - 2:35 pm: finished up PGN Parser file,
                       connected DatabasesTableController to the Core Data store.
 - 2:35 pm - 3:05 pm: saved hard to find code snippet
-- 3:40 pm -
+- 3:40 pm - 4:25 pm: added Database Table View Controller and worked on Storyboard
+- 4:45 pm -
 
-    Daily Total: 2 hours 15 minutes
-    Weekly Total: 17 hours 30 minutes
+    Daily Total: 3 hours 00 minutes
+    Weekly Total: 18 hours 15 minutes

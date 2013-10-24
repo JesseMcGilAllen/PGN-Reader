@@ -36,10 +36,10 @@
             </objects>
             <point key="canvasLocation" x="1049" y="-10"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Database Table View Controller-->
         <scene sceneID="Av1-mn-yuM">
             <objects>
-                <tableViewController id="JmR-AU-Sk0" sceneMemberID="viewController">
+                <tableViewController id="JmR-AU-Sk0" customClass="JMADatabaseTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gpL-RD-Mjg">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -7,7 +7,9 @@
 //
 
 #import "JMADatabasesTableViewController.h"
+#import "JMADatabaseTableViewController.h"
 #import "JMAConstants.h"
+#import "Database.h"
 
 @interface JMADatabasesTableViewController ()
 
@@ -74,10 +76,26 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.text = [self databaseNameAtIndexPath:indexPath];
+}
+
+/*
+ This method returns the database name from the Core Data Store 
+ for the indexPath parameter
+*/
+- (NSString *)databaseNameAtIndexPath:(NSIndexPath *)indexPath
+{
+    Database *database = [self databaseAtIndexPath:indexPath];
+    NSString *databaseName = database.name;
     
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:NAME_CD] description];
+    return databaseName;
+}
+
+- (Database *)databaseAtIndexPath:(NSIndexPath *)indexPath
+{
+    Database *database = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    return database;
 }
 
 # pragma mark - NSFetchedResultsController
@@ -165,9 +183,22 @@
 {
     if ([segue.identifier isEqualToString:TO_DATABASE_SEGUE_IDENTIFIER]) {
         
+        [self prepareForToDatabaseSegue:segue sender:sender];
     }
 }
 
+/*
+ This method handles the toDatabase Segue
+*/
+- (void)prepareForToDatabaseSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    
+    JMADatabaseTableViewController *databaseTableViewController = segue.destinationViewController;
+    databaseTableViewController.managedObjectContext = self.managedObjectContext;
+    databaseTableViewController.database = [self databaseAtIndexPath:indexPath];
+    
+}
 
 
 @end

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JMADatabaseTableViewController : UITableViewController
+@class Database;
+
+@interface JMADatabaseTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) Database *database;
+
 
 @end
