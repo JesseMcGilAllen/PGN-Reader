@@ -61,6 +61,8 @@
 {
 
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    NSLog(@"Database count: %d", [sectionInfo numberOfObjects]);
+    
     // Return the number of rows in the section.
     return [sectionInfo numberOfObjects];
 }
@@ -86,6 +88,7 @@
 - (NSString *)databaseNameAtIndexPath:(NSIndexPath *)indexPath
 {
     Database *database = [self databaseAtIndexPath:indexPath];
+    NSLog(@"Game Count: %d", [database.games count]);
     NSString *databaseName = database.name;
     
     return databaseName;

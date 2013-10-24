@@ -101,6 +101,7 @@
             
             Game *newGame = [self gameFrom:individualGame];
             [database addGamesObject:newGame];
+            newGame.database = database;
             
             [self save];
             
@@ -279,6 +280,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                   forCoreData:BLACK_CD];
     
     newGame.black = valueForBlack;
+    NSLog(@"black: %@", newGame.black);
 }
 
 /*
@@ -294,6 +296,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
     NSNumber *elo = [NSNumber numberWithInteger:eloInteger];
     
     newGame.blackElo = elo;
+    NSLog(@"black Elo: %@", newGame.blackElo);
     
 }
 
@@ -312,6 +315,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
     NSDate *date = [dateFormatter dateFromString:valueForDate];
     
     newGame.date = date;
+    NSLog(@"Date: %@", newGame.date);
 }
 
 /*
@@ -323,6 +327,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                 forCoreData:ECO_CD];
     
     newGame.eco = valueForEco;
+    NSLog(@"ECO: %@", newGame.eco);
 }
 
 /*
@@ -334,6 +339,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                   forCoreData:EVENT_CD];
     
     newGame.event = valueForEvent;
+    NSLog(@"Event: %@", newGame.event);
 }
 
 /*
@@ -345,6 +351,8 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                    forCoreData:RESULT_CD];
     
     newGame.result = valueForResult;
+    
+    NSLog(@"Result: %@", newGame.result);
 }
 
 /*
@@ -356,6 +364,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                  forCoreData:SITE_CD];
     
     newGame.site = valueForSite;
+    NSLog(@"Site: %@", newGame.site);
 }
 
 /*
@@ -367,6 +376,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                   forCoreData:WHITE_CD];
     
     newGame.white = valueForWhite;
+    NSLog(@"White: %@", newGame.white);
 }
 
 
@@ -383,6 +393,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
     NSNumber *elo = [NSNumber numberWithInteger:eloInteger];
     
     newGame.whiteElo = elo;
+    NSLog(@"WhiteElo: %@", newGame.whiteElo);
 }
 
 /*

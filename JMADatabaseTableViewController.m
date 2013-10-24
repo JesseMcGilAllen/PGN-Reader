@@ -9,9 +9,11 @@
 #import "JMADatabaseTableViewController.h"
 #import "JMAConstants.h"
 #import "Database.h"
+#import "Game.h"
 
 @interface JMADatabaseTableViewController ()
 
+@property (strong, nonatomic) NSArray *games;
 @end
 
 @implementation JMADatabaseTableViewController
@@ -20,7 +22,9 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        if (!_games) {
+            _games = [[NSArray alloc] init];
+        }
     }
     return self;
 }
@@ -29,6 +33,9 @@
 {
     [super viewDidLoad];
     self.title = self.database.name;
+    self.games = [self.database.games allObjects];
+    
+    NSLog(@"%@", self.games);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -56,7 +63,9 @@
 {
 
     // Return the number of rows in the section.
-    return 1;
+    NSLog(@"Games Count: %d", [self.games count]);
+    NSLog(@"Database Games Count: %d", [self.database.games count]);
+    return [self.games count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -70,7 +79,11 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
+    Game *game = self.games[indexPath.row];
     
+    NSString *gameString = [NSString stringWithFormat:@"%@ - %@", game.white, game.black];
+    
+    cell.textLabel.text = gameString;
 }
 
 /*
