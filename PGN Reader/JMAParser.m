@@ -72,18 +72,18 @@
 - (Database *)databaseFor:(NSString *)fileName
 {
     Database *newDatabase =
-    [NSEntityDescription insertNewObjectForEntityForName:@"Database"
+    [NSEntityDescription insertNewObjectForEntityForName:DATABASE_CD_ENTITY
                                   inManagedObjectContext:self.managedObjectContext];
     
     newDatabase.name = fileName;
     
-    NSError *error;
-    if (![self.managedObjectContext save:&error]) {
-        NSLog(@"FAIL!!!: %@", [error localizedDescription]);
-    }
+    [self save];
     
     return newDatabase;
 }
+
+
+# pragma mark - left off, need to save game in Core Data & Database
 
 /*
  This method seperates the file contents into game strings to be saved
@@ -98,7 +98,11 @@
         [individualGame appendString:line];
         
         if ([predicate evaluateWithObject:line]) {
-            // Game *newGame = [self gameFrom:individualGame];
+            
+            Game *newGame = [self gameFrom:individualGame];
+            [database addGamesObject:newGame];
+            
+            [self save];
             
             individualGame = [[NSMutableString alloc] init];
         }
@@ -133,7 +137,7 @@
     NSArray *attributesArray = [self seperateAttributesFrom:individualGame];
     
     Game *newGame =
-    [NSEntityDescription insertNewObjectForEntityForName:@"Game"
+    [NSEntityDescription insertNewObjectForEntityForName:GAME_CD_ENTITY
                                   inManagedObjectContext:self.managedObjectContext];
     
     [self populateData:attributesArray for:newGame];
@@ -173,26 +177,6 @@
         [self assign:strippedAttribute for:newGame];
     }
     
-    //  NSMutableDictionary *coreDataHeaders = [[NSMutableDictionary alloc] init];
-    
-//    for (int index = 0; index < [attributes count]; index++) {
-//        NSString *header = attributes[index];
-//        header = [header stringByTrimmingCharactersInSet:quoteSet];
-//        
-//        for (NSString *neededHeader in self.headers) {
-//            
-//            if ([header hasPrefix:neededHeader]) {
-//                int startingIndex = [neededHeader length] + ONE;
-//               NSString *headerValue = [header substringFromIndex:startingIndex];
-//                
-//                [coreDataHeaders setObject:headerValue forKey:neededHeader];
-//            }
-//        }
-        
-    //    }
-    
-
-    
     return newGame;
 }
 
@@ -226,8 +210,6 @@ This method will compare the Prefix of an attribute with a game attribute saved
     return NO;
 }
 
-# pragma mark - left off
-
 /*
   This method will call the comparePrefixOf method for the parameter until
   The appropiate game attribute is found.  
@@ -236,31 +218,182 @@ This method will compare the Prefix of an attribute with a game attribute saved
 - (void)assign:(NSString *)attribute for:(Game *)game
 {
     
-    if ([self comparePrefixOf:attribute to:@"black"]) {
+    if ([self comparePrefixOf:attribute to:BLACK_CD]) {
         
-    } else if ([self comparePrefixOf:attribute to:@"blackElo"]) {
+        [self valueForBlackAttribute:attribute in:game];
         
-    } else if ([self comparePrefixOf:attribute to:@"date"]) {
+    } else if ([self comparePrefixOf:attribute to:BLACK_ELO_CD]) {
         
-    } else if ([self comparePrefixOf:attribute to:@"eco"]) {
+        [self valueForBlackEloAttribute:attribute in:game];
         
-    } else if ([self comparePrefixOf:attribute to:@"event"]) {
+    } else if ([self comparePrefixOf:attribute to:DATE_CD]) {
         
-    } else if ([self comparePrefixOf:attribute to:@"result"]) {
+        [self valueForDateAttribute:attribute in:game];
         
-    } else if ([self comparePrefixOf:attribute to:@"site"]) {
+    } else if ([self comparePrefixOf:attribute to:ECO_CD]) {
         
-    } else if ([self comparePrefixOf:attribute to:@"white"]) {
+        [self valueForEcoAttribute:attribute in:game];
         
-    } else if ([self comparePrefixOf:attribute to:@"whiteElo"]) {
+    } else if ([self comparePrefixOf:attribute to:EVENT_CD]) {
+        
+        [self valueForEventAttribute:attribute in:game];
+        
+    } else if ([self comparePrefixOf:attribute to:RESULT_CD]) {
+        
+        [self valueForResultAttribute:attribute in:game];
+        
+    } else if ([self comparePrefixOf:attribute to:SITE_CD]) {
+        
+        [self valueForSiteAttribute:attribute in:game];
+        
+    } else if ([self comparePrefixOf:attribute to:WHITE_CD]) {
+        
+        [self valueForWhiteAttribute:attribute in:game];
+        
+    } else if ([self comparePrefixOf:attribute to:WHITE_ELO_CD]) {
+        
+        [self valueForWhiteEloAttribute:attribute in:game];
         
     }
 
 }
 
+/*
+ This method returns the value from the incoming attribute parameter for the
+ incoming Core Data property
+*/
+- (NSString *)valueFrom:(NSString *)attribute forCoreData:(NSString *)property
+{
+    NSString *value = [attribute substringFromIndex:[property length]];
+    
+    return value;
+}
 
+/*
+ This method sets the value of the black property of the
+ incoming newGame object.
+*/
 - (void)valueForBlackAttribute:(NSString *)attribute in:(Game *)newGame
 {
-    // NSString *valueForBlack = [attribute substringFromIndex:<#(NSUInteger)#>]
+    NSString *valueForBlack = [self valueFrom:attribute
+                                  forCoreData:BLACK_CD];
+    
+    newGame.black = valueForBlack;
 }
+
+/*
+ This method converts the value of the Black Elo attribute
+ and sets the property in the incoming newGame object
+*/
+- (void)valueForBlackEloAttribute:(NSString *)attribute in:(Game *)newGame
+{
+    NSString *valueForBlackElo = [self valueFrom:attribute
+                                     forCoreData:BLACK_ELO_CD];
+    
+    NSInteger eloInteger = [valueForBlackElo integerValue];
+    NSNumber *elo = [NSNumber numberWithInteger:eloInteger];
+    
+    newGame.blackElo = elo;
+    
+}
+
+/*
+ This method creates a NSDateFormatter object and uses it to convert the 
+ incoming attribute value to a date and sets the newGame object date value
+*/
+- (void)valueForDateAttribute:(NSString *)attribute in:(Game *)newGame
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy/MM/dd"];
+    
+    NSString *valueForDate = [self valueFrom:attribute
+                                 forCoreData:DATE_CD];
+    
+    NSDate *date = [dateFormatter dateFromString:valueForDate];
+    
+    newGame.date = date;
+}
+
+/*
+ This method sets the value of the eco property of the newGame object
+*/
+- (void)valueForEcoAttribute:(NSString *)attribute in:(Game *)newGame
+{
+    NSString *valueForEco = [self valueFrom:attribute
+                                forCoreData:ECO_CD];
+    
+    newGame.eco = valueForEco;
+}
+
+/*
+ This method sets the value of the event property of the newGame object
+*/
+- (void)valueForEventAttribute:(NSString *)attribute in:(Game *)newGame
+{
+    NSString *valueForEvent = [self valueFrom:attribute
+                                  forCoreData:EVENT_CD];
+    
+    newGame.event = valueForEvent;
+}
+
+/*
+ This method sets the value of the result property of the newGame object
+*/
+- (void)valueForResultAttribute:(NSString *)attribute in:(Game *)newGame
+{
+    NSString *valueForResult = [self valueFrom:attribute
+                                   forCoreData:RESULT_CD];
+    
+    newGame.result = valueForResult;
+}
+
+/*
+ This method sets the value of the site property of the newGame object
+*/
+- (void)valueForSiteAttribute:(NSString *)attribute in:(Game *)newGame
+{
+    NSString *valueForSite = [self valueFrom:attribute
+                                 forCoreData:SITE_CD];
+    
+    newGame.site = valueForSite;
+}
+
+/*
+ This method sets the value of the white property of the newGame object
+*/
+- (void)valueForWhiteAttribute:(NSString *)attribute in:(Game *)newGame
+{
+    NSString *valueForWhite = [self valueFrom:attribute
+                                  forCoreData:WHITE_CD];
+    
+    newGame.white = valueForWhite;
+}
+
+
+/*
+ This method converts the value of the White Elo attribute
+ and sets the property in the incoming newGame object
+*/
+- (void)valueForWhiteEloAttribute:(NSString *)attribute in:(Game *)newGame
+{
+    NSString *valueForWhiteElo = [self valueFrom:attribute
+                                     forCoreData:WHITE_ELO_CD];
+    
+    NSInteger eloInteger = [valueForWhiteElo integerValue];
+    NSNumber *elo = [NSNumber numberWithInteger:eloInteger];
+    
+    newGame.whiteElo = elo;
+}
+
+/*
+ This method saves the managedObjectContext
+*/
+- (void)save
+{
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"FAIL!!!: %@", [error localizedDescription]);
+    }
+}
+
 @end

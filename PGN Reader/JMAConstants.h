@@ -16,20 +16,26 @@ extern NSInteger const ZERO;
 extern NSInteger const ONE;
 extern NSInteger const TWENTY_FIVE;
 
-// Core Data Attribute Names as saved in Core Data entities
+// Core Data
+// Attribute Names as saved in Core Data entities
 // Game Attributes
-extern NSString const *BLACK_CD;
-extern NSString const *BLACK_ELO_CD;
-extern NSString const *DATE_CD;
-extern NSString const *ECO_CD;
-extern NSString const *EVENT_CD;
-extern NSString const *RESULT_CD;
-extern NSString const *SITE_CD;
-extern NSString const *WHITE_CD;
-extern NSString const *WHITE_ELO_CD;
-extern NSString const *MOVES_CD;
+extern NSString *const BLACK_CD;
+extern NSString *const BLACK_ELO_CD;
+extern NSString *const DATE_CD;
+extern NSString *const ECO_CD;
+extern NSString *const EVENT_CD;
+extern NSString *const RESULT_CD;
+extern NSString *const SITE_CD;
+extern NSString *const WHITE_CD;
+extern NSString *const WHITE_ELO_CD;
+extern NSString *const MOVES_CD;
 // Database
-extern NSString const *NAME_CD;
+extern NSString *const NAME_CD;
+
+//Entity Names
+extern NSString *const DATABASE_CD_ENTITY;
+extern NSString *const GAME_CD_ENTITY;
+
 
 
 

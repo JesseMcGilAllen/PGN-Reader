@@ -41,5 +41,12 @@ October 22nd 2013
 
 October 23rd 2013
 -----------------
-- 1:50 pm -
+- 1:50 pm - 2:25 pm: added to Constants file and continued working on the PGN Parser file.
+- 4:50 pm - 6:00 pm:  filled in values for the Game object in the PGN Parser 
 
+    Daily Total: 1 hour 45 minutes
+    Weekly Total: 15 hours 15 minutes
+
+October 24th 2013
+-----------------
+- 12:50 pm -
