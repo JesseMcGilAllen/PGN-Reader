@@ -8,6 +8,7 @@
 
 #import "JMADatabaseTableViewController.h"
 #import "JMAConstants.h"
+#import "Database.h"
 
 @interface JMADatabaseTableViewController ()
 
@@ -27,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = self.database.name;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -47,7 +49,7 @@
 {
 
     // Return the number of sections.
-    return 1;
+    return ONE;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
