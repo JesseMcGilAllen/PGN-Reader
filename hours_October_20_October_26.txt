@@ -54,7 +54,14 @@ October 24th 2013
 - 2:35 pm - 3:05 pm: saved hard to find code snippet
 - 3:40 pm - 4:25 pm: added Database Table View Controller and worked on Storyboard
 - 4:45 pm - 6:30 pm: continued working on Database Table View Controller and debugging 
-- 7:25 pm -
+- 7:25 pm - 8:40 pm: got games to show up and more than one database file
 
-    Daily Total: 4 hours 45 minutes
-    Weekly Total: 20 hours 00 minutes
+    Daily Total: 6 hours 00 minutes
+    Weekly Total: 21 hours 15 minutes
+
+October 25th 2013
+-----------------
+- 1:00 pm - 2:30 pm: upgrading Mac and iOS devices
+
+    Daily Total: 1 hour 30 minutes
+    Weekly Total: 22 hours 45 minutes

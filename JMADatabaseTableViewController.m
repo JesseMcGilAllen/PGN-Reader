@@ -63,8 +63,7 @@
 {
 
     // Return the number of rows in the section.
-    NSLog(@"Games Count: %d", [self.games count]);
-    NSLog(@"Database Games Count: %d", [self.database.games count]);
+      
     return [self.games count];
 }
 
