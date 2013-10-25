@@ -43,6 +43,8 @@ extern NSString *const DATABASE_CELL_IDENTIFIER;
 extern NSString *const TO_DATABASE_SEGUE_IDENTIFIER;
 
 
+extern NSString *const SPACE;
+
 
 
 

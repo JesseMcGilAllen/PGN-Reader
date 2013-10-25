@@ -20,7 +20,7 @@ NSInteger const TWENTY_FIVE = 25;
 // Attribute names
 NSString *const BLACK_CD = @"black";
 NSString *const BLACK_ELO_CD = @"blackElo";
-NSString *const DATE_CD = @"Date";
+NSString *const DATE_CD = @"date";
 NSString *const ECO_CD = @"eco";
 NSString *const EVENT_CD = @"event";
 NSString *const RESULT_CD = @"result";
@@ -38,5 +38,7 @@ NSString *const GAME_CD_ENTITY = @"Game";
 NSString *const DATABASES_CELL_IDENTIFIER = @"databasesCell";
 NSString *const DATABASE_CELL_IDENTIFIER = @"databaseCell";
 NSString *const TO_DATABASE_SEGUE_IDENTIFIER = @"toDatabase";
+
+NSString *const SPACE = @" ";
 
 @end

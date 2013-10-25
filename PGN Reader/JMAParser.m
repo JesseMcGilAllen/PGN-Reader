@@ -56,7 +56,7 @@
                                                       encoding:NSUTF8StringEncoding
                                                          error:&error];
     
-    NSLog(@"%@", [url lastPathComponent]);
+    //nslog(@"%@", [url lastPathComponent]);
     
     if (error) {
         NSLog(@"%@", [error localizedDescription]);
@@ -103,9 +103,9 @@
             [database addGamesObject:newGame];
             // newGame.database = database;
             
-            NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
-            NSLog(@"Games Count PGNP: %d", [database.games count]);
-            NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+            //nslog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+            //nslog(@"Games Count PGNP: %d", [database.games count]);
+            //nslog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
             [self save];
             
             individualGame = [[NSMutableString alloc] init];
@@ -191,10 +191,12 @@
 */
 - (NSString *)trimQuoteFrom:(NSString *)attribute
 {
-    NSCharacterSet *quoteSet =
-    [NSCharacterSet characterSetWithCharactersInString:@"\""];
+    //NSCharacterSet *quoteSet =
+    //[NSCharacterSet characterSetWithCharactersInString:@"\""];
     
-    NSString *newAttribute = [attribute stringByTrimmingCharactersInSet:quoteSet];
+    // NSString *newAttribute = [attribute stringByTrimmingCharactersInSet:quoteSet];
+    NSString *newAttribute = [attribute stringByReplacingOccurrencesOfString:@"\""
+                                                                  withString:@""];
     
     return newAttribute;
 }
@@ -202,13 +204,16 @@
 
 /*
 This method will compare the Prefix of an attribute with a game attribute saved
- in Core Data.  A boolean is returned with the result.
+ in Core Data. A Space is added to the Game Attribute in ensure the right 
+ attribute is saved.  A boolean is returned with the result.
 */
 - (BOOL)comparePrefixOf:(NSString *)attribute to:(NSString *)gameAttribute
 {
     NSString *attributeLowerCase = [attribute lowercaseString];
+    NSString *comparisonAttribute = [[NSString alloc] initWithFormat:@"%@ ", gameAttribute];
     
-    if ([attributeLowerCase hasPrefix:[gameAttribute lowercaseString]]) {
+    
+    if ([attributeLowerCase hasPrefix:[comparisonAttribute lowercaseString]]) {
         return YES;
     }
     return NO;
@@ -283,7 +288,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                   forCoreData:BLACK_CD];
     
     newGame.black = valueForBlack;
-    NSLog(@"black: %@", newGame.black);
+    //NSLog(@"black: %@", newGame.black);
 }
 
 /*
@@ -299,7 +304,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
     NSNumber *elo = [NSNumber numberWithInteger:eloInteger];
     
     newGame.blackElo = elo;
-    NSLog(@"black Elo: %@", newGame.blackElo);
+    //NSLog(@"black Elo: %@", newGame.blackElo);
     
 }
 
@@ -318,7 +323,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
     NSDate *date = [dateFormatter dateFromString:valueForDate];
     
     newGame.date = date;
-    NSLog(@"Date: %@", newGame.date);
+    //NSLog(@"Date: %@", newGame.date);
 }
 
 /*
@@ -330,7 +335,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                 forCoreData:ECO_CD];
     
     newGame.eco = valueForEco;
-    NSLog(@"ECO: %@", newGame.eco);
+    //nslog(@"ECO: %@", newGame.eco);
 }
 
 /*
@@ -342,7 +347,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                   forCoreData:EVENT_CD];
     
     newGame.event = valueForEvent;
-    NSLog(@"Event: %@", newGame.event);
+    //nslog(@"Event: %@", newGame.event);
 }
 
 /*
@@ -355,7 +360,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
     
     newGame.result = valueForResult;
     
-    NSLog(@"Result: %@", newGame.result);
+    //nslog(@"Result: %@", newGame.result);
 }
 
 /*
@@ -367,7 +372,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                  forCoreData:SITE_CD];
     
     newGame.site = valueForSite;
-    NSLog(@"Site: %@", newGame.site);
+    //nslog(@"Site: %@", newGame.site);
 }
 
 /*
@@ -379,7 +384,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                   forCoreData:WHITE_CD];
     
     newGame.white = valueForWhite;
-    NSLog(@"White: %@", newGame.white);
+    //nslog(@"White: %@", newGame.white);
 }
 
 
@@ -396,7 +401,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
     NSNumber *elo = [NSNumber numberWithInteger:eloInteger];
     
     newGame.whiteElo = elo;
-    NSLog(@"WhiteElo: %@", newGame.whiteElo);
+    //nslog(@"WhiteElo: %@", newGame.whiteElo);
 }
 
 /*
