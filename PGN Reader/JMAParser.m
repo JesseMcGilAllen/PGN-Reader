@@ -101,8 +101,11 @@
             
             Game *newGame = [self gameFrom:individualGame];
             [database addGamesObject:newGame];
-            newGame.database = database;
+            // newGame.database = database;
             
+            NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+            NSLog(@"Games Count PGNP: %d", [database.games count]);
+            NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
             [self save];
             
             individualGame = [[NSMutableString alloc] init];
