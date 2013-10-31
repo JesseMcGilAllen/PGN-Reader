@@ -11,7 +11,6 @@
 #import "JMAParser.h"
 #import "JMADatabasesTableViewController.h"
 
-
 @implementation JMAAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -24,6 +23,7 @@
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     
     JMADatabasesTableViewController *databasesTableViewController = (JMADatabasesTableViewController *)navigationController.topViewController;
+
     databasesTableViewController.managedObjectContext = self.managedObjectContext;
     
     return YES;
@@ -154,17 +154,33 @@
 
 
 // Handles pgn files as they enter the app
+// try putting the parser in a secondary queue
+// not necessary smart to 
+// and update the main queue when done
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     
     JMAParser *parser = [[JMAParser alloc] init];
     
     parser.managedObjectContext = self.managedObjectContext;
-    [parser parseFileWithUrl:url];
+    BOOL finished = [parser parseFileWithUrl:url];
+    
+    if (finished) {
+        //[self updateTableView];
+        NSLog(@"Hello");
+    }
+    
+    
     
     return YES;
 }
 
-
+- (void)updateTableView
+{
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    JMADatabasesTableViewController *databaseTableViewController = (JMADatabasesTableViewController *)navigationController.topViewController;
+    
+    [databaseTableViewController.tableView reloadData];
+}
 
 @end

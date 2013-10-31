@@ -40,6 +40,17 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+//    
+//    id <NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultsController.sections[ONE];
+//    
+//    if ([self.tableView numberOfRowsInSection:ONE] == [sectionInfo numberOfObjects]) {
+//        
+//        [self.tableView reloadData];
+//    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

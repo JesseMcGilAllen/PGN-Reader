@@ -12,6 +12,6 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-- (void)parseFileWithUrl:(NSURL *)url;
+- (BOOL)parseFileWithUrl:(NSURL *)url;
 
 @end

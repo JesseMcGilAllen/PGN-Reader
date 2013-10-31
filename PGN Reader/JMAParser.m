@@ -89,7 +89,7 @@
  This method seperates the file contents into game strings to be saved
  as Game objects in a Database object
 */
-- (void)gamesFromFile:(NSArray *)linesInFile for:(Database *)database
+- (BOOL)gamesFromFile:(NSArray *)linesInFile for:(Database *)database
 {
     NSMutableString *individualGame = [[NSMutableString alloc] init];
     NSPredicate *predicate = [self predicateForResults];
@@ -101,17 +101,17 @@
             
             Game *newGame = [self gameFrom:individualGame];
             [database addGamesObject:newGame];
-            // newGame.database = database;
-            
-            //nslog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
-            //nslog(@"Games Count PGNP: %d", [database.games count]);
-            //nslog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+    
             [self save];
             
             individualGame = [[NSMutableString alloc] init];
         }
         
     }
+    
+    NSLog(@"Finished!: Count: %d", [database.games count]);
+    
+    return YES;
 
 }
 
