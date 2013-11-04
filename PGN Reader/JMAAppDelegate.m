@@ -11,6 +11,11 @@
 #import "JMAParser.h"
 #import "JMADatabasesTableViewController.h"
 
+@interface JMAAppDelegate ()
+
+@property (strong, nonatomic) JMADatabasesTableViewController *databasesTableViewController;
+@end
+
 @implementation JMAAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -22,9 +27,9 @@
     
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     
-    JMADatabasesTableViewController *databasesTableViewController = (JMADatabasesTableViewController *)navigationController.topViewController;
+    self.databasesTableViewController = (JMADatabasesTableViewController *)navigationController.topViewController;
 
-    databasesTableViewController.managedObjectContext = self.managedObjectContext;
+    self.databasesTableViewController.managedObjectContext = self.managedObjectContext;
     
     return YES;
 }
@@ -160,27 +165,14 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+    
     JMAParser *parser = [[JMAParser alloc] init];
     
     parser.managedObjectContext = self.managedObjectContext;
-    BOOL finished = [parser parseFileWithUrl:url];
-    
-    if (finished) {
-        //[self updateTableView];
-        NSLog(@"Hello");
-    }
-    
-    
+    [parser parseFileWithUrl:url forTableViewController:self.databasesTableViewController];
     
     return YES;
-}
-
-- (void)updateTableView
-{
-    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-    JMADatabasesTableViewController *databaseTableViewController = (JMADatabasesTableViewController *)navigationController.topViewController;
-    
-    [databaseTableViewController.tableView reloadData];
 }
 
 @end

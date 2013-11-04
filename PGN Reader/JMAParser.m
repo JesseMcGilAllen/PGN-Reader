@@ -10,6 +10,7 @@
 #import "Database.h"
 #import "Game.h"
 #import "JMAConstants.h"
+#import "JMADatabasesTableViewController.h"
 
 @interface JMAParser ()
 
@@ -31,6 +32,7 @@
     intended operation.
 */
 - (void)parseFileWithUrl:(NSURL *)url
+  forTableViewController:(JMADatabasesTableViewController *)tableViewController
 {
     NSString *fileName = [url lastPathComponent];
     NSString *fileContents = [self stringForURL:url];
@@ -39,7 +41,11 @@
     
     NSArray *linesInFile = [fileContents componentsSeparatedByString:@"\n"];
     
-    [self gamesFromFile:linesInFile for:newDatabase];
+    BOOL finished = [self gamesFromFile:linesInFile forDatabase:newDatabase];
+    
+    if (finished) {
+        [tableViewController reload];
+    }
     
 
 }
@@ -89,7 +95,7 @@
  This method seperates the file contents into game strings to be saved
  as Game objects in a Database object
 */
-- (BOOL)gamesFromFile:(NSArray *)linesInFile for:(Database *)database
+- (BOOL)gamesFromFile:(NSArray *)linesInFile forDatabase:(Database *)database
 {
     NSMutableString *individualGame = [[NSMutableString alloc] init];
     NSPredicate *predicate = [self predicateForResults];
@@ -288,7 +294,6 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                   forCoreData:BLACK_CD];
     
     newGame.black = valueForBlack;
-    //NSLog(@"black: %@", newGame.black);
 }
 
 /*
@@ -359,8 +364,6 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                    forCoreData:RESULT_CD];
     
     newGame.result = valueForResult;
-    
-    //nslog(@"Result: %@", newGame.result);
 }
 
 /*
@@ -372,7 +375,6 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                  forCoreData:SITE_CD];
     
     newGame.site = valueForSite;
-    //nslog(@"Site: %@", newGame.site);
 }
 
 /*
@@ -384,7 +386,6 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                   forCoreData:WHITE_CD];
     
     newGame.white = valueForWhite;
-    //nslog(@"White: %@", newGame.white);
 }
 
 
@@ -401,7 +402,6 @@ This method will compare the Prefix of an attribute with a game attribute saved
     NSNumber *elo = [NSNumber numberWithInteger:eloInteger];
     
     newGame.whiteElo = elo;
-    //nslog(@"WhiteElo: %@", newGame.whiteElo);
 }
 
 /*

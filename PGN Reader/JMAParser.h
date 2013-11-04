@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class JMADatabasesTableViewController;
+
 @interface JMAParser : NSObject
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-- (BOOL)parseFileWithUrl:(NSURL *)url;
+- (void)parseFileWithUrl:(NSURL *)url
+  forTableViewController:(JMADatabasesTableViewController *)tableViewController;
 
 @end

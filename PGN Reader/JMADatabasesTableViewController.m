@@ -214,5 +214,11 @@
     
 }
 
+- (void)reload
+{
+    self.fetchedResultsController = nil;
+    [self.tableView reloadData];
+}
+
 
 @end
