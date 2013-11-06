@@ -32,11 +32,6 @@
     [super viewDidLoad];
     
      self.title = @"Databases";
-    self.databases = self.fetchedResultsController.fetchedObjects;
-    
-    NSLog(@"Database Count: %d", [self.databases count]);
-    
-    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -48,6 +43,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    
+    self.databases = self.fetchedResultsController.fetchedObjects;
 //    
 //    id <NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultsController.sections[ONE];
 //    
@@ -169,19 +166,15 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
         // Delete the row from the data source
+        [self deleteDatabaseWithIndexPath:indexPath];
+        [self resetDatabasesArray];
         
-        Database *databaseToDelete = [self databaseAtIndexPath:indexPath];
-        [self.managedObjectContext deleteObject:databaseToDelete];
-        [self save];
-        //[self reload];
-        self.databases = self.fetchedResultsController.fetchedObjects;
-
+        
+        // Delete row from table view
         [self.tableView beginUpdates];
-        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
-        
         [self.tableView endUpdates];
         
         [self.tableView reloadData];
@@ -191,6 +184,28 @@
     
 }
 
+/*
+ This method gets the database corresponding to the indexpath and deletes it
+ from the Managed Object Context
+*/
+- (void)deleteDatabaseWithIndexPath:(NSIndexPath *)indexPath
+{
+    Database *databaseToDelete = [self databaseAtIndexPath:indexPath];
+    [self.managedObjectContext deleteObject:databaseToDelete];
+    [self save];
+
+}
+
+
+/*
+ This method resets the FetchedResultsController and saves the new array
+ of fetched objects into the databases property
+*/
+- (void)resetDatabasesArray
+{
+    [self resetFetchedResultsController];
+    self.databases = self.fetchedResultsController.fetchedObjects;
+}
 
 /*
 // Override to support rearranging the table view.
@@ -233,10 +248,23 @@
     
 }
 
-- (void)reload
+/*
+ This method sets the FetchedResultsController to nil so it can be reloaded 
+ with updated data from the managedObjectContext
+*/
+- (void)resetFetchedResultsController
 {
     self.fetchedResultsController = nil;
+}
+
+
+/*
+ This method reloads the TableView and calls the resetFetchedResultsController
+*/
+- (void)reload
+{
     
+    [self resetFetchedResultsController];
     [self.tableView reloadData];
  
 }
