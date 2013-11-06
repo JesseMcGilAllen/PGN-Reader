@@ -64,6 +64,7 @@ October 25th 2013
 - 1:00 pm - 2:30 pm: upgrading Mac and iOS devices
 - 2:30 pm - 3:10 pm: reviewing progress and planning next step
                      (updating table view after PGN Parser is done).
+ 50 minutes reviewing blocks, callbacks, etc.
 
-    Daily Total: 2 hour 10 minutes
-    Weekly Total: 23 hours 25 minutes
+    Daily Total: 3 hour 00 minutes
+    Weekly Total: 24 hours 15 minutes

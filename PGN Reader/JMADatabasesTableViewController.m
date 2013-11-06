@@ -13,6 +13,7 @@
 
 @interface JMADatabasesTableViewController ()
 
+@property (strong, nonatomic) NSArray *databases;
 @end
 
 @implementation JMADatabasesTableViewController
@@ -31,6 +32,10 @@
     [super viewDidLoad];
     
      self.title = @"Databases";
+    self.databases = self.fetchedResultsController.fetchedObjects;
+    
+    NSLog(@"Database Count: %d", [self.databases count]);
+    
     
     
     // Uncomment the following line to preserve selection between presentations.
@@ -71,11 +76,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    NSLog(@"Database count: %d", [sectionInfo numberOfObjects]);
+   
     
     // Return the number of rows in the section.
-    return [sectionInfo numberOfObjects];
+    return [self.databases count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -121,6 +125,7 @@
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
     // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:DATABASE_CD_ENTITY inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
@@ -150,28 +155,42 @@
     
     return _fetchedResultsController;
 }
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        
+        Database *databaseToDelete = [self databaseAtIndexPath:indexPath];
+        [self.managedObjectContext deleteObject:databaseToDelete];
+        [self save];
+        //[self reload];
+        self.databases = self.fetchedResultsController.fetchedObjects;
+
+        [self.tableView beginUpdates];
+        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+        
+        [self.tableView endUpdates];
+        
+        [self.tableView reloadData];
+        
+       
     }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -217,8 +236,20 @@
 - (void)reload
 {
     self.fetchedResultsController = nil;
+    
     [self.tableView reloadData];
+ 
 }
 
+/*
+ This method saves the managedObjectContext
+ */
+- (void)save
+{
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"FAIL!!!: %@", [error localizedDescription]);
+    }
+}
 
 @end

@@ -1,0 +1,17 @@
+Hours at the start of the week: 33 hours
+
+Sunday November 3rd
+-------------------
+- 1 hour successfully updating databases table view
+
+    daily total: 1 hour
+    weekly total: 1 hour
+
+Monday November 4th
+-------------------
+- 1/2 hour filling out journal entries
+- 3:15 - 4:30 pm: read through HIG, started deleting database story
+- 5:30 - 6:45 pm: delete database but crashes
+
+    daily total: 3.00 hours
+    weekly total: 4.00 hours
