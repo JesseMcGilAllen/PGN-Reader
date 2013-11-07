@@ -15,3 +15,14 @@ Monday November 4th
 
     daily total: 3.00 hours
     weekly total: 4.00 hours
+  
+Tuesday November 5th
+--------------------
+- 6 pm - 7:30 pm: delete database without crashing
+
+    daily total: 1 hour 30 minutes
+    weekly total: 5 hours 30 minutes
+
+Wednesday November 6th
+----------------------
+- 6 pm -
