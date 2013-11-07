@@ -90,7 +90,11 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
     cell.textLabel.text = [self databaseNameAtIndexPath:indexPath];
+    cell.detailTextLabel.text =
+            [self databaseGameCountStringAtIndexPath:indexPath];
 }
 
 /*
@@ -100,10 +104,24 @@
 - (NSString *)databaseNameAtIndexPath:(NSIndexPath *)indexPath
 {
     Database *database = [self databaseAtIndexPath:indexPath];
-    NSLog(@"Game Count: %d", [database.games count]);
+   
     NSString *databaseName = database.name;
     
     return databaseName;
+}
+
+
+/*
+ This method returns a string that represents the number of games in the 
+ database located at the indexPath.
+*/
+- (NSString *)databaseGameCountStringAtIndexPath:(NSIndexPath *)indexPath
+{
+    Database *database = [self databaseAtIndexPath:indexPath];
+    
+    NSString *gameCountString = [[NSString alloc] initWithFormat:@"%d Games", [database.games count]];
+    
+    return gameCountString;
 }
 
 - (Database *)databaseAtIndexPath:(NSIndexPath *)indexPath
