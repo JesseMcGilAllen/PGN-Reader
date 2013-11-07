@@ -164,12 +164,16 @@
 // and update the main queue when done
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    NSLog(@"file path: %@", url.path);
+    if ([url.pathExtension isEqualToString:@"zip"]) {
+        NSLog(@"Zip Path: %@", url.path);
+    } else {
+        JMAParser *parser = [[JMAParser alloc] init];
+        
+        parser.managedObjectContext = self.managedObjectContext;
+        [parser parseFileWithUrl:url forTableViewController:self.databasesTableViewController];
+    }
     
-    JMAParser *parser = [[JMAParser alloc] init];
     
-    parser.managedObjectContext = self.managedObjectContext;
-    [parser parseFileWithUrl:url forTableViewController:self.databasesTableViewController];
     
     return YES;
 }
