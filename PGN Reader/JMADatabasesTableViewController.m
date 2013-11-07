@@ -7,6 +7,7 @@
 //
 
 #import "JMADatabasesTableViewController.h"
+#import "JMADatabasesCell.h"
 #import "JMADatabaseTableViewController.h"
 #import "JMAConstants.h"
 #import "Database.h"
@@ -81,19 +82,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DATABASES_CELL_IDENTIFIER forIndexPath:indexPath];
+    JMADatabasesCell *cell = (JMADatabasesCell *)[tableView dequeueReusableCellWithIdentifier:DATABASES_CELL_IDENTIFIER forIndexPath:indexPath];
     
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(JMADatabasesCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     
     
-    cell.textLabel.text = [self databaseNameAtIndexPath:indexPath];
-    cell.detailTextLabel.text =
+    cell.databasesNameLabel.text = [self databaseNameAtIndexPath:indexPath];
+    
+    cell.gameCountLabel.text =
             [self databaseGameCountStringAtIndexPath:indexPath];
 }
 
