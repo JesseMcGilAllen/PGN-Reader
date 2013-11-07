@@ -28,6 +28,12 @@
 		3732B42B18170182007467E8 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 3732B42718170182007467E8 /* Game.m */; };
 		3732B42C18170182007467E8 /* _Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 3732B42818170182007467E8 /* _Game.m */; };
 		37342322182B1A3400808D62 /* JMADatabasesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37342321182B1A3400808D62 /* JMADatabasesCell.m */; };
+		37342331182B4A0D00808D62 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 37342327182B4A0D00808D62 /* ioapi.c */; };
+		37342332182B4A0D00808D62 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 37342329182B4A0D00808D62 /* mztools.c */; };
+		37342333182B4A0D00808D62 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3734232B182B4A0D00808D62 /* unzip.c */; };
+		37342334182B4A0D00808D62 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3734232D182B4A0D00808D62 /* zip.c */; };
+		37342335182B4A0D00808D62 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 37342330182B4A0D00808D62 /* SSZipArchive.m */; };
+		37342338182B4B0600808D62 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 37342337182B4B0600808D62 /* libz.dylib */; };
 		3770535B1819C43500B2877B /* JMADatabaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3770535A1819C43500B2877B /* JMADatabaseTableViewController.m */; };
 		37AF5ABC18103A6200B86F79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37AF5ABB18103A6200B86F79 /* Foundation.framework */; };
 		37AF5ABE18103A6200B86F79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37AF5ABD18103A6200B86F79 /* CoreGraphics.framework */; };
@@ -72,6 +78,18 @@
 		3732B42818170182007467E8 /* _Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Game.m; sourceTree = "<group>"; };
 		37342320182B1A3400808D62 /* JMADatabasesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMADatabasesCell.h; sourceTree = "<group>"; };
 		37342321182B1A3400808D62 /* JMADatabasesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMADatabasesCell.m; sourceTree = "<group>"; };
+		37342326182B4A0D00808D62 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		37342327182B4A0D00808D62 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		37342328182B4A0D00808D62 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		37342329182B4A0D00808D62 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		3734232A182B4A0D00808D62 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		3734232B182B4A0D00808D62 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		3734232C182B4A0D00808D62 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		3734232D182B4A0D00808D62 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		3734232E182B4A0D00808D62 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		3734232F182B4A0D00808D62 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		37342330182B4A0D00808D62 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
+		37342337182B4B0600808D62 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		377053591819C43500B2877B /* JMADatabaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMADatabaseTableViewController.h; sourceTree = "<group>"; };
 		3770535A1819C43500B2877B /* JMADatabaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMADatabaseTableViewController.m; sourceTree = "<group>"; };
 		37AF5AB818103A6200B86F79 /* PGN Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PGN Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37342338182B4B0600808D62 /* libz.dylib in Frameworks */,
 				37AF5ABE18103A6200B86F79 /* CoreGraphics.framework in Frameworks */,
 				37AF5AC218103A6200B86F79 /* CoreData.framework in Frameworks */,
 				37AF5AC018103A6200B86F79 /* UIKit.framework in Frameworks */,
@@ -153,6 +172,32 @@
 			name = AppDelegate;
 			sourceTree = "<group>";
 		};
+		37342325182B4A0D00808D62 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				37342326182B4A0D00808D62 /* crypt.h */,
+				37342327182B4A0D00808D62 /* ioapi.c */,
+				37342328182B4A0D00808D62 /* ioapi.h */,
+				37342329182B4A0D00808D62 /* mztools.c */,
+				3734232A182B4A0D00808D62 /* mztools.h */,
+				3734232B182B4A0D00808D62 /* unzip.c */,
+				3734232C182B4A0D00808D62 /* unzip.h */,
+				3734232D182B4A0D00808D62 /* zip.c */,
+				3734232E182B4A0D00808D62 /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
+		37342336182B4A2900808D62 /* SSZip */ = {
+			isa = PBXGroup;
+			children = (
+				3734232F182B4A0D00808D62 /* SSZipArchive.h */,
+				37342330182B4A0D00808D62 /* SSZipArchive.m */,
+				37342325182B4A0D00808D62 /* minizip */,
+			);
+			name = SSZip;
+			sourceTree = "<group>";
+		};
 		377053571819BE3E00B2877B /* DatabaseTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +241,7 @@
 		37AF5ABA18103A6200B86F79 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37342337182B4B0600808D62 /* libz.dylib */,
 				37AF5ABB18103A6200B86F79 /* Foundation.framework */,
 				37AF5ABD18103A6200B86F79 /* CoreGraphics.framework */,
 				37AF5ABF18103A6200B86F79 /* UIKit.framework */,
@@ -208,6 +254,7 @@
 		37AF5AC318103A6200B86F79 /* PGN Reader */ = {
 			isa = PBXGroup;
 			children = (
+				37342336182B4A2900808D62 /* SSZip */,
 				37342324182B296100808D62 /* AppDelegate */,
 				37342323182B294B00808D62 /* JMAParser */,
 				377053581819BFE600B2877B /* DatabasesTableView */,
@@ -395,11 +442,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3732B42B18170182007467E8 /* Game.m in Sources */,
+				37342331182B4A0D00808D62 /* ioapi.c in Sources */,
 				37F6225B1814967E0051012C /* JMAConstants.m in Sources */,
+				37342335182B4A0D00808D62 /* SSZipArchive.m in Sources */,
 				37AF5ACA18103A6200B86F79 /* main.m in Sources */,
+				37342332182B4A0D00808D62 /* mztools.c in Sources */,
 				3770535B1819C43500B2877B /* JMADatabaseTableViewController.m in Sources */,
+				37342333182B4A0D00808D62 /* unzip.c in Sources */,
 				3732B42A18170182007467E8 /* Database.m in Sources */,
 				37342322182B1A3400808D62 /* JMADatabasesCell.m in Sources */,
+				37342334182B4A0D00808D62 /* zip.c in Sources */,
 				370F8DBA1811EE0F0004E840 /* JMADatabasesTableViewController.m in Sources */,
 				37F6226118149D4F0051012C /* JMAParser.m in Sources */,
 				37AF5ACE18103A6200B86F79 /* JMAAppDelegate.m in Sources */,

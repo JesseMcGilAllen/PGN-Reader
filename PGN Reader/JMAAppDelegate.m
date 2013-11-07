@@ -10,6 +10,7 @@
 #import "JMAConstants.h"
 #import "JMAParser.h"
 #import "JMADatabasesTableViewController.h"
+#import "SSZipArchive.h"
 
 @interface JMAAppDelegate ()
 
@@ -165,13 +166,37 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     if ([url.pathExtension isEqualToString:@"zip"]) {
-        NSLog(@"Zip Path: %@", url.path);
+        NSLog(@"url before: %@", url);
+        NSURL *destinationUrl = [url URLByDeletingPathExtension];
+        
+        destinationUrl = [destinationUrl URLByAppendingPathExtension:@"pgn"];
+        
+       
+        [SSZipArchive unzipFileAtPath:url.path toDestination:destinationUrl.path];
+        
+        url = destinationUrl;
+        NSLog(@"url after: %@", url);
+        
+        NSError *error = nil;
+        NSString *contentsString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+        NSLog(@"%@", contentsString);
+        
+//        NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        
+//        NSString *documentsDirectory = [pathArray lastObject];
+//        
+//        NSError *error;
+//        NSLog(@"Path contents: %@", [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:&error]);
+        
+        
     } else {
         JMAParser *parser = [[JMAParser alloc] init];
         
         parser.managedObjectContext = self.managedObjectContext;
         [parser parseFileWithUrl:url forTableViewController:self.databasesTableViewController];
     }
+    
+
     
     
     
