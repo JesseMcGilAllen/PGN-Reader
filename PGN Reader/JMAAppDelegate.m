@@ -164,8 +164,7 @@
 // and update the main queue when done
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+    NSLog(@"file path: %@", url.path);
     
     JMAParser *parser = [[JMAParser alloc] init];
     

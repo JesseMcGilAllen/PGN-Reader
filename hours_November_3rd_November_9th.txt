@@ -25,4 +25,7 @@ Tuesday November 5th
 
 Wednesday November 6th
 ----------------------
-- 6 pm -
+- 6 pm - 7 pm: customized tableviewcell in databases table view controller
+
+    daily total: 1 hour
+    weekly total: 6 hours 30 minutes
