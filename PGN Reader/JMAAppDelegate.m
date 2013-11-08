@@ -161,13 +161,14 @@
 
 /* 
  Handles pgn files as they enter the app
- If the incoming file is a zip file the 
- pathForZippedFileUrlPgnFile method that returns the path String to the
- unzipped file.  The parseFileWithUrl method is called to process the file
- located at the url.
- try putting the parser in a secondary queue
- not necessary smart to
- and update the main queue when done
+ An operation queue is created to move the file processing to a secondary thread
+ If the incoming file is a zip file the pathForZippedFileUrlPgnFile method that 
+ returns the path String to the unzipped file.
+ The parserQueue add a operation that allocates space the parser object.
+ The parseFileWithUrl method from the parser class is called to process the file
+ located at the url.  The persistentStoreCoordinator is sent to the parser 
+ instance.  Once the parseFileWithUrl method is done, the main thread is told to
+ reload the databasesTableViewController if present.
  */
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
@@ -184,17 +185,17 @@
         
     }
     
-    
-    
     [parserQueue addOperationWithBlock:^{
         JMAParser *parser = [[JMAParser alloc] init];
-        //parser.managedObjectContext = self.managedObjectContext;
+        
         BOOL finished = [parser parseFileWithUrl:url
                   withPersistentStoreCoordinator:self.persistentStoreCoordinator];
         
         if (finished) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                [self.databasesTableViewController reload];
+                if (self.databasesTableViewController.view.window) {
+                    [self.databasesTableViewController reload];
+                }
             }];
         }
     }];
