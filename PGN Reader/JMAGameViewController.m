@@ -7,6 +7,7 @@
 //
 
 #import "JMAGameViewController.h"
+#import "Game.h"
 
 @interface JMAGameViewController ()
 
@@ -27,6 +28,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    NSString *titleString = [[NSString alloc] initWithFormat:@"%@ - %@", self.game.white, self.game.black];
+    
+    self.title = titleString;
 }
 
 - (void)didReceiveMemoryWarning

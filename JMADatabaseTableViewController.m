@@ -10,6 +10,7 @@
 #import "JMAConstants.h"
 #import "Database.h"
 #import "Game.h"
+#import "JMAGameViewController.h"
 
 @interface JMADatabaseTableViewController ()
 
@@ -124,7 +125,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -132,8 +133,17 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    Game *selectedGame = self.games[indexPath.row];
+    
+    JMAGameViewController *destinationViewController = [segue destinationViewController];
+    destinationViewController.game = selectedGame;
+    
+    
+    
+    
+    
 }
 
- */
 
 @end

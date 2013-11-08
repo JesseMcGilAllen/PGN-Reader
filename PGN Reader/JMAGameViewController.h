@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Game;
+
 @interface JMAGameViewController : UIViewController
+
+@property (strong, nonatomic) Game *game;
 
 @end

@@ -121,7 +121,7 @@
 {
     Database *database = [self databaseAtIndexPath:indexPath];
     
-    NSString *gameCountString = [[NSString alloc] initWithFormat:@"%d Games", [database.games count]];
+    NSString *gameCountString = [[NSString alloc] initWithFormat:@"%lu Games", (unsigned long)[database.games count]];
     
     return gameCountString;
 }

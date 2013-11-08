@@ -85,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="1990" y="-10"/>
         </scene>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="Mt1-oz-FTF">
             <objects>
-                <viewController id="JeH-o0-7Ed" sceneMemberID="viewController">
+                <viewController id="JeH-o0-7Ed" customClass="JMAGameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jeh-X1-bdN"/>
                         <viewControllerLayoutGuide type="bottom" id="s8h-rr-Fsx"/>
