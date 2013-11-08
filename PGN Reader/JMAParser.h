@@ -13,8 +13,9 @@
 @interface JMAParser : NSObject
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-- (void)parseFileWithUrl:(NSURL *)url
-  forTableViewController:(JMADatabasesTableViewController *)tableViewController;
+- (BOOL)parseFileWithUrl:(NSURL *)url
+withPersistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordinator;
 
 @end

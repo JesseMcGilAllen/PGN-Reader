@@ -22,7 +22,7 @@
 {
     self = [super init];
     if (self) {
-        
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
     }
     return self;
 }
@@ -31,9 +31,10 @@
     This method acts as the controller for the class's
     intended operation.
 */
-- (void)parseFileWithUrl:(NSURL *)url
-  forTableViewController:(JMADatabasesTableViewController *)tableViewController
+- (BOOL)parseFileWithUrl:(NSURL *)url withPersistentStoreCoordinator:persistentStoreCoordinator;
 {
+    self.managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator;
+    
     NSString *fileName = [url lastPathComponent];
     NSString *fileContents = [self stringForURL:url];
 
@@ -41,11 +42,10 @@
     
     NSArray *linesInFile = [fileContents componentsSeparatedByString:@"\n"];
     
-    BOOL finished = [self gamesFromFile:linesInFile forDatabase:newDatabase];
+    [self gamesFromFile:linesInFile forDatabase:newDatabase];
     
-    if (finished) {
-        [tableViewController reload];
-    }
+
+    return YES;
     
 
 }
@@ -89,13 +89,11 @@
 }
 
 
-# pragma mark - left off, need to save game in Core Data & Database
-
 /*
  This method seperates the file contents into game strings to be saved
  as Game objects in a Database object
 */
-- (BOOL)gamesFromFile:(NSArray *)linesInFile forDatabase:(Database *)database
+- (void)gamesFromFile:(NSArray *)linesInFile forDatabase:(Database *)database
 {
     NSMutableString *individualGame = [[NSMutableString alloc] init];
     NSPredicate *predicate = [self predicateForResults];
@@ -114,9 +112,6 @@
         }
         
     }
-    
-    
-    return YES;
 
 }
 

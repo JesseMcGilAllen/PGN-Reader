@@ -172,10 +172,7 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     
-    JMAParser *parser = [[JMAParser alloc] init];
-    
-    parser.managedObjectContext = self.managedObjectContext;
-    
+    NSOperationQueue *parserQueue = [[NSOperationQueue alloc] init];
     
     if ([url.pathExtension isEqualToString:@"zip"]) {
         
@@ -187,7 +184,22 @@
         
     }
     
-        [parser parseFileWithUrl:url forTableViewController:self.databasesTableViewController];
+    
+    
+    [parserQueue addOperationWithBlock:^{
+        JMAParser *parser = [[JMAParser alloc] init];
+        //parser.managedObjectContext = self.managedObjectContext;
+        BOOL finished = [parser parseFileWithUrl:url
+                  withPersistentStoreCoordinator:self.persistentStoreCoordinator];
+        
+        if (finished) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self.databasesTableViewController reload];
+            }];
+        }
+    }];
+    
+    
     
     return YES;
 }
