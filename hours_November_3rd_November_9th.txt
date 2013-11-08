@@ -45,7 +45,9 @@ Thursday November 7th
 
 Friday November 8th
 -------------------
-- 1:00 pm -
+- 1:00 pm - 3:00 pm: moved the parser operations to a background to maintain
+                     usability of the app while the a file is being processed
+- 5:45 pm -
 
-    daily total: 0 hours
-    weekly total: 13 hours
+    daily total: 2 hours
+    weekly total: 15 hours
