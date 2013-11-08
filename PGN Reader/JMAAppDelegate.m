@@ -159,10 +159,16 @@
 }
 
 
-// Handles pgn files as they enter the app
-// try putting the parser in a secondary queue
-// not necessary smart to 
-// and update the main queue when done
+/* 
+ Handles pgn files as they enter the app
+ If the incoming file is a zip file the 
+ pathForZippedFileUrlPgnFile method that returns the path String to the
+ unzipped file.  The parseFileWithUrl method is called to process the file
+ located at the url.
+ try putting the parser in a secondary queue
+ not necessary smart to
+ and update the main queue when done
+ */
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     
@@ -178,33 +184,6 @@
         NSURL *pgnUrl = [NSURL fileURLWithPath:pgnFilePath];
         
         url = pgnUrl;
-    
-//        NSURL *destinationUrl = [url URLByDeletingPathExtension];
-//        
-//        destinationUrl = [destinationUrl URLByAppendingPathExtension:@"pgn"];
-//        
-//       
-      
-        //NSURL *zipUrl = [NSURL fileURLWithPath:destinationPath];
-        
-        // [parser parseFileWithUrl:zipUrl forTableViewController:self.databasesTableViewController];
-//        
-//        url = destinationUrl;
-//        NSLog(@"url after: %@", url);
-        
-//        NSError *error = nil;
-//        NSString *contentsString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
-//        NSLog(@"%@", contentsString);
-//        
-//        NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//        
-//        NSString *documentsDirectory = [pathArray lastObject];
-//        
-//        NSLog(@"current directory path: %@", [[NSFileManager defaultManager] currentDirectoryPath] );
-        
-        //NSError *error;
-        //NSLog(@"Path contents: %@", [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:&error]);
-        
         
     }
     
@@ -213,12 +192,18 @@
     return YES;
 }
 
+/*
+ This method unzips the contents of an compressed file and returns the file path
+ of the unzipped file.
+*/
 - (NSString *)pathForZippedFileUrlPgnFile:(NSURL *)url
 {
     
     NSError *error = nil;
     NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
     NSString *documentDirectory = pathArray[ZERO];
+    
     NSString *destinationPath = [[NSString alloc] initWithFormat:@"%@/%@", documentDirectory, url.lastPathComponent];
     
     [SSZipArchive unzipFileAtPath:url.path toDestination:destinationPath];

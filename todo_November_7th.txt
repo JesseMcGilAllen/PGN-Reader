@@ -1,0 +1,14 @@
+I can unzip files!!!
+
+    Unfortunalety unzipping mb sized files taxes my program too much.  
+    The App hangs at the App Delegate on a black screen for entirely too long.
+    Also, viewing the database table view for the first time is incredibly taxing.
+    I need to look into ways of speeding that up.  I probably need to take that
+    processing call out of the app delegate or at the very least put it in the
+    background.
+
+    It looks like to implement Core Data on multiple threads, I need to create
+    multiple managed object contexts.  All of the contexts would point to the
+    persistent store coordinator.  When the secondary managed object context
+    saves, a notification is sent out telling the main context that it is time
+    to update.

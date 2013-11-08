@@ -115,7 +115,6 @@
         
     }
     
-    NSLog(@"Finished!: Count: %d", [database.games count]);
     
     return YES;
 
