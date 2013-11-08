@@ -37,7 +37,9 @@ Thursday November 7th
 ---------------------
 - 2:10 pm - 3:10 pm: read Apple Docs in preparation of take 2 of unzipping files
 - 6:20 pm - 8:00 pm: successful unzipped and read a file!!
+- 10:20 pm - 11:40 pm: commented on uncommented methods in App Delegate 
+                       researched concurrent Core Data programming
 
-    daily total: 2 hours 40 minutes
-    weekly total: 11 hours 40 minutes
+    daily total: 4 hours 00 minutes
+    weekly total: 13 hours 00 minutes
 
