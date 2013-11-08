@@ -27,6 +27,17 @@ Wednesday November 6th
 ----------------------
 - 6 pm - 7 pm: customized tableviewcell in databases table view controller
 - 7 pm - 8 pm: started work implementing incoming zip files
+- 10 pm - 11:30 pm: added SSZip to app for unzipping files
+                    working on accessing the unzipped files
+                    
+    daily total: 3 hours 30 minutes
+    weekly total: 9 hours 00 minutes
 
-    daily total: 2 hours
-    weekly total: 7 hours 30 minutes
+Thursday November 7th
+---------------------
+- 2:10 pm - 3:10 pm: read Apple Docs in preparation of take 2 of unzipping files
+- 6:20 pm - 
+
+    daily total: 1 hour
+    weekly total: 10 hours
+

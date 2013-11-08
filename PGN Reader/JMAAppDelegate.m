@@ -165,42 +165,69 @@
 // and update the main queue when done
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
+    
+    JMAParser *parser = [[JMAParser alloc] init];
+    
+    parser.managedObjectContext = self.managedObjectContext;
+    
+    
     if ([url.pathExtension isEqualToString:@"zip"]) {
-        NSLog(@"url before: %@", url);
-        NSURL *destinationUrl = [url URLByDeletingPathExtension];
         
-        destinationUrl = [destinationUrl URLByAppendingPathExtension:@"pgn"];
+        NSString *pgnFilePath = [self pathForZippedFileUrlPgnFile:url];
         
-       
-        [SSZipArchive unzipFileAtPath:url.path toDestination:destinationUrl.path];
+        NSURL *pgnUrl = [NSURL fileURLWithPath:pgnFilePath];
         
-        url = destinationUrl;
-        NSLog(@"url after: %@", url);
+        url = pgnUrl;
+    
+//        NSURL *destinationUrl = [url URLByDeletingPathExtension];
+//        
+//        destinationUrl = [destinationUrl URLByAppendingPathExtension:@"pgn"];
+//        
+//       
+      
+        //NSURL *zipUrl = [NSURL fileURLWithPath:destinationPath];
         
-        NSError *error = nil;
-        NSString *contentsString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
-        NSLog(@"%@", contentsString);
+        // [parser parseFileWithUrl:zipUrl forTableViewController:self.databasesTableViewController];
+//        
+//        url = destinationUrl;
+//        NSLog(@"url after: %@", url);
         
+//        NSError *error = nil;
+//        NSString *contentsString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+//        NSLog(@"%@", contentsString);
+//        
 //        NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 //        
 //        NSString *documentsDirectory = [pathArray lastObject];
 //        
-//        NSError *error;
-//        NSLog(@"Path contents: %@", [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:&error]);
+//        NSLog(@"current directory path: %@", [[NSFileManager defaultManager] currentDirectoryPath] );
+        
+        //NSError *error;
+        //NSLog(@"Path contents: %@", [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:&error]);
         
         
-    } else {
-        JMAParser *parser = [[JMAParser alloc] init];
-        
-        parser.managedObjectContext = self.managedObjectContext;
-        [parser parseFileWithUrl:url forTableViewController:self.databasesTableViewController];
     }
     
-
-    
-    
+        [parser parseFileWithUrl:url forTableViewController:self.databasesTableViewController];
     
     return YES;
+}
+
+- (NSString *)pathForZippedFileUrlPgnFile:(NSURL *)url
+{
+    
+    NSError *error = nil;
+    NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = pathArray[ZERO];
+    NSString *destinationPath = [[NSString alloc] initWithFormat:@"%@/%@", documentDirectory, url.lastPathComponent];
+    
+    [SSZipArchive unzipFileAtPath:url.path toDestination:destinationPath];
+    
+    NSArray *zippedContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:destinationPath error:&error];
+    
+    NSString *pgnFilePath = [[NSString alloc] initWithFormat:@"%@/%@", destinationPath, zippedContents[ZERO]];
+    
+    return pgnFilePath;
 }
 
 @end
