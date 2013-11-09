@@ -13,6 +13,7 @@
 // Integers
 NSInteger const ZERO = 0;
 NSInteger const ONE = 1;
+NSInteger const SEVEN = 7;
 NSInteger const EIGHT = 8;
 NSInteger const TWENTY = 20;
 NSInteger const TWENTY_FIVE = 25;
@@ -42,5 +43,9 @@ NSString *const TO_DATABASE_SEGUE_IDENTIFIER = @"toDatabase";
 NSString *const TO_GAME_SEGUE_IDENTIFIER = @"toGame";
 
 NSString *const SPACE = @" ";
+
+// Colors
+NSString *const WHITE = @"White";
+NSString *const BLACK = @"Black";
 
 @end

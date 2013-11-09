@@ -24,9 +24,17 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    
     // Drawing code
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [[UIColor greenColor] CGColor]);
+    //CGContextRef context = UIGraphicsGetCurrentContext();
+    //CGContextSetFillColorWithColor(context, [[UIColor greenColor] CGColor]);
+    UIColor *textColor;
+    
+    if ([self.color isEqualToString:WHITE]) {
+        textColor = [UIColor blueColor];
+    } else {
+        textColor = [UIColor whiteColor];
+    }
     
     [self.coordinate drawInRect:CGRectMake(ZERO, ZERO, rect.size.width, rect.size.height) withAttributes:@{}];
     

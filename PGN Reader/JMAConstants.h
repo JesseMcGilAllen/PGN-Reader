@@ -14,6 +14,7 @@
 // Integers
 extern NSInteger const ZERO;
 extern NSInteger const ONE;
+extern NSInteger const SEVEN;
 extern NSInteger const EIGHT;
 extern NSInteger const TWENTY;
 extern NSInteger const TWENTY_FIVE;
@@ -46,6 +47,10 @@ extern NSString *const TO_GAME_SEGUE_IDENTIFIER;
 
 
 extern NSString *const SPACE;
+
+// Colors
+extern NSString *const WHITE;
+extern NSString *const BLACK;
 
 
 
