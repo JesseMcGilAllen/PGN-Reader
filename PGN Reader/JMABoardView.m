@@ -40,10 +40,10 @@
     int widthIndex = ZERO;
     int heightIndex = ZERO;
     
-    for (double squareOriginX = 0.0; squareOriginX < rect.size.width; squareOriginX += squareWidth) {
+    for (double squareOriginX = ZERO; squareOriginX < rect.size.width; squareOriginX += squareWidth) {
         JMASquare *square;
         
-        for (double squareOriginY = 0.0; squareOriginY < rect.size.height; squareOriginY += squareHeight) {
+        for (double squareOriginY = ZERO; squareOriginY < rect.size.height; squareOriginY += squareHeight) {
             
             
             square = [[JMASquare alloc] initWithFrame:CGRectMake(squareOriginX, squareOriginY, squareWidth, squareHeight)];
@@ -57,10 +57,6 @@
             
             
             [self addSubview:square];
-            //NSLog(@"Square color: %@, Square coordinate: %@", square.color, square.coordinate);
-            //NSLog(@"Origin Y: %f", squareOriginY);
-            //NSLog(@"Origin X: %f", squareOriginX);
-            NSLog(@"Coordinate: %@, height index: %d, color: %@", square.coordinate, heightIndex, color);
            
             if (heightIndex == SEVEN) {
                 heightIndex = ZERO;
@@ -112,7 +108,7 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+
     [self drawBoard];
 
 }

@@ -1,2 +1,6 @@
 I need to add a sort descriptor to the databaseTableView.  Right now, the
 games show up in a random order.
+
+The board looks terrible in portrait. 
+I think I need to have one layout for portrait and another for landscape.
+In portrait orientation the board needs to span the entire width of the screen.
