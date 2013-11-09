@@ -49,6 +49,7 @@ Friday November 8th
                      usability of the app while the a file is being processed
 - 4:45 pm - 6:00 pm: created Game View Controller, started playing with
                      autolayout
+- 6:15 pm - 7:00 pm: read up on Auto Layout and adjust text view from moves constraints
 
-    daily total: 3 hours 15 minutes
-    weekly total: 16 hours 15 minutes
+    daily total: 4 hours 00 minutes
+    weekly total: 17 hours 00 minutes

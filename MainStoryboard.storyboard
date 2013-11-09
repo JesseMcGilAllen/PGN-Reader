@@ -107,12 +107,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbp-Gp-kgI">
+                                <rect key="frame" x="0.0" y="65" width="542" height="959"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Pf2-Ev-Wgc" secondAttribute="trailing" id="L80-8o-qeh"/>
+                            <constraint firstItem="rbp-Gp-kgI" firstAttribute="top" secondItem="Pf2-Ev-Wgc" secondAttribute="top" id="Yfb-mk-wqb"/>
                             <constraint firstItem="s8h-rr-Fsx" firstAttribute="top" secondItem="Pf2-Ev-Wgc" secondAttribute="bottom" id="a5i-4A-E10"/>
+                            <constraint firstItem="Pf2-Ev-Wgc" firstAttribute="leading" secondItem="rbp-Gp-kgI" secondAttribute="trailing" constant="8" id="bxP-uR-NTE"/>
                             <constraint firstItem="Pf2-Ev-Wgc" firstAttribute="top" secondItem="jeh-X1-bdN" secondAttribute="bottom" constant="1" id="cdd-SH-mgz"/>
+                            <constraint firstItem="rbp-Gp-kgI" firstAttribute="leading" secondItem="phW-gw-wvb" secondAttribute="leading" id="cy6-qH-ogS"/>
+                            <constraint firstItem="rbp-Gp-kgI" firstAttribute="bottom" secondItem="Pf2-Ev-Wgc" secondAttribute="bottom" id="reS-B8-5ac"/>
                             <constraint firstAttribute="trailing" secondItem="Pf2-Ev-Wgc" secondAttribute="trailing" id="uQb-tA-bkl"/>
                             <constraint firstItem="Pf2-Ev-Wgc" firstAttribute="top" secondItem="phW-gw-wvb" secondAttribute="top" constant="65" id="yZD-Vy-Ft5"/>
                         </constraints>
