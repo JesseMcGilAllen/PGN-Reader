@@ -107,10 +107,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbp-Gp-kgI">
-                                <rect key="frame" x="0.0" y="65" width="542" height="959"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rbp-Gp-kgI" customClass="JMABoardView">
+                                <rect key="frame" x="0.0" y="65" width="537" height="959"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -127,6 +126,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Zwz-A3-b1g"/>
+                    <connections>
+                        <outlet property="boardView" destination="rbp-Gp-kgI" id="ekS-Iu-KND"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BGf-q5-LsC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,8 +8,10 @@
 
 #import "JMAGameViewController.h"
 #import "Game.h"
+#import "JMABoardView.h"
 
 @interface JMAGameViewController ()
+@property (weak, nonatomic) IBOutlet JMABoardView *boardView;
 
 @end
 
@@ -32,6 +34,8 @@
     NSString *titleString = [[NSString alloc] initWithFormat:@"%@ - %@", self.game.white, self.game.black];
     
     self.title = titleString;
+    
+    // self.boardView.backgroundColor = [UIColor purpleColor];
 }
 
 - (void)didReceiveMemoryWarning

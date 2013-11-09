@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		37077C06182DA691006B6AC3 /* JMAGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37077C05182DA691006B6AC3 /* JMAGameViewController.m */; };
+		37077C0A182DE41F006B6AC3 /* JMABoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37077C09182DE41F006B6AC3 /* JMABoardView.m */; };
 		370F8DB71811E3970004E840 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 370F8DB61811E3970004E840 /* MainStoryboard.storyboard */; };
 		370F8DBA1811EE0F0004E840 /* JMADatabasesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370F8DB91811EE0F0004E840 /* JMADatabasesTableViewController.m */; };
 		3732B42918170182007467E8 /* _Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 3732B42218170182007467E8 /* _Database.m */; };
@@ -68,6 +69,8 @@
 /* Begin PBXFileReference section */
 		37077C04182DA691006B6AC3 /* JMAGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAGameViewController.h; sourceTree = "<group>"; };
 		37077C05182DA691006B6AC3 /* JMAGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAGameViewController.m; sourceTree = "<group>"; };
+		37077C08182DE41F006B6AC3 /* JMABoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMABoardView.h; sourceTree = "<group>"; };
+		37077C09182DE41F006B6AC3 /* JMABoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMABoardView.m; sourceTree = "<group>"; };
 		370F8DB61811E3970004E840 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard.storyboard; path = ../MainStoryboard.storyboard; sourceTree = "<group>"; };
 		370F8DB81811EE0F0004E840 /* JMADatabasesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMADatabasesTableViewController.h; sourceTree = "<group>"; };
 		370F8DB91811EE0F0004E840 /* JMADatabasesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMADatabasesTableViewController.m; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 			children = (
 				37077C04182DA691006B6AC3 /* JMAGameViewController.h */,
 				37077C05182DA691006B6AC3 /* JMAGameViewController.m */,
+				37077C08182DE41F006B6AC3 /* JMABoardView.h */,
+				37077C09182DE41F006B6AC3 /* JMABoardView.m */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 				37AF5ACE18103A6200B86F79 /* JMAAppDelegate.m in Sources */,
 				37AF5AD118103A6200B86F79 /* PGN_Reader.xcdatamodeld in Sources */,
 				3732B42918170182007467E8 /* _Database.m in Sources */,
+				37077C0A182DE41F006B6AC3 /* JMABoardView.m in Sources */,
 				3732B42C18170182007467E8 /* _Game.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
