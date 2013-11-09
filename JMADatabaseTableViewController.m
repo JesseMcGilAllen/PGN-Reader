@@ -36,7 +36,6 @@
     self.title = self.database.name;
     self.games = [self.database.games allObjects];
     
-    NSLog(@"%@", self.games);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

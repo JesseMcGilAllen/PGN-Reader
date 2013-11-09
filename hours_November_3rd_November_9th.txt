@@ -47,7 +47,8 @@ Friday November 8th
 -------------------
 - 1:00 pm - 3:00 pm: moved the parser operations to a background to maintain
                      usability of the app while the a file is being processed
-- 5:45 pm -
+- 4:45 pm - 6:00 pm: created Game View Controller, started playing with
+                     autolayout
 
-    daily total: 2 hours
-    weekly total: 15 hours
+    daily total: 3 hours 15 minutes
+    weekly total: 16 hours 15 minutes

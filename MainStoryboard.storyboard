@@ -96,7 +96,26 @@
                     <view key="view" contentMode="scaleToFill" id="phW-gw-wvb">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" showsHorizontalScrollIndicator="NO" text="moves moves moves" translatesAutoresizingMaskIntoConstraints="NO" id="Pf2-Ev-Wgc">
+                                <rect key="frame" x="545" y="65" width="223" height="959"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="223" id="pcM-mx-1d1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Pf2-Ev-Wgc" secondAttribute="trailing" id="L80-8o-qeh"/>
+                            <constraint firstItem="s8h-rr-Fsx" firstAttribute="top" secondItem="Pf2-Ev-Wgc" secondAttribute="bottom" id="a5i-4A-E10"/>
+                            <constraint firstItem="Pf2-Ev-Wgc" firstAttribute="top" secondItem="jeh-X1-bdN" secondAttribute="bottom" constant="1" id="cdd-SH-mgz"/>
+                            <constraint firstAttribute="trailing" secondItem="Pf2-Ev-Wgc" secondAttribute="trailing" id="uQb-tA-bkl"/>
+                            <constraint firstItem="Pf2-Ev-Wgc" firstAttribute="top" secondItem="phW-gw-wvb" secondAttribute="top" constant="65" id="yZD-Vy-Ft5"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Zwz-A3-b1g"/>
                 </viewController>
