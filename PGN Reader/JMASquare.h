@@ -10,4 +10,7 @@
 
 @interface JMASquare : UIView
 
+@property (strong, nonatomic) NSString *color;
+@property (strong, nonatomic) NSString *coordinate;
+
 @end

@@ -13,6 +13,7 @@
 // Integers
 NSInteger const ZERO = 0;
 NSInteger const ONE = 1;
+NSInteger const EIGHT = 8;
 NSInteger const TWENTY = 20;
 NSInteger const TWENTY_FIVE = 25;
 

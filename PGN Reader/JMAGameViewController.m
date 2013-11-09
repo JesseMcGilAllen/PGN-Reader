@@ -35,7 +35,7 @@
     
     self.title = titleString;
     
-    // self.boardView.backgroundColor = [UIColor purpleColor];
+    self.boardView.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning

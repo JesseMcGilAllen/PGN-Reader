@@ -7,6 +7,7 @@
 //
 
 #import "JMASquare.h"
+#import "JMAConstants.h"
 
 @implementation JMASquare
 
@@ -19,13 +20,18 @@
     return self;
 }
 
-/*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [[UIColor greenColor] CGColor]);
+    
+    [self.coordinate drawInRect:CGRectMake(ZERO, ZERO, rect.size.width, rect.size.height) withAttributes:@{}];
+    
+    
 }
-*/
+
 
 @end
