@@ -52,20 +52,15 @@
             
             square.color = color;
             
+             color = [self checkColor:color forSquare:square];
             
-            if ([color isEqualToString:WHITE]) {
-                square.backgroundColor = [UIColor whiteColor];
-                color = BLACK;
-            } else {
-                square.backgroundColor = [UIColor blueColor];
-                color = WHITE;
-            }
             
             
             [self addSubview:square];
-            NSLog(@"Square color: %@, Square coordinate: %@", square.color, square.coordinate);
-            NSLog(@"Origin Y: %f", squareOriginY);
-            NSLog(@"Origin X: %f", squareOriginX);
+            //NSLog(@"Square color: %@, Square coordinate: %@", square.color, square.coordinate);
+            //NSLog(@"Origin Y: %f", squareOriginY);
+            //NSLog(@"Origin X: %f", squareOriginX);
+            NSLog(@"Coordinate: %@, height index: %d, color: %@", square.coordinate, heightIndex, color);
            
             if (heightIndex == SEVEN) {
                 heightIndex = ZERO;
@@ -74,6 +69,8 @@
             }
             
         }
+       
+        
         
         if (widthIndex == SEVEN) {
             widthIndex = ZERO;
@@ -81,19 +78,33 @@
             widthIndex++;
         }
        
-        if ([color isEqualToString:WHITE]) {
-            square.backgroundColor = [UIColor whiteColor];
-            color = BLACK;
-        } else {
-            square.backgroundColor = [UIColor blueColor];
-            color = WHITE;
-        }
+        color = [self checkColor:color forSquare:square];
 
         
     }
     
     
 
+}
+
+- (NSString *)checkColor:(NSString *)color forSquare:(JMASquare *)square
+{
+    if (square.backgroundColor) {
+        if ([color isEqualToString:WHITE]) {
+            return BLACK;
+        } else {
+            return WHITE;
+        }
+    }
+
+    
+    if ([color isEqualToString:WHITE]) {
+        square.backgroundColor = [UIColor whiteColor];
+        return BLACK;
+    } else {
+        square.backgroundColor = [UIColor blueColor];
+        return WHITE;
+    }
 }
 
 // Only override drawRect: if you perform custom drawing.
