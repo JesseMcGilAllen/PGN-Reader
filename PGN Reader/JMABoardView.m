@@ -118,17 +118,15 @@
     
 }
 
-
-
 /*
  The method checks if the incoming index parameter is equal to 7.  If it is the
  index is reset to 0 else the value is incremented.  The updated value is 
  returned.
 */
-- (NSInteger)updateIndex:(NSInteger)index
+- (int)updateIndex:(int)index
 {
     if (index == SEVEN) {
-        index = ZERO;
+        index = (int)ZERO;
     } else {
         index++;
     }

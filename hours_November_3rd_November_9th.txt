@@ -59,7 +59,9 @@ Saturday November 9th
 ---------------------
 - 2:40 pm - 3:20 pm: got board colors!
 - 3:50 pm - 4:50 pm: corrected board colors, looked in autorotation
-- 6:20 pm -
+- 6:20 pm - 7:40 pm: commented the Board View class and started preparation
+                     to configure the Game View Controller's elements depending
+                     on device orientation.
 
-    daily total: 1 hours 40 minutes
-    weekly total: 20 hours 10 minutes
+    daily total: 3 hours 00 minutes
+    weekly total: 21 hours 30 minutes

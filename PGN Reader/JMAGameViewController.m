@@ -35,13 +35,30 @@
     
     self.title = titleString;
     
-    self.boardView.backgroundColor = [UIColor whiteColor];
+    [self determineInterfaceOrientation];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+/*
+ This method determines the Interface Orientation of the Device and calls the 
+ corresponding method to configure the view controller's elements
+*/
+- (void)determineInterfaceOrientation
+{
+    UIInterfaceOrientation orientation = self.interfaceOrientation;
+    
+    if (UIInterfaceOrientationIsLandscape(orientation)) {
+        NSLog(@"Landscape");
+    } else {
+        NSLog(@"Portrait");
+    }
+
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
