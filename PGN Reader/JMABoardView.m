@@ -15,8 +15,6 @@
 - (id)initWithFrame:(CGRect)frame
 {
     
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
-    
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
@@ -28,6 +26,10 @@
     return self;
 }
 
+/*
+ This method draws a 64 square board and configures the individual squares with
+ a coordinate and color
+*/
 - (void)drawBoard
 {
     NSArray *ranks = @[@8, @7, @6, @5, @4, @3, @2, @1];
@@ -47,33 +49,21 @@
             
             
             square = [[JMASquare alloc] initWithFrame:CGRectMake(squareOriginX, squareOriginY, squareWidth, squareHeight)];
-            NSString *coordinate = [[NSString alloc] initWithFormat:@"%@%@", files[widthIndex], ranks[heightIndex]];
-            square.coordinate = coordinate;
             
-            square.color = color;
+            [self configureSquare:square withRank:ranks[heightIndex] file:files[widthIndex] andColor:color];
             
              color = [self checkColor:color forSquare:square];
             
-            
-            
             [self addSubview:square];
            
-            if (heightIndex == SEVEN) {
-                heightIndex = ZERO;
-            } else {
-                heightIndex++;
-            }
+            heightIndex = [self updateIndex:heightIndex];
             
         }
        
         
         
-        if (widthIndex == SEVEN) {
-            widthIndex = ZERO;
-        } else {
-            widthIndex++;
-        }
-       
+        widthIndex = [self updateIndex:widthIndex];
+        
         color = [self checkColor:color forSquare:square];
 
         
@@ -83,8 +73,18 @@
 
 }
 
+
+/*
+ This method checks if the square's background color has been set
+ If it has then the opposite color is returned.  If the square's background 
+ color has not been set then it is and then the opposite color is returned.
+ 
+ The background color check makes sure the last rank's squares have the correct
+ color.
+*/
 - (NSString *)checkColor:(NSString *)color forSquare:(JMASquare *)square
 {
+    
     if (square.backgroundColor) {
         if ([color isEqualToString:WHITE]) {
             return BLACK;
@@ -92,7 +92,6 @@
             return WHITE;
         }
     }
-
     
     if ([color isEqualToString:WHITE]) {
         square.backgroundColor = [UIColor whiteColor];
@@ -101,6 +100,41 @@
         square.backgroundColor = [UIColor blueColor];
         return WHITE;
     }
+}
+
+
+/*
+ This method calls the setter methods for the incoming square parameter's
+ color and coordinate properties
+*/
+- (void)configureSquare:(JMASquare *)square
+               withRank:(NSString *)rank
+                   file:(NSString *)file
+               andColor:(NSString *)color
+{
+    square.color = color;
+    square.coordinate = [[NSString alloc] initWithFormat:@"%@%@", file, rank];
+    
+    
+}
+
+
+
+/*
+ The method checks if the incoming index parameter is equal to 7.  If it is the
+ index is reset to 0 else the value is incremented.  The updated value is 
+ returned.
+*/
+- (NSInteger)updateIndex:(NSInteger)index
+{
+    if (index == SEVEN) {
+        index = ZERO;
+    } else {
+        index++;
+    }
+    
+    return index;
+
 }
 
 // Only override drawRect: if you perform custom drawing.
