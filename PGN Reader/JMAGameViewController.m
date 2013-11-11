@@ -37,6 +37,9 @@
     
     self.title = titleString;
     
+    self.movesListView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin
+    | UIViewAutoresizingFlexibleRightMargin;
+    
     
 }
 
@@ -118,10 +121,14 @@
     
     CGRect boardViewRect = CGRectMake(ZERO, ZERO, boardWidth, viewHeight);
     CGRect movesListRect = CGRectMake(boardWidth, ZERO, listWidth, viewHeight);
+    NSLog(@"Moves List Rect: %f %f %f %f", movesListRect.origin.x, movesListRect.origin.y, movesListRect.size.width, movesListRect.size.height);
+    
     
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
     
+    self.movesListView.backgroundColor = [UIColor redColor];
+    NSLog(@"Moves List: %f %f %f %f", self.movesListView.frame.origin.x, self.movesListView.frame.origin.y, self.movesListView.frame.size.width, self.movesListView.frame.size.height);
     //NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
     
     
@@ -143,10 +150,18 @@
     CGFloat listLength = self.view.frame.size.width - boardLength;
     
     CGRect boardViewRect = CGRectMake(ZERO, ZERO, viewWidth, boardLength);
+    
     CGRect movesListRect = CGRectMake(ZERO, boardLength, viewWidth, listLength);
+    NSLog(@"Moves List Rect: %f %f %f %f", movesListRect.origin.x, movesListRect.origin.y, movesListRect.size.width, movesListRect.size.height);
     
     self.boardView.frame = boardViewRect;
+    
     self.movesListView.frame = movesListRect;
+
+    //	self.movesListView.contentSize = movesListRect.size;
+    
+    self.movesListView.backgroundColor = [UIColor greenColor];
+    NSLog(@"Moves List Content Size: %f %f", self.movesListView.contentSize.width, self.movesListView.contentSize.height);
     
     // NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
     
@@ -203,11 +218,6 @@
     
     // NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
     
-}
-
-- (void)removeFromSuperview:(UIView *)view
-{
-    [view removeFromSuperview];
 }
 
 
