@@ -68,6 +68,8 @@
         NSLog(@"Portrait");
         [self configureViewForPortraitOrientation];
     }
+    
+    //[self.view setNeedsDisplay];
 
 }
 
@@ -87,11 +89,11 @@
     if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
         toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
         
-        [self configureViewForLandscapeOrientation];
+        [self configureViewForLandscapeOrientationForRotation];
         
     } else {
         
-        [self configureViewForPortraitOrientation];
+        [self configureViewForPortraitOrientationForRotation];
     }
     
      [self.boardView setNeedsDisplay];
@@ -99,6 +101,56 @@
     
 }
 
+/*
+ This method calculates the size and location of
+ boardView and movesList elements when the device is in Landscape Orientation
+ and sets those elements
+ */
+- (void)configureViewForLandscapeOrientationForRotation
+{
+    CGFloat viewHeight = self.view.frame.size.width;
+    
+    NSLog(@"View Height: %f", viewHeight);
+    CGFloat boardWidth = self.view.frame.size.height * (double)FOUR/FIVE;
+    CGFloat listWidth = self.view.frame.size.height - boardWidth;
+    
+    //NSLog(@"Board Width: %f", boardWidth);
+    
+    CGRect boardViewRect = CGRectMake(ZERO, ZERO, boardWidth, viewHeight);
+    CGRect movesListRect = CGRectMake(boardWidth, ZERO, listWidth, viewHeight);
+    
+    self.boardView.frame = boardViewRect;
+    self.movesListView.frame = movesListRect;
+    
+    //NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
+    
+    
+}
+
+/*
+ This method calculates the size and location of
+ boardView and movesList elements when the device is in Portrait Orientation
+ and sets those elements
+ */
+- (void)configureViewForPortraitOrientationForRotation
+{
+    CGFloat viewWidth = self.view.frame.size.height;
+    NSLog(@"View Width: %f", viewWidth);
+    CGFloat boardLength = self.view.frame.size.width * (double)FOUR/FIVE;
+    
+    //NSLog(@"4/5: %f", (double)FOUR/FIVE);
+    //NSLog(@"Board Length: %f", boardLength);
+    CGFloat listLength = self.view.frame.size.width - boardLength;
+    
+    CGRect boardViewRect = CGRectMake(ZERO, ZERO, viewWidth, boardLength);
+    CGRect movesListRect = CGRectMake(ZERO, boardLength, viewWidth, listLength);
+    
+    self.boardView.frame = boardViewRect;
+    self.movesListView.frame = movesListRect;
+    
+    // NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
+    
+}
 
 /*
  This method calculates the size and location of
@@ -107,11 +159,11 @@
 */
 - (void)configureViewForLandscapeOrientation
 {
-    CGFloat viewHeight = self.view.frame.size.width;
+    CGFloat viewHeight = self.view.frame.size.height;
     
     NSLog(@"View Height: %f", viewHeight);
-    CGFloat boardWidth = self.view.frame.size.height * (double)FOUR/FIVE;
-    CGFloat listWidth = self.view.frame.size.height - boardWidth;
+    CGFloat boardWidth = self.view.frame.size.width * (double)FOUR/FIVE;
+    CGFloat listWidth = self.view.frame.size.width - boardWidth;
     
     //NSLog(@"Board Width: %f", boardWidth);
     
@@ -133,13 +185,15 @@
  */
 - (void)configureViewForPortraitOrientation
 {
-    CGFloat viewWidth = self.view.frame.size.height;
+    CGFloat viewWidth = self.view.frame.size.width;
     NSLog(@"View Width: %f", viewWidth);
-    CGFloat boardLength = self.view.frame.size.width * (double)FOUR/FIVE;
+    CGFloat boardLength = self.view.frame.size.height * (double)FOUR/FIVE;
     
     //NSLog(@"4/5: %f", (double)FOUR/FIVE);
     //NSLog(@"Board Length: %f", boardLength);
-    CGFloat listLength = self.view.frame.size.width - boardLength;
+    CGFloat listLength = self.view.frame.size.height - boardLength;
+    
+    NSLog(@"List Length: %f", listLength);
     
     CGRect boardViewRect = CGRectMake(ZERO, ZERO, viewWidth, boardLength);
     CGRect movesListRect = CGRectMake(ZERO, boardLength, viewWidth, listLength);
