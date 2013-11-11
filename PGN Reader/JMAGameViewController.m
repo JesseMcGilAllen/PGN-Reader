@@ -71,11 +71,37 @@
 
 }
 
+
+/*
+ This method handles when the device rotates
+ First resetBoard is called from the BoardView class to remove the squares
+ Then the configure method is called for the orientation the app is rotating to
+*/
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [self.boardView setContentMode:UIViewContentModeRedraw];
+    
+    //[self.boardView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview:)];
+    
+    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+        toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+        
+        [self configureViewForLandscapeOrientation];
+        
+    } else {
+        
+        [self configureViewForPortraitOrientation];
+    }
+    
+    [self.boardView setNeedsDisplay];
+    
 }
 
+
+/*
+ This method calculates the size and location of
+ boardView and movesList elements when the device is in Landscape Orientation
+ and sets those elements
+*/
 - (void)configureViewForLandscapeOrientation
 {
     CGFloat viewHeight = self.view.frame.size.height;
@@ -84,16 +110,20 @@
     
     CGRect boardViewRect = CGRectMake(ZERO, ZERO, boardWidth, viewHeight);
     CGRect movesListRect = CGRectMake(boardWidth, ZERO, listWidth, viewHeight);
-    
+        
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
 
     NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
-    [self.view setNeedsDisplay];
     
     
 }
 
+/*
+ This method calculates the size and location of
+ boardView and movesList elements when the device is in Portrait Orientation
+ and sets those elements
+ */
 - (void)configureViewForPortraitOrientation
 {
     CGFloat viewWidth = self.view.frame.size.width;
@@ -113,6 +143,12 @@
     
      NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
     
-    [self.view setNeedsDisplay];
 }
+
+- (void)removeFromSuperview:(UIView *)view
+{
+    [view removeFromSuperview];
+}
+
+
 @end

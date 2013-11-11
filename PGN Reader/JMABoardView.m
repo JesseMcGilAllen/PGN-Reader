@@ -32,6 +32,8 @@
 */
 - (void)drawBoard
 {
+    
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     NSArray *ranks = @[@8, @7, @6, @5, @4, @3, @2, @1];
     NSArray *files = @[@"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h"];
     CGRect rect = self.frame;
@@ -55,6 +57,8 @@
              color = [self checkColor:color forSquare:square];
             
             [self addSubview:square];
+            
+            NSLog(@"Square dimensions: %f, %f, %f, %f", square.frame.origin.x, square.frame.origin.y, square.frame.size.width, square.frame.size.height);
            
             heightIndex = [self updateIndex:heightIndex];
             
@@ -140,8 +144,10 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
-
+    
+    
     [self drawBoard];
+    NSLog(@"Board View Frame: %f, %f, %f, %f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
 
 }
 
