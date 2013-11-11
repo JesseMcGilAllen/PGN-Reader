@@ -89,7 +89,7 @@
     self.movesListView.frame = movesListRect;
 
     NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
-  
+    [self.view setNeedsDisplay];
     
     
 }
@@ -112,5 +112,7 @@
     self.movesListView.frame = movesListRect;
     
      NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
+    
+    [self.view setNeedsDisplay];
 }
 @end
