@@ -130,6 +130,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="boardView" destination="rbp-Gp-kgI" id="ekS-Iu-KND"/>
+                        <outlet property="movesListView" destination="Pf2-Ev-Wgc" id="hDH-4q-hST"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BGf-q5-LsC" userLabel="First Responder" sceneMemberID="firstResponder"/>

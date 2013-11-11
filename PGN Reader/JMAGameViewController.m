@@ -9,9 +9,11 @@
 #import "JMAGameViewController.h"
 #import "Game.h"
 #import "JMABoardView.h"
+#import "JMAConstants.h"
 
 @interface JMAGameViewController ()
 @property (weak, nonatomic) IBOutlet JMABoardView *boardView;
+@property (weak, nonatomic) IBOutlet UITextView *movesListView;
 
 @end
 
@@ -35,9 +37,15 @@
     
     self.title = titleString;
     
-    [self determineInterfaceOrientation];
+    
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self determineInterfaceOrientation];
+
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -55,8 +63,10 @@
     
     if (UIInterfaceOrientationIsLandscape(orientation)) {
         NSLog(@"Landscape");
+        [self configureViewForLandscapeOrientation];
     } else {
         NSLog(@"Portrait");
+        [self configureViewForPortraitOrientation];
     }
 
 }
@@ -66,4 +76,41 @@
     [self.boardView setContentMode:UIViewContentModeRedraw];
 }
 
+- (void)configureViewForLandscapeOrientation
+{
+    CGFloat viewHeight = self.view.frame.size.height;
+    CGFloat boardWidth = self.view.frame.size.width * (double)FOUR/FIVE;
+    CGFloat listWidth = self.view.frame.size.width - boardWidth;
+    
+    CGRect boardViewRect = CGRectMake(ZERO, ZERO, boardWidth, viewHeight);
+    CGRect movesListRect = CGRectMake(boardWidth, ZERO, listWidth, viewHeight);
+    
+    self.boardView.frame = boardViewRect;
+    self.movesListView.frame = movesListRect;
+
+    NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
+  
+    
+    
+}
+
+- (void)configureViewForPortraitOrientation
+{
+    CGFloat viewWidth = self.view.frame.size.width;
+    CGFloat boardLength = self.view.frame.size.height * (double)FOUR/FIVE;
+    
+    NSLog(@"4/5: %f", (double)FOUR/FIVE);
+    NSLog(@"board length: ");
+    
+    NSLog(@"Board Length: %f", boardLength);
+    CGFloat listLength = self.view.frame.size.height - boardLength;
+    
+    CGRect boardViewRect = CGRectMake(ZERO, ZERO, viewWidth, boardLength);
+    CGRect movesListRect = CGRectMake(ZERO, boardLength, viewWidth, listLength);
+    
+    self.boardView.frame = boardViewRect;
+    self.movesListView.frame = movesListRect;
+    
+     NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
+}
 @end

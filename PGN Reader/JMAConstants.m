@@ -13,6 +13,8 @@
 // Integers
 NSInteger const ZERO = 0;
 NSInteger const ONE = 1;
+NSInteger const FOUR = 4;
+NSInteger const FIVE = 5;
 NSInteger const SEVEN = 7;
 NSInteger const EIGHT = 8;
 NSInteger const TWENTY = 20;
