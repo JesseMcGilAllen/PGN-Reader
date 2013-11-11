@@ -58,7 +58,7 @@
             
             [self addSubview:square];
             
-            NSLog(@"Square dimensions: %f, %f, %f, %f", square.frame.origin.x, square.frame.origin.y, square.frame.size.width, square.frame.size.height);
+            // NSLog(@"Square dimensions: %f, %f, %f, %f", square.frame.origin.x, square.frame.origin.y, square.frame.size.width, square.frame.size.height);
            
             heightIndex = [self updateIndex:heightIndex];
             
@@ -157,7 +157,7 @@
     
     
     [self drawBoard];
-    NSLog(@"Board View Frame: %f, %f, %f, %f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+    //NSLog(@"Board View Frame: %f, %f, %f, %f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
 
 }
 

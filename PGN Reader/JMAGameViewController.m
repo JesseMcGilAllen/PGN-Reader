@@ -77,8 +77,10 @@
  First resetBoard is called from the BoardView class to remove the squares
  Then the configure method is called for the orientation the app is rotating to
 */
-- (void)didRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+    
+    //NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     
     [self.boardView resetBoard];
     
@@ -93,6 +95,7 @@
     }
     
      [self.boardView setNeedsDisplay];
+    //[self.view setNeedsDisplay];
     
 }
 
@@ -104,9 +107,13 @@
 */
 - (void)configureViewForLandscapeOrientation
 {
-    CGFloat viewHeight = self.view.bounds.size.height;
-    CGFloat boardWidth = self.view.bounds.size.width * (double)FOUR/FIVE;
-    CGFloat listWidth = self.view.bounds.size.width - boardWidth;
+    CGFloat viewHeight = self.view.frame.size.height;
+    
+    NSLog(@"View Height: %f", viewHeight);
+    CGFloat boardWidth = self.view.frame.size.width * (double)FOUR/FIVE;
+    CGFloat listWidth = self.view.frame.size.width - boardWidth;
+    
+    //NSLog(@"Board Width: %f", boardWidth);
     
     CGRect boardViewRect = CGRectMake(ZERO, ZERO, boardWidth, viewHeight);
     CGRect movesListRect = CGRectMake(boardWidth, ZERO, listWidth, viewHeight);
@@ -114,7 +121,7 @@
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
 
-    NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
+    //NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
     
     
 }
@@ -127,12 +134,11 @@
 - (void)configureViewForPortraitOrientation
 {
     CGFloat viewWidth = self.view.frame.size.width;
+    NSLog(@"View Width: %f", viewWidth);
     CGFloat boardLength = self.view.frame.size.height * (double)FOUR/FIVE;
     
-    NSLog(@"4/5: %f", (double)FOUR/FIVE);
-    NSLog(@"board length: ");
-    
-    NSLog(@"Board Length: %f", boardLength);
+    //NSLog(@"4/5: %f", (double)FOUR/FIVE);
+    //NSLog(@"Board Length: %f", boardLength);
     CGFloat listLength = self.view.frame.size.height - boardLength;
     
     CGRect boardViewRect = CGRectMake(ZERO, ZERO, viewWidth, boardLength);
@@ -141,7 +147,7 @@
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
     
-     NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
+    // NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
     
 }
 
