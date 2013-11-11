@@ -77,7 +77,7 @@
  First resetBoard is called from the BoardView class to remove the squares
  Then the configure method is called for the orientation the app is rotating to
 */
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+- (void)didRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     
     [self.boardView resetBoard];
@@ -104,9 +104,9 @@
 */
 - (void)configureViewForLandscapeOrientation
 {
-    CGFloat viewHeight = self.view.frame.size.height;
-    CGFloat boardWidth = self.view.frame.size.width * (double)FOUR/FIVE;
-    CGFloat listWidth = self.view.frame.size.width - boardWidth;
+    CGFloat viewHeight = self.view.bounds.size.height;
+    CGFloat boardWidth = self.view.bounds.size.width * (double)FOUR/FIVE;
+    CGFloat listWidth = self.view.bounds.size.width - boardWidth;
     
     CGRect boardViewRect = CGRectMake(ZERO, ZERO, boardWidth, viewHeight);
     CGRect movesListRect = CGRectMake(boardWidth, ZERO, listWidth, viewHeight);
