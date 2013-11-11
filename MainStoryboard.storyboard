@@ -109,7 +109,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Zwz-A3-b1g"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="boardView" destination="rbp-Gp-kgI" id="ekS-Iu-KND"/>
                         <outlet property="movesListView" destination="Pf2-Ev-Wgc" id="hDH-4q-hST"/>

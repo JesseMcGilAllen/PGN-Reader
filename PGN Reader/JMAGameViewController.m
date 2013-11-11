@@ -103,13 +103,15 @@
  */
 - (void)configureViewForLandscapeOrientationForRotation
 {
+    CGFloat navigationControllerHeight = self.navigationController.navigationBar.frame.size.height;
+    
     CGFloat viewHeight = self.view.frame.size.width;
     
     CGFloat boardWidth = self.view.frame.size.height * (double)FOUR/FIVE;
     CGFloat listWidth = self.view.frame.size.height - boardWidth;
     
-    CGRect boardViewRect = CGRectMake(ZERO, ZERO, boardWidth, viewHeight);
-    CGRect movesListRect = CGRectMake(boardWidth, ZERO, listWidth, viewHeight);
+    CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, boardWidth, viewHeight);
+    CGRect movesListRect = CGRectMake(boardWidth, navigationControllerHeight, listWidth, viewHeight);
     
     
     self.boardView.frame = boardViewRect;
@@ -123,13 +125,15 @@
  */
 - (void)configureViewForPortraitOrientationForRotation
 {
+    CGFloat navigationControllerHeight = self.navigationController.navigationBar.frame.size.height;
+    
     CGFloat viewWidth = self.view.frame.size.height;
     
     CGFloat boardLength = self.view.frame.size.width * (double)FOUR/FIVE;
     
     CGFloat listLength = self.view.frame.size.width - boardLength;
     
-    CGRect boardViewRect = CGRectMake(ZERO, ZERO, viewWidth, boardLength);
+    CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, viewWidth, boardLength);
     
     CGRect movesListRect = CGRectMake(ZERO, boardLength, viewWidth, listLength);
     
@@ -146,14 +150,16 @@
 */
 - (void)configureViewForLandscapeOrientation
 {
+    
+    CGFloat navigationControllerHeight = self.navigationController.navigationBar.frame.size.height;
+    
     CGFloat viewHeight = self.view.frame.size.height;
     
-    NSLog(@"View Height: %f", viewHeight);
     CGFloat boardWidth = self.view.frame.size.width * (double)FOUR/FIVE;
     CGFloat listWidth = self.view.frame.size.width - boardWidth;
     
-    CGRect boardViewRect = CGRectMake(ZERO, ZERO, boardWidth, viewHeight);
-    CGRect movesListRect = CGRectMake(boardWidth, ZERO, listWidth, viewHeight);
+    CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, boardWidth, viewHeight);
+    CGRect movesListRect = CGRectMake(boardWidth, navigationControllerHeight, listWidth, viewHeight);
         
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
@@ -166,13 +172,19 @@
  */
 - (void)configureViewForPortraitOrientation
 {
+    CGFloat navigationControllerHeight = self.navigationController.navigationBar.frame.size.height + self.navigationController.navigationBar.frame.origin.y;
+    
+    NSLog(@"navController height: %f", navigationControllerHeight);
+    
     CGFloat viewWidth = self.view.frame.size.width;
+    
+    CGFloat availableLength = self.view.frame.size.height - navigationControllerHeight;
 
-    CGFloat boardLength = self.view.frame.size.height * (double)FOUR/FIVE;
+    CGFloat boardLength = availableLength * (double)FOUR/FIVE;
     
     CGFloat listLength = self.view.frame.size.height - boardLength;
     
-    CGRect boardViewRect = CGRectMake(ZERO, ZERO, viewWidth, boardLength);
+    CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, viewWidth, boardLength);
     CGRect movesListRect = CGRectMake(ZERO, boardLength, viewWidth, listLength);
     
     self.boardView.frame = boardViewRect;
