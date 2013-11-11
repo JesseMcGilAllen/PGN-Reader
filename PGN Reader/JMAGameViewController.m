@@ -80,7 +80,7 @@
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     
-    //[self.boardView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview:)];
+    [self.boardView resetBoard];
     
     if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
         toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
@@ -92,7 +92,7 @@
         [self configureViewForPortraitOrientation];
     }
     
-    [self.boardView setNeedsDisplay];
+     [self.boardView setNeedsDisplay];
     
 }
 

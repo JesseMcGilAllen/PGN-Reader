@@ -139,6 +139,16 @@
 
 }
 
+
+/*
+ This method removes the square objects from the board view
+*/
+- (void)resetBoard
+{
+    [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect

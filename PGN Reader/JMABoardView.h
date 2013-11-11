@@ -10,4 +10,6 @@
 
 @interface JMABoardView : UIView
 
+- (void)resetBoard;
+
 @end
