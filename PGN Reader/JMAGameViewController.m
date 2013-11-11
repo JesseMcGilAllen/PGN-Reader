@@ -65,17 +65,13 @@
     UIInterfaceOrientation orientation = self.interfaceOrientation;
     
     if (UIInterfaceOrientationIsLandscape(orientation)) {
-        NSLog(@"Landscape");
+        
         [self configureViewForLandscapeOrientation];
     } else {
-        NSLog(@"Portrait");
+        
         [self configureViewForPortraitOrientation];
     }
-    
-    //[self.view setNeedsDisplay];
-
 }
-
 
 /*
  This method handles when the device rotates
@@ -84,9 +80,6 @@
 */
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    
-    //NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
-    
     [self.boardView resetBoard];
     
     if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
@@ -99,8 +92,7 @@
         [self configureViewForPortraitOrientationForRotation];
     }
     
-     [self.boardView setNeedsDisplay];
-    //[self.view setNeedsDisplay];
+    [self.boardView setNeedsDisplay];
     
 }
 
@@ -113,25 +105,15 @@
 {
     CGFloat viewHeight = self.view.frame.size.width;
     
-    NSLog(@"View Height: %f", viewHeight);
     CGFloat boardWidth = self.view.frame.size.height * (double)FOUR/FIVE;
     CGFloat listWidth = self.view.frame.size.height - boardWidth;
     
-    //NSLog(@"Board Width: %f", boardWidth);
-    
     CGRect boardViewRect = CGRectMake(ZERO, ZERO, boardWidth, viewHeight);
     CGRect movesListRect = CGRectMake(boardWidth, ZERO, listWidth, viewHeight);
-    NSLog(@"Moves List Rect: %f %f %f %f", movesListRect.origin.x, movesListRect.origin.y, movesListRect.size.width, movesListRect.size.height);
     
     
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
-    
-    self.movesListView.backgroundColor = [UIColor redColor];
-    NSLog(@"Moves List: %f %f %f %f", self.movesListView.frame.origin.x, self.movesListView.frame.origin.y, self.movesListView.frame.size.width, self.movesListView.frame.size.height);
-    //NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
-    
-    
 }
 
 /*
@@ -142,29 +124,19 @@
 - (void)configureViewForPortraitOrientationForRotation
 {
     CGFloat viewWidth = self.view.frame.size.height;
-    NSLog(@"View Width: %f", viewWidth);
+    
     CGFloat boardLength = self.view.frame.size.width * (double)FOUR/FIVE;
     
-    //NSLog(@"4/5: %f", (double)FOUR/FIVE);
-    //NSLog(@"Board Length: %f", boardLength);
     CGFloat listLength = self.view.frame.size.width - boardLength;
     
     CGRect boardViewRect = CGRectMake(ZERO, ZERO, viewWidth, boardLength);
     
     CGRect movesListRect = CGRectMake(ZERO, boardLength, viewWidth, listLength);
-    NSLog(@"Moves List Rect: %f %f %f %f", movesListRect.origin.x, movesListRect.origin.y, movesListRect.size.width, movesListRect.size.height);
     
     self.boardView.frame = boardViewRect;
     
     self.movesListView.frame = movesListRect;
 
-    //	self.movesListView.contentSize = movesListRect.size;
-    
-    self.movesListView.backgroundColor = [UIColor greenColor];
-    NSLog(@"Moves List Content Size: %f %f", self.movesListView.contentSize.width, self.movesListView.contentSize.height);
-    
-    // NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
-    
 }
 
 /*
@@ -180,17 +152,11 @@
     CGFloat boardWidth = self.view.frame.size.width * (double)FOUR/FIVE;
     CGFloat listWidth = self.view.frame.size.width - boardWidth;
     
-    //NSLog(@"Board Width: %f", boardWidth);
-    
     CGRect boardViewRect = CGRectMake(ZERO, ZERO, boardWidth, viewHeight);
     CGRect movesListRect = CGRectMake(boardWidth, ZERO, listWidth, viewHeight);
         
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
-
-    //NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
-    
-    
 }
 
 /*
@@ -201,23 +167,16 @@
 - (void)configureViewForPortraitOrientation
 {
     CGFloat viewWidth = self.view.frame.size.width;
-    NSLog(@"View Width: %f", viewWidth);
+
     CGFloat boardLength = self.view.frame.size.height * (double)FOUR/FIVE;
     
-    //NSLog(@"4/5: %f", (double)FOUR/FIVE);
-    //NSLog(@"Board Length: %f", boardLength);
     CGFloat listLength = self.view.frame.size.height - boardLength;
-    
-    NSLog(@"List Length: %f", listLength);
     
     CGRect boardViewRect = CGRectMake(ZERO, ZERO, viewWidth, boardLength);
     CGRect movesListRect = CGRectMake(ZERO, boardLength, viewWidth, listLength);
     
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
-    
-    // NSLog(@"Board View Frame: %f, %f, %f, %f", self.boardView.frame.origin.x, self.boardView.frame.origin.y, self.boardView.frame.size.width, self.boardView.frame.size.height);
-    
 }
 
 
