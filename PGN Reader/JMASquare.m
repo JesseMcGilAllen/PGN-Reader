@@ -8,6 +8,7 @@
 
 #import "JMASquare.h"
 #import "JMAConstants.h"
+#import "JMAChessConstants.h"
 
 @implementation JMASquare
 
@@ -36,8 +37,8 @@
         textColor = [UIColor whiteColor];
     }
     
-    [self.coordinate drawInRect:CGRectMake(ZERO, ZERO, rect.size.width, rect.size.height) withAttributes:@{}];
-    
+    [self.coordinate drawInRect:CGRectMake(ZERO, ZERO, rect.size.width, rect.size.height)
+                 withAttributes:@{ NSForegroundColorAttributeName : textColor }];
     
 }
 

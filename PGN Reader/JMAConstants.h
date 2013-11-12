@@ -50,11 +50,4 @@ extern NSString *const TO_GAME_SEGUE_IDENTIFIER;
 
 extern NSString *const SPACE;
 
-// Colors
-extern NSString *const WHITE;
-extern NSString *const BLACK;
-
-
-
-
 @end

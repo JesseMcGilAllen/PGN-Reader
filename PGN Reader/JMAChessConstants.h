@@ -76,4 +76,33 @@ extern NSString *const H6;
 extern NSString *const H7;
 extern NSString *const H8;
 
+// Piece IDs
+// White Piece IDs
+extern NSString *const WHITE_KING;
+extern NSString *const WHITE_QUEEN;
+extern NSString *const WHITE_ROOK;
+extern NSString *const WHITE_BISHOP;
+extern NSString *const WHITE_KNIGHT;
+extern NSString *const WHITE_PAWN;
+
+// Black Piece IDs
+extern NSString *const BLACK_KING;
+extern NSString *const BLACK_QUEEN;
+extern NSString *const BLACK_ROOK;
+extern NSString *const BLACK_BISHOP;
+extern NSString *const BLACK_KNIGHT;
+extern NSString *const BLACK_PAWN;
+
+extern NSString *const KING;
+extern NSString *const QUEEN;
+extern NSString *const ROOK;
+extern NSString *const BISHOP;
+extern NSString *const KNIGHT;
+extern NSString *const PAWN;
+
+// Colors
+extern NSString *const WHITE;
+extern NSString *const BLACK;
+
+
 @end

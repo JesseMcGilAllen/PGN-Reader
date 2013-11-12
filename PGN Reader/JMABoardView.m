@@ -8,6 +8,7 @@
 
 #import "JMABoardView.h"
 #import "JMASquare.h"
+#import "JMAChessConstants.h"
 #import "JMAConstants.h"
 
 @interface JMABoardView ()
@@ -46,8 +47,8 @@
     
     double squareWidth = rect.size.width / EIGHT;
     double squareHeight = rect.size.height / EIGHT;
-    int widthIndex = ZERO;
-    int heightIndex = ZERO;
+    int widthIndex = (int)ZERO;
+    int heightIndex = (int)ZERO;
     
     for (double squareOriginX = ZERO; squareOriginX < rect.size.width; squareOriginX += squareWidth) {
         JMASquare *square;

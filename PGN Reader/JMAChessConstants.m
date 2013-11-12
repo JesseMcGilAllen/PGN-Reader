@@ -75,4 +75,31 @@ NSString *const H5 = @"h5";
 NSString *const H6 = @"h6";
 NSString *const H7 = @"h7";
 NSString *const H8 = @"h8";
+
+// White Piece IDs
+NSString *const WHITE_KING = @"White King";
+NSString *const WHITE_QUEEN = @"White Queen";
+NSString *const WHITE_ROOK = @"White Rook";
+NSString *const WHITE_BISHOP = @"White Bishop";
+NSString *const WHITE_KNIGHT = @"White Knight";
+NSString *const WHITE_PAWN = @"White Pawn";
+
+// Black Piece IDs
+NSString *const BLACK_KING = @"Black King";
+NSString *const BLACK_QUEEN = @"Black Queen";
+NSString *const BLACK_ROOK = @"Black Rook";
+NSString *const BLACK_BISHOP = @"Black Bishop";
+NSString *const BLACK_KNIGHT = @"Black Knight";
+NSString *const BLACK_PAWN = @"Black Pawn";
+
+NSString *const KING = @"King";
+NSString *const QUEEN = @"Queen";
+NSString *const ROOK = @"Rook";
+NSString *const BISHOP = @"Bishop";
+NSString *const KNIGHT = @"Knight";
+NSString *const PAWN = @"Pawn";
+
+// Colors
+NSString *const WHITE = @"White";
+NSString *const BLACK = @"Black";
 @end

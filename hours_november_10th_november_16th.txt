@@ -12,3 +12,10 @@ Monday November 11th 2013
 
     daily hours: 6 hours 00 minutes
     weekly hours: 6 hours 00 minutes
+
+Tuesday November 12th 2013
+--------------------------
+- 12:30 pm -
+
+    daily hours: 0 hours 00 minutes
+    weekly hours: 6 hours 00 minutes

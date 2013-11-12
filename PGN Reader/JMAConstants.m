@@ -46,8 +46,4 @@ NSString *const TO_GAME_SEGUE_IDENTIFIER = @"toGame";
 
 NSString *const SPACE = @" ";
 
-// Colors
-NSString *const WHITE = @"White";
-NSString *const BLACK = @"Black";
-
 @end
