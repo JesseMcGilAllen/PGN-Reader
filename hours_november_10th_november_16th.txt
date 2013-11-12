@@ -7,6 +7,8 @@ Monday November 11th 2013
 - 2:00 pm - 4:00 pm: fixed orientation & rotation issues
                      correct board and moves list appear on appear and rotation 
 - 4:00 pm - 5:00 pm: started working on the pieces
+- 6:00 pm - 7:00 pm: continued working on pieces and added Chess Constants file
+                     with Board Coordinate constants
 
-    daily hours: 5 hours 00 minutes
-    weekly hours: 5 hours 00 minutes
+    daily hours: 6 hours 00 minutes
+    weekly hours: 6 hours 00 minutes
