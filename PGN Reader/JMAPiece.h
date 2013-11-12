@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class JMASquare;
+
 @interface JMAPiece : UIView
+
+@property (strong, nonatomic) NSString *type;
+@property (strong, nonatomic) JMASquare *square;
+@property (strong, nonatomic) NSString *color;
 
 @end

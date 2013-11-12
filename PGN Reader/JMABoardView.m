@@ -10,6 +10,12 @@
 #import "JMASquare.h"
 #import "JMAConstants.h"
 
+@interface JMABoardView ()
+
+@property (strong, nonatomic) NSDictionary *squares;
+
+@end
+
 @implementation JMABoardView
 
 - (id)initWithFrame:(CGRect)frame
@@ -32,8 +38,7 @@
 */
 - (void)drawBoard
 {
-    
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+    NSMutableDictionary *squares = [[NSMutableDictionary alloc] init];
     NSArray *ranks = @[@8, @7, @6, @5, @4, @3, @2, @1];
     NSArray *files = @[@"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h"];
     CGRect rect = self.frame;
@@ -56,6 +61,7 @@
             
              color = [self checkColor:color forSquare:square];
             
+            [squares setObject:square forKey:square.coordinate];
             [self addSubview:square];
             
             // NSLog(@"Square dimensions: %f, %f, %f, %f", square.frame.origin.x, square.frame.origin.y, square.frame.size.width, square.frame.size.height);
@@ -73,6 +79,7 @@
         
     }
     
+    self.squares = squares;
     
 
 }
@@ -149,6 +156,15 @@
     
 }
 
+/*
+ This method creates and adds the pieces needed for the starting position to the
+ board
+*/
+- (void)setupBoard
+{
+    
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
@@ -157,7 +173,8 @@
     
     
     [self drawBoard];
-    //NSLog(@"Board View Frame: %f, %f, %f, %f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+    [self setupBoard];
+    
 
 }
 

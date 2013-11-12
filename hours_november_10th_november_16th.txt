@@ -6,6 +6,7 @@ Monday November 11th 2013
 - 12:30 pm - 1:10 pm: continue working on orientation configuration
 - 2:00 pm - 4:00 pm: fixed orientation & rotation issues
                      correct board and moves list appear on appear and rotation 
+- 4:00 pm - 5:00 pm: started working on the pieces
 
-    daily hours: 4 hours 00 minutes
-    weekly hours: 4 hours 00 minutes
+    daily hours: 5 hours 00 minutes
+    weekly hours: 5 hours 00 minutes

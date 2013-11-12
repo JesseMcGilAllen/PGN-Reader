@@ -38,6 +38,7 @@
 		37342335182B4A0D00808D62 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 37342330182B4A0D00808D62 /* SSZipArchive.m */; };
 		37342338182B4B0600808D62 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 37342337182B4B0600808D62 /* libz.dylib */; };
 		373695B8183195E600793672 /* JMAPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = 373695B7183195E600793672 /* JMAPiece.m */; };
+		373695BE1831AE5C00793672 /* JMAChessConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 373695BD1831AE5C00793672 /* JMAChessConstants.m */; };
 		3770535B1819C43500B2877B /* JMADatabaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3770535A1819C43500B2877B /* JMADatabaseTableViewController.m */; };
 		37AF5ABC18103A6200B86F79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37AF5ABB18103A6200B86F79 /* Foundation.framework */; };
 		37AF5ABE18103A6200B86F79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37AF5ABD18103A6200B86F79 /* CoreGraphics.framework */; };
@@ -102,6 +103,8 @@
 		37342337182B4B0600808D62 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		373695B6183195E600793672 /* JMAPiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAPiece.h; sourceTree = "<group>"; };
 		373695B7183195E600793672 /* JMAPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAPiece.m; sourceTree = "<group>"; };
+		373695BC1831AE5C00793672 /* JMAChessConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAChessConstants.h; sourceTree = "<group>"; };
+		373695BD1831AE5C00793672 /* JMAChessConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAChessConstants.m; sourceTree = "<group>"; };
 		377053591819C43500B2877B /* JMADatabaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMADatabaseTableViewController.h; sourceTree = "<group>"; };
 		3770535A1819C43500B2877B /* JMADatabaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMADatabaseTableViewController.m; sourceTree = "<group>"; };
 		37AF5AB818103A6200B86F79 /* PGN Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PGN Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -343,6 +346,8 @@
 			children = (
 				37F622591814967E0051012C /* JMAConstants.h */,
 				37F6225A1814967E0051012C /* JMAConstants.m */,
+				373695BC1831AE5C00793672 /* JMAChessConstants.h */,
+				373695BD1831AE5C00793672 /* JMAChessConstants.m */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -486,6 +491,7 @@
 				37AF5ACE18103A6200B86F79 /* JMAAppDelegate.m in Sources */,
 				37077C0D182DE72E006B6AC3 /* JMASquare.m in Sources */,
 				37AF5AD118103A6200B86F79 /* PGN_Reader.xcdatamodeld in Sources */,
+				373695BE1831AE5C00793672 /* JMAChessConstants.m in Sources */,
 				373695B8183195E600793672 /* JMAPiece.m in Sources */,
 				3732B42918170182007467E8 /* _Database.m in Sources */,
 				37077C0A182DE41F006B6AC3 /* JMABoardView.m in Sources */,

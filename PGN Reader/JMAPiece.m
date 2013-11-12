@@ -7,6 +7,14 @@
 //
 
 #import "JMAPiece.h"
+#import "JMASquare.h"
+
+@interface JMAPiece ()
+
+
+@property (strong, nonatomic) NSDictionary *unicodeDictionary;
+
+@end
 
 @implementation JMAPiece
 
@@ -17,6 +25,27 @@
         // Initialization code
     }
     return self;
+}
+
+- (id)initWithSquare:(JMASquare *)square forColor:(NSString *)color
+{
+    self = [super initWithFrame:square.frame];
+    
+    if (self) {
+        _color = color;
+    }
+    
+    return self;
+    
+    
+}
+
+/*
+ This method returns the piece type for the coordinate parameter
+*/
+- (NSString *)typeForCoordinate:(NSString *)coordinate
+{
+    return @"";
 }
 
 /*
