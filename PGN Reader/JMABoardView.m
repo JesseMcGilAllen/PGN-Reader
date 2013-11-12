@@ -10,6 +10,7 @@
 #import "JMASquare.h"
 #import "JMAChessConstants.h"
 #import "JMAConstants.h"
+#import "JMAPiece.h"
 
 @interface JMABoardView ()
 
@@ -163,6 +164,10 @@
 */
 - (void)setupBoard
 {
+    
+    JMAPiece *a8Rook = [[JMAPiece alloc] initWithSquare:self.squares[A8] type:ROOK forColor:BLACK];
+    
+
     
 }
 

@@ -16,4 +16,6 @@
 @property (strong, nonatomic) JMASquare *square;
 @property (strong, nonatomic) NSString *color;
 
+- (id)initWithSquare:(JMASquare *)square type:(NSString *)type forColor:(NSString *)color;
+
 @end
