@@ -31,7 +31,15 @@
 
 - (id)initWithSquare:(JMASquare *)square type:(NSString *)type forColor:(NSString *)color
 {
-    self = [super initWithFrame:square.frame];
+    CGFloat yOffset = square.frame.size.height / SEVEN;
+    CGFloat xOffset = square.frame.size.width / EIGHT;
+    
+    CGFloat xOrigin = square.frame.origin.x + xOffset;
+    CGFloat yOrigin = square.frame.origin.y - yOffset;
+    
+    CGRect pieceFrame = CGRectMake(xOrigin, yOrigin, square.frame.size.width, square.frame.size.height);
+    
+    self = [super initWithFrame:pieceFrame];
     
     if (self) {
         _color = color;
@@ -91,15 +99,13 @@
     UIColor *pieceColor = [self determinePieceColor];
     UIColor *backgroundColor = [UIColor clearColor];
     
-    
-    
-    
     NSDictionary *attributes = @{ NSFontAttributeName : font,
                                   NSForegroundColorAttributeName : pieceColor,
                                   NSBackgroundColorAttributeName : backgroundColor};
     
     [piece drawInRect:rect withAttributes:attributes];
     
+   
     
     
     

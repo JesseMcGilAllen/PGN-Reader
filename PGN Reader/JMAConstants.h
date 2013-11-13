@@ -14,6 +14,8 @@
 // Integers
 extern NSInteger const ZERO;
 extern NSInteger const ONE;
+extern NSInteger const TWO;
+extern NSInteger const THREE;
 extern NSInteger const FOUR;
 extern NSInteger const FIVE;
 extern NSInteger const SEVEN;
