@@ -27,7 +27,9 @@ Tuesday November 12th 2013
 
 Wednesday November 13th 2013
 ----------------------------
-- 11:20 am -
+- 11:20 am - 12:20 pm: added missing pawn images and better king image
+                       implemented images in project instead of unicode
+- 12:20 pm - 
 
-    daily hours: 0 hours 00 minutes
-    weekly hours: 11 hours 00 minutes
+    daily hours: 1 hour 00 minutes
+    weekly hours: 12 hours 00 minutes
