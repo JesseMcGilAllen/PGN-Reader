@@ -39,6 +39,8 @@
     
     self.movesListView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin
     | UIViewAutoresizingFlexibleRightMargin;
+        
+    [self configureMovesList];
     
     
 }
@@ -198,5 +200,10 @@
     self.movesListView.frame = movesListRect;
 }
 
+
+- (void)configureMovesList
+{
+    self.movesListView.text = self.game.moves;
+}
 
 @end

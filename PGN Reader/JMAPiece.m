@@ -156,8 +156,6 @@
     UIImageView *pieceView = [[UIImageView alloc] initWithImage:piece];
     
     [self addSubview:pieceView];
-    
-    //[self addSubview:piece];
 }
 
 // This method draws an image of the piece
@@ -166,8 +164,6 @@
     NSString *pieceToDraw = [self pieceToDraw];
     
     UIImage *piece = [UIImage imageNamed:self.imageDictionary[pieceToDraw]];
-    
-    NSLog(@"Piece Size: %f %f", piece.size.width, piece.size.height);
     
     [piece drawInRect:rect];
     
