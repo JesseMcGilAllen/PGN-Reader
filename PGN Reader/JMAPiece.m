@@ -31,15 +31,17 @@
 
 - (id)initWithSquare:(JMASquare *)square type:(NSString *)type forColor:(NSString *)color
 {
-    CGFloat yOffset = square.frame.size.height / SEVEN;
-    CGFloat xOffset = square.frame.size.width / EIGHT;
+//    CGFloat yOffset = square.frame.size.height / SEVEN;
+//    CGFloat xOffset = square.frame.size.width / EIGHT;
+//    
+//    CGFloat xOrigin = square.frame.origin.x + xOffset;
+//    CGFloat yOrigin = square.frame.origin.y - yOffset;
+//    
+//    CGRect pieceFrame = CGRectMake(xOrigin, yOrigin, square.frame.size.width, square.frame.size.height);
+//    
+//    self = [super initWithFrame:pieceFrame];
     
-    CGFloat xOrigin = square.frame.origin.x + xOffset;
-    CGFloat yOrigin = square.frame.origin.y - yOffset;
-    
-    CGRect pieceFrame = CGRectMake(xOrigin, yOrigin, square.frame.size.width, square.frame.size.height);
-    
-    self = [super initWithFrame:pieceFrame];
+    self = [super initWithFrame:square.frame];
     
     if (self) {
         _color = color;
@@ -75,7 +77,9 @@
         
     }
     
-    self.opaque = NO;
+    //[self drawPieceImage];
+    
+     self.opaque = NO;
     
     //[square addSubview:self];
     
@@ -105,19 +109,28 @@
     }
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+
+/*
+ This method returns a strings to check against the dictionary to find which 
+ piece to draw
+*/
+- (NSString *)pieceToDraw
 {
-    // Drawing code
-    NSString *pieceToDraw = [[NSString alloc] initWithFormat:@"%@%@%@", self.color, SPACE, self.type];
+    return [[NSString alloc] initWithFormat:@"%@%@%@", self.color, SPACE, self.type];
+}
+/*
+ This method draws a unicode representation of the piece
+*/
+- (void)drawUnicodeRepresentationInRect:(CGRect)rect
+{
+    NSString *pieceToDraw = [self pieceToDraw];
     
     NSString *piece = self.unicodeDictionary[pieceToDraw];
     
     CGFloat rectLength = rect.size.height;
     
     UIFont *font = [UIFont fontWithName:@"Tahoma" size:rectLength];
-   
+    
     //UIColor *pieceColor = [self determinePieceColor];
     //UIColor *outlineColor = [ self determineOutlineColor];
     
@@ -129,6 +142,46 @@
                                   NSBackgroundColorAttributeName : backgroundColor};
     
     [piece drawInRect:rect withAttributes:attributes];
+
+}
+
+
+// This method draws an image of the piece
+- (void)drawPieceImage
+{
+    NSString *pieceToDraw = [self pieceToDraw];
+    
+    UIImage *piece = [UIImage imageNamed:self.imageDictionary[pieceToDraw]];
+    
+    UIImageView *pieceView = [[UIImageView alloc] initWithImage:piece];
+    
+    [self addSubview:pieceView];
+    
+    //[self addSubview:piece];
+}
+
+// This method draws an image of the piece
+- (void)drawPieceImageInRect:(CGRect)rect
+{
+    NSString *pieceToDraw = [self pieceToDraw];
+    
+    UIImage *piece = [UIImage imageNamed:self.imageDictionary[pieceToDraw]];
+    
+    NSLog(@"Piece Size: %f %f", piece.size.width, piece.size.height);
+    
+    [piece drawInRect:rect];
+    
+    //[self addSubview:piece];
+}
+
+
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing code
+    //[self drawUnicodeRepresentationInRect:rect];
+    [self drawPieceImageInRect:rect];
 }
 
 

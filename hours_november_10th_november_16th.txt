@@ -20,6 +20,14 @@ Tuesday November 12th 2013
 - 6:00 pm - 7:30 pm: working on adding pieces to the boardview.
 - 8:00 pm - 9:00 pm: added the rest of the pieces to the board
                      started looking for free piece images
+- 12:00 am - 12:30 am: added piece image files to project
 
-    daily hours: 4 hours 30 minutes
-    weekly hours: 10 hours 30 minutes
+    daily hours: 5 hours 00 minutes
+    weekly hours: 11 hours 00 minutes
+
+Wednesday November 13th 2013
+----------------------------
+- 11:20 am -
+
+    daily hours: 0 hours 00 minutes
+    weekly hours: 11 hours 00 minutes
