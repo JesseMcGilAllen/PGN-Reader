@@ -64,7 +64,7 @@
     
     self.opaque = NO;
     
-    [square addSubview:self];
+    //[square addSubview:self];
     
     return self;
     
@@ -104,13 +104,6 @@
                                   NSBackgroundColorAttributeName : backgroundColor};
     
     [piece drawInRect:rect withAttributes:attributes];
-    
-   
-    
-    
-    
-    
-    
 }
 
 

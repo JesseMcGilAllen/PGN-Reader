@@ -15,6 +15,7 @@
 @interface JMABoardView ()
 
 @property (strong, nonatomic) NSDictionary *squares;
+@property (strong, nonatomic) NSMutableArray *pieces;
 
 @end
 
@@ -165,7 +166,39 @@
 - (void)setupBoard
 {
     
+    self.pieces = [[NSMutableArray alloc] init];
+    
     JMAPiece *a8Rook = [[JMAPiece alloc] initWithSquare:self.squares[A8] type:ROOK forColor:BLACK];
+    [self.pieces addObject:a8Rook];
+    
+    JMAPiece *b8Knight = [[JMAPiece alloc] initWithSquare:self.squares[B8] type:KNIGHT forColor:BLACK];
+    [self.pieces addObject:b8Knight];
+    
+    JMAPiece *c8Bishop = [[JMAPiece alloc] initWithSquare:self.squares[C8] type:BISHOP forColor:BLACK];
+    [self.pieces addObject:c8Bishop];
+    
+    JMAPiece *d8Queen = [[JMAPiece alloc] initWithSquare:self.squares[D8] type:QUEEN forColor:BLACK];
+    [self.pieces addObject:d8Queen];
+    
+    JMAPiece *e8King = [[JMAPiece alloc] initWithSquare:self.squares[E8] type:KING forColor:BLACK];
+    [self.pieces addObject:e8King];
+    
+    JMAPiece *f8Bishop = [[JMAPiece alloc] initWithSquare:self.squares[F8] type:BISHOP forColor:BLACK];
+    [self.pieces addObject:f8Bishop];
+    
+    JMAPiece *g8Knight = [[JMAPiece alloc] initWithSquare:self.squares[G8] type:KNIGHT forColor:BLACK];
+    [self.pieces addObject:g8Knight];
+    
+    JMAPiece *h8Rook = [[JMAPiece alloc] initWithSquare:self.squares[H8] type:ROOK forColor:BLACK];
+    [self.pieces addObject:h8Rook];
+    
+    
+    
+    
+    
+    
+    JMAPiece *a1Rook = [[JMAPiece alloc] initWithSquare:self.squares[A1] type:ROOK forColor:WHITE];
+    [self.pieces addObject:a1Rook];
     
 
     
