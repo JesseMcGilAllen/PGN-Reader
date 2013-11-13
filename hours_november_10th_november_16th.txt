@@ -17,7 +17,8 @@ Tuesday November 12th 2013
 --------------------------
 - 12:30 pm - 2:30 pm: working on piece class and chess constants
                       got one piece to appear.
-- 6:00 pm - 
+- 6:00 pm - 7:30 pm: working on adding pieces to the boardview.
+- 8:00 pm - 
 
-    daily hours: 2 hours 00 minutes
-    weekly hours: 8 hours 00 minutes
+    daily hours: 3 hours 30 minutes
+    weekly hours: 9 hours 30 minutes

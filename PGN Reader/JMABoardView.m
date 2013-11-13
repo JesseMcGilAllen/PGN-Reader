@@ -192,16 +192,91 @@
     JMAPiece *h8Rook = [[JMAPiece alloc] initWithSquare:self.squares[H8] type:ROOK forColor:BLACK];
     [self.pieces addObject:h8Rook];
     
+    JMAPiece *a7Pawn = [[JMAPiece alloc] initWithSquare:self.squares[A7] type:PAWN forColor:BLACK];
+    [self.pieces addObject:a7Pawn];
     
+    JMAPiece *b7Pawn = [[JMAPiece alloc] initWithSquare:self.squares[B7] type:PAWN forColor:BLACK];
+    [self.pieces addObject:b7Pawn];
     
+    JMAPiece *c7Pawn = [[JMAPiece alloc] initWithSquare:self.squares[C7] type:PAWN forColor:BLACK];
+    [self.pieces addObject:c7Pawn];
     
+    JMAPiece *d7Pawn = [[JMAPiece alloc] initWithSquare:self.squares[D7] type:PAWN forColor:BLACK];
+    [self.pieces addObject:d7Pawn];
     
+    JMAPiece *e7Pawn = [[JMAPiece alloc] initWithSquare:self.squares[E7] type:PAWN forColor:BLACK];
+    [self.pieces addObject:e7Pawn];
+    
+    JMAPiece *f7Pawn = [[JMAPiece alloc] initWithSquare:self.squares[F7] type:PAWN forColor:BLACK];
+    [self.pieces addObject:f7Pawn];
+    
+    JMAPiece *g7Pawn = [[JMAPiece alloc] initWithSquare:self.squares[G7] type:PAWN forColor:BLACK];
+    [self.pieces addObject:g7Pawn];
+    
+    JMAPiece *h7Pawn = [[JMAPiece alloc] initWithSquare:self.squares[H7] type:PAWN forColor:BLACK];
+    [self.pieces addObject:h7Pawn];
+    
+    JMAPiece *a2Pawn = [[JMAPiece alloc] initWithSquare:self.squares[A2] type:PAWN forColor:WHITE];
+    [self.pieces addObject:a2Pawn];
+    
+    JMAPiece *b2Pawn = [[JMAPiece alloc] initWithSquare:self.squares[B2] type:PAWN forColor:WHITE];
+    [self.pieces addObject:b2Pawn];
+    
+    JMAPiece *c2Pawn = [[JMAPiece alloc] initWithSquare:self.squares[C2] type:PAWN forColor:WHITE];
+    [self.pieces addObject:c2Pawn];
+    
+    JMAPiece *d2Pawn = [[JMAPiece alloc] initWithSquare:self.squares[D2] type:PAWN forColor:WHITE];
+    [self.pieces addObject:d2Pawn];
+    
+    JMAPiece *e2Pawn = [[JMAPiece alloc] initWithSquare:self.squares[E2] type:PAWN forColor:WHITE];
+    [self.pieces addObject:e2Pawn];
+    
+    JMAPiece *f2Pawn = [[JMAPiece alloc] initWithSquare:self.squares[F2] type:PAWN forColor:WHITE];
+    [self.pieces addObject:f2Pawn];
+    
+    JMAPiece *g2Pawn = [[JMAPiece alloc] initWithSquare:self.squares[G2] type:PAWN forColor:WHITE];
+    [self.pieces addObject:g2Pawn];
+    
+    JMAPiece *h2Pawn = [[JMAPiece alloc] initWithSquare:self.squares[H2] type:PAWN forColor:WHITE];
+    [self.pieces addObject:h2Pawn];
     
     JMAPiece *a1Rook = [[JMAPiece alloc] initWithSquare:self.squares[A1] type:ROOK forColor:WHITE];
     [self.pieces addObject:a1Rook];
     
-
+    JMAPiece *b1Knight = [[JMAPiece alloc] initWithSquare:self.squares[B1] type:KNIGHT forColor:WHITE];
+    [self.pieces addObject:b1Knight];
     
+    JMAPiece *c1Bishop = [[JMAPiece alloc] initWithSquare:self.squares[C1] type:BISHOP forColor:WHITE];
+    [self.pieces addObject:c1Bishop];
+    
+    JMAPiece *d1Queen = [[JMAPiece alloc] initWithSquare:self.squares[D1] type:QUEEN forColor:WHITE];
+    [self.pieces addObject:d1Queen];
+    
+    JMAPiece *e1King = [[JMAPiece alloc] initWithSquare:self.squares[E1] type:KING forColor:WHITE];
+    [self.pieces addObject:e1King];
+    
+    JMAPiece *f1Bishop = [[JMAPiece alloc] initWithSquare:self.squares[F1] type:BISHOP forColor:WHITE];
+    [self.pieces addObject:f1Bishop];
+    
+    JMAPiece *g1Knight = [[JMAPiece alloc] initWithSquare:self.squares[G1] type:KNIGHT forColor:WHITE];
+    [self.pieces addObject:g1Knight];
+    
+    JMAPiece *h1Rook = [[JMAPiece alloc] initWithSquare:self.squares[H1] type:ROOK forColor:WHITE];
+    [self.pieces addObject:h1Rook];
+    
+    [self addPiecesToBoard];
+    
+}
+
+
+/*
+ This method adds each piece object to the board view
+*/
+- (void)addPiecesToBoard
+{
+    for (JMAPiece *piece in self.pieces) {
+        [self addSubview:piece];
+    }
 }
 
 // Only override drawRect: if you perform custom drawing.
