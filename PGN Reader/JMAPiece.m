@@ -15,7 +15,7 @@
 
 
 @property (strong, nonatomic) NSDictionary *unicodeDictionary;
-
+@property (strong, nonatomic) NSDictionary *imageDictionary;
 @end
 
 @implementation JMAPiece
@@ -59,6 +59,19 @@
                                BLACK_KNIGHT: @"\u265E",
                                BLACK_PAWN: @"\u265F"
                                };
+        
+        _imageDictionary = @{WHITE_KING : @"white_king",
+                             WHITE_QUEEN : @"white_queen",
+                             WHITE_ROOK : @"white_rook",
+                             WHITE_BISHOP : @"white_bishop",
+                             WHITE_KNIGHT : @"white_knight",
+                             WHITE_PAWN : @"white_pawn",
+                             BLACK_KING : @"black_king",
+                             BLACK_QUEEN : @"black_queen",
+                             BLACK_ROOK : @"black_rook",
+                             BLACK_BISHOP : @"black_bishop",
+                             BLACK_KNIGHT : @"black_knight",
+                             BLACK_PAWN : @"black_pawn"};
         
     }
     
