@@ -26,6 +26,7 @@
 		37077C0D182DE72E006B6AC3 /* JMASquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 37077C0C182DE72E006B6AC3 /* JMASquare.m */; };
 		370F8DB71811E3970004E840 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 370F8DB61811E3970004E840 /* MainStoryboard.storyboard */; };
 		370F8DBA1811EE0F0004E840 /* JMADatabasesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370F8DB91811EE0F0004E840 /* JMADatabasesTableViewController.m */; };
+		3713924D18331D630094C36F /* Tahoma.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3713924C18331D630094C36F /* Tahoma.ttf */; };
 		3732B42918170182007467E8 /* _Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 3732B42218170182007467E8 /* _Database.m */; };
 		3732B42A18170182007467E8 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 3732B42518170182007467E8 /* Database.m */; };
 		3732B42B18170182007467E8 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 3732B42718170182007467E8 /* Game.m */; };
@@ -79,6 +80,7 @@
 		370F8DB61811E3970004E840 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard.storyboard; path = ../MainStoryboard.storyboard; sourceTree = "<group>"; };
 		370F8DB81811EE0F0004E840 /* JMADatabasesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMADatabasesTableViewController.h; sourceTree = "<group>"; };
 		370F8DB91811EE0F0004E840 /* JMADatabasesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMADatabasesTableViewController.m; sourceTree = "<group>"; };
+		3713924C18331D630094C36F /* Tahoma.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tahoma.ttf; sourceTree = "<group>"; };
 		3732B42118170182007467E8 /* _Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Database.h; sourceTree = "<group>"; };
 		3732B42218170182007467E8 /* _Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Database.m; sourceTree = "<group>"; };
 		3732B42318170182007467E8 /* _Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Game.h; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 		37AF5AC418103A6200B86F79 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3713924C18331D630094C36F /* Tahoma.ttf */,
 				37AF5AC518103A6200B86F79 /* PGN Reader-Info.plist */,
 				37AF5AC618103A6200B86F79 /* InfoPlist.strings */,
 				37AF5AC918103A6200B86F79 /* main.m */,
@@ -437,6 +440,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3713924D18331D630094C36F /* Tahoma.ttf in Resources */,
 				370F8DB71811E3970004E840 /* MainStoryboard.storyboard in Resources */,
 				37AF5AC818103A6200B86F79 /* InfoPlist.strings in Resources */,
 				37AF5AD318103A6200B86F79 /* Images.xcassets in Resources */,

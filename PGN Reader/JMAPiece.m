@@ -83,6 +83,15 @@
     }
 }
 
+- (UIColor *)determineOutlineColor
+{
+    if ([self.color isEqualToString:WHITE]) {
+        return [UIColor blackColor];
+    } else {
+        return [UIColor whiteColor];
+    }
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
@@ -94,9 +103,12 @@
     
     CGFloat rectLength = rect.size.height;
     
-    UIFont *font = [UIFont fontWithName:@"Helvetica" size:rectLength];
+    UIFont *font = [UIFont fontWithName:@"Tahoma" size:rectLength];
    
-    UIColor *pieceColor = [self determinePieceColor];
+    //UIColor *pieceColor = [self determinePieceColor];
+    //UIColor *outlineColor = [ self determineOutlineColor];
+    
+    UIColor *pieceColor = [UIColor blackColor];
     UIColor *backgroundColor = [UIColor clearColor];
     
     NSDictionary *attributes = @{ NSFontAttributeName : font,
