@@ -22,6 +22,7 @@ extern NSInteger const SEVEN;
 extern NSInteger const EIGHT;
 extern NSInteger const TWENTY;
 extern NSInteger const TWENTY_FIVE;
+extern NSInteger const EIGHTY;
 
 // Core Data
 // Attribute Names as saved in Core Data entities
