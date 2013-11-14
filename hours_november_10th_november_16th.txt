@@ -30,7 +30,7 @@ Wednesday November 13th 2013
 - 11:20 am - 12:20 pm: added missing pawn images and better king image
                        implemented images in project instead of unicode
 - 12:20 pm - 1:20 pm: researched writing a chess engine
-- 4:25 pm -
-
-    daily hours: 2 hours 00 minutes
-    weekly hours: 13 hours 00 minutes
+- 4:25 pm - 6:55 pm: started working on moves list
+- 9:10 pm - 
+    daily hours: 4 hours 30 minutes
+    weekly hours: 15 hours 30 minutes

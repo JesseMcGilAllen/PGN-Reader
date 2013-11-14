@@ -82,16 +82,35 @@
 */
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+    
     [self.boardView resetBoard];
     
     if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
         toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
         
-        [self configureViewForLandscapeOrientationForRotation];
+        if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+            self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+            
+            [self configureViewForLandscapeOrientation];
+            
+        } else {
+            [self configureViewForLandscapeOrientationForRotation];
+        }
+        
         
     } else {
         
-        [self configureViewForPortraitOrientationForRotation];
+        if (self.interfaceOrientation == UIInterfaceOrientationPortrait||
+            self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+            
+            [self configureViewForPortraitOrientation];
+            
+        } else {
+            [self configureViewForPortraitOrientationForRotation];
+        }
+
+        
+        
     }
     
     [self.boardView setNeedsDisplay];
@@ -203,30 +222,30 @@
 
 - (void)configureMovesList
 {
-    int gameLength = [self.game.moves length];
-    int numberOfLines = gameLength / EIGHTY;
-    NSLog(@"Length: %d", gameLength);
-    NSLog(@"%d / 80 = %d", gameLength, gameLength / EIGHTY);
-    NSMutableArray *lines = [[NSMutableArray alloc] init];
-    NSRange aRange;
-    aRange.length = EIGHTY;
+//    int gameLength = [self.game.moves length];
+//    int numberOfLines = gameLength / EIGHTY;
+//    NSLog(@"Length: %d", gameLength);
+//    NSLog(@"%d / 80 = %d", gameLength, gameLength / EIGHTY);
+//    NSMutableArray *lines = [[NSMutableArray alloc] init];
+//    NSRange aRange;
+//    aRange.lengYth = EIGHTY;
+//    
+//    
+//    for (int count = ZERO; count <= numberOfLines; count++) {
+//        int startingIndex = count * EIGHTY;
+//        aRange.location = startingIndex;
+//        
+//        if (count == numberOfLines) {
+//            [lines addObject:[self.game.moves substringFromIndex:startingIndex]];
+//        } else {
+//            [lines addObject:[self.game.moves substringWithRange:aRange]];
+//        }
+//    }
+//    
+//    
+//    NSLog(@"%@", lines);
     
-    
-    for (int count = ZERO; count <= numberOfLines; count++) {
-        int startingIndex = count * EIGHTY;
-        aRange.location = startingIndex;
-        
-        if (count == numberOfLines) {
-            [lines addObject:[self.game.moves substringFromIndex:startingIndex]];
-        } else {
-            [lines addObject:[self.game.moves substringWithRange:aRange]];
-        }
-    }
-    
-    
-    NSLog(@"%@", lines);
-    
-    
+    NSLog(@"%@", self.game.moves);
     
     self.movesListView.text = self.game.moves;
 }
