@@ -10,10 +10,12 @@
 #import "Game.h"
 #import "JMABoardView.h"
 #import "JMAConstants.h"
+#import "JMAMovesListParser.h"
 
 @interface JMAGameViewController ()
 @property (weak, nonatomic) IBOutlet JMABoardView *boardView;
 @property (weak, nonatomic) IBOutlet UITextView *movesListView;
+@property (strong, nonatomic) JMAMovesListParser *movesListParser;
 
 @end
 
@@ -220,61 +222,12 @@
 
 - (void)configureMovesList
 {
-    NSMutableArray *moves = [[NSMutableArray alloc] init];
-    NSMutableString *movesList = [[NSMutableString alloc] init];
-    int moveNumber = (int)ONE;
+    self.movesListParser = [[JMAMovesListParser alloc] initWithMoves:self.game.moves];
     
-    NSArray *gameComponents =
-        [self.game.moves componentsSeparatedByCharactersInSet:
-        [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    NSPredicate *moveNumberPredicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS %@", @"."];
-    
-    NSError *error = nil;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(Q|K|N|B|R)" options:NSRegularExpressionCaseInsensitive error:&error];
+    self.movesListView.text = [self.movesListParser movesForTextView];
     
     
-    NSLog(@"Components: %@", gameComponents);
-    
-    for (NSString *component in gameComponents) {
-        
-        if ([[component substringToIndex:ONE] intValue] > ZERO) {
-            
-            if (moveNumber > ONE) {
-                [movesList appendString:@"\n"];
-            }
-            [movesList appendString:component];
-            moveNumber++;
-            
-        } else if ([moveNumberPredicate evaluateWithObject:component]) {
-            NSString *stringToAdd;
-           
-            NSString *moveNumberString = [[NSString alloc] initWithFormat:@"%d.", moveNumber];
-            NSString  *move = [component stringByReplacingOccurrencesOfString:moveNumberString withString:@""];
-            [moves addObject:move];
-            
-            if ([component hasPrefix:moveNumberString]) {
-                stringToAdd = [[NSString alloc] initWithFormat:@"%@ %@", moveNumberString, move];
-            } else {
-                stringToAdd = [[NSString alloc] initWithFormat:@"%@\n%@", move, moveNumberString];
-            }
-            
-            [movesList appendString:stringToAdd];
-            moveNumber++;
-            
-        } else {
-            NSUInteger numberOfPieceMatches = [regex numberOfMatchesInString:component options:ZERO range:NSMakeRange(ZERO, [component length])];
-            
-            if (numberOfPieceMatches > ONE) {
-                <#statements#>
-            }
-        }
-        
-        
-    }
-    
-    
-    self.movesListView.text = self.game.moves;
+    //self.movesListView.text = self.game.moves;
 }
 
 @end

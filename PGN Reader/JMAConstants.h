@@ -52,5 +52,8 @@ extern NSString *const TO_GAME_SEGUE_IDENTIFIER;
 
 
 extern NSString *const SPACE;
+extern NSString *const NEW_LINE;
+extern NSString *const EMPTY_STRING;
+extern NSString *const PERIOD;
 
 @end

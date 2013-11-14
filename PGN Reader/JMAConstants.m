@@ -48,5 +48,8 @@ NSString *const TO_DATABASE_SEGUE_IDENTIFIER = @"toDatabase";
 NSString *const TO_GAME_SEGUE_IDENTIFIER = @"toGame";
 
 NSString *const SPACE = @" ";
+NSString *const NEW_LINE = @"\n";
+NSString *const EMPTY_STRING = @"";
+NSString *const PERIOD = @".";
 
 @end

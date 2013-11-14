@@ -58,6 +58,7 @@
 		37AF5AE718103A6300B86F79 /* PGN_ReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AF5AE618103A6300B86F79 /* PGN_ReaderTests.m */; };
 		37F6225B1814967E0051012C /* JMAConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F6225A1814967E0051012C /* JMAConstants.m */; };
 		37F6226118149D4F0051012C /* JMAParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F6226018149D4F0051012C /* JMAParser.m */; };
+		37F637BE1835413300A4BD7D /* JMAMovesListParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F637BD1835413300A4BD7D /* JMAMovesListParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,8 @@
 		37F6225A1814967E0051012C /* JMAConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAConstants.m; sourceTree = "<group>"; };
 		37F6225F18149D4F0051012C /* JMAParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAParser.h; sourceTree = "<group>"; };
 		37F6226018149D4F0051012C /* JMAParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAParser.m; sourceTree = "<group>"; };
+		37F637BC1835413300A4BD7D /* JMAMovesListParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAMovesListParser.h; sourceTree = "<group>"; };
+		37F637BD1835413300A4BD7D /* JMAMovesListParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAMovesListParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +174,8 @@
 				37077C0C182DE72E006B6AC3 /* JMASquare.m */,
 				373695B6183195E600793672 /* JMAPiece.h */,
 				373695B7183195E600793672 /* JMAPiece.m */,
+				37F637BC1835413300A4BD7D /* JMAMovesListParser.h */,
+				37F637BD1835413300A4BD7D /* JMAMovesListParser.m */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -499,6 +504,7 @@
 				373695B8183195E600793672 /* JMAPiece.m in Sources */,
 				3732B42918170182007467E8 /* _Database.m in Sources */,
 				37077C0A182DE41F006B6AC3 /* JMABoardView.m in Sources */,
+				37F637BE1835413300A4BD7D /* JMAMovesListParser.m in Sources */,
 				3732B42C18170182007467E8 /* _Game.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
