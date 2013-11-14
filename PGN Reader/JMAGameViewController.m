@@ -222,13 +222,16 @@
 {
     NSMutableArray *moves = [[NSMutableArray alloc] init];
     NSMutableString *movesList = [[NSMutableString alloc] init];
-    int moveNumber = ONE;
+    int moveNumber = (int)ONE;
     
     NSArray *gameComponents =
         [self.game.moves componentsSeparatedByCharactersInSet:
         [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     NSPredicate *moveNumberPredicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS %@", @"."];
+    
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(Q|K|N|B|R)" options:NSRegularExpressionCaseInsensitive error:&error];
     
     
     NSLog(@"Components: %@", gameComponents);
@@ -237,6 +240,9 @@
         
         if ([[component substringToIndex:ONE] intValue] > ZERO) {
             
+            if (moveNumber > ONE) {
+                [movesList appendString:@"\n"];
+            }
             [movesList appendString:component];
             moveNumber++;
             
@@ -253,14 +259,15 @@
                 stringToAdd = [[NSString alloc] initWithFormat:@"%@\n%@", move, moveNumberString];
             }
             
-        } else if () {
-            
-        }
-        
-            
             [movesList appendString:stringToAdd];
             moveNumber++;
-             
+            
+        } else {
+            NSUInteger numberOfPieceMatches = [regex numberOfMatchesInString:component options:ZERO range:NSMakeRange(ZERO, [component length])];
+            
+            if (numberOfPieceMatches > ONE) {
+                <#statements#>
+            }
         }
         
         
