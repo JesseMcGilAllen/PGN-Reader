@@ -202,8 +202,6 @@
           self.navigationController.navigationBar.frame.size.height
         + self.navigationController.navigationBar.frame.origin.y;
     
-    NSLog(@"navController height: %f", navigationControllerHeight);
-    
     CGFloat viewWidth = self.view.frame.size.width;
     
     CGFloat availableLength = self.view.frame.size.height - navigationControllerHeight;
@@ -222,30 +220,52 @@
 
 - (void)configureMovesList
 {
-//    int gameLength = [self.game.moves length];
-//    int numberOfLines = gameLength / EIGHTY;
-//    NSLog(@"Length: %d", gameLength);
-//    NSLog(@"%d / 80 = %d", gameLength, gameLength / EIGHTY);
-//    NSMutableArray *lines = [[NSMutableArray alloc] init];
-//    NSRange aRange;
-//    aRange.lengYth = EIGHTY;
-//    
-//    
-//    for (int count = ZERO; count <= numberOfLines; count++) {
-//        int startingIndex = count * EIGHTY;
-//        aRange.location = startingIndex;
-//        
-//        if (count == numberOfLines) {
-//            [lines addObject:[self.game.moves substringFromIndex:startingIndex]];
-//        } else {
-//            [lines addObject:[self.game.moves substringWithRange:aRange]];
-//        }
-//    }
-//    
-//    
-//    NSLog(@"%@", lines);
+    NSMutableArray *moves = [[NSMutableArray alloc] init];
+    NSMutableString *movesList = [[NSMutableString alloc] init];
+    int moveNumber = ONE;
     
-    NSLog(@"%@", self.game.moves);
+    NSArray *gameComponents =
+        [self.game.moves componentsSeparatedByCharactersInSet:
+        [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    NSPredicate *moveNumberPredicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS %@", @"."];
+    
+    
+    NSLog(@"Components: %@", gameComponents);
+    
+    for (NSString *component in gameComponents) {
+        
+        if ([[component substringToIndex:ONE] intValue] > ZERO) {
+            
+            [movesList appendString:component];
+            moveNumber++;
+            
+        } else if ([moveNumberPredicate evaluateWithObject:component]) {
+            NSString *stringToAdd;
+           
+            NSString *moveNumberString = [[NSString alloc] initWithFormat:@"%d.", moveNumber];
+            NSString  *move = [component stringByReplacingOccurrencesOfString:moveNumberString withString:@""];
+            [moves addObject:move];
+            
+            if ([component hasPrefix:moveNumberString]) {
+                stringToAdd = [[NSString alloc] initWithFormat:@"%@ %@", moveNumberString, move];
+            } else {
+                stringToAdd = [[NSString alloc] initWithFormat:@"%@\n%@", move, moveNumberString];
+            }
+            
+        } else if () {
+            
+        }
+        
+            
+            [movesList appendString:stringToAdd];
+            moveNumber++;
+             
+        }
+        
+        
+    }
+    
     
     self.movesListView.text = self.game.moves;
 }

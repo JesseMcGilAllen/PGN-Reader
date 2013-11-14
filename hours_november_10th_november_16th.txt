@@ -31,6 +31,8 @@ Wednesday November 13th 2013
                        implemented images in project instead of unicode
 - 12:20 pm - 1:20 pm: researched writing a chess engine
 - 4:25 pm - 6:55 pm: started working on moves list
-- 9:10 pm - 
-    daily hours: 4 hours 30 minutes
-    weekly hours: 15 hours 30 minutes
+- 9:10 pm - 10:40 pm: started parsing moves data for moves lists 
+                      (text view & game replay)
+
+    daily hours: 6 hours 00 minutes
+    weekly hours: 17 hours 00 minutes
