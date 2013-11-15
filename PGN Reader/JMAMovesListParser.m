@@ -49,8 +49,6 @@
 */
 - (NSString *)movesForTextView
 {
-    NSLog(@"Text View String: %@", self.textViewString);
-    
     return self.textViewString;
 }
 
@@ -71,9 +69,7 @@
 */
 - (void)parse
 {
-    NSLog(@"Moves Count: %d", self.movesToProcess.count);
-    
-    
+
     NSRegularExpression *regularExpression = [self moveRegularExpression];
     
     [self.movesToProcess enumerateObjectsUsingBlock:^(NSString *component, NSUInteger index, BOOL *stop) {
@@ -99,11 +95,7 @@
         if (index == ([self.movesToProcess count] - ONE)) {
             self.finished = YES;
         }
-        
-        NSLog(@"finished: %d", self.finished);
-        
-        NSLog(@"index: %d, Count: %d", index, [self.movesToProcess count] - ONE);
-        
+
     }];
 }
 
@@ -120,8 +112,8 @@
     
     
     NSString *moveNumberExpression = @"[1-9][0-9]{0,2}\\.";
-    NSString *pawnMoveExpression = @"[a-h](x[a-h])?[1-8]";
-    NSString *castlingExpression = @"0-0(-0)?";
+    NSString *pawnMoveExpression = @"[a-h](x[a-h])?[1-8](=[Q|N|R|B])?";
+    NSString *castlingExpression = @"O-O(-O)?";
     NSString *pieceMoveExpression = @"(Q|K|R|N|B)([a-h]|[1-8])?(x)?[a-h][1-8]";
     NSString *resultExpression = @"(1-0|0-1|1\\/2-1\\/2|\\*)";
     
@@ -228,21 +220,6 @@
     self.moveNumber++;
 }
 
-
-/*
- This method checks if the parameter represents a castling move and returns 
- the result.
-*/
-- (BOOL)isCastlingMove:(NSString *)component
-{
-    if ([component isEqualToString:KINGSIDE_CASTLING] ||
-        [component isEqualToString:QUEENSIDE_CASTLING]) {
-        return YES;
-    } else {
-        return NO;
-    }
-}
-
 /*
  This method adds the component parameter to the moves array and textView String
 */
@@ -264,66 +241,5 @@
     [self.textViewString appendString:component];
 }
 
-/*
- The following method was my first try at parsing the moves string
- It was located in the Game controller class.
- The method was way too complicated to stay in the controller class
-*/
-- (void)attemptOne
-{
-//    NSMutableArray *moves = [[NSMutableArray alloc] init];
-//    NSMutableString *movesList = [[NSMutableString alloc] init];
-//    int moveNumber = (int)ONE;
-//    
-//    NSArray *gameComponents =
-//    [self.game.moves componentsSeparatedByCharactersInSet:
-//     [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-//    
-//    NSPredicate *moveNumberPredicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS %@", @"."];
-//    
-//    NSError *error = nil;
-//    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(Q|K|N|B|R)" options:NSRegularExpressionCaseInsensitive error:&error];
-//    
-//    
-//    NSLog(@"Components: %@", gameComponents);
-//    
-//    for (NSString *component in gameComponents) {
-//        
-//        if ([[component substringToIndex:ONE] intValue] > ZERO) {
-//            
-//            if (moveNumber > ONE) {
-//                [movesList appendString:@"\n"];
-//            }
-//            [movesList appendString:component];
-//            moveNumber++;
-//            
-//        } else if ([moveNumberPredicate evaluateWithObject:component]) {
-//            NSString *stringToAdd;
-//            
-//            NSString *moveNumberString = [[NSString alloc] initWithFormat:@"%d.", moveNumber];
-//            NSString  *move = [component stringByReplacingOccurrencesOfString:moveNumberString withString:@""];
-//            [moves addObject:move];
-//            
-//            if ([component hasPrefix:moveNumberString]) {
-//                stringToAdd = [[NSString alloc] initWithFormat:@"%@ %@", moveNumberString, move];
-//            } else {
-//                stringToAdd = [[NSString alloc] initWithFormat:@"%@\n%@", move, moveNumberString];
-//            }
-//            
-//            [movesList appendString:stringToAdd];
-//            moveNumber++;
-//            
-//        } else {
-//            NSUInteger numberOfPieceMatches = [regex numberOfMatchesInString:component options:ZERO range:NSMakeRange(ZERO, [component length])];
-//            
-//            if (numberOfPieceMatches > ONE) {
-//                
-//            }
-//        }
-//        
-//        
-//    }
-    
-}
 
 @end
