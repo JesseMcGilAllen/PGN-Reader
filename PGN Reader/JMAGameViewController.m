@@ -45,7 +45,7 @@
     self.movesListView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin
     | UIViewAutoresizingFlexibleRightMargin;
     
-    
+    self.navigationController.toolbarHidden = NO;
     
     [self configureMovesList];
     
