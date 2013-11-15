@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSMutableArray *moves;
 
 @property (assign, nonatomic) int moveNumber;
+
 @end
 
 @implementation JMAMovesListParser
@@ -32,7 +33,7 @@
     
     if (self) {
         _movesToProcess = [moves componentsSeparatedByString:SPACE];
-        _textViewString = [[NSMutableString alloc] init];
+        _textViewString = [NSMutableString stringWithString:EMPTY_STRING];
         _moves = [[NSMutableArray alloc] init];
         _moveNumber = (int)ONE;
     };
@@ -48,9 +49,9 @@
 */
 - (NSString *)movesForTextView
 {
-    NSString *textViewString = [[NSString alloc] initWithString:self.movesForTextView];
+    NSLog(@"Text View String: %@", self.textViewString);
     
-    return textViewString;
+    return self.textViewString;
 }
 
 /*
@@ -70,41 +71,59 @@
 */
 - (void)parse
 {
-    
+    NSLog(@"Moves Count: %d", self.movesToProcess.count);
     
     
     NSRegularExpression *regularExpression = [self moveRegularExpression];
     
     [self.movesToProcess enumerateObjectsUsingBlock:^(NSString *component, NSUInteger index, BOOL *stop) {
-        //NSLog(@"move: %@", component);
+        
     
         NSUInteger numberOfMatches = [regularExpression numberOfMatchesInString:component
                                                             options:ZERO
                                                               range:NSMakeRange(ZERO, [component length])];
         
-        NSLog(@"Component: %@\n Number of Matches: %d", component, numberOfMatches);
-        
         if (numberOfMatches == ONE) {
             [self processComponent:component];
         } else {
-            NSArray *components = [regularExpression matchesInString:component
+            NSArray *findings = [regularExpression matchesInString:component
                                                              options:ZERO
                                                                range:NSMakeRange(ZERO, [component length])];
-            NSLog(@"multiple Components");
+            
+            [self processRegularExpressionFindings:findings
+                                      forComponent:component];
         }
         
+        
+        
+        if (index == ([self.movesToProcess count] - ONE)) {
+            self.finished = YES;
+        }
+        
+        NSLog(@"finished: %d", self.finished);
+        
+        NSLog(@"index: %d, Count: %d", index, [self.movesToProcess count] - ONE);
         
     }];
 }
 
+
+/*
+ This method creates an regular expression of various possible valid moves a 
+ game's move file whould have.  The regular expression is returned to the 
+ calling method.
+*/
 - (NSRegularExpression *)moveRegularExpression
 {
     NSError *error = nil;
-    NSString *moveNumberExpression = @"[1-9][0-9]{0,2}\.";
+    
+    
+    
+    NSString *moveNumberExpression = @"[1-9][0-9]{0,2}\\.";
     NSString *pawnMoveExpression = @"[a-h](x[a-h])?[1-8]";
     NSString *castlingExpression = @"0-0(-0)?";
     NSString *pieceMoveExpression = @"(Q|K|R|N|B)([a-h]|[1-8])?(x)?[a-h][1-8]";
-    NSString *resultExpression = @"(1-0|0-1|1/2-1/2)";
+    NSString *resultExpression = @"(1-0|0-1|1\\/2-1\\/2|\\*)";
     
     NSString *compoundExpressionString =
         [[NSString alloc] initWithFormat:@"(%@|%@|%@|%@|%@)",
@@ -114,24 +133,52 @@
          pieceMoveExpression,
          resultExpression];
     
-    NSRegularExpression *regularExprssion =
+    NSRegularExpression *regularExpression =
     [NSRegularExpression regularExpressionWithPattern:compoundExpressionString
                                               options:NSRegularExpressionCaseInsensitive
                                                 error:&error];
     
-    return regularExprssion;
+    if (error) {
+        NSLog(@"error %@", [error localizedDescription]);
+    }
+    
+    return regularExpression;
 }
 
+
+/*
+ This method checks if the incoming parameter is a move number.  If it is, the
+ processMoveNumber method is called.  Else, The processMove method is called.
+*/
 - (void)processComponent:(NSString *)component
 {
     if ([self isMoveNumber:component]) {
         
         [self processMoveNumber:component];
         
+    } else  if ([self isGameResult:component]) {
+        
+        [self processGameResult:component];
     } else {
         [self processMove:component];
     }
 }
+
+/*
+ This method calls the process Component method for the substring that each
+ range in the results array specifies.
+*/
+- (void)processRegularExpressionFindings:(NSArray *)results
+                            forComponent:(NSString *)component
+{
+    
+    
+    for (NSTextCheckingResult *result in results) {
+        
+        [self processComponent:[component substringWithRange:result.range]];
+    }
+}
+
 
 /*
  This method checks if the incoming string represents a move number and returns
@@ -147,6 +194,23 @@
     } else {
         return NO;
     }
+    
+}
+
+/*
+ This method checks if the incoming string parameter represents the game's 
+ result
+*/
+- (BOOL)isGameResult:(NSString *)component
+{
+    NSArray *possibleResults = @[@"1-0", @"0-1", @"1/2-1/2", @"*"];
+    
+    if ([possibleResults containsObject:component]) {
+        return YES;
+    } else {
+        return NO;
+    }
+    
     
 }
 
@@ -191,6 +255,14 @@
 
 }
 
+/*
+ This method adds the component parameter to the moves array
+*/
+- (void)processGameResult:(NSString *)component
+{
+    [self.textViewString appendString:NEW_LINE];
+    [self.textViewString appendString:component];
+}
 
 /*
  The following method was my first try at parsing the moves string

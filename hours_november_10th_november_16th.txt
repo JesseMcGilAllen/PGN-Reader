@@ -41,6 +41,7 @@ Thursday November 14th 2013
 ---------------------------
 - 10:50 am - 11:50 am: continued work on processing movelist
 - 2:00 pm - 4:15 pm: worked on MovesListParser class
+- 6:15 pm -
 
     daily hours: 3 hour 15 minutes
     weekly hours: 20 hours 15 minutes

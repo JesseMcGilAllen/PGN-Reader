@@ -222,12 +222,25 @@
 
 - (void)configureMovesList
 {
-    self.movesListParser = [[JMAMovesListParser alloc] initWithMoves:self.game.moves];
+    self.movesListView.backgroundColor = [UIColor whiteColor];
     
-    self.movesListView.text = [self.movesListParser movesForTextView];
+    NSOperationQueue *aQueue = [[NSOperationQueue alloc] init];
+    
+    [aQueue addOperationWithBlock:^{
+        self.movesListParser = [[JMAMovesListParser alloc] initWithMoves:self.game.moves];
+        
+        if (self.movesListParser.finished) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            self.movesListView.text = [self.movesListParser movesForTextView];
+            [self.movesListView setNeedsDisplay];
+            }];
+        }
+    }];
     
     
-    //self.movesListView.text = self.game.moves;
+    
+    
+    // self.movesListView.text = [self.movesListParser movesForTextView];
 }
 
 @end

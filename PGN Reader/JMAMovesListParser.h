@@ -12,8 +12,11 @@
 
 - (id)initWithMoves:(NSString *)moves;
 
+@property (assign, nonatomic) BOOL finished;
+
 - (NSString *)movesForTextView;
 
 - (NSArray *)movesForGame;
+
 
 @end
