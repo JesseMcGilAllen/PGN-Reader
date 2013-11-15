@@ -19,6 +19,7 @@ NSInteger const FOUR = 4;
 NSInteger const FIVE = 5;
 NSInteger const SEVEN = 7;
 NSInteger const EIGHT = 8;
+NSInteger const FIFTEEN = 15;
 NSInteger const TWENTY = 20;
 NSInteger const TWENTY_FIVE = 25;
 NSInteger const EIGHTY = 80;

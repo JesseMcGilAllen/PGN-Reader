@@ -20,6 +20,7 @@ extern NSInteger const FOUR;
 extern NSInteger const FIVE;
 extern NSInteger const SEVEN;
 extern NSInteger const EIGHT;
+extern NSInteger const FIFTEEN;
 extern NSInteger const TWENTY;
 extern NSInteger const TWENTY_FIVE;
 extern NSInteger const EIGHTY;

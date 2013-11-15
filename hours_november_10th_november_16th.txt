@@ -45,3 +45,10 @@ Thursday November 14th 2013
 
     daily hours: 5 hour 15 minutes
     weekly hours: 22 hours 15 minutes
+
+Friday November 15th 2013
+-------------------------
+- 2:50 pm - 5:15 pm: fixed moves text view padding
+
+    daily hours: 2 hours 25 minutes
+    weekly hours: 24 hours 40 minutes

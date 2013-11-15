@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UITextView *movesListView;
 @property (strong, nonatomic) JMAMovesListParser *movesListParser;
 
+@property (assign, nonatomic) UIEdgeInsets portraitInsets;
+@property (assign, nonatomic) UIEdgeInsets landscapeInsets;
+
 @end
 
 @implementation JMAGameViewController
@@ -42,14 +45,17 @@
     self.movesListView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin
     | UIViewAutoresizingFlexibleRightMargin;
     
-    [self configureMovesList];
     
+    
+    [self configureMovesList];
     
 }
 
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self configureInsets];
+    
     [self determineInterfaceOrientation];
 
 }
@@ -123,12 +129,12 @@
  This method calculates the size and location of
  boardView and movesList elements when the device is in Landscape Orientation
  and sets those elements
- */
+*/
 - (void)configureViewForLandscapeOrientationForRotation
 {
-    CGFloat navigationControllerHeight =
-    self.navigationController.navigationBar.frame.size.height
-    + self.navigationController.navigationBar.frame.origin.y;
+    self.movesListView.textContainerInset = self.landscapeInsets;
+    
+    CGFloat navigationControllerHeight = [self navigationControllerHeight];
     
     CGFloat viewHeight = self.view.frame.size.width;
     
@@ -147,12 +153,14 @@
  This method calculates the size and location of
  boardView and movesList elements when the device is in Portrait Orientation
  and sets those elements
- */
+*/
 - (void)configureViewForPortraitOrientationForRotation
 {
-    CGFloat navigationControllerHeight =
-    self.navigationController.navigationBar.frame.size.height
-    + self.navigationController.navigationBar.frame.origin.y;
+    
+    self.movesListView.textContainerInset = self.portraitInsets;
+    [self.movesListView setNeedsDisplay];
+    
+    CGFloat navigationControllerHeight = [self navigationControllerHeight];
     
     CGFloat viewWidth = self.view.frame.size.height;
     
@@ -177,9 +185,9 @@
 */
 - (void)configureViewForLandscapeOrientation
 {
-    CGFloat navigationControllerHeight =
-    self.navigationController.navigationBar.frame.size.height
-    + self.navigationController.navigationBar.frame.origin.y;
+    self.movesListView.textContainerInset = self.landscapeInsets;
+    
+    CGFloat navigationControllerHeight = [self navigationControllerHeight];
     
     CGFloat viewHeight = self.view.frame.size.height;
     
@@ -188,21 +196,22 @@
     
     CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, boardWidth, viewHeight - navigationControllerHeight);
     CGRect movesListRect = CGRectMake(boardWidth, navigationControllerHeight, listWidth, viewHeight);
-        
+    
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
+    
 }
 
 /*
  This method calculates the size and location of
  boardView and movesList elements when the device is in Portrait Orientation
  and sets those elements
- */
+*/
 - (void)configureViewForPortraitOrientation
 {
-    CGFloat navigationControllerHeight =
-          self.navigationController.navigationBar.frame.size.height
-        + self.navigationController.navigationBar.frame.origin.y;
+    self.movesListView.textContainerInset = self.portraitInsets;
+    
+    CGFloat navigationControllerHeight = [self navigationControllerHeight];
     
     CGFloat viewWidth = self.view.frame.size.width;
     
@@ -214,12 +223,48 @@
     
     CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, viewWidth, boardLength);
     CGRect movesListRect = CGRectMake(ZERO, boardLength, viewWidth, listLength);
+   
     
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
+    
+}
+
+/*
+ This method returns the navigation controller height
+*/
+- (CGFloat)navigationControllerHeight
+{
+    CGFloat navBarHeight = self.navigationController.navigationBar.frame.size.height;
+    CGFloat navBarYLocation = self.navigationController.navigationBar.frame.origin.y;
+    CGFloat navigationControllerHeight = navBarHeight + navBarYLocation;
+    
+    return navigationControllerHeight;
+    
+}
+
+/*
+ This method sets the inset properties to set the textView contentInset 
+ properties.
+*/
+- (void)configureInsets
+{
+    UIEdgeInsets defaultInsets = self.movesListView.textContainerInset;
+    
+    CGFloat topPortraitInset = defaultInsets.top * EIGHT;
+    
+    self.landscapeInsets = defaultInsets;
+    self.portraitInsets = UIEdgeInsetsMake(topPortraitInset, defaultInsets.left, defaultInsets.bottom, defaultInsets.right);
+
 }
 
 
+/*
+ This method configures the movesListView text view.  
+ The background color is set to white.  An operation queue is created to create
+ an JMAMovesListParser object to process the moves property of the game object.
+ When the JMAMovesListParser is done the movesListTextView is updated.
+*/
 - (void)configureMovesList
 {
     self.movesListView.backgroundColor = [UIColor whiteColor];
@@ -237,10 +282,6 @@
         }
     }];
     
-    
-    
-    
-    // self.movesListView.text = [self.movesListParser movesForTextView];
 }
 
 @end
