@@ -50,7 +50,7 @@ Friday November 15th 2013
 -------------------------
 - 2:50 pm - 5:15 pm: fixed moves text view padding
 - 5:15 pm - 6:55 pm: added toolbar with a couple items
-- 9:45 pm - 
+- 9:45 pm - 11:10 pm: started working on game engine class
 
-    daily hours: 4 hours 05 minutes
-    weekly hours: 26 hours 20 minutes
+    daily hours: 5 hours 30 minutes
+    weekly hours: 27 hours 45 minutes
