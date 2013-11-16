@@ -50,6 +50,26 @@
     NSArray *c1A3Diagonal = @[C1, B2, A3];
     NSArray *d1A4Diagonal = @[D1, C2, B3, A4];
     NSArray *e1A5Diagonal = @[E1, D2, C3, B4, A5];
+    NSArray *f1A6Diagonal = @[F1, E2, D3, C4, B5, A6];
+    NSArray *g1A7Diagonal = @[G1, F2, E3, D4, C5, B6, A7];
+    NSArray *g1H2Diagonal = @[G1, H2];
+    NSArray *f1H3Diagonal = @[F1, G2, H3];
+    NSArray *e1H4Diagonal = @[E1, F2, G3, H4];
+    NSArray *d1H5Diagonal = @[D1, E2, F3, G4, H5];
+    NSArray *c1H6Diagonal = @[C1, D2, E3, F4, G5, H6];
+    NSArray *b1H7Diagonal = @[B1, C2, D3, E4, F5, G6, H7];
+    
+    self.validDiagonals = @[a1H8Diagonal, a2G8Diagonal, a3F8Diagonal,
+                            a4E8Diagonal, a5D8Diagonal, a6C8Diagonal,
+                            a7B8Diagonal, b1A2Diagonal, b1H7Diagonal,
+                            c1A3Diagonal, c1H6Diagonal, d1A4Diagonal,
+                            d1H5Diagonal, e1A5Diagonal, e1H4Diagonal,
+                            f1A6Diagonal, f1H3Diagonal, g1A7Diagonal,
+                            g1H2Diagonal, h1A8Diagonal, h2B8Diagonal,
+                            h3C8Diagonal, h4D8Diagonal, h5E8Diagonal,
+                            h6F8Diagonal, h7G8Diagonal];
+    
+    
     
 }
 
