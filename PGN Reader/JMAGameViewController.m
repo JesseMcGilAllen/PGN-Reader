@@ -11,11 +11,14 @@
 #import "JMABoardView.h"
 #import "JMAConstants.h"
 #import "JMAMovesListParser.h"
+#import "JMAGameEngine.h"
 
 @interface JMAGameViewController ()
 @property (weak, nonatomic) IBOutlet JMABoardView *boardView;
 @property (weak, nonatomic) IBOutlet UITextView *movesListView;
+
 @property (strong, nonatomic) JMAMovesListParser *movesListParser;
+@property (strong, nonatomic) JMAGameEngine *gameEngine;
 
 @property (assign, nonatomic) UIEdgeInsets portraitInsets;
 @property (assign, nonatomic) UIEdgeInsets landscapeInsets;
@@ -44,6 +47,8 @@
     
     self.movesListView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin
     | UIViewAutoresizingFlexibleRightMargin;
+    
+    self.gameEngine = [[JMAGameEngine alloc] init];
     
         [self configureMovesList];
     
@@ -348,8 +353,9 @@
         
         if (self.movesListParser.finished) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            self.movesListView.text = [self.movesListParser movesForTextView];
-            [self.movesListView setNeedsDisplay];
+                self.movesListView.text = [self.movesListParser movesForTextView];
+                self.gameEngine.moves = [self.movesListParser movesForGame];
+                [self.movesListView setNeedsDisplay];
             }];
         }
     }];

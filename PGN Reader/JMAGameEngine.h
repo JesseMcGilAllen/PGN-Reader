@@ -10,4 +10,6 @@
 
 @interface JMAGameEngine : NSObject
 
+@property (strong, nonatomic) NSArray *moves;
+
 @end
