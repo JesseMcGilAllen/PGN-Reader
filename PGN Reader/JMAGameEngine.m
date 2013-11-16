@@ -12,6 +12,8 @@
 @interface JMAGameEngine ()
 
 @property NSArray *validDiagonals;
+@property NSDictionary *files;
+@property NSDictionary *ranks;
 
 
 @end
@@ -30,6 +32,11 @@
     return self;
 }
 
+
+/*
+ This method loads the validDiagonals Array with arrays of square coordinates
+ representing all the diagonals on a chess board.
+*/
 - (void)loadValidDiagonals
 {
     NSArray *a1H8Diagonal = @[A1, B2, C3, D4, E5, F6, G7, H8];
@@ -68,9 +75,46 @@
                             g1H2Diagonal, h1A8Diagonal, h2B8Diagonal,
                             h3C8Diagonal, h4D8Diagonal, h5E8Diagonal,
                             h6F8Diagonal, h7G8Diagonal];
+}
+
+
+/*
+ This method loads the files dictionary property with a square coordinate array
+ for each file.
+*/
+- (void)loadFiles
+{
+    NSArray *aFile = @[A1, A2, A3, A4, A5, A6, A7, A8];
+    NSArray *bFile = @[B1, B2, B3, B4, B5, B6, B7, B8];
+    NSArray *cFile = @[C1, C2, C3, C4, C5, C6, C7, C8];
+    NSArray *dFile = @[D1, D2, D3, D4, D5, D6, D7, D8];
+    NSArray *eFile = @[E1, E2, E3, E4, E5, E6, E7, E8];
+    NSArray *fFile = @[F1, F2, F3, F4, F5, F6, F7, F8];
+    NSArray *gFile = @[G1, G2, G3, G4, G5, G6, G7, G8];
+    NSArray *hFile = @[H1, H2, H3, H4, H5, H6, H7, H8];
     
+    self.files = @{@"a" : aFile, @"b" : bFile, @"c" : cFile, @"d" : dFile,
+                   @"e" : eFile, @"f" : fFile, @"g" : gFile, @"h" : hFile};
+}
+
+/*
+ This method loads the ranks dictionary property with arrays for the string rank
+ key.  The arrays contain the square coordinates of the squares on each rank.
+*/
+- (void)loadRanks
+{
+    NSArray *firstRank = @[A1, B1, C1, D1, E1, F1, G1, H1];
+    NSArray *secondRank = @[A2, B2, C2, D2, E2, F2, G2, H2];
+    NSArray *thirdRank = @[A3, B3, C3, D3, E3, F3, G3, H3];
+    NSArray *fourthRank = @[A4, B4, C4, D4, E4, F4, G4, H4];
+    NSArray *fifthRank = @[A5, B5, C5, D5, E5, F5, G5, H5];
+    NSArray *sixthRank = @[A6, B6, C6, D6, E6, F6, G6, H6];
+    NSArray *seventhRank = @[A7, B7, C7, D7, E7, F7, G7, H7];
+    NSArray *eighthRank = @[A8, B8, C8, D8, E8, F8, G8, H8];
     
-    
+    self.ranks = @{@"1" : firstRank, @"2" : secondRank, @"3" : thirdRank,
+                   @"4" : fourthRank, @"5" : fifthRank, @"6" : sixthRank,
+                   @"7" : seventhRank, @"8" : eighthRank};
 }
 
 @end
