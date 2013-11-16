@@ -135,13 +135,18 @@
     self.movesListView.textContainerInset = self.landscapeInsets;
     
     CGFloat navigationControllerHeight = [self navigationControllerHeight];
+    CGFloat toolbarHeight = [self toolbarHeight];
     
+    CGFloat occupiedHeight = navigationControllerHeight + toolbarHeight;
+
     CGFloat viewHeight = self.view.frame.size.width;
+    
+    CGFloat availableLength = viewHeight - occupiedHeight;
     
     CGFloat boardWidth = self.view.frame.size.height * (double)FOUR/FIVE;
     CGFloat listWidth = self.view.frame.size.height - boardWidth;
     
-    CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, boardWidth, viewHeight - navigationControllerHeight);
+    CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, boardWidth, availableLength);
     CGRect movesListRect = CGRectMake(boardWidth, navigationControllerHeight, listWidth, viewHeight);
     
     
@@ -161,12 +166,15 @@
     [self.movesListView setNeedsDisplay];
     
     CGFloat navigationControllerHeight = [self navigationControllerHeight];
+    CGFloat toolbarHeight = [self toolbarHeight];
+    
+    //CGFloat occupiedHeight = navigationControllerHeight + toolbarHeight;
     
     CGFloat viewWidth = self.view.frame.size.height;
     
     CGFloat boardLength = self.view.frame.size.width * (double)FOUR/FIVE;
     
-    CGFloat listLength = self.view.frame.size.width - boardLength;
+    CGFloat listLength = self.view.frame.size.width - (boardLength);
     
     CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, viewWidth, boardLength);
     
@@ -188,13 +196,20 @@
     self.movesListView.textContainerInset = self.landscapeInsets;
     
     CGFloat navigationControllerHeight = [self navigationControllerHeight];
+    CGFloat toolbarHeight = [self toolbarHeight];
+    
+    CGFloat occupiedHeight = navigationControllerHeight + toolbarHeight;
+    
     
     CGFloat viewHeight = self.view.frame.size.height;
+    
+    CGFloat availableLength = viewHeight - occupiedHeight;
+
     
     CGFloat boardWidth = self.view.frame.size.width * (double)FOUR/FIVE;
     CGFloat listWidth = self.view.frame.size.width - boardWidth;
     
-    CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, boardWidth, viewHeight - navigationControllerHeight);
+    CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, boardWidth, availableLength);
     CGRect movesListRect = CGRectMake(boardWidth, navigationControllerHeight, listWidth, viewHeight);
     
     self.boardView.frame = boardViewRect;
@@ -212,10 +227,13 @@
     self.movesListView.textContainerInset = self.portraitInsets;
     
     CGFloat navigationControllerHeight = [self navigationControllerHeight];
+    CGFloat toolbarHeight = [self toolbarHeight];
+    
+    CGFloat occupiedHeight = navigationControllerHeight + toolbarHeight;
     
     CGFloat viewWidth = self.view.frame.size.width;
     
-    CGFloat availableLength = self.view.frame.size.height - navigationControllerHeight;
+    CGFloat availableLength = self.view.frame.size.height - occupiedHeight;
 
     CGFloat boardLength = availableLength * (double)FOUR/FIVE;
     
@@ -256,6 +274,14 @@
     self.landscapeInsets = defaultInsets;
     self.portraitInsets = UIEdgeInsetsMake(topPortraitInset, defaultInsets.left, defaultInsets.bottom, defaultInsets.right);
 
+}
+
+/*
+ This method returns the toolbar's height
+*/
+- (CGFloat)toolbarHeight
+{
+    return self.navigationController.toolbar.frame.size.height;
 }
 
 
