@@ -13,7 +13,7 @@
 @interface JMASquare ()
 
 @property (strong, nonatomic) NSString *file;
-@property (assign, nonatomic) int rank;
+@property (assign, nonatomic) NSString *rank;
 
 @end
 
@@ -31,7 +31,7 @@
 - (void)setCoordinate:(NSString *)coordinate
 {
     self.file = [coordinate substringToIndex:ONE];
-    self.rank = [[coordinate substringFromIndex:ONE] intValue];
+    self.rank = [coordinate substringFromIndex:ONE];
     
     _coordinate = coordinate;
     
@@ -39,7 +39,7 @@
     
 }
 
-- (int)rank
+- (NSString *)rank
 {
     return self.rank;
 }

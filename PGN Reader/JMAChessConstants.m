@@ -106,4 +106,5 @@ NSString *const BLACK = @"Black";
 // Castling
 NSString *const KINGSIDE_CASTLING = @"0-0";
 NSString *const QUEENSIDE_CASTLING = @"0-0-0";
+
 @end

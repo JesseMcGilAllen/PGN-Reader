@@ -47,6 +47,7 @@
         _color = color;
         _type = type;
         _square = square;
+        _square.piece = self;
         
         _unicodeDictionary = @{WHITE_KING: @"\u2654",
                                WHITE_QUEEN: @"\u2655",

@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class JMAPiece;
+
 @interface JMASquare : UIView
 
 @property (strong, nonatomic) NSString *color;
 @property (strong, nonatomic) NSString *coordinate;
+@property (strong, nonatomic) JMAPiece *piece;
 
 - (NSString *)file;
-- (int)rank;
+- (NSString *)rank;
 
 
 @end
