@@ -8,6 +8,10 @@
 
 #import "JMAGameEngine.h"
 
+@interface JMAGameEngine ()
+
+@end
+
 @implementation JMAGameEngine
 
 @end

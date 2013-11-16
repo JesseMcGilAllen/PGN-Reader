@@ -12,6 +12,9 @@
 
 @interface JMASquare ()
 
+@property (strong, nonatomic) NSString *file;
+@property (assign, nonatomic) int rank;
+
 @end
 
 @implementation JMASquare
@@ -23,6 +26,27 @@
         // Initialization code
     }
     return self;
+}
+
+- (void)setCoordinate:(NSString *)coordinate
+{
+    self.file = [coordinate substringToIndex:ONE];
+    self.rank = [[coordinate substringFromIndex:ONE] intValue];
+    
+    _coordinate = coordinate;
+    
+    
+    
+}
+
+- (int)rank
+{
+    return self.rank;
+}
+
+- (NSString *)file
+{
+    return self.file;
 }
 
 // Only override drawRect: if you perform custom drawing.

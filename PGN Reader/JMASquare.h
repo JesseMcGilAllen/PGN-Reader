@@ -13,4 +13,8 @@
 @property (strong, nonatomic) NSString *color;
 @property (strong, nonatomic) NSString *coordinate;
 
+- (NSString *)file;
+- (int)rank;
+
+
 @end
