@@ -49,6 +49,7 @@ Thursday November 14th 2013
 Friday November 15th 2013
 -------------------------
 - 2:50 pm - 5:15 pm: fixed moves text view padding
+- 5:15 pm - 6:55 pm: added toolbar with a couple items
 
-    daily hours: 2 hours 25 minutes
-    weekly hours: 24 hours 40 minutes
+    daily hours: 4 hours 05 minutes
+    weekly hours: 26 hours 20 minutes

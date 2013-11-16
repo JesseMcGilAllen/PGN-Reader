@@ -45,15 +45,14 @@
     self.movesListView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin
     | UIViewAutoresizingFlexibleRightMargin;
     
-    self.navigationController.toolbarHidden = NO;
-    
-    [self configureMovesList];
+        [self configureMovesList];
     
 }
 
-
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self configureToolbar];
+    
     [self configureInsets];
     
     [self determineInterfaceOrientation];
@@ -66,6 +65,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+# pragma mark - Configure Interface for Orientation
 /*
  This method determines the Interface Orientation of the Device and calls the 
  corresponding method to configure the view controller's elements
@@ -83,6 +84,70 @@
     }
 }
 
+/*
+ This method calculates the size and location of
+ boardView and movesList elements when the device is in Landscape Orientation
+ and sets those elements
+ */
+- (void)configureViewForLandscapeOrientation
+{
+    self.movesListView.textContainerInset = self.landscapeInsets;
+    
+    CGFloat navigationControllerHeight = [self navigationControllerHeight];
+    CGFloat toolbarHeight = [self toolbarHeight];
+    
+    CGFloat occupiedHeight = navigationControllerHeight + toolbarHeight;
+    
+    
+    CGFloat viewHeight = self.view.frame.size.height;
+    
+    CGFloat availableLength = viewHeight - occupiedHeight;
+    
+    
+    CGFloat boardWidth = self.view.frame.size.width * (double)FOUR/FIVE;
+    CGFloat listWidth = self.view.frame.size.width - boardWidth;
+    
+    CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, boardWidth, availableLength);
+    CGRect movesListRect = CGRectMake(boardWidth, navigationControllerHeight, listWidth, viewHeight);
+    
+    self.boardView.frame = boardViewRect;
+    self.movesListView.frame = movesListRect;
+    
+}
+
+/*
+ This method calculates the size and location of
+ boardView and movesList elements when the device is in Portrait Orientation
+ and sets those elements
+ */
+- (void)configureViewForPortraitOrientation
+{
+    self.movesListView.textContainerInset = self.portraitInsets;
+    
+    CGFloat navigationControllerHeight = [self navigationControllerHeight];
+    CGFloat toolbarHeight = [self toolbarHeight];
+    
+    CGFloat occupiedHeight = navigationControllerHeight + toolbarHeight;
+    
+    CGFloat viewWidth = self.view.frame.size.width;
+    
+    CGFloat availableLength = self.view.frame.size.height - occupiedHeight;
+    
+    CGFloat boardLength = availableLength * (double)FOUR/FIVE;
+    
+    CGFloat listLength = self.view.frame.size.height - boardLength;
+    
+    CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, viewWidth, boardLength);
+    CGRect movesListRect = CGRectMake(ZERO, boardLength, viewWidth, listLength);
+    
+    
+    self.boardView.frame = boardViewRect;
+    self.movesListView.frame = movesListRect;
+    
+}
+
+
+# pragma mark - Handle Interface Orientations
 /*
  This method handles when the device rotates
  First resetBoard is called from the BoardView class to remove the squares
@@ -166,9 +231,6 @@
     [self.movesListView setNeedsDisplay];
     
     CGFloat navigationControllerHeight = [self navigationControllerHeight];
-    CGFloat toolbarHeight = [self toolbarHeight];
-    
-    //CGFloat occupiedHeight = navigationControllerHeight + toolbarHeight;
     
     CGFloat viewWidth = self.view.frame.size.height;
     
@@ -186,67 +248,6 @@
 
 }
 
-/*
- This method calculates the size and location of
- boardView and movesList elements when the device is in Landscape Orientation
- and sets those elements
-*/
-- (void)configureViewForLandscapeOrientation
-{
-    self.movesListView.textContainerInset = self.landscapeInsets;
-    
-    CGFloat navigationControllerHeight = [self navigationControllerHeight];
-    CGFloat toolbarHeight = [self toolbarHeight];
-    
-    CGFloat occupiedHeight = navigationControllerHeight + toolbarHeight;
-    
-    
-    CGFloat viewHeight = self.view.frame.size.height;
-    
-    CGFloat availableLength = viewHeight - occupiedHeight;
-
-    
-    CGFloat boardWidth = self.view.frame.size.width * (double)FOUR/FIVE;
-    CGFloat listWidth = self.view.frame.size.width - boardWidth;
-    
-    CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, boardWidth, availableLength);
-    CGRect movesListRect = CGRectMake(boardWidth, navigationControllerHeight, listWidth, viewHeight);
-    
-    self.boardView.frame = boardViewRect;
-    self.movesListView.frame = movesListRect;
-    
-}
-
-/*
- This method calculates the size and location of
- boardView and movesList elements when the device is in Portrait Orientation
- and sets those elements
-*/
-- (void)configureViewForPortraitOrientation
-{
-    self.movesListView.textContainerInset = self.portraitInsets;
-    
-    CGFloat navigationControllerHeight = [self navigationControllerHeight];
-    CGFloat toolbarHeight = [self toolbarHeight];
-    
-    CGFloat occupiedHeight = navigationControllerHeight + toolbarHeight;
-    
-    CGFloat viewWidth = self.view.frame.size.width;
-    
-    CGFloat availableLength = self.view.frame.size.height - occupiedHeight;
-
-    CGFloat boardLength = availableLength * (double)FOUR/FIVE;
-    
-    CGFloat listLength = self.view.frame.size.height - boardLength;
-    
-    CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, viewWidth, boardLength);
-    CGRect movesListRect = CGRectMake(ZERO, boardLength, viewWidth, listLength);
-   
-    
-    self.boardView.frame = boardViewRect;
-    self.movesListView.frame = movesListRect;
-    
-}
 
 /*
  This method returns the navigation controller height
@@ -259,6 +260,14 @@
     
     return navigationControllerHeight;
     
+}
+
+/*
+ This method returns the toolbar's height
+ */
+- (CGFloat)toolbarHeight
+{
+    return self.navigationController.toolbar.frame.size.height;
 }
 
 /*
@@ -276,15 +285,52 @@
 
 }
 
+
+# pragma mark - Toolbar
 /*
- This method returns the toolbar's height
+ This method adds the buttons require for playing through the chess game.
 */
-- (CGFloat)toolbarHeight
+- (void)configureToolbar
 {
-    return self.navigationController.toolbar.frame.size.height;
+    NSArray *toolbarItems;
+    
+    [self.navigationController setToolbarHidden:NO animated:YES];
+    
+    UIBarButtonItem *gameEndButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward
+                                                                                       target:self
+                                                                                       action:@selector(gameEndButtonTapped:)];
+
+    
+    UIBarButtonItem *playGameButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay
+                                                                                    target:self
+                                                                                    action:@selector(playGameButtonTapped:)];
+    
+    UIBarButtonItem *gameStartButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind
+                                                                                     target:self
+                                                                                     action:@selector(gameStartButtonTapped:)];
+    toolbarItems = @[gameStartButton, playGameButton, gameEndButton];
+    
+    [self setToolbarItems:toolbarItems animated:YES];
+    
+    
 }
 
+- (IBAction)gameStartButtonTapped:(id)sender
+{
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+}
 
+- (IBAction)playGameButtonTapped:(id)sender
+{
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+}
+
+- (IBAction)gameEndButtonTapped:(id)sender
+{
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+}
+
+# pragma mark - Move List
 /*
  This method configures the movesListView text view.  
  The background color is set to white.  An operation queue is created to create
@@ -307,7 +353,6 @@
             }];
         }
     }];
-    
 }
 
 @end
