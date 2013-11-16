@@ -10,6 +10,10 @@
 #import "JMAConstants.h"
 #import "JMAChessConstants.h"
 
+@interface JMASquare ()
+
+@end
+
 @implementation JMASquare
 
 - (id)initWithFrame:(CGRect)frame

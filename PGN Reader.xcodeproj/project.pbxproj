@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		3703E5A21837241E00B0D9CC /* JMAGameEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3703E5A11837241E00B0D9CC /* JMAGameEngine.m */; };
 		37077C06182DA691006B6AC3 /* JMAGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37077C05182DA691006B6AC3 /* JMAGameViewController.m */; };
 		37077C0A182DE41F006B6AC3 /* JMABoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37077C09182DE41F006B6AC3 /* JMABoardView.m */; };
 		37077C0D182DE72E006B6AC3 /* JMASquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 37077C0C182DE72E006B6AC3 /* JMASquare.m */; };
@@ -72,6 +73,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3703E5A01837241E00B0D9CC /* JMAGameEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAGameEngine.h; sourceTree = "<group>"; };
+		3703E5A11837241E00B0D9CC /* JMAGameEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAGameEngine.m; sourceTree = "<group>"; };
 		37077C04182DA691006B6AC3 /* JMAGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAGameViewController.h; sourceTree = "<group>"; };
 		37077C05182DA691006B6AC3 /* JMAGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAGameViewController.m; sourceTree = "<group>"; };
 		37077C08182DE41F006B6AC3 /* JMABoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMABoardView.h; sourceTree = "<group>"; };
@@ -176,6 +179,8 @@
 				373695B7183195E600793672 /* JMAPiece.m */,
 				37F637BC1835413300A4BD7D /* JMAMovesListParser.h */,
 				37F637BD1835413300A4BD7D /* JMAMovesListParser.m */,
+				3703E5A01837241E00B0D9CC /* JMAGameEngine.h */,
+				3703E5A11837241E00B0D9CC /* JMAGameEngine.m */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 			files = (
 				3732B42B18170182007467E8 /* Game.m in Sources */,
 				37342331182B4A0D00808D62 /* ioapi.c in Sources */,
+				3703E5A21837241E00B0D9CC /* JMAGameEngine.m in Sources */,
 				37F6225B1814967E0051012C /* JMAConstants.m in Sources */,
 				37342335182B4A0D00808D62 /* SSZipArchive.m in Sources */,
 				37AF5ACA18103A6200B86F79 /* main.m in Sources */,
