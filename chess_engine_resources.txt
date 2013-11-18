@@ -1,0 +1,40 @@
+Chess Engine in C YouTube Video Series
+--------------------------------------
+
+Part 1 - Online Resource
+======
+
++ talkchess.com - best forum on programming in chess
+
++ chessprogramming.wikispaces.com - Chess Programming Wiki
+    + Search for Bruce Moreland - wrote Gerbil
+        - come across Web Archive with lots of useful info
+        - one of the best resources to explain in simple matter
+
++ google robert hyatt - wrote crafty
+    + www.cis.uab.edu/hyatt
+
++ www/computerchess.org.uk/ccrl/4040 - One of the largest Chess Engine Testing
+                                       Groups.  Contains list of Chess Engines
+                                       Including Open Source Engine links
+
++ stockfishchess.org - written in C++, highest rated open source engine
+
++ Tom's Simple Chess Program - www.tckerrigan.com/Chess/TSCP
+    - really simple, good comments
+    - excellent intro to structure of chess program
+
++ WinBoard - for GUI
+    - Winboard Forum - www.open-aurec.com/wbforum/
+
++ Arena - GUI
+    - playwitharena.com
+    - has live logging feature
+
++ Google UCI protocol
+
+Part 2 - Board Representation
+=============================
+
+- board represented by integers
+

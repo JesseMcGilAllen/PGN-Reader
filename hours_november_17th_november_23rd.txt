@@ -1,0 +1,10 @@
+Hours at beginning of week: 85.5
+
+Monday November 18th
+--------------------
+- 10:20 am - 11:20 am: profiled app and found time sink in Parser class
+- 3:00 pm - 4:45 pm: watch videos on writing chess engine
+- 4:45 pm - 6:00 pm: tried some things to speed up PGN Parsing
+
+    daily hours: 4 hours
+    weekly hours: 4 hours

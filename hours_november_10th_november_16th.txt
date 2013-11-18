@@ -57,4 +57,11 @@ Friday November 15th 2013
 
 Saturday November 16th 2013
 ---------------------------
-- 1:25 pm -
+- 1:25 pm - 2:30 pm: added ranks and files to game engine class
+- 2:30 pm - 3:10 pm: researched writing a chess engine
+- 5:45 pm - 6:45 pm: read some chess engine code, watch video 
+                     on chess resources
+- 6:45 pm - 7:15: read article on board representation
+
+    daily hours: 3 hour 15 minutes
+    weekly hours: 31 hours 00 minutes

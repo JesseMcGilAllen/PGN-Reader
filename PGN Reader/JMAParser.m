@@ -176,6 +176,7 @@
 {
     newGame.moves = [attributes lastObject];
     
+    
     for (NSString *attribute in attributes) {
         NSString *strippedAttribute = [self trimQuoteFrom:attribute];
         [self assign:strippedAttribute for:newGame];
@@ -202,6 +203,7 @@
 }
 
 
+# pragma mark - potential time sink
 /*
 This method will compare the Prefix of an attribute with a game attribute saved
  in Core Data. A Space is added to the Game Attribute in ensure the right 
@@ -209,13 +211,18 @@ This method will compare the Prefix of an attribute with a game attribute saved
 */
 - (BOOL)comparePrefixOf:(NSString *)attribute to:(NSString *)gameAttribute
 {
+    
     NSString *attributeLowerCase = [attribute lowercaseString];
     NSString *comparisonAttribute = [[NSString alloc] initWithFormat:@"%@ ", gameAttribute];
-    
-    
+    //NSComparisonResult result = [attribute caseInsensitiveCompare:gameAttribute];
+  
     if ([attributeLowerCase hasPrefix:[comparisonAttribute lowercaseString]]) {
         return YES;
     }
+    
+    // if (result == NSOrderedSame) {
+    //    return YES;
+    // }
     return NO;
 }
 

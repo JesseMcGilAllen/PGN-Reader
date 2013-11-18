@@ -28,6 +28,8 @@
     }
     
     [self loadValidDiagonals];
+    [self loadFiles];
+    [self loadRanks];
     
     return self;
 }
