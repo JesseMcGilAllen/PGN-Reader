@@ -1,0 +1,34 @@
+I need to plan out the game playback process
+
+Possible Files
+--------------
+- BoardView
+- BoardModel
+- Piece
+- Pawn
+- Knight
+- Bishop
+- Queen
+- King
+- MoveProcessor
+- GameModel
+- MoveListParser
+- Square
+
+Current Files
+-------------
+- BoardView
+- MovesListParser
+- Piece
+- GameEngine
+- Square
+
+Watching the videos I found out that everything was put into arrays
+The board was stored in a array of 120 indexes 
+(allowing extra squares for illegal moves").  Also utilized a lot of enums
+
+I don't think I can do this as I am currently proceeding, I need to plan the 
+Game playback though
+If I don't it will end up the same way.
+
+

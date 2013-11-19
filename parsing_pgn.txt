@@ -1,0 +1,22 @@
+Ideas
+-----
+
+- use C
+- divide file by result first ( 1-0, 0-1, 1/2-1/2, *)
+    - possibly use regular expressions to find occurrences,
+    - split by range
+    - see my use in the MovesListParser
+    + possible advantages: moves would no longer be combined
+    ? unknown speed comparison
+- find way to improve performance of comparePrefixOf:to: method
+    - find way to eliminate string creation
+
+
+- Currently trying to seperate the headers into an array of header components
+    - then process the headers
+    + cuts down on string creation
+
+    - problem discovered: if no moves exist in Game (just result given),
+      the game is not seperated.  The games seperated after moves are played
+      due to the search being for " 1-0", etc.  No moves mean no space prior.
+      Possible solution: check for white space not just a string

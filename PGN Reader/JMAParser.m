@@ -174,12 +174,29 @@
 */
 - (Game *)populateData:(NSArray *)attributes for:(Game *)newGame
 {
+     NSMutableArray *headers = [[NSMutableArray alloc] initWithArray:attributes];
+    [headers removeLastObject];
     newGame.moves = [attributes lastObject];
+    NSLog(@"Attributes: %@", attributes);
+    NSLog(@"Headers: %@", headers);
+
+    
+   
     
     
-    for (NSString *attribute in attributes) {
-        NSString *strippedAttribute = [self trimQuoteFrom:attribute];
-        [self assign:strippedAttribute for:newGame];
+    
+//    for (NSString *attribute in attributes) {
+//        NSString *strippedAttribute = [self trimQuoteFrom:attribute];
+//        [self assign:strippedAttribute for:newGame];
+//    }
+    
+    for (NSString *header in headers) {
+        
+        if ([header length] > ZERO) {
+            NSArray *headerComponents = [self processHeader:header];
+            [self assignHeader:headerComponents forGame:newGame];
+        }
+        
     }
     
     return newGame;
@@ -197,7 +214,9 @@
     
     // NSString *newAttribute = [attribute stringByTrimmingCharactersInSet:quoteSet];
     NSString *newAttribute = [attribute stringByReplacingOccurrencesOfString:@"\""
-                                                                  withString:@""];
+                                                                  withString:EMPTY_STRING];
+    
+    NSLog(@"Attribute: %@, New Attribute: %@", attribute, newAttribute);
     
     return newAttribute;
 }
@@ -414,6 +433,97 @@ This method will compare the Prefix of an attribute with a game attribute saved
     if (![self.managedObjectContext save:&error]) {
         NSLog(@"FAIL!!!: %@", [error localizedDescription]);
     }
+}
+
+/*
+ This method is an attempt to improve the speed of the parsing
+ process
+*/
+- (void)processFile:(NSString *)fileContents forDatabase:(Database *)database
+{
+    
+}
+
+
+/*
+ This method calls a method to trim the quotes from the incoming
+ string.  Then the method returns an array of the header elements
+*/
+- (NSArray *)processHeader:(NSString *)header
+{
+    header = [self trimQuoteFrom:header];
+    NSLog(@"header: %@", header);
+    NSRange firstSpace = [header rangeOfString:SPACE];
+    
+    NSLog(@"location: %lu", (unsigned long)firstSpace.location);
+    
+    NSArray *components = @[[header substringToIndex:firstSpace.location],
+                            [header substringFromIndex:firstSpace.location]];
+    
+    return components;
+}
+
+
+/*
+ This method calls a method that checks the first element of the incoming array.
+ if it is similiar one of the Game object properties.  If similiar the method
+ sets the corresponding property to the second element of the array.
+*/
+- (void)assignHeader:(NSArray *)headerComponents forGame:(Game *)game
+{
+    if ([self header:headerComponents[ZERO] representsAttribute:BLACK_CD]) {
+       
+        game.black = headerComponents[ONE];
+        
+    } else if ([self header:headerComponents[ZERO] representsAttribute:BLACK_ELO_CD]) {
+        
+        game.blackElo = [NSNumber numberWithInt:[headerComponents[ONE] integerValue]];
+        
+    } else if ([self header:headerComponents[ZERO] representsAttribute:DATE_CD]) {
+        
+        //game.date = headerComponents[ONE];
+        
+        [self valueForDateAttribute:headerComponents[ONE] in:game];
+        
+    } else if ([self header:headerComponents[ZERO] representsAttribute:ECO_CD]) {
+        
+        game.eco = headerComponents[ONE];
+        
+    } else if ([self header:headerComponents[ZERO] representsAttribute:EVENT_CD]) {
+        
+        game.event = headerComponents[ONE];
+        
+    } else if ([self header:headerComponents[ZERO] representsAttribute:RESULT_CD]) {
+        
+        game.result = headerComponents[ONE];
+        
+    } else if ([self header:headerComponents[ZERO] representsAttribute:SITE_CD]) {
+        
+        game.site = headerComponents[ONE];
+        
+    } else if ([self header:headerComponents[ZERO] representsAttribute:WHITE_CD]) {
+        
+        game.white = headerComponents[ONE];
+        
+    } else if ([self header:headerComponents[ZERO] representsAttribute:WHITE_ELO_CD]) {
+        
+        game.whiteElo = [NSNumber numberWithInt:[headerComponents[ONE] integerValue]];
+    }
+}
+
+
+/*
+ This method checks if the to incoming strings are ordered the same
+*/
+- (BOOL)header:(NSString *)header representsAttribute:(NSString *)attribute
+{
+    NSComparisonResult result = [header caseInsensitiveCompare:attribute];
+    
+    if (result == NSOrderedSame) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end
