@@ -16,6 +16,7 @@ Tuesday November 19th
 ---------------------
 - 10:20 am - 11:20 am: brainstorming
 - 11:20 am - 1:05 pm: working on improving parser class
+- 2:40 pm - 
 
     daily hours: 2 hours 45 minutes
     weekly hours: 7 hours 45 minutes

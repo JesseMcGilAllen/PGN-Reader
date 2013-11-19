@@ -40,9 +40,11 @@
 
     Database *newDatabase = [self databaseFor:fileName];
     
-    NSArray *linesInFile = [fileContents componentsSeparatedByString:@"\n"];
+    [self processFile:fileContents forDatabase:newDatabase];
     
-    [self gamesFromFile:linesInFile forDatabase:newDatabase];
+    //NSArray *linesInFile = [fileContents componentsSeparatedByString:@"\n"];
+    
+    //[self gamesFromFile:linesInFile forDatabase:newDatabase];
     
 
     return YES;
@@ -435,15 +437,10 @@ This method will compare the Prefix of an attribute with a game attribute saved
     }
 }
 
-/*
- This method is an attempt to improve the speed of the parsing
- process
-*/
-- (void)processFile:(NSString *)fileContents forDatabase:(Database *)database
-{
-    
-}
 
+
+
+# pragma mark - attempt Two
 
 /*
  This method calls a method to trim the quotes from the incoming
@@ -524,6 +521,57 @@ This method will compare the Prefix of an attribute with a game attribute saved
     }
     
     return NO;
+}
+
+# pragma mark - Attempt Three
+
+/*
+ This method is an attempt to improve the speed of the parsing
+ process
+ */
+- (void)processFile:(NSString *)fileContents forDatabase:(Database *)database
+{
+    NSRegularExpression *regularExpression = [self regularExpressionToSeperateGames];
+    
+    __block NSUInteger location = ZERO;
+    __block NSRange gameRange;
+    
+    [regularExpression enumerateMatchesInString:fileContents options:ZERO
+                                         range:NSMakeRange(ZERO, [fileContents length])
+                                    usingBlock:^(NSTextCheckingResult *match,
+                                                 NSMatchingFlags flags,
+                                                 BOOL *stop)
+    {
+        NSLog(@"Match location: %d", [match range].location);
+        NSLog(@"Match length : %d", [match range].length);
+        
+        gameRange.location = location;
+        gameRange.length = ([match range].location + [match range].length) - location;
+        
+        NSLog(@"Game String Length: %d", gameRange.length);
+        
+        NSString *gameString = [fileContents substringWithRange:gameRange];
+        NSLog(@"Game:\n-----\n %@", gameString);
+        
+        location = gameRange.location + gameRange.length;
+        
+        NSLog(@"\nLocation: %d", location);
+        
+    }];
+    
+}
+
+- (NSRegularExpression *)regularExpressionToSeperateGames
+{
+    NSRegularExpression *regularExpression;
+    NSString *resultExpression = @"\\s(1-0|0-1|1\\/2-1\\/2|\\*)";
+    NSError *error = nil;
+    
+    regularExpression = [NSRegularExpression regularExpressionWithPattern:resultExpression
+                                                                  options:ZERO
+                                                                    error:&error];
+    
+    return regularExpression;
 }
 
 @end
