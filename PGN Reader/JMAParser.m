@@ -40,11 +40,11 @@
 
     Database *newDatabase = [self databaseFor:fileName];
     
-    [self processFile:fileContents forDatabase:newDatabase];
+    //[self processFile:fileContents forDatabase:newDatabase];
     
-    //NSArray *linesInFile = [fileContents componentsSeparatedByString:@"\n"];
+    NSArray *linesInFile = [fileContents componentsSeparatedByString:@"\n"];
     
-    //[self gamesFromFile:linesInFile forDatabase:newDatabase];
+    [self gamesFromFile:linesInFile forDatabase:newDatabase];
     
 
     return YES;
@@ -179,22 +179,10 @@
      NSMutableArray *headers = [[NSMutableArray alloc] initWithArray:attributes];
     [headers removeLastObject];
     newGame.moves = [attributes lastObject];
-    NSLog(@"Attributes: %@", attributes);
-    NSLog(@"Headers: %@", headers);
 
-    
-   
-    
-    
-    
-//    for (NSString *attribute in attributes) {
-//        NSString *strippedAttribute = [self trimQuoteFrom:attribute];
-//        [self assign:strippedAttribute for:newGame];
-//    }
-    
     for (NSString *header in headers) {
         
-        if ([header length] > ZERO) {
+        if ([header length] > TWO) {
             NSArray *headerComponents = [self processHeader:header];
             [self assignHeader:headerComponents forGame:newGame];
         }
@@ -217,9 +205,7 @@
     // NSString *newAttribute = [attribute stringByTrimmingCharactersInSet:quoteSet];
     NSString *newAttribute = [attribute stringByReplacingOccurrencesOfString:@"\""
                                                                   withString:EMPTY_STRING];
-    
-    NSLog(@"Attribute: %@, New Attribute: %@", attribute, newAttribute);
-    
+
     return newAttribute;
 }
 
@@ -449,13 +435,13 @@ This method will compare the Prefix of an attribute with a game attribute saved
 - (NSArray *)processHeader:(NSString *)header
 {
     header = [self trimQuoteFrom:header];
-    NSLog(@"header: %@", header);
+    
     NSRange firstSpace = [header rangeOfString:SPACE];
-    
-    NSLog(@"location: %lu", (unsigned long)firstSpace.location);
-    
+        
     NSArray *components = @[[header substringToIndex:firstSpace.location],
                             [header substringFromIndex:firstSpace.location]];
+    
+    
     
     return components;
 }
@@ -542,21 +528,18 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                                  NSMatchingFlags flags,
                                                  BOOL *stop)
     {
-        NSLog(@"Match location: %d", [match range].location);
-        NSLog(@"Match length : %d", [match range].length);
         
         gameRange.location = location;
         gameRange.length = ([match range].location + [match range].length) - location;
-        
-        NSLog(@"Game String Length: %d", gameRange.length);
-        
+     
         NSString *gameString = [fileContents substringWithRange:gameRange];
-        NSLog(@"Game:\n-----\n %@", gameString);
+        
+        Game *newGame = [self gameFrom:gameString];
+        [database addGamesObject:newGame];
+        
+        [self save];
         
         location = gameRange.location + gameRange.length;
-        
-        NSLog(@"\nLocation: %d", location);
-        
     }];
     
 }
@@ -572,6 +555,15 @@ This method will compare the Prefix of an attribute with a game attribute saved
                                                                     error:&error];
     
     return regularExpression;
+}
+
+- (NSArray *)headersFromAttributes:(NSArray *)attributes
+{
+    NSMutableArray *headers = [[NSMutableArray alloc] initWithArray:attributes];
+    
+
+    
+    return headers;
 }
 
 @end

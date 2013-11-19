@@ -183,6 +183,8 @@
         
         url = pgnUrl;
         
+        NSLog(@"Start Time: %@", [NSDate date]);
+        
     }
     
     [parserQueue addOperationWithBlock:^{
@@ -197,6 +199,7 @@
                 if (self.databasesTableViewController.view.window) {
                     [self.databasesTableViewController reload];
                 }
+                NSLog(@"End Time: %@", [NSDate date]);
             }];
         }
     }];
