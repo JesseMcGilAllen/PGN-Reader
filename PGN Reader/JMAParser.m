@@ -40,11 +40,11 @@
 
     Database *newDatabase = [self databaseFor:fileName];
     
-    //[self processFile:fileContents forDatabase:newDatabase];
+    [self processFile:fileContents forDatabase:newDatabase];
     
-    NSArray *linesInFile = [fileContents componentsSeparatedByString:@"\n"];
+    //NSArray *linesInFile = [fileContents componentsSeparatedByString:@"\n"];
     
-    [self gamesFromFile:linesInFile forDatabase:newDatabase];
+    //[self gamesFromFile:linesInFile forDatabase:newDatabase];
     
 
     return YES;

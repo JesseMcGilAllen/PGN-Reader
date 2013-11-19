@@ -16,8 +16,8 @@ Tuesday November 19th
 ---------------------
 - 10:20 am - 11:20 am: brainstorming
 - 11:20 am - 1:05 pm: working on improving parser class
-- 2:40 pm - 5:05 pm: implemented different algorithm in JMAParser Class
+- 2:40 pm - 5:15 pm: implemented different algorithm in JMAParser Class
 
-    daily hours: 5 hours 05 minutes
-    weekly hours: 10 hours 05 minutes
+    daily hours: 5 hours 15 minutes
+    weekly hours: 10 hours 15 minutes
 

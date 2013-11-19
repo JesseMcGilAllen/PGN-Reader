@@ -20,3 +20,6 @@ Ideas
       the game is not seperated.  The games seperated after moves are played
       due to the search being for " 1-0", etc.  No moves mean no space prior.
       Possible solution: check for white space not just a string
+
+- currently take 2 minutes 10 seconds to parse 6434 games file from twic
+    - Everyman's app does it in 15 seconds
