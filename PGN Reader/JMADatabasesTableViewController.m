@@ -74,7 +74,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-   
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+   NSLog(@"Count: %d", [self.databases count]);
     
     // Return the number of rows in the section.
     return [self.databases count];
@@ -283,8 +284,8 @@
 */
 - (void)reload
 {
-    
-    [self resetFetchedResultsController];
+    NSLog(@"In Reload Method");
+    [self resetDatabasesArray];
     [self.tableView reloadData];
  
 }

@@ -193,6 +193,7 @@
         
         if (finished) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                NSLog(@"in Completion Block");
                 if (self.databasesTableViewController.view.window) {
                     [self.databasesTableViewController reload];
                 }
