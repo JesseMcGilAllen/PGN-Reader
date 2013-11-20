@@ -6,10 +6,13 @@
 const struct GameAttributes GameAttributes = {
 	.black = @"black",
 	.blackElo = @"blackElo",
+	.completed = @"completed",
 	.date = @"date",
 	.eco = @"eco",
 	.event = @"event",
+	.gameString = @"gameString",
 	.moves = @"moves",
+	.orderingValue = @"orderingValue",
 	.result = @"result",
 	.site = @"site",
 	.white = @"white",
@@ -51,6 +54,14 @@ const struct GameFetchedProperties GameFetchedProperties = {
 	
 	if ([key isEqualToString:@"blackEloValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"blackElo"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+	}
+	if ([key isEqualToString:@"completedValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"completed"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+	}
+	if ([key isEqualToString:@"orderingValueValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"orderingValue"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
 	if ([key isEqualToString:@"whiteEloValue"]) {
@@ -97,6 +108,32 @@ const struct GameFetchedProperties GameFetchedProperties = {
 
 
 
+@dynamic completed;
+
+
+
+- (BOOL)completedValue {
+	NSNumber *result = [self completed];
+	return [result boolValue];
+}
+
+- (void)setCompletedValue:(BOOL)value_ {
+	[self setCompleted:[NSNumber numberWithBool:value_]];
+}
+
+- (BOOL)primitiveCompletedValue {
+	NSNumber *result = [self primitiveCompleted];
+	return [result boolValue];
+}
+
+- (void)setPrimitiveCompletedValue:(BOOL)value_ {
+	[self setPrimitiveCompleted:[NSNumber numberWithBool:value_]];
+}
+
+
+
+
+
 @dynamic date;
 
 
@@ -118,8 +155,41 @@ const struct GameFetchedProperties GameFetchedProperties = {
 
 
 
+@dynamic gameString;
+
+
+
+
+
+
 @dynamic moves;
 
+
+
+
+
+
+@dynamic orderingValue;
+
+
+
+- (int32_t)orderingValueValue {
+	NSNumber *result = [self orderingValue];
+	return [result intValue];
+}
+
+- (void)setOrderingValueValue:(int32_t)value_ {
+	[self setOrderingValue:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveOrderingValueValue {
+	NSNumber *result = [self primitiveOrderingValue];
+	return [result intValue];
+}
+
+- (void)setPrimitiveOrderingValueValue:(int32_t)value_ {
+	[self setPrimitiveOrderingValue:[NSNumber numberWithInt:value_]];
+}
 
 
 

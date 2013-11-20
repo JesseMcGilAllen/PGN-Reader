@@ -23,3 +23,27 @@ Ideas
 
 - currently take 2 minutes 10 seconds to parse 6434 games file from twic
     - Everyman's app does it in 15 seconds
+- what if I were to do the absolute minimal processing to save the file in 
+    Core Data.  Meaning I would just seperate the games into Strings and
+    save them in an attribute of the game class to finish processing later.
+
+- It looks like I need to rework my Core Data Entities.  Date no longer needs 
+    to be a Date.  Date should probably be a String object.  Most file do not 
+    use the proper format anyway.  I could possibly add a gameString class to
+    postpone processing until needed.
+
+- I just ran a test with the 6434 game database that is twic977.  
+    Seperating the games and keeping track of the count took 2 seconds.
+    Printing each game to the Log as a string took 25 seconds. 
+    
+-  What is the absolute minimum I need in order to save each game?
+    - string of game
+    - white player, black player, result?  (in order to not have to process
+        each file as scrolling in database tableView)
+    - rest of processing will either occur in the game selection of database
+        table view or the more info on game selection in same view
+
+- Tried reworking Core Data and saving bare essentials, took 1 minute 40 seconds
+    that is not worth the change
+
+- The only thing left is to try parsing in C

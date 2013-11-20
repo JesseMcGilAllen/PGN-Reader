@@ -251,7 +251,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
         
     } else if ([self comparePrefixOf:attribute to:DATE_CD]) {
         
-        [self valueForDateAttribute:attribute in:game];
+        //[self valueForDateAttribute:attribute in:game];
         
     } else if ([self comparePrefixOf:attribute to:ECO_CD]) {
         
@@ -321,23 +321,23 @@ This method will compare the Prefix of an attribute with a game attribute saved
     
 }
 
-/*
- This method creates a NSDateFormatter object and uses it to convert the 
- incoming attribute value to a date and sets the newGame object date value
-*/
-- (void)valueForDateAttribute:(NSString *)attribute in:(Game *)newGame
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy/MM/dd"];
-    
-    NSString *valueForDate = [self valueFrom:attribute
-                                 forCoreData:DATE_CD];
-    
-    NSDate *date = [dateFormatter dateFromString:valueForDate];
-    
-    newGame.date = date;
-    //NSLog(@"Date: %@", newGame.date);
-}
+///*
+// This method creates a NSDateFormatter object and uses it to convert the 
+// incoming attribute value to a date and sets the newGame object date value
+//*/
+//- (void)valueForDateAttribute:(NSString *)attribute in:(Game *)newGame
+//{
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"yyyy/MM/dd"];
+//    
+//    NSString *valueForDate = [self valueFrom:attribute
+//                                 forCoreData:DATE_CD];
+//    
+//    NSDate *date = [dateFormatter dateFromString:valueForDate];
+//    
+//    newGame.date = date;
+//    //NSLog(@"Date: %@", newGame.date);
+//}
 
 /*
  This method sets the value of the eco property of the newGame object
@@ -466,7 +466,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
         
         //game.date = headerComponents[ONE];
         
-        [self valueForDateAttribute:headerComponents[ONE] in:game];
+        // [self valueForDateAttribute:headerComponents[ONE] in:game];
         
     } else if ([self header:headerComponents[ZERO] representsAttribute:ECO_CD]) {
         
@@ -521,6 +521,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
     
     __block NSUInteger location = ZERO;
     __block NSRange gameRange;
+    __block int gameCount = (int)ZERO;
     
     [regularExpression enumerateMatchesInString:fileContents options:ZERO
                                          range:NSMakeRange(ZERO, [fileContents length])
@@ -534,13 +535,24 @@ This method will compare the Prefix of an attribute with a game attribute saved
      
         NSString *gameString = [fileContents substringWithRange:gameRange];
         
-        Game *newGame = [self gameFrom:gameString];
-        [database addGamesObject:newGame];
+        Game *aGame = [NSEntityDescription insertNewObjectForEntityForName:GAME_CD_ENTITY
+                                                  inManagedObjectContext:self.managedObjectContext];
+        
+        aGame.orderingValue = [NSNumber numberWithInt:gameCount];
+        aGame.gameString = gameString;
+        aGame.completed = NO;
+        
+        
+        //Game *newGame = [self gameFrom:gameString];
+        [database addGamesObject:aGame];
         
         [self save];
+        gameCount++;
         
         location = gameRange.location + gameRange.length;
     }];
+    
+    
     
 }
 

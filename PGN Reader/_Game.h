@@ -7,10 +7,13 @@
 extern const struct GameAttributes {
 	__unsafe_unretained NSString *black;
 	__unsafe_unretained NSString *blackElo;
+	__unsafe_unretained NSString *completed;
 	__unsafe_unretained NSString *date;
 	__unsafe_unretained NSString *eco;
 	__unsafe_unretained NSString *event;
+	__unsafe_unretained NSString *gameString;
 	__unsafe_unretained NSString *moves;
+	__unsafe_unretained NSString *orderingValue;
 	__unsafe_unretained NSString *result;
 	__unsafe_unretained NSString *site;
 	__unsafe_unretained NSString *white;
@@ -25,6 +28,9 @@ extern const struct GameFetchedProperties {
 } GameFetchedProperties;
 
 @class Database;
+
+
+
 
 
 
@@ -69,7 +75,19 @@ extern const struct GameFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* date;
+@property (nonatomic, strong) NSNumber* completed;
+
+
+@property BOOL completedValue;
+- (BOOL)completedValue;
+- (void)setCompletedValue:(BOOL)value_;
+
+//- (BOOL)validateCompleted:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) NSString* date;
 
 
 //- (BOOL)validateDate:(id*)value_ error:(NSError**)error_;
@@ -93,10 +111,30 @@ extern const struct GameFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSString* gameString;
+
+
+//- (BOOL)validateGameString:(id*)value_ error:(NSError**)error_;
+
+
+
+
 @property (nonatomic, strong) NSString* moves;
 
 
 //- (BOOL)validateMoves:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) NSNumber* orderingValue;
+
+
+@property int32_t orderingValueValue;
+- (int32_t)orderingValueValue;
+- (void)setOrderingValueValue:(int32_t)value_;
+
+//- (BOOL)validateOrderingValue:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -170,8 +208,17 @@ extern const struct GameFetchedProperties {
 
 
 
-- (NSDate*)primitiveDate;
-- (void)setPrimitiveDate:(NSDate*)value;
+- (NSNumber*)primitiveCompleted;
+- (void)setPrimitiveCompleted:(NSNumber*)value;
+
+- (BOOL)primitiveCompletedValue;
+- (void)setPrimitiveCompletedValue:(BOOL)value_;
+
+
+
+
+- (NSString*)primitiveDate;
+- (void)setPrimitiveDate:(NSString*)value;
 
 
 
@@ -188,8 +235,23 @@ extern const struct GameFetchedProperties {
 
 
 
+- (NSString*)primitiveGameString;
+- (void)setPrimitiveGameString:(NSString*)value;
+
+
+
+
 - (NSString*)primitiveMoves;
 - (void)setPrimitiveMoves:(NSString*)value;
+
+
+
+
+- (NSNumber*)primitiveOrderingValue;
+- (void)setPrimitiveOrderingValue:(NSNumber*)value;
+
+- (int32_t)primitiveOrderingValueValue;
+- (void)setPrimitiveOrderingValueValue:(int32_t)value_;
 
 
 
