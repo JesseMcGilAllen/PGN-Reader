@@ -26,6 +26,8 @@ Wednesday November 20th
 -----------------------
 - 12:25 pm - 1:30 pm: tried minimalized core data idea, 
                       implemented core data debugging
+3:00 pm - 3:25 pm: moving the save outside of the parsing loop
+                   solves parse time issue
 
-    daily hours: 1 hour 5 minutes
-    weekly hours: 12 hours 5 minutes
+    daily hours: 1 hour 30 minutes
+    weekly hours: 12 hours 30 minutes

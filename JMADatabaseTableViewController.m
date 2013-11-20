@@ -81,8 +81,7 @@
     Game *game = self.games[indexPath.row];
     
     NSString *gameString = [NSString stringWithFormat:@"%@ - %@", game.white, game.black];
-    NSLog(@"%@", game.gameString);
-    
+
     cell.textLabel.text = gameString;
 }
 

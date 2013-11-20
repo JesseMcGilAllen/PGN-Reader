@@ -6,11 +6,9 @@
 const struct GameAttributes GameAttributes = {
 	.black = @"black",
 	.blackElo = @"blackElo",
-	.completed = @"completed",
 	.date = @"date",
 	.eco = @"eco",
 	.event = @"event",
-	.gameString = @"gameString",
 	.moves = @"moves",
 	.orderingValue = @"orderingValue",
 	.result = @"result",
@@ -54,10 +52,6 @@ const struct GameFetchedProperties GameFetchedProperties = {
 	
 	if ([key isEqualToString:@"blackEloValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"blackElo"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-	}
-	if ([key isEqualToString:@"completedValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"completed"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
 	if ([key isEqualToString:@"orderingValueValue"]) {
@@ -108,32 +102,6 @@ const struct GameFetchedProperties GameFetchedProperties = {
 
 
 
-@dynamic completed;
-
-
-
-- (BOOL)completedValue {
-	NSNumber *result = [self completed];
-	return [result boolValue];
-}
-
-- (void)setCompletedValue:(BOOL)value_ {
-	[self setCompleted:[NSNumber numberWithBool:value_]];
-}
-
-- (BOOL)primitiveCompletedValue {
-	NSNumber *result = [self primitiveCompleted];
-	return [result boolValue];
-}
-
-- (void)setPrimitiveCompletedValue:(BOOL)value_ {
-	[self setPrimitiveCompleted:[NSNumber numberWithBool:value_]];
-}
-
-
-
-
-
 @dynamic date;
 
 
@@ -149,13 +117,6 @@ const struct GameFetchedProperties GameFetchedProperties = {
 
 
 @dynamic event;
-
-
-
-
-
-
-@dynamic gameString;
 
 
 

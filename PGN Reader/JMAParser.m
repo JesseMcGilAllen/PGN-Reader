@@ -464,7 +464,7 @@ This method will compare the Prefix of an attribute with a game attribute saved
         
     } else if ([self header:headerComponents[ZERO] representsAttribute:DATE_CD]) {
         
-        //game.date = headerComponents[ONE];
+        game.date = headerComponents[ONE];
         
         // [self valueForDateAttribute:headerComponents[ONE] in:game];
         
@@ -535,23 +535,24 @@ This method will compare the Prefix of an attribute with a game attribute saved
      
         NSString *gameString = [fileContents substringWithRange:gameRange];
         
-        Game *aGame = [NSEntityDescription insertNewObjectForEntityForName:GAME_CD_ENTITY
-                                                  inManagedObjectContext:self.managedObjectContext];
+        Game *aGame = [self gameFrom:gameString];
         
         aGame.orderingValue = [NSNumber numberWithInt:gameCount];
-        aGame.gameString = gameString;
-        aGame.completed = NO;
         
         
-        //Game *newGame = [self gameFrom:gameString];
+        //aGame.gameString = gameString;
+        //aGame.completed = NO;
+        
+        
         [database addGamesObject:aGame];
         
-        [self save];
+        
         gameCount++;
         
         location = gameRange.location + gameRange.length;
     }];
     
+    [self save];
     
     
 }

@@ -7,11 +7,9 @@
 extern const struct GameAttributes {
 	__unsafe_unretained NSString *black;
 	__unsafe_unretained NSString *blackElo;
-	__unsafe_unretained NSString *completed;
 	__unsafe_unretained NSString *date;
 	__unsafe_unretained NSString *eco;
 	__unsafe_unretained NSString *event;
-	__unsafe_unretained NSString *gameString;
 	__unsafe_unretained NSString *moves;
 	__unsafe_unretained NSString *orderingValue;
 	__unsafe_unretained NSString *result;
@@ -28,8 +26,6 @@ extern const struct GameFetchedProperties {
 } GameFetchedProperties;
 
 @class Database;
-
-
 
 
 
@@ -75,18 +71,6 @@ extern const struct GameFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* completed;
-
-
-@property BOOL completedValue;
-- (BOOL)completedValue;
-- (void)setCompletedValue:(BOOL)value_;
-
-//- (BOOL)validateCompleted:(id*)value_ error:(NSError**)error_;
-
-
-
-
 @property (nonatomic, strong) NSString* date;
 
 
@@ -107,14 +91,6 @@ extern const struct GameFetchedProperties {
 
 
 //- (BOOL)validateEvent:(id*)value_ error:(NSError**)error_;
-
-
-
-
-@property (nonatomic, strong) NSString* gameString;
-
-
-//- (BOOL)validateGameString:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -208,15 +184,6 @@ extern const struct GameFetchedProperties {
 
 
 
-- (NSNumber*)primitiveCompleted;
-- (void)setPrimitiveCompleted:(NSNumber*)value;
-
-- (BOOL)primitiveCompletedValue;
-- (void)setPrimitiveCompletedValue:(BOOL)value_;
-
-
-
-
 - (NSString*)primitiveDate;
 - (void)setPrimitiveDate:(NSString*)value;
 
@@ -231,12 +198,6 @@ extern const struct GameFetchedProperties {
 
 - (NSString*)primitiveEvent;
 - (void)setPrimitiveEvent:(NSString*)value;
-
-
-
-
-- (NSString*)primitiveGameString;
-- (void)setPrimitiveGameString:(NSString*)value;
 
 
 
