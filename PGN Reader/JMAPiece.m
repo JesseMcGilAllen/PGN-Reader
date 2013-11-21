@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) NSDictionary *unicodeDictionary;
 @property (strong, nonatomic) NSDictionary *imageDictionary;
+@property (strong, nonatomic) JMASquare *originalSquare;
 @end
 
 @implementation JMAPiece
@@ -31,15 +32,6 @@
 
 - (id)initWithSquare:(JMASquare *)square type:(NSString *)type forColor:(NSString *)color
 {
-//    CGFloat yOffset = square.frame.size.height / SEVEN;
-//    CGFloat xOffset = square.frame.size.width / EIGHT;
-//    
-//    CGFloat xOrigin = square.frame.origin.x + xOffset;
-//    CGFloat yOrigin = square.frame.origin.y - yOffset;
-//    
-//    CGRect pieceFrame = CGRectMake(xOrigin, yOrigin, square.frame.size.width, square.frame.size.height);
-//    
-//    self = [super initWithFrame:pieceFrame];
     
     self = [super initWithFrame:square.frame];
     
@@ -47,6 +39,7 @@
         _color = color;
         _type = type;
         _square = square;
+        _originalSquare = square;
         _square.piece = self;
         
         _unicodeDictionary = @{WHITE_KING: @"\u2654",
@@ -78,17 +71,22 @@
         
     }
     
-    //[self drawPieceImage];
-    
-     self.opaque = NO;
-    
-    //[square addSubview:self];
+    self.opaque = NO;
     
     return self;
     
     
 }
 
+/*
+ Returns whether the square the piece sits on is equal to its original square
+*/
+- (BOOL)onOriginalSquare
+{
+    return [self.square isEqual:self.originalSquare];
+}
+
+# pragma mark - drawing piece
 /*
  This method returns a UIColor object representing the piece's color
 */

@@ -20,4 +20,6 @@
                 type:(NSString *)type
             forColor:(NSString *)color;
 
+- (BOOL)onOriginalSquare;
+
 @end

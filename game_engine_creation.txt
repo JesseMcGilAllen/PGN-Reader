@@ -31,4 +31,28 @@ I don't think I can do this as I am currently proceeding, I need to plan the
 Game playback though
 If I don't it will end up the same way.
 
+Board View
+----------
+- draw squares
+- draw board
+- remove pieces
 
+Board Model
+-----------
+- create squares
+    - configure squares
+- create pieces
+- add pieces to squares
+- hold board representation
+- hold past board representation
+- castling rights
+- en passant right
+- king position
+
+Move Generator
+--------------
+
+
+
+- Where do I define move rules?
+    + like how pieces move, etc.
