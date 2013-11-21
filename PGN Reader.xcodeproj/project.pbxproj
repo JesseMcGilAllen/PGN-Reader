@@ -32,6 +32,7 @@
 		37158829183D717C000FF8F7 /* _Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 37158823183D717C000FF8F7 /* _Game.m */; };
 		3715882A183D717C000FF8F7 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 37158825183D717C000FF8F7 /* Database.m */; };
 		3715882B183D717C000FF8F7 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 37158827183D717C000FF8F7 /* Game.m */; };
+		3715882E183E8D6F000FF8F7 /* JMABoardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3715882D183E8D6F000FF8F7 /* JMABoardModel.m */; };
 		37342322182B1A3400808D62 /* JMADatabasesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37342321182B1A3400808D62 /* JMADatabasesCell.m */; };
 		37342331182B4A0D00808D62 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 37342327182B4A0D00808D62 /* ioapi.c */; };
 		37342332182B4A0D00808D62 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 37342329182B4A0D00808D62 /* mztools.c */; };
@@ -93,6 +94,8 @@
 		37158825183D717C000FF8F7 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
 		37158826183D717C000FF8F7 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		37158827183D717C000FF8F7 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		3715882C183E8D6F000FF8F7 /* JMABoardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMABoardModel.h; sourceTree = "<group>"; };
+		3715882D183E8D6F000FF8F7 /* JMABoardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMABoardModel.m; sourceTree = "<group>"; };
 		37342320182B1A3400808D62 /* JMADatabasesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMADatabasesCell.h; sourceTree = "<group>"; };
 		37342321182B1A3400808D62 /* JMADatabasesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMADatabasesCell.m; sourceTree = "<group>"; };
 		37342326182B4A0D00808D62 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
@@ -169,20 +172,30 @@
 		37077C07182DA6A4006B6AC3 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				3715882F183E8D77000FF8F7 /* Board */,
 				37077C04182DA691006B6AC3 /* JMAGameViewController.h */,
 				37077C05182DA691006B6AC3 /* JMAGameViewController.m */,
-				37077C08182DE41F006B6AC3 /* JMABoardView.h */,
-				37077C09182DE41F006B6AC3 /* JMABoardView.m */,
-				37077C0B182DE72E006B6AC3 /* JMASquare.h */,
-				37077C0C182DE72E006B6AC3 /* JMASquare.m */,
-				373695B6183195E600793672 /* JMAPiece.h */,
-				373695B7183195E600793672 /* JMAPiece.m */,
 				37F637BC1835413300A4BD7D /* JMAMovesListParser.h */,
 				37F637BD1835413300A4BD7D /* JMAMovesListParser.m */,
 				3703E5A01837241E00B0D9CC /* JMAGameEngine.h */,
 				3703E5A11837241E00B0D9CC /* JMAGameEngine.m */,
 			);
 			name = Game;
+			sourceTree = "<group>";
+		};
+		3715882F183E8D77000FF8F7 /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				3715882C183E8D6F000FF8F7 /* JMABoardModel.h */,
+				3715882D183E8D6F000FF8F7 /* JMABoardModel.m */,
+				37077C08182DE41F006B6AC3 /* JMABoardView.h */,
+				37077C09182DE41F006B6AC3 /* JMABoardView.m */,
+				37077C0B182DE72E006B6AC3 /* JMASquare.h */,
+				37077C0C182DE72E006B6AC3 /* JMASquare.m */,
+				373695B6183195E600793672 /* JMAPiece.h */,
+				373695B7183195E600793672 /* JMAPiece.m */,
+			);
+			name = Board;
 			sourceTree = "<group>";
 		};
 		37342323182B294B00808D62 /* JMAParser */ = {
@@ -486,6 +499,7 @@
 				3715882B183D717C000FF8F7 /* Game.m in Sources */,
 				37342335182B4A0D00808D62 /* SSZipArchive.m in Sources */,
 				37AF5ACA18103A6200B86F79 /* main.m in Sources */,
+				3715882E183E8D6F000FF8F7 /* JMABoardModel.m in Sources */,
 				37342332182B4A0D00808D62 /* mztools.c in Sources */,
 				3770535B1819C43500B2877B /* JMADatabaseTableViewController.m in Sources */,
 				3715882A183D717C000FF8F7 /* Database.m in Sources */,
