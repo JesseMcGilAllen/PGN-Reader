@@ -55,8 +55,6 @@
 {
     
     // Drawing code
-    //CGContextRef context = UIGraphicsGetCurrentContext();
-    //CGContextSetFillColorWithColor(context, [[UIColor greenColor] CGColor]);
     UIColor *textColor;
     
     if ([self.color isEqualToString:WHITE]) {

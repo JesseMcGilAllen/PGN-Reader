@@ -11,18 +11,19 @@
 @implementation JMAConstants
 
 // Integers
-NSInteger const ZERO = 0;
-NSInteger const ONE = 1;
-NSInteger const TWO = 2;
-NSInteger const THREE = 3;
-NSInteger const FOUR = 4;
-NSInteger const FIVE = 5;
-NSInteger const SEVEN = 7;
-NSInteger const EIGHT = 8;
-NSInteger const FIFTEEN = 15;
-NSInteger const TWENTY = 20;
-NSInteger const TWENTY_FIVE = 25;
-NSInteger const EIGHTY = 80;
+NSUInteger const ZERO = 0;
+NSUInteger const ONE = 1;
+NSUInteger const TWO = 2;
+NSUInteger const THREE = 3;
+NSUInteger const FOUR = 4;
+NSUInteger const FIVE = 5;
+NSUInteger const SEVEN = 7;
+NSUInteger const EIGHT = 8;
+NSUInteger const FIFTEEN = 15;
+NSUInteger const TWENTY = 20;
+NSUInteger const TWENTY_FIVE = 25;
+NSUInteger const SIXTY_FOUR = 64;
+NSUInteger const EIGHTY = 80;
 
 // Core Data
 // Attribute names

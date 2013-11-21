@@ -56,3 +56,6 @@ Move Generator
 
 - Where do I define move rules?
     + like how pieces move, etc.
+
+- squares or array of enums(integers)
+

@@ -7,7 +7,32 @@
 //
 
 #import "JMABoardModel.h"
+#import "JMAConstants.h"
+
+@interface JMABoardModel ()
+
+@property (strong, nonatomic) NSArray *squares;
+
+@end
 
 @implementation JMABoardModel
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
+- (void)create
+{
+    for (int index = ZERO; index < SIXTY_FOUR; index++) {
+        
+    }
+}
+
+
 
 @end

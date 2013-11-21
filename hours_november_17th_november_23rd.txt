@@ -37,7 +37,7 @@ Thursday November 21st
 ----------------------
 - 11:45 am - 1:15 pm: save chesspublishing file, delete incoming file
                       start reworking board
-- 3:30 pm -
+- 3:30 pm - 5:00 pm: back to game engine work
 
-    daily hours: 1 hour 30 minutes
-    weekly hours: 14 hours 45 minutes
+    daily hours: 3 hours 00 minutes
+    weekly hours: 16 hours 15 minutes

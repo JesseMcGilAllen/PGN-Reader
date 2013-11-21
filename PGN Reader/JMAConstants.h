@@ -12,18 +12,19 @@
 
 
 // Integers
-extern NSInteger const ZERO;
-extern NSInteger const ONE;
-extern NSInteger const TWO;
-extern NSInteger const THREE;
-extern NSInteger const FOUR;
-extern NSInteger const FIVE;
-extern NSInteger const SEVEN;
-extern NSInteger const EIGHT;
-extern NSInteger const FIFTEEN;
-extern NSInteger const TWENTY;
-extern NSInteger const TWENTY_FIVE;
-extern NSInteger const EIGHTY;
+extern NSUInteger const ZERO;
+extern NSUInteger const ONE;
+extern NSUInteger const TWO;
+extern NSUInteger const THREE;
+extern NSUInteger const FOUR;
+extern NSUInteger const FIVE;
+extern NSUInteger const SEVEN;
+extern NSUInteger const EIGHT;
+extern NSUInteger const FIFTEEN;
+extern NSUInteger const TWENTY;
+extern NSUInteger const TWENTY_FIVE;
+extern NSUInteger const SIXTY_FOUR;
+extern NSUInteger const EIGHTY;
 
 // Core Data
 // Attribute Names as saved in Core Data entities
