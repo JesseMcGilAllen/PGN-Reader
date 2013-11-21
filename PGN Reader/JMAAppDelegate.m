@@ -172,16 +172,17 @@
  */
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    
+    NSURL *pgnURL;
+    NSURL *oldURL;
     NSOperationQueue *parserQueue = [[NSOperationQueue alloc] init];
     
     if ([url.pathExtension isEqualToString:@"zip"]) {
         
         NSString *pgnFilePath = [self pathForZippedFileUrlPgnFile:url];
         
-        NSURL *pgnUrl = [NSURL fileURLWithPath:pgnFilePath];
-        
-        url = pgnUrl;
+        pgnURL = [NSURL fileURLWithPath:pgnFilePath];
+        oldURL = url;
+        url = pgnURL;
         
         NSLog(@"Start Time: %@", [NSDate date]);
         
@@ -189,6 +190,7 @@
     
     [parserQueue addOperationWithBlock:^{
         JMAParser *parser = [[JMAParser alloc] init];
+      
         
         BOOL finished = [parser parseFileWithUrl:url
                   withPersistentStoreCoordinator:self.persistentStoreCoordinator];
@@ -196,9 +198,19 @@
         if (finished) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 NSLog(@"in Completion Block");
+                NSError *error = nil;
+                
                 if (self.databasesTableViewController.view.window) {
                     [self.databasesTableViewController reload];
                 }
+                
+                if (pgnURL) {
+                    [[NSFileManager defaultManager] removeItemAtPath:url.path error:&error];
+                } else {
+                    [[NSFileManager defaultManager] removeItemAtPath:url.path error:&error];
+                }
+                
+                
                 NSLog(@"End Time: %@", [NSDate date]);
             }];
         }
