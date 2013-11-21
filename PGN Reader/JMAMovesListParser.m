@@ -38,6 +38,7 @@
         _moveNumber = (int)ONE;
     };
     
+    //NSLog(@"%@", moves);
     [self parse];
     
     return self;

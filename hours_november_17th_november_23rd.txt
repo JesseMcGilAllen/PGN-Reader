@@ -28,6 +28,14 @@ Wednesday November 20th
                       implemented core data debugging
 3:00 pm - 3:25 pm: moving the save outside of the parsing loop
                    solves parse time issue
+4:45 pm - 5:30 pm:  worked on parsing chesspublishing file for CD save
 
-    daily hours: 1 hour 30 minutes
-    weekly hours: 12 hours 30 minutes
+    daily hours: 2 hour 15 minutes
+    weekly hours: 13 hours 15 minutes
+
+Thursday November 21st
+----------------------
+- 11:45 am -
+
+    daily hours: 
+    weekly hours: 13 hours 15 minutes
