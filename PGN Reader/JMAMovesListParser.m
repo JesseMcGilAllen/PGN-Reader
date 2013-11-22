@@ -35,7 +35,7 @@
         _movesToProcess = [moves componentsSeparatedByString:SPACE];
         _textViewString = [NSMutableString stringWithString:EMPTY_STRING];
         _moves = [[NSMutableArray alloc] init];
-        _moveNumber = (int)ONE;
+        _moveNumber = ONE;
     };
     
     //NSLog(@"%@", moves);
@@ -96,6 +96,7 @@
         if (index == ([self.movesToProcess count] - ONE)) {
             self.finished = YES;
         }
+        
 
     }];
 }
@@ -180,9 +181,11 @@
 - (BOOL)isMoveNumber:(NSString *)component
 {
     int moveValue = [[component stringByReplacingOccurrencesOfString:PERIOD
-                                                          withString:PERIOD] intValue];
+                                                          withString:SPACE] intValue];
     
-    if (moveValue == self.moveNumber) {
+    
+    
+    if (moveValue > ZERO) {
         return YES;
     } else {
         return NO;
@@ -213,12 +216,16 @@
 */
 - (void)processMoveNumber:(NSString *)component
 {
+    self.moveNumber++;
     if (self.moveNumber > ONE) {
         [self.textViewString appendString:NEW_LINE];
+        
     }
     
+    
+    
     [self.textViewString appendString:component];
-    self.moveNumber++;
+    
 }
 
 /*

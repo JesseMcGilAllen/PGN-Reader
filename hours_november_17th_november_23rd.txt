@@ -47,9 +47,11 @@ Thursday November 21st
 Friday November 22nd
 --------------------
 - 10:30 am - 11:00 am: thought about boardmodel/view interaction, enums
-- 2:30 pm -
+- 2:30 pm - 4:00 pm: implemented boardmodel class to move the board back to MVC
+                     architecture 
+- 5:40 pm -
 
-    daily hours: 0 hours 30 minutes
-    weekly hours: 18 hours 30 minutes
+    daily hours: 2 hours 00 minutes
+    weekly hours: 20 hours 00 minutes
 
 

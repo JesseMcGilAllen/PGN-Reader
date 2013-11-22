@@ -371,7 +371,10 @@
         if (self.movesListParser.finished) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 self.movesListView.text = [self.movesListParser movesForTextView];
-                self.gameEngine.moves = [self.movesListParser movesForGame];
+                NSLog(@"Moves List Completed!");
+                NSLog(@"%@", [self.movesListParser movesForTextView]);
+                
+                // self.gameEngine.moves = [self.movesListParser movesForGame];
                 [self.movesListView setNeedsDisplay];
             }];
         }
