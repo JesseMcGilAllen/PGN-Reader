@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSDictionary *unicodeDictionary;
 @property (strong, nonatomic) NSDictionary *imageDictionary;
 @property (strong, nonatomic) JMASquare *originalSquare;
+@property (assign, nonatomic) int numberOfMoves;
 @end
 
 @implementation JMAPiece
@@ -41,6 +42,7 @@
         _square = square;
         _originalSquare = square;
         _square.piece = self;
+        _numberOfMoves = (int)ZERO;
         
         _unicodeDictionary = @{WHITE_KING: @"\u2654",
                                WHITE_QUEEN: @"\u2655",

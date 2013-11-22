@@ -12,6 +12,7 @@
 #import "JMAConstants.h"
 #import "JMAMovesListParser.h"
 #import "JMAGameEngine.h"
+#import "JMABoardModel.h"
 
 @interface JMAGameViewController ()
 @property (weak, nonatomic) IBOutlet JMABoardView *boardView;
@@ -19,6 +20,7 @@
 
 @property (strong, nonatomic) JMAMovesListParser *movesListParser;
 @property (strong, nonatomic) JMAGameEngine *gameEngine;
+@property (strong, nonatomic) JMABoardModel *boardModel;
 
 @property (assign, nonatomic) UIEdgeInsets portraitInsets;
 @property (assign, nonatomic) UIEdgeInsets landscapeInsets;
@@ -50,7 +52,11 @@
     
     self.gameEngine = [[JMAGameEngine alloc] init];
     
-        [self configureMovesList];
+    [self configureMovesList];
+    
+    self.boardModel = [[JMABoardModel alloc] init];
+    
+    [self setupBoard];
     
 }
 
@@ -70,6 +76,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setupBoard
+{
+    if (!self.boardView.model) {
+        self.boardView.model = self.boardModel;
+    }
+    
+    
+    
+    
+    
+}
 
 # pragma mark - Configure Interface for Orientation
 /*

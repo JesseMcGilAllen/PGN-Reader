@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class JMASquare;
+
 @interface JMABoardModel : NSObject
+
+- (NSDictionary *)squares;
+
+- (JMASquare *)squareforCoordinate:(NSString *)coordinate;
+
 
 @end

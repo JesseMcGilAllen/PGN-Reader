@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class JMABoardModel;
+
 @interface JMABoardView : UIView
+
+@property (strong, nonatomic) JMABoardModel *model;
 
 - (void)resetBoard;
 

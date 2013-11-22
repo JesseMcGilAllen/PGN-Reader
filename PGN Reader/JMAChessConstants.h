@@ -103,11 +103,11 @@ extern NSString *const PAWN;
 // Colors
 extern NSString *const WHITE;
 extern NSString *const BLACK;
+extern NSString *const LIGHT;
+extern NSString *const DARK;
 
 // Castling
 extern NSString *const KINGSIDE_CASTLING;
 extern NSString *const QUEENSIDE_CASTLING;
-
-
 
 @end

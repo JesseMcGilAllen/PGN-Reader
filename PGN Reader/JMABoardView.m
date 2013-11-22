@@ -11,6 +11,7 @@
 #import "JMAChessConstants.h"
 #import "JMAConstants.h"
 #import "JMAPiece.h"
+#import "JMABoardModel.h"
 
 @interface JMABoardView ()
 
@@ -41,11 +42,11 @@
 */
 - (void)drawBoard
 {
-    NSMutableDictionary *squares = [[NSMutableDictionary alloc] init];
     NSArray *ranks = @[@8, @7, @6, @5, @4, @3, @2, @1];
     NSArray *files = @[@"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h"];
     CGRect rect = self.frame;
-    NSString *color = WHITE;
+    CGRect squareFrame;
+    NSString *coordinate;
     
     double squareWidth = rect.size.width / EIGHT;
     double squareHeight = rect.size.height / EIGHT;
@@ -53,38 +54,31 @@
     int heightIndex = (int)ZERO;
     
     for (double squareOriginX = ZERO; squareOriginX < rect.size.width; squareOriginX += squareWidth) {
-        JMASquare *square;
+        
         
         for (double squareOriginY = ZERO; squareOriginY < rect.size.height; squareOriginY += squareHeight) {
             
+            coordinate = [[NSString alloc] initWithFormat:@"%@%@", files[widthIndex], ranks[heightIndex]];
             
-            square = [[JMASquare alloc] initWithFrame:CGRectMake(squareOriginX, squareOriginY, squareWidth, squareHeight)];
+            JMASquare *aSquare = [self.model squareforCoordinate:coordinate];
+            squareFrame = CGRectMake(squareOriginX, squareOriginY, squareWidth, squareHeight);
+            aSquare.frame = squareFrame;
             
-            [self configureSquare:square withRank:ranks[heightIndex] file:files[widthIndex] andColor:color];
+            [self addSubview:aSquare];
             
-             color = [self checkColor:color forSquare:square];
+            if (aSquare.piece) {
+                aSquare.piece.frame = aSquare.frame;
+                [self addSubview:aSquare.piece];
+            }
             
-            [squares setObject:square forKey:square.coordinate];
-            [self addSubview:square];
-            
-            // NSLog(@"Square dimensions: %f, %f, %f, %f", square.frame.origin.x, square.frame.origin.y, square.frame.size.width, square.frame.size.height);
-           
             heightIndex = [self updateIndex:heightIndex];
             
         }
-       
-        
-        
         widthIndex = [self updateIndex:widthIndex];
-        
-        color = [self checkColor:color forSquare:square];
-
-        
     }
     
-    self.squares = squares;
     
-
+    
 }
 
 
@@ -287,7 +281,7 @@
     
     
     [self drawBoard];
-    [self setupBoard];
+    //[self setupBoard];
     
 
 }

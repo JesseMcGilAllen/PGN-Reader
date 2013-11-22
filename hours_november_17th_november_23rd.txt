@@ -37,7 +37,19 @@ Thursday November 21st
 ----------------------
 - 11:45 am - 1:15 pm: save chesspublishing file, delete incoming file
                       start reworking board
-- 3:30 pm - 5:00 pm: back to game engine work
+- 3:30 pm - 5:45 pm: back to game engine work
+- 10:30 pm - 11:30 pm: more engine research
+- 12:15 am - 12:30 am: architecture debate
 
-    daily hours: 3 hours 00 minutes
-    weekly hours: 16 hours 15 minutes
+    daily hours: 5 hours 00 minutes
+    weekly hours: 18 hours 15 minutes
+
+Friday November 22nd
+--------------------
+- 10:30 am - 11:00 am: thought about boardmodel/view interaction, enums
+- 2:30 pm -
+
+    daily hours: 0 hours 30 minutes
+    weekly hours: 18 hours 30 minutes
+
+

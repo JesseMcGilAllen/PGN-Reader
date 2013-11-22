@@ -102,6 +102,8 @@ NSString *const PAWN = @"Pawn";
 // Colors
 NSString *const WHITE = @"White";
 NSString *const BLACK = @"Black";
+NSString *const LIGHT = @"Light";
+NSString *const DARK = @"Dark";
 
 // Castling
 NSString *const KINGSIDE_CASTLING = @"0-0";

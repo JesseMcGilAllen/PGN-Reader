@@ -35,8 +35,17 @@
     
     _coordinate = coordinate;
     
+}
+
+- (void)setColor:(NSString *)color
+{
+    if ([color isEqualToString:LIGHT]) {
+        self.backgroundColor = [UIColor whiteColor];
+    } else {
+        self.backgroundColor = [UIColor blueColor];
+    }
     
-    
+    _color = color;
 }
 
 - (NSString *)rank
@@ -57,7 +66,7 @@
     // Drawing code
     UIColor *textColor;
     
-    if ([self.color isEqualToString:WHITE]) {
+    if ([self.color isEqualToString:LIGHT]) {
         textColor = [UIColor blueColor];
     } else {
         textColor = [UIColor whiteColor];
