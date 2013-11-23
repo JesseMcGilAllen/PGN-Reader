@@ -12,7 +12,7 @@
 
 @interface JMABoardModel : NSObject
 
-- (NSDictionary *)squares;
+- (NSDictionary *)squaresDictionary;
 
 - (JMASquare *)squareforCoordinate:(NSString *)coordinate;
 
