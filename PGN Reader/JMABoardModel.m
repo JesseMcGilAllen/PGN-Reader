@@ -72,7 +72,9 @@
     self.squares = [NSDictionary dictionaryWithDictionary:squares];
 }
 
-
+/*
+ This method creates the chess piece objects
+*/
 - (void)createPieces
 {
     self.pieces = [[NSMutableArray alloc] init];
