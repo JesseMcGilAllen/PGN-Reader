@@ -106,6 +106,7 @@ NSString *const LIGHT = @"Light";
 NSString *const DARK = @"Dark";
 
 // Castling
+NSString *const CASTLE = @"Castle";
 NSString *const KINGSIDE_CASTLING = @"0-0";
 NSString *const QUEENSIDE_CASTLING = @"0-0-0";
 

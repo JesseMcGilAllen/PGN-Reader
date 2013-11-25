@@ -155,9 +155,13 @@
 */
 - (NSArray *)squaresInvolvedforMove:(NSString *)move withPieceType:(NSString *)pieceType
 {
+    NSArray *squaresInvolved;
     
-    BOOL kingIsSafe = [self isKingSafe];
-    return @[];
+    if ([pieceType isEqualToString:CASTLE]) {
+        squaresInvolved = [self squaresInvolvedForCastlingMove:move];
+    }
+    
+    return squaresInvolved;
 }
 /*
  This method returns the proper piece array from the board model for the 
@@ -186,6 +190,48 @@
 }
 
 
+/*
+ This method returns an array of the squares involved for a castling move
+*/
+- (NSArray *)squaresInvolvedForCastlingMove:(NSString *)move
+{
+    NSMutableArray *squaresInvolved = [[NSMutableArray alloc] init];
+    
+    if ([self.model.sideToMove isEqualToString:WHITE]) {
+        [squaresInvolved addObject:[self.model squareforCoordinate:E1]];
+        
+        if ([move isEqualToString:KINGSIDE_CASTLING]) {
+            
+            [squaresInvolved addObject:[self.model squareforCoordinate:G1]];
+            [squaresInvolved addObject:[self.model squareforCoordinate:H1]];
+            [squaresInvolved addObject:[self.model squareforCoordinate:F1]];
+            
+        } else {
+            
+            [squaresInvolved addObject:[self.model squareforCoordinate:C1]];
+            [squaresInvolved addObject:[self.model squareforCoordinate:A1]];
+            [squaresInvolved addObject:[self.model squareforCoordinate:D1]];
+        }
+        
+    } else {
+        [squaresInvolved addObject:[self.model squareforCoordinate:E8]];
+        
+        if ([move isEqualToString:KINGSIDE_CASTLING]) {
+            
+            [squaresInvolved addObject:[self.model squareforCoordinate:G8]];
+            [squaresInvolved addObject:[self.model squareforCoordinate:H8]];
+            [squaresInvolved addObject:[self.model squareforCoordinate:F8]];
+            
+        } else {
+            
+            [squaresInvolved addObject:[self.model squareforCoordinate:C8]];
+            [squaresInvolved addObject:[self.model squareforCoordinate:A8]];
+            [squaresInvolved addObject:[self.model squareforCoordinate:D8]];
+        }
+    }
+    
+    return squaresInvolved;
+}
 /*
  This method checks the king for the side to move's color to make sure that is 
  not attacked by pieces of the opposite color after the potential move

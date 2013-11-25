@@ -107,6 +107,7 @@ extern NSString *const LIGHT;
 extern NSString *const DARK;
 
 // Castling
+extern NSString *const CASTLE;
 extern NSString *const KINGSIDE_CASTLING;
 extern NSString *const QUEENSIDE_CASTLING;
 
