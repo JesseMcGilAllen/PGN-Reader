@@ -7,14 +7,16 @@
 //
 
 #import "JMAGameEngine.h"
+#import "JMAConstants.h"
 #import "JMAChessConstants.h"
+#import "JMABoardModel.h"
 
 @interface JMAGameEngine ()
 
 @property NSArray *validDiagonals;
 @property NSDictionary *files;
 @property NSDictionary *ranks;
-
+@property NSDictionary *pieceTypeDictionary;
 
 @end
 
@@ -30,6 +32,7 @@
     [self loadValidDiagonals];
     [self loadFiles];
     [self loadRanks];
+    [self configurePieceTypeDictionary];
     
     return self;
 }
@@ -117,6 +120,67 @@
     self.ranks = @{@"1" : firstRank, @"2" : secondRank, @"3" : thirdRank,
                    @"4" : fourthRank, @"5" : fifthRank, @"6" : sixthRank,
                    @"7" : seventhRank, @"8" : eighthRank};
+}
+
+/*
+ This method sets the pieceType Dictionary
+*/
+- (void)configurePieceTypeDictionary
+{
+    self.pieceTypeDictionary = @{@"K" : KING,
+                                 @"Q" : QUEEN,
+                                 @"B" : BISHOP,
+                                 @"N" : KNIGHT,
+                                 @"O" : @"Castle"};
+}
+
+/*
+ This method returns the squares involved for the incoming move parameter
+ the first element in the array is the origin square of the piece that moves
+ the second element in the array is the destination square of the move.
+*/
+- (NSArray *)squaresInvolvedInMove:(NSString *)move
+{
+    //NSMutableArray *squaresInvolved = [[NSMutableArray alloc] init];
+    
+    NSString *pieceType = [self determinePieceTypeForMove:move];
+    
+    NSArray *squaresInvolved = [self squaresInvolvedforMove:move
+                                              withPieceType:pieceType];
+    return squaresInvolved;
+}
+
+/*
+ This method returns the squares involved for the move and piece type parameter
+*/
+- (NSArray *)squaresInvolvedforMove:(NSString *)move withPieceType:(NSString *)pieceType
+{
+    return @[];
+}
+/*
+ This method returns the proper piece array from the board model for the 
+ incoming piece type string
+*/
+- (NSArray *)piecesForPieceType:(NSString *)pieceType
+{
+    return @[];
+}
+/*
+ This method checks the first letter of the incoming string for a match in the 
+ piece type dictionary.
+ if a match is found the value of the key is returned otherwise the value
+ "Pawn" is returned.
+*/
+- (NSString *)determinePieceTypeForMove:(NSString *)move
+{
+    NSString *type = self.pieceTypeDictionary[[move substringToIndex:ONE]];
+    
+    if (type) {
+        return type;
+    } else {
+        return PAWN;
+    }
+    
 }
 
 @end

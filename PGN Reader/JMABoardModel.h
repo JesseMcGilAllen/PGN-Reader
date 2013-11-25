@@ -13,6 +13,7 @@
 
 @interface JMABoardModel : NSObject
 
+// White Pieces
 @property (strong, nonatomic, readonly) NSMutableArray *whitePawns;
 @property (strong, nonatomic, readonly) NSMutableArray *whiteRooks;
 @property (strong, nonatomic, readonly) NSMutableArray *whiteKnights;
@@ -27,6 +28,8 @@
 @property (strong, nonatomic, readonly) NSMutableArray *blackBishops;
 @property (strong, nonatomic, readonly) NSMutableArray *blackQueens;
 @property (strong, nonatomic, readonly) JMAPiece *blackKing;
+
+@property (strong, nonatomic) NSString *sideToMove;
 
 - (NSDictionary *)squaresDictionary;
 

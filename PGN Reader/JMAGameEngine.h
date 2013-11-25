@@ -14,5 +14,8 @@
 
 @property (strong, nonatomic) JMABoardModel *model;
 
+- (NSArray *)squaresInvolvedInMove:(NSString *)move;
+
+
 
 @end
