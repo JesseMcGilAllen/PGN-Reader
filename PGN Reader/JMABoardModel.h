@@ -9,12 +9,29 @@
 #import <Foundation/Foundation.h>
 
 @class JMASquare;
+@class JMAPiece;
 
 @interface JMABoardModel : NSObject
+
+@property (strong, nonatomic, readonly) NSMutableArray *whitePawns;
+@property (strong, nonatomic, readonly) NSMutableArray *whiteRooks;
+@property (strong, nonatomic, readonly) NSMutableArray *whiteKnights;
+@property (strong, nonatomic, readonly) NSMutableArray *whiteBishops;
+@property (strong, nonatomic, readonly) NSMutableArray *whiteQueens;
+@property (strong, nonatomic, readonly) JMAPiece *whiteKing;
+
+//Black Pieces
+@property (strong, nonatomic, readonly) NSMutableArray *blackPawns;
+@property (strong, nonatomic, readonly) NSMutableArray *blackRooks;
+@property (strong, nonatomic, readonly) NSMutableArray *blackKnights;
+@property (strong, nonatomic, readonly) NSMutableArray *blackBishops;
+@property (strong, nonatomic, readonly) NSMutableArray *blackQueens;
+@property (strong, nonatomic, readonly) JMAPiece *blackKing;
 
 - (NSDictionary *)squaresDictionary;
 
 - (JMASquare *)squareforCoordinate:(NSString *)coordinate;
 
+- (NSArray *)piecesForGame;
 
 @end

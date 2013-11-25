@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class JMABoardModel;
+
 @interface JMAGameEngine : NSObject
 
-@property (strong, nonatomic) NSArray *moves;
+@property (strong, nonatomic) JMABoardModel *model;
+
 
 @end

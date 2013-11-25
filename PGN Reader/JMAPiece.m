@@ -81,11 +81,15 @@
 }
 
 /*
- Returns whether the square the piece sits on is equal to its original square
+ Returns whether the piece has moved
 */
 - (BOOL)onOriginalSquare
 {
-    return [self.square isEqual:self.originalSquare];
+    if (self.numberOfMoves == ZERO) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 # pragma mark - drawing piece

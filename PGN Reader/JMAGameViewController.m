@@ -50,11 +50,9 @@
     self.movesListView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin
     | UIViewAutoresizingFlexibleRightMargin;
     
-    self.gameEngine = [[JMAGameEngine alloc] init];
-    
     [self configureMovesList];
     
-    self.boardModel = [[JMABoardModel alloc] init];
+    
     
     [self setupBoard];
     
@@ -76,16 +74,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+/*
+ This method creates a BoardModel object and sets it to the BoardView's board
+ model property
+*/
 - (void)setupBoard
 {
+    self.boardModel = [[JMABoardModel alloc] init];
+    
     if (!self.boardView.model) {
         self.boardView.model = self.boardModel;
     }
+}
+
+- (void)setupGame
+{
+    self.gameEngine = [[JMAGameEngine alloc] init];
     
-    
-    
-    
-    
+    self.gameEngine.model = self.boardModel;
 }
 
 # pragma mark - Configure Interface for Orientation
