@@ -40,7 +40,7 @@
 */
 - (void)createSquares
 {
-    NSMutableArray *squares = [[NSMutableArray alloc] init];
+    NSMutableDictionary *squares = [[NSMutableDictionary alloc] init];
     NSArray *files = @[@"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h"];
     NSArray *ranks = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8"];
     
@@ -54,7 +54,7 @@
             
             squareColor = [self switchSquareColor:squareColor];
             
-            [squares addObject:aSquare];
+            [squares setObject:aSquare forKey:aSquare.coordinate];
             
         }
         
@@ -62,7 +62,8 @@
 
     }
     
-    self.squares = [[NSArray alloc] initWithArray:squares];
+    self.squaresDictionary = [[NSDictionary alloc] initWithDictionary:squares];
+    self.squares = [[NSArray alloc] initWithArray:[squares allValues]];
     
 }
 
