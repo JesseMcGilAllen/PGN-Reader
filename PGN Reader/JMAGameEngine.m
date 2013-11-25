@@ -155,6 +155,8 @@
 */
 - (NSArray *)squaresInvolvedforMove:(NSString *)move withPieceType:(NSString *)pieceType
 {
+    
+    BOOL kingIsSafe = [self isKingSafe];
     return @[];
 }
 /*
@@ -181,6 +183,28 @@
         return PAWN;
     }
     
+}
+
+
+/*
+ This method checks the king for the side to move's color to make sure that is 
+ not attacked by pieces of the opposite color after the potential move
+*/
+- (BOOL)isKingSafe
+{
+    
+    // - (BOOL) check diagonals
+    // - (BOOL) check files
+    // - (BOOL) check ranks
+    
+    /* 
+       if files, ranks, and diagonals are clear
+        return YES
+       else
+         return NO
+    */
+    
+    return NO;
 }
 
 @end

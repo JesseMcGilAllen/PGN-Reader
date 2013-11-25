@@ -10,7 +10,7 @@ Sunday November 24th
 Monday November 25th
 --------------------
 - 2:15 pm - 3:15 pm: added piece arrays to boardmodel
-- 3:40 pm - 4:40 pm: started laying foundation of move processing 
+- 3:40 pm - 5:10 pm: started laying foundation of move processing 
 
-    daily hours: 2 hours
-    weekly hours: 3 hours
+    daily hours: 2 hours 30 minutes
+    weekly hours: 3 hours 30 minutes
