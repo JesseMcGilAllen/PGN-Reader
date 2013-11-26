@@ -9,6 +9,7 @@
 #import "JMAMovesListParser.h"
 #import "JMAConstants.h"
 #import "JMAChessConstants.h"
+#import "JMAMove.h"
 
 @interface JMAMovesListParser ()
 
@@ -35,7 +36,7 @@
         _movesToProcess = [moves componentsSeparatedByString:SPACE];
         _textViewString = [NSMutableString stringWithString:EMPTY_STRING];
         _moves = [[NSMutableArray alloc] init];
-        _moveNumber = ONE;
+        _moveNumber = (int)ONE;
     };
     
     //NSLog(@"%@", moves);
@@ -233,10 +234,11 @@
 */
 - (void)processMove:(NSString *)component
 {
+    JMAMove *halfMove = [[JMAMove alloc] initWithMoveString:component];
     [self.textViewString appendString:SPACE];
     [self.textViewString appendString:component];
     
-    [self.moves addObject:component];
+    [self.moves addObject:halfMove];
 
 }
 

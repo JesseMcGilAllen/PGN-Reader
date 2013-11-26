@@ -10,6 +10,8 @@
 
 @interface JMAMove : NSObject
 
+- (id)initWithMoveString:(NSString *)moveString;
+
 @property (strong, nonatomic) NSString *moveString;
 
 - (NSString *)pieceType;
