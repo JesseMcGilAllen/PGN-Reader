@@ -12,6 +12,7 @@
 #import "JMABoardModel.h"
 #import "JMASquare.h"
 #import "JMAPiece.h"
+#import "JMAMove.h"
 
 @interface JMAGameEngine ()
 
@@ -34,7 +35,6 @@
     [self loadValidDiagonals];
     [self loadFiles];
     [self loadRanks];
-    [self configurePieceTypeDictionary];
     
     return self;
 }
@@ -124,86 +124,20 @@
                    @"7" : seventhRank, @"8" : eighthRank};
 }
 
-/*
- This method sets the pieceType Dictionary
-*/
-- (void)configurePieceTypeDictionary
-{
-    self.pieceTypeDictionary = @{@"K" : KING,
-                                 @"Q" : QUEEN,
-                                 @"B" : BISHOP,
-                                 @"N" : KNIGHT,
-                                 @"O" : CASTLE};
-}
 
 /*
  This method returns the squares involved for the incoming move parameter
  the first element in the array is the origin square of the piece that moves
  the second element in the array is the destination square of the move.
 */
-- (NSArray *)squaresInvolvedInMove:(NSString *)move
+- (NSArray *)squaresInvolvedInMove:(JMAMove *)move
 {
-    //NSMutableArray *squaresInvolved = [[NSMutableArray alloc] init];
+   NSArray *squaresInvolved;
     
-    NSString *pieceType = [self determinePieceTypeForMove:move];
     
-    NSArray *squaresInvolved = [self squaresInvolvedforMove:move
-                                              withPieceType:pieceType];
     return squaresInvolved;
 }
 
-/*
- This method returns the squares involved for the move and piece type parameter
-*/
-- (NSArray *)squaresInvolvedforMove:(NSString *)move withPieceType:(NSString *)pieceType
-{
-    NSArray *squaresInvolved;
-    
-    if (!pieceType) {
-        
-    } else if ([pieceType isEqualToString:KNIGHT]) {
-        
-    } else if ([pieceType isEqualToString:BISHOP]) {
-        
-    } else if ([pieceType isEqualToString:QUEEN]) {
-        
-    } else if ([pieceType isEqualToString:ROOK]) {
-        
-    } else if ([pieceType isEqualToString:KING]) {
-        
-    } else {
-        
-        squaresInvolved = [self squaresInvolvedForCastlingMove:move];
-        
-    }
-    
-    return squaresInvolved;
-}
-/*
- This method returns the proper piece array from the board model for the 
- incoming piece type string
-*/
-- (NSArray *)piecesForPieceType:(NSString *)pieceType
-{
-    return @[];
-}
-/*
- This method checks the first letter of the incoming string for a match in the 
- piece type dictionary.
- if a match is found the value of the key is returned otherwise the value
- "Pawn" is returned.
-*/
-- (NSString *)determinePieceTypeForMove:(NSString *)move
-{
-    NSString *type = self.pieceTypeDictionary[[move substringToIndex:ONE]];
-    
-    if (type) {
-        return type;
-    } else {
-        return PAWN;
-    }
-    
-}
 
 /*
  This method returns an array of squares involved for a pawn move
