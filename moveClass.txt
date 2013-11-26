@@ -1,0 +1,18 @@
+This is a outline for a possible move class to hold information on moves that
+is consistent to the moves themselves and nothing else
+
+Properties
+----------
+- NSString pieceType = piece making move
+ (ie pawn, knight, king, rook, queen, bishop)
+    if nil then it is a castling move
+- BOOL isCastling = whether the move is a castling move or not
+- BOOL isCapture = whether the move is a capture
+- BOOL isCheck = whether the move is a check
+- NSString  moveString = the string representation of the move
+- NSString destinationSquareCoordinate = the coordinate of the destination
+  square if not a castling move
+
+An instance of the class could be created for each move in the move list
+parsing process.  The advantage of seperating it out would be that it would cut
+down on the work currently being written for the GameEngine class.

@@ -10,6 +10,8 @@
 #import "JMAConstants.h"
 #import "JMAChessConstants.h"
 #import "JMABoardModel.h"
+#import "JMASquare.h"
+#import "JMAPiece.h"
 
 @interface JMAGameEngine ()
 
@@ -131,7 +133,7 @@
                                  @"Q" : QUEEN,
                                  @"B" : BISHOP,
                                  @"N" : KNIGHT,
-                                 @"O" : @"Castle"};
+                                 @"O" : CASTLE};
 }
 
 /*
@@ -157,8 +159,22 @@
 {
     NSArray *squaresInvolved;
     
-    if ([pieceType isEqualToString:CASTLE]) {
+    if (!pieceType) {
+        
+    } else if ([pieceType isEqualToString:KNIGHT]) {
+        
+    } else if ([pieceType isEqualToString:BISHOP]) {
+        
+    } else if ([pieceType isEqualToString:QUEEN]) {
+        
+    } else if ([pieceType isEqualToString:ROOK]) {
+        
+    } else if ([pieceType isEqualToString:KING]) {
+        
+    } else {
+        
         squaresInvolved = [self squaresInvolvedForCastlingMove:move];
+        
     }
     
     return squaresInvolved;
@@ -189,7 +205,58 @@
     
 }
 
+/*
+ This method returns an array of squares involved for a pawn move
+*/
+- (NSArray *)squaresInvolvedForPawnMove:(NSString *)move
+{
+    NSMutableArray *squaresInvolved = [[NSMutableArray alloc] initWithCapacity:TWO];
+    NSArray *pawns = [self pawnsForSideToMove:self.model.sideToMove];
+    
+//    for (JMAPiece *pawn in pawns) {
+//        if ([[pawn.square file] isEqualToString:[move substringToIndex:ONE]]) {
+//            if ([pawn onOriginalSquare]) {
+//                <#statements#>
+//            }
+//        }
+//    }
+    
+    
+    JMASquare *destinationSquare = [self destinationSquareForPawnMove:move];
+    
+    [squaresInvolved insertObject:destinationSquare atIndex:ONE];
+    
+    return squaresInvolved;
+}
 
+
+/*
+ This method returns the pawns array from the model object for the 
+ sideToMove parameter
+*/
+- (NSArray *)pawnsForSideToMove:(NSString *)sideToMove
+{
+    if ([self.model.sideToMove isEqualToString:WHITE]) {
+        return self.model.whitePawns;
+    } else {
+        return self.model.blackPawns;
+    }
+}
+
+/*
+ This method returns the destination square for the incoming move parameter that
+ has been determined to be a pawn move
+*/
+- (JMASquare *)destinationSquareForPawnMove:(NSString *)move
+{
+    if ([move length] == TWO) {
+        return [self.model squareforCoordinate:move];
+    } else {
+        NSString *destinationSquareCoordinate = [move substringFromIndex:TWO];
+        return [self.model squareforCoordinate:destinationSquareCoordinate];
+    }
+
+}
 /*
  This method returns an array of the squares involved for a castling move
 */
