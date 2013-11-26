@@ -30,11 +30,12 @@
 @property (strong, nonatomic, readonly) JMAPiece *blackKing;
 
 @property (strong, nonatomic) NSString *sideToMove;
+@property (assign, nonatomic) NSUInteger halfMoveIndex;
 
 - (NSDictionary *)squaresDictionary;
 
 - (JMASquare *)squareforCoordinate:(NSString *)coordinate;
 
-- (NSArray *)piecesForGame;
+- (void)switchSideToMove;
 
 @end

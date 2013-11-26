@@ -59,6 +59,7 @@
         _blackRooks = [[NSMutableArray alloc] init];
         _blackKnights = [[NSMutableArray alloc] init];
         _blackQueens = [[NSMutableArray alloc] init];
+        _halfMoveIndex = ZERO;
 
     }
     return self;
@@ -265,6 +266,20 @@
 - (NSArray *)piecesForGame
 {
     return self.pieces;
+}
+
+
+/*
+ If the half move index is even, the sideToMove property = White
+ otherwise sideToMove = Black
+*/
+- (void)switchSideToMove
+{
+    if (self.halfMoveIndex % TWO == ZERO) {
+        self.sideToMove = WHITE;
+    } else {
+        self.sideToMove = BLACK;
+    }
 }
 
 @end
