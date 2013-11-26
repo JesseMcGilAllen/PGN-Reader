@@ -12,6 +12,7 @@ Monday November 25th
 - 2:15 pm - 3:15 pm: added piece arrays to boardmodel
 - 3:40 pm - 5:10 pm: started laying foundation of move processing 
 - 5:30 pm - 7:00 pm: worked on GameEngine class, started planning move class
+- 11:10 pm -
 
     daily hours: 4 hours 00 minutes
     weekly hours: 5 hours 00 minutes
