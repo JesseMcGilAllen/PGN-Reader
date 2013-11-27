@@ -19,7 +19,8 @@ Monday November 25th
 
 Tuesday November 26th
 ---------------------
-- 6:30 pm -
+- 6:30 pm - 7:30 pm: added King Squares Involved code
+- 8:30 pm - 9:30 pm: started code to find the right piece for move
 
-    daily hours:
-    weekly hours: 7 hours 00 minutes
+    daily hours: 2 hours
+    weekly hours: 9 hours 00 minutes

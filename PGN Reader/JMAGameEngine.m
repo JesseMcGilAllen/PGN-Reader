@@ -151,6 +151,7 @@
         
         NSArray *pieces;
         pieces = [self piecesForPieceType:move.pieceType];
+        squaresInvolved = [self squaresInvolvedWithPieceInPieces:pieces forMove:move];
         
     }
     
@@ -225,6 +226,33 @@
 }
 
 /*
+ This method calls the squaresInvolved method for the piece type that the array 
+ of pieces contain.
+*/
+- (NSArray *)squaresInvolvedWithPieceInPieces:(NSArray *)pieces forMove:(JMAMove *)move
+{
+    NSArray *squaresInvolved;
+    JMAPiece *piece;
+    JMASquare *destinationSquare = [self.model squareforCoordinate:move.destinationSquareCoordinate];
+    
+    if ([move.pieceType isEqualToString:PAWN]) {
+        piece = [self pawnInvolvedInMove:move];
+    } else if ([move.pieceType isEqualToString:KNIGHT]) {
+        piece = [self knightInvolvedInMove:move];
+    } else if ([move.pieceType isEqualToString:BISHOP]) {
+        
+    } else if ([move.pieceType isEqualToString:ROOK]) {
+        piece = [self rookInvolvedInMove:move];
+    } else if ([move.pieceType isEqualToString:QUEEN]) {
+        piece = [self queenInvolvedInMove:move];
+    }
+    
+    squaresInvolved = @[piece.square, destinationSquare];
+    
+    return squaresInvolved;
+}
+
+/*
  This method returns the array of piece that could suit the move
 */
 - (NSArray *)piecesForPieceType:(NSString *)pieceType
@@ -258,6 +286,97 @@
     }
     
     return @[];
+}
+
+/*
+ This method returns an array of squares involved for a pawn move
+ 
+*/
+- (JMAPiece *)pawnInvolvedInMove:(JMAMove *)move
+{
+    NSArray *pawns;
+    if ([self.sideToMove isEqualToString:WHITE]) {
+        pawns = self.model.whitePawns;
+    } else {
+        pawns = self.model.blackPawns;
+    }
+    
+    JMAPiece *pawn;
+    
+    return pawn;
+}
+
+/*
+ This method returns an array of squares involved for a knights move
+*/
+- (JMAPiece *)knightInvolvedInMove:(JMAMove *)move
+{
+    NSArray *knights;
+    
+    if ([self.sideToMove isEqualToString:WHITE]) {
+        knights = self.model.whiteKnights;
+    } else {
+        knights = self.model.blackKnights;
+    }
+    
+    JMAPiece *knight;
+    
+    return knight;
+}
+
+/*
+ This method returns an array of squares involved for a bishops move
+ */
+- (JMAPiece *)bishopInvolvedInMove:(JMAMove *)move
+{
+    NSArray *bishops;
+    
+    if ([self.sideToMove isEqualToString:WHITE]) {
+        bishops = self.model.whiteBishops;
+    } else {
+        bishops = self.model.blackBishops;
+    }
+    
+    JMAPiece *bishop;
+    
+    return bishop;
+}
+
+/*
+ This method returns an array of squares involved for a rook move
+*/
+- (JMAPiece *)rookInvolvedInMove:(JMAMove *)move
+{
+    NSArray *rooks;
+    
+    if ([self.sideToMove isEqualToString:WHITE]) {
+        rooks = self.model.whiteRooks;
+    } else {
+        rooks = self.model.blackRooks;
+    }
+    
+    JMAPiece *rook;
+    
+    return rook;
+}
+
+
+/*
+ This method returns an array of squares involved for a queen move
+*/
+- (JMAPiece *)queenInvolvedInMove:(JMAMove *)move
+{
+    NSArray *queens;
+    
+    if ([self.sideToMove isEqualToString:WHITE]) {
+        queens = self.model.whiteQueens;
+    } else {
+        queens = self.model.blackQueens;
+    }
+    
+    JMAPiece *queen;
+    
+    return queen;
 }
 
 
