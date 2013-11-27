@@ -21,6 +21,8 @@
 @property NSDictionary *ranks;
 @property NSDictionary *pieceTypeDictionary;
 
+@property NSString *sideToMove;
+
 @end
 
 @implementation JMAGameEngine
@@ -132,65 +134,29 @@
 */
 - (NSArray *)squaresInvolvedInMove:(JMAMove *)move
 {
-   NSArray *squaresInvolved;
+    self.sideToMove = [self.model sideToMove];
+    NSArray *squaresInvolved;
     
+    
+    if ([move.pieceType isEqualToString:CASTLE]) {
+        
+        squaresInvolved = [self squaresInvolvedForCastlingMove:move.moveString];
+        
+    } else if ([move.pieceType isEqualToString:KING]) {
+        
+        JMAPiece *king = [self kingForSideToMove:self.sideToMove];
+        squaresInvolved = [self squaresInvolvedforKing:king withMove:move];
+        
+    } else {
+        
+        NSArray *pieces;
+        pieces = [self piecesForPieceType:move.pieceType];
+        
+    }
     
     return squaresInvolved;
 }
 
-
-/*
- This method returns an array of squares involved for a pawn move
-*/
-- (NSArray *)squaresInvolvedForPawnMove:(NSString *)move
-{
-    NSMutableArray *squaresInvolved = [[NSMutableArray alloc] initWithCapacity:TWO];
-    NSArray *pawns = [self pawnsForSideToMove:self.model.sideToMove];
-    
-//    for (JMAPiece *pawn in pawns) {
-//        if ([[pawn.square file] isEqualToString:[move substringToIndex:ONE]]) {
-//            if ([pawn onOriginalSquare]) {
-//                <#statements#>
-//            }
-//        }
-//    }
-    
-    
-    JMASquare *destinationSquare = [self destinationSquareForPawnMove:move];
-    
-    [squaresInvolved insertObject:destinationSquare atIndex:ONE];
-    
-    return squaresInvolved;
-}
-
-
-/*
- This method returns the pawns array from the model object for the 
- sideToMove parameter
-*/
-- (NSArray *)pawnsForSideToMove:(NSString *)sideToMove
-{
-    if ([self.model.sideToMove isEqualToString:WHITE]) {
-        return self.model.whitePawns;
-    } else {
-        return self.model.blackPawns;
-    }
-}
-
-/*
- This method returns the destination square for the incoming move parameter that
- has been determined to be a pawn move
-*/
-- (JMASquare *)destinationSquareForPawnMove:(NSString *)move
-{
-    if ([move length] == TWO) {
-        return [self.model squareforCoordinate:move];
-    } else {
-        NSString *destinationSquareCoordinate = [move substringFromIndex:TWO];
-        return [self.model squareforCoordinate:destinationSquareCoordinate];
-    }
-
-}
 /*
  This method returns an array of the squares involved for a castling move
 */
@@ -198,7 +164,7 @@
 {
     NSMutableArray *squaresInvolved = [[NSMutableArray alloc] init];
     
-    if ([self.model.sideToMove isEqualToString:WHITE]) {
+    if ([self.sideToMove isEqualToString:WHITE]) {
         [squaresInvolved addObject:[self.model squareforCoordinate:E1]];
         
         if ([move isEqualToString:KINGSIDE_CASTLING]) {
@@ -233,6 +199,68 @@
     
     return squaresInvolved;
 }
+
+/*
+ This method returns the squares for a King move
+*/
+- (NSArray *)squaresInvolvedforKing:(JMAPiece *)king withMove:(JMAMove *)move
+{
+    JMASquare *destinationSquare = [self.model squareforCoordinate:move.destinationSquareCoordinate];
+    NSArray *squaresInvolved = @[king.square, destinationSquare];
+    
+    return squaresInvolved;
+}
+
+
+/*
+ This method returns the king for sideToMove parameter
+*/
+- (JMAPiece *)kingForSideToMove:(NSString *)sideToMove
+{
+    if ([sideToMove isEqualToString:WHITE]) {
+        return self.model.whiteKing;
+    } else {
+        return self.model.blackKing;
+    }
+}
+
+/*
+ This method returns the array of piece that could suit the move
+*/
+- (NSArray *)piecesForPieceType:(NSString *)pieceType
+{
+    if ([self.sideToMove isEqualToString:WHITE]) {
+        
+        if ([pieceType isEqualToString:PAWN]) {
+            return [self.model whitePawns];
+        } else if ([pieceType isEqualToString:KNIGHT]) {
+            return [self.model whiteKnights];
+        } else if ([pieceType isEqualToString:BISHOP]) {
+            return [self.model whiteBishops];
+        } else if ([pieceType isEqualToString:ROOK]) {
+            return [self.model whiteRooks];
+        } else if ([pieceType isEqualToString:QUEEN]) {
+            return [self.model whiteQueens];
+        }
+    } else {
+        
+        if ([pieceType isEqualToString:PAWN]) {
+            return [self.model blackPawns];
+        } else if ([pieceType isEqualToString:KNIGHT]) {
+            return [self.model blackKnights];
+        } else if ([pieceType isEqualToString:BISHOP]) {
+            return [self.model blackBishops];
+        } else if ([pieceType isEqualToString:ROOK]) {
+            return [self.model blackRooks];
+        } else if ([pieceType isEqualToString:QUEEN]) {
+            return [self.model blackQueens];
+        }
+    }
+    
+    return @[];
+}
+
+
 /*
  This method checks the king for the side to move's color to make sure that is 
  not attacked by pieces of the opposite color after the potential move

@@ -273,12 +273,12 @@
  If the half move index is even, the sideToMove property = White
  otherwise sideToMove = Black
 */
-- (void)switchSideToMove
+- (NSString *)sideToMove
 {
     if (self.halfMoveIndex % TWO == ZERO) {
-        self.sideToMove = WHITE;
+        return WHITE;
     } else {
-        self.sideToMove = BLACK;
+        return BLACK;
     }
 }
 

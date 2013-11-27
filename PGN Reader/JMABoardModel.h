@@ -29,13 +29,13 @@
 @property (strong, nonatomic, readonly) NSMutableArray *blackQueens;
 @property (strong, nonatomic, readonly) JMAPiece *blackKing;
 
-@property (strong, nonatomic) NSString *sideToMove;
 @property (assign, nonatomic) NSUInteger halfMoveIndex;
+
+
+- (NSString *)sideToMove;
 
 - (NSDictionary *)squaresDictionary;
 
 - (JMASquare *)squareforCoordinate:(NSString *)coordinate;
-
-- (void)switchSideToMove;
 
 @end
