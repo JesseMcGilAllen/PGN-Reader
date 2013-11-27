@@ -1,0 +1,32 @@
+Pawns
+-----
+- one move
+- two move if onOriginalSquare
+- capture
+- en passant capture
+
+Knights
+-------
+- absolute value of three squares in any direction
+- capture
+- rank or file mentioned
+
+Bishops
+-------
+- must be on same diagonal
+    - no squares occupied in between
+- capture
+Rooks
+-----
+- must be on same rank or file
+    - no squares occupied in between
+- rank or file mentioned
+- capture
+
+Queens
+------
+- must be on same diagonal, rank, or file
+    -no squares occupied in between
+- rank or file mentioned
+- capture
+

@@ -21,6 +21,14 @@ Tuesday November 26th
 ---------------------
 - 6:30 pm - 7:30 pm: added King Squares Involved code
 - 8:30 pm - 9:30 pm: started code to find the right piece for move
+- 10:20 pm - 11:20 pm: added multiple pieceInvolvedInMove: methods
 
-    daily hours: 2 hours
-    weekly hours: 9 hours 00 minutes
+    daily hours: 3 hours
+    weekly hours: 10 hours 00 minutes
+
+Wednesday November 27th
+-----------------------
+- 10:15 am - 10:45 am: brainstormed how to handle enPassant.
+
+    daily hours: 0 hours 30 minutes
+    weekly hours: 10 hours 30 minutes

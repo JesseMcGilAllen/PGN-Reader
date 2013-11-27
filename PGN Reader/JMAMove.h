@@ -13,6 +13,7 @@
 - (id)initWithMoveString:(NSString *)moveString;
 
 @property (strong, nonatomic) NSString *moveString;
+@property (assign, nonatomic) BOOL isEnPassant;
 
 - (NSString *)pieceType;
 - (NSString *)destinationSquareCoordinate;

@@ -240,7 +240,7 @@
     } else if ([move.pieceType isEqualToString:KNIGHT]) {
         piece = [self knightInvolvedInMove:move];
     } else if ([move.pieceType isEqualToString:BISHOP]) {
-        
+        piece = [self bishopInvolvedInMove:move];
     } else if ([move.pieceType isEqualToString:ROOK]) {
         piece = [self rookInvolvedInMove:move];
     } else if ([move.pieceType isEqualToString:QUEEN]) {
@@ -379,7 +379,11 @@
     return queen;
 }
 
-
+/*
+ This method checks each diagonal for the piece's square and destination square
+ The method also checks if pieces occupy squares in between the two squares
+*/
+ 
 /*
  This method checks the king for the side to move's color to make sure that is 
  not attacked by pieces of the opposite color after the potential move
