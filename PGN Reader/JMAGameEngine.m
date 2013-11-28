@@ -406,6 +406,7 @@
 {
     JMAPiece *knight;
     NSArray *knights;
+    NSUInteger moveLength = [move.moveString length];
     
     if ([self.sideToMove isEqualToString:WHITE]) {
         knights = self.model.whiteKnights;
@@ -413,10 +414,18 @@
         knights = self.model.blackKnights;
     }
     
-    knight = [self knightFromKnights:knights forMove:move];
+    if (moveLength == THREE || (moveLength == FOUR && move.isCapture)) {
+        knight = [self knightFromKnights:knights forMove:move];
+    } else {
+        NSString *rankOrFile = [move.moveString substringWithRange:NSMakeRange(ONE, ONE)];
+        knight = [self pieceFromPieces:knights withRankOrFile:rankOrFile];
+    }
+    
+    
     
     return knight;
 }
+
 
 /*
  This method returns the proper knight from the knights array for the move 
@@ -424,6 +433,58 @@
 */
 - (JMAPiece *)knightFromKnights:(NSArray *)knights forMove:(JMAMove *)move
 {
+    JMASquare *destinationSquare = [self.model squareforCoordinate:move.destinationSquareCoordinate];
+
+    
+    
+    
+    
+    int squareRank = [destinationSquare.rank intValue];
+    int squareFileIndex = [self indexOfFileforSquare:destinationSquare];
+    
+    for (JMAPiece *knight in knights) {
+        int knightRank = [knight.square.rank intValue];
+        int knightFileIndex = [self indexOfFileforSquare:knight.square];
+        
+        int rankDifference = abs(squareRank - knightRank);
+        int fileDifference = abs(knightFileIndex - squareFileIndex);
+        
+        if ((rankDifference == ONE && fileDifference == TWO) ||
+            (rankDifference == TWO && fileDifference == ONE)) {
+            
+            if ([self kingIsSafeWithMoveFromSquare:knight.square toSquare:destinationSquare]) {
+                return knight;
+            }
+            
+        }
+    }
+    
+    return nil;
+}
+
+/*
+ This method returns the index of the file from the pertinet file array in the 
+ files dictionary property for the incoming square parameter.
+*/
+- (int)indexOfFileforSquare:(JMASquare *)square
+{
+    NSArray *squaresOnFile = self.files[square.file];
+    NSUInteger fileIndex = [squaresOnFile indexOfObject:square.coordinate];
+    
+    return (int)fileIndex;
+}
+
+
+- (JMAPiece *)pieceFromPieces:(NSArray *)pieces withRankOrFile:(NSString *)rankOrFile
+{
+    for (JMAPiece *piece in pieces) {
+        if ([piece.square.rank isEqualToString:rankOrFile]) {
+            return piece;
+        } else if ([piece.square.file isEqualToString:rankOrFile]) {
+            return piece;
+        }
+    }
+    
     return nil;
 }
 /*
@@ -486,7 +547,8 @@
  This method checks the king for the side to move's color to make sure that is 
  not attacked by pieces of the opposite color after the potential move
 */
-- (BOOL)isKingSafe
+- (BOOL)kingIsSafeWithMoveFromSquare:(JMASquare *)originSquare
+                            toSquare:(JMASquare *)destinationSquare
 {
     
     // - (BOOL) check diagonals
