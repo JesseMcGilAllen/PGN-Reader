@@ -30,7 +30,8 @@ Wednesday November 27th
 -----------------------
 - 10:15 am - 10:45 am: brainstormed how to handle enPassant.
 - 5:45 pm - 7:15 pm: working on pawn move code
-- 9:30 pm - 10:30 pm: working on knight move code
+- 9:30 pm - 11:00 pm: working on knight move code
+- 11:00 pm - 11:30 pm: refactored pawn code to be cleaner
 
-    daily hours: 3 hours 00 minutes
-    weekly hours: 13 hours 00 minutes
+    daily hours: 4 hours 00 minutes
+    weekly hours: 14 hours 00 minutes

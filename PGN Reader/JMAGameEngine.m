@@ -313,38 +313,16 @@
 }
 
 /*
- This method returns the proper pawn for an non-capture move
- First the square object from the move's coordinate is fetched.
- Then the file property from the square is compared to the each pawn's square 
- file property.  If they match then the rank properties are check if they are 
- within one of each other or two if the pawn sits on its original square.
- if a pawn matches the criteria it is returned.  Otherwise an empty pawn object 
- is returned to satisfy xCode.
+ This method returns the proper pawn for an non-capture move.
+Otherwise an empty pawn object is returned to satisfy xCode.
 */
 - (JMAPiece *)pawnFromPawns:(NSArray *)pawns forNormalMove:(JMAMove *)move
 {
-    JMASquare *destinationSquare = [self.model squareforCoordinate:move.destinationSquareCoordinate];
+    
     
     for (JMAPiece *pawn in pawns) {
-        if ([pawn.square.file isEqualToString:destinationSquare.file]) {
-            NSUInteger pawnRankValue = [pawn.square.rank integerValue];
-            NSUInteger squareRankValue = [destinationSquare.rank integerValue];
-            
-            if ([self.sideToMove isEqualToString:WHITE]) {
-                if ((pawnRankValue + ONE) == squareRankValue) {
-                    return pawn;
-                } else if ([pawn onOriginalSquare] &&
-                           (pawnRankValue + TWO) == squareRankValue) {
-                    return pawn;
-                }
-            } else  {
-                if ((pawnRankValue - ONE) == squareRankValue) {
-                    return pawn;
-                } else if ([pawn onOriginalSquare] &&
-                           (pawnRankValue - TWO) == squareRankValue) {
-                    return pawn;
-                }
-            }
+        if ([self isPawn:pawn rightForNonCaptureMove:move]) {
+            return pawn;
         }
     }
     
@@ -352,21 +330,60 @@
 }
 
 /*
+ First the square object from the move's coordinate is fetched.
+ Then the file property from the square is compared to the each pawn's square
+ file property.  If they match then the rank properties are check if they are
+ within one of each other or two if the pawn sits on its original square.
+ if a pawn matches the criteria, YES is returned.
+*/
+- (BOOL)isPawn:(JMAPiece *)pawn rightForNonCaptureMove:(JMAMove *)move
+{
+    JMASquare *destinationSquare = [self.model squareforCoordinate:move.destinationSquareCoordinate];
+    
+    if ([pawn.square.file isEqualToString:destinationSquare.file]) {
+        NSUInteger pawnRankValue = [pawn.square.rank integerValue];
+        NSUInteger squareRankValue = [destinationSquare.rank integerValue];
+        
+        if ([self.sideToMove isEqualToString:WHITE]) {
+            
+            if ((pawnRankValue + ONE) == squareRankValue) {
+                return YES;
+                
+            } else if ([pawn onOriginalSquare] &&
+                       (pawnRankValue + TWO) == squareRankValue) {
+                
+                return YES;
+            }
+        } else  {
+            
+            if ((pawnRankValue - ONE) == squareRankValue) {
+                return YES;
+                
+            } else if ([pawn onOriginalSquare] &&
+                       (pawnRankValue - TWO) == squareRankValue) {
+                
+                return YES;
+            }
+        }
+    }
+    
+    return NO;
+
+}
+
+/*
  This method returns a pawn object for a move involving a capture.
- First the first character of the move String is saved in a String object called
- pawnFile.  Then the destinationSquare is gotten from the move's
+ The destinationSquare is gotten from the move's
  destinationSquareCoordinate property.  The piece property is gotten from the 
  destinationSquare.  A logic check is used to see if a piece currently resides
  on the square.  If not, the isEnPassant property of the move object is set to 
- YES.  Then each pawn object from the incoming pawns array is checked to see if 
- its square's file property matches the pawnFile.
- If it matches the rank is checked to see if it is one rank apart.
- If so, the pawn is returned.
+ YES.  Each pawn in the pawns array is sent to isPawn:rightForCapture move.  
+ If YES is returned the pawn is returned.
 */
 - (JMAPiece *)pawnFromPawns:(NSArray *)pawns
     forMoveInvolvingCapture:(JMAMove *)move
 {
-    NSString *pawnFile = [move.moveString substringToIndex:ONE];
+    
     JMASquare *destinationSquare = [self.model squareforCoordinate:move.destinationSquareCoordinate];
     JMAPiece *destinationSquarePiece = destinationSquare.piece;
     
@@ -375,29 +392,49 @@
     }
     
     for (JMAPiece *pawn in pawns) {
-        if ([pawn.square.file isEqualToString:pawnFile]) {
-            
-            NSUInteger pawnRankValue = [pawn.square.rank integerValue];
-            NSUInteger squareRankValue = [destinationSquare.rank integerValue];
-        
-            if ([self.sideToMove isEqualToString:WHITE]) {
-                
-                if (pawnRankValue + ONE == squareRankValue) {
-                    return pawn;
-                
-                }
-            } else {
-                
-                if (pawnRankValue - ONE == squareRankValue ) {
-                    return pawn;
-                    
-                }
-            }
-            
+        if ([self isPawn:pawn rightForCaptureMove:move]) {
+            return pawn;
         }
     }
     
     return nil;
+}
+
+
+/*
+ First the first character of the move String is saved in a String object called
+ pawnFile. The destinationSquare's file property is  checked to see if matches 
+ the pawnFile.  If it matches the rank is checked to see if it is one rank apart.
+ If so, then Yes is returned.
+*/
+- (BOOL)isPawn:(JMAPiece *)pawn rightForCaptureMove:(JMAMove *)move
+{
+    NSString *pawnFile = [move.moveString substringToIndex:ONE];
+    JMASquare *destinationSquare = [self.model squareforCoordinate:move.destinationSquareCoordinate];
+    
+    if ([pawn.square.file isEqualToString:pawnFile]) {
+        
+        NSUInteger pawnRankValue = [pawn.square.rank integerValue];
+        NSUInteger squareRankValue = [destinationSquare.rank integerValue];
+        
+        if ([self.sideToMove isEqualToString:WHITE]) {
+            
+            if (pawnRankValue + ONE == squareRankValue) {
+                return YES;
+                
+            }
+        } else {
+            
+            if (pawnRankValue - ONE == squareRankValue ) {
+                return YES;
+                
+            }
+        }
+        
+    }
+    
+    return NO;
+
 }
 /*
  This method returns an array of squares involved for a knights move
