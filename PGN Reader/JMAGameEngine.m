@@ -429,33 +429,15 @@
 
 /*
  This method returns the proper knight from the knights array for the move 
- object
+ object.
 */
 - (JMAPiece *)knightFromKnights:(NSArray *)knights forMove:(JMAMove *)move
 {
-    JMASquare *destinationSquare = [self.model squareforCoordinate:move.destinationSquareCoordinate];
-
     
-    
-    
-    
-    int squareRank = [destinationSquare.rank intValue];
-    int squareFileIndex = [self indexOfFileforSquare:destinationSquare];
     
     for (JMAPiece *knight in knights) {
-        int knightRank = [knight.square.rank intValue];
-        int knightFileIndex = [self indexOfFileforSquare:knight.square];
-        
-        int rankDifference = abs(squareRank - knightRank);
-        int fileDifference = abs(knightFileIndex - squareFileIndex);
-        
-        if ((rankDifference == ONE && fileDifference == TWO) ||
-            (rankDifference == TWO && fileDifference == ONE)) {
-            
-            if ([self kingIsSafeWithMoveFromSquare:knight.square toSquare:destinationSquare]) {
-                return knight;
-            }
-            
+        if ([self isKnight:knight rightForMove:move]) {
+            return knight;
         }
     }
     
@@ -463,7 +445,40 @@
 }
 
 /*
- This method returns the index of the file from the pertinet file array in the 
+ This method gets integer value for the rank and an index value from an
+ array in the filesDictionary of the file for both the destination square and
+ the square the knight sits on.  The method then gets the absolute
+ value of the difference between the ranks of the two squares and the files of
+ the squares.  If the difference of the ranks is One while the difference of the
+ files is Two, or the difference of the files is two and the ranks one
+ the isKingSafe Method is called.  If that method returns YES then YES is 
+ returned, Otherwise NO is returned.
+*/
+
+- (BOOL)isKnight:(JMAPiece *)knight rightForMove:(JMAMove *)move
+{
+    JMASquare *destinationSquare = [self.model squareforCoordinate:move.destinationSquareCoordinate];
+    
+    int squareRank = [destinationSquare.rank intValue];
+    int squareFileIndex = [self indexOfFileforSquare:destinationSquare];
+    
+    int knightRank = [knight.square.rank intValue];
+    int knightFileIndex = [self indexOfFileforSquare:knight.square];
+    
+    int rankDifference = abs(squareRank - knightRank);
+    int fileDifference = abs(knightFileIndex - squareFileIndex);
+    
+    if ((rankDifference == ONE && fileDifference == TWO) ||
+        (rankDifference == TWO && fileDifference == ONE)) {
+        
+        if ([self isKingSafeWithMoveFromSquare:knight.square toSquare:destinationSquare]) {
+            return YES;
+        }
+    }
+        return NO;
+}
+/*
+ This method returns the index of the file from the pertinent file array in the
  files dictionary property for the incoming square parameter.
 */
 - (int)indexOfFileforSquare:(JMASquare *)square
@@ -547,7 +562,7 @@
  This method checks the king for the side to move's color to make sure that is 
  not attacked by pieces of the opposite color after the potential move
 */
-- (BOOL)kingIsSafeWithMoveFromSquare:(JMASquare *)originSquare
+- (BOOL)isKingSafeWithMoveFromSquare:(JMASquare *)originSquare
                             toSquare:(JMASquare *)destinationSquare
 {
     
