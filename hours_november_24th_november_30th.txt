@@ -29,7 +29,7 @@ Tuesday November 26th
 Wednesday November 27th
 -----------------------
 - 10:15 am - 10:45 am: brainstormed how to handle enPassant.
-- 5:45 pm - 6:45 pm: working on pawn move code
+- 5:45 pm - 7:15 pm: working on pawn move code
 
-    daily hours: 1 hours 30 minutes
-    weekly hours: 11 hours 30 minutes
+    daily hours: 2 hours 00 minutes
+    weekly hours: 12 hours 00 minutes

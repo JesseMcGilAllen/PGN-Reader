@@ -306,7 +306,7 @@
     if (![move isCapture]) {
         pawn = [self pawnFromPawns:pawns forNormalMove:move];
     } else {
-        
+        pawn = [self pawnFromPawns:pawns forMoveInvolvingCapture:move];
     }
     
     return pawn;
@@ -348,9 +348,7 @@
         }
     }
     
-    JMAPiece *pawn;
-    
-    return pawn;
+    return nil;
 }
 
 /*
@@ -399,14 +397,14 @@
         }
     }
     
-    JMAPiece *pawn;
-    return pawn;
+    return nil;
 }
 /*
  This method returns an array of squares involved for a knights move
 */
 - (JMAPiece *)knightInvolvedInMove:(JMAMove *)move
 {
+    JMAPiece *knight;
     NSArray *knights;
     
     if ([self.sideToMove isEqualToString:WHITE]) {
@@ -415,11 +413,19 @@
         knights = self.model.blackKnights;
     }
     
-    JMAPiece *knight;
+    knight = [self knightFromKnights:knights forMove:move];
     
     return knight;
 }
 
+/*
+ This method returns the proper knight from the knights array for the move 
+ object
+*/
+- (JMAPiece *)knightFromKnights:(NSArray *)knights forMove:(JMAMove *)move
+{
+    return nil;
+}
 /*
  This method returns an array of squares involved for a bishops move
  */
@@ -433,9 +439,7 @@
         bishops = self.model.blackBishops;
     }
     
-    JMAPiece *bishop;
-    
-    return bishop;
+    return nil;
 }
 
 /*
@@ -451,9 +455,9 @@
         rooks = self.model.blackRooks;
     }
     
-    JMAPiece *rook;
     
-    return rook;
+    
+    return nil;
 }
 
 
@@ -470,9 +474,7 @@
         queens = self.model.blackQueens;
     }
     
-    JMAPiece *queen;
-    
-    return queen;
+    return nil;
 }
 
 /*
