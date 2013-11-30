@@ -589,11 +589,6 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     
     return nil;
 }
-
-/*
- This method checks each diagonal for the piece's square and destination square
- The method also checks if pieces occupy squares in between the two squares
-*/
  
 /*
  This method checks the king for the side to move's color to make sure that is 
@@ -602,19 +597,79 @@ Otherwise an empty pawn object is returned to satisfy xCode.
 - (BOOL)isKingSafeWithMoveFromSquare:(JMASquare *)originSquare
                             toSquare:(JMASquare *)destinationSquare
 {
+    /*
+     Setup
+     -----
+     get piece on originSquare 
+     get piece on destinationSquare
+     JMAPiece *pieceToMove = originSquare.piece;
+     JMAPiece *pieceToRemove = destinationSquare.piece;
+     
+     clear piece off origin square
+     put piece of destinationSquare
+     originSquare.piece = nil;
+     destinationSquare.piece = pieceToMove;
+     */
+     
+     JMAPiece *destinationSquarePiece = [self pieceFromKingCheckSetupWithOriginSquare:originSquare
+                                                                    destinationSquare:destinationSquare];
     
-    // - (BOOL) check diagonals
-    // - (BOOL) check files
-    // - (BOOL) check ranks
+    /*
+     get king for side to move
+     
+     - (BOOL) check diagonals
+        - for Opposite Color Queens and Bishops
+     - (BOOL) check files
+        - for Opposite Color Queens and Rooks
+     - (BOOL) check ranks
+        - for Opposite Color Queens and Rooks
     
-    /* 
+     
        if files, ranks, and diagonals are clear
         return YES
        else
          return NO
+
+     Clean up
+     originSquare.piece = pieceToMove
+     destinationSquare.piece = pieceToRemove;
     */
+           
+    [self resetOriginSquare:originSquare
+          destinationSquare:destinationSquare
+ withDestinationSquarePiece:destinationSquarePiece];
     
     return NO;
+}
+
+
+/*
+ This method moves the piece from the origin square to the destination square 
+ and returns the piece on the destination square.
+*/
+- (JMAPiece *)pieceFromKingCheckSetupWithOriginSquare:(JMASquare *)originSquare
+                                    destinationSquare:(JMASquare *)destinationSquare
+{
+    JMAPiece *pieceToMove = originSquare.piece;
+    JMAPiece *pieceToRemove = destinationSquare.piece;
+    
+    originSquare.piece = nil;
+    destinationSquare.piece = pieceToMove;
+    
+    return pieceToRemove;
+}
+
+/*
+ This method moves the piece on the destination Square's property to the 
+ origin square and sets that property to the destinationSquarePiece 
+ parameter.
+*/
+- (void)resetOriginSquare:(JMASquare *)originSquare
+        destinationSquare:(JMASquare *)destinationSquare
+withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
+{
+    originSquare.piece = destinationSquare.piece;
+    destinationSquare.piece = destinationSquarePiece;
 }
 
 @end
