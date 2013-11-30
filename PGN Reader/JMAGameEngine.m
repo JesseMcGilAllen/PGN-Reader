@@ -589,7 +589,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     
     return nil;
 }
- 
+
 /*
  This method checks the king for the side to move's color to make sure that is 
  not attacked by pieces of the opposite color after the potential move
@@ -615,8 +615,11 @@ Otherwise an empty pawn object is returned to satisfy xCode.
                                                                     destinationSquare:destinationSquare];
     
     /*
-     get king for side to move
-     
+     get squareOfKing for side to move
+    */
+     JMASquare *squareOfKing = [self squareOfKing];
+    
+    /*
      - (BOOL) check diagonals
         - for Opposite Color Queens and Bishops
      - (BOOL) check files
@@ -672,4 +675,24 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
     destinationSquare.piece = destinationSquarePiece;
 }
 
+
+/*
+ This method gets the king for the board model for the sideToMove and returns
+ the square it currently sits on
+*/
+- (JMASquare *)squareOfKing
+{
+    JMASquare *kingSquare;
+    JMAPiece *king;
+    
+    if ([self.sideToMove isEqualToString:WHITE]) {
+        king = [self.model whiteKing];
+    } else {
+        king = [self.model blackKing];
+    }
+    
+    kingSquare = king.square;
+    
+    return kingSquare;
+}
 @end

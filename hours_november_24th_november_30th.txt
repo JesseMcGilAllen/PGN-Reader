@@ -38,5 +38,8 @@ Wednesday November 27th
 
 Saturday November 30th
 ----------------------
-- 10:15 - 
+- 10:15 am - 11:30 am: calculated hours allotment from here to finish, started
+                    king check code.
 
+    daily hours: 1 hour 15 minutes
+    weekly hours: 15 hours 15 minutes
