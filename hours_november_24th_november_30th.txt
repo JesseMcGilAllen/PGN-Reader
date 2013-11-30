@@ -46,6 +46,7 @@ Saturday November 30th
 - 2:00 pm - 3:05 pm: coded for bishop move
 - 3:05 pm - 3:20 pm: fixed error in bishop move code, started rook move code
                      added pragma marks for each move section
-                     
-    daily hours: 4 hours 05 minutes
-    weekly hours: 18 hours 05 minutes
+- 4:45 pm - 5:15 pm: Rook move coded
+
+    daily hours: 4 hours 35 minutes
+    weekly hours: 18 hours 35 minutes

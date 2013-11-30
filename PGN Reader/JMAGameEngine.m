@@ -694,13 +694,61 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     return nil;
 }
 
+
+/*
+ This method calls the isRookRightForMove method for each rook.  If YES is 
+ returned the rook is returned.
+*/
 - (JMAPiece *)rookFromRooks:(NSArray *)rooks forMove:(JMAMove *)move
 {
+    
     for (JMAPiece *rook in rooks) {
         
+        if ([self isRook:rook rightForMove:move]) {
+            return rook;
+        }
+        
+    }
+    return nil;
+}
+
+
+/*
+ This method determines whether the rook shares the file or rank with the 
+ destination square.  The isPathClearBetweenPieceCoordinate: method is called, 
+ passing in the destinationSquare coordinate, the piece's square coordinate and 
+ an array of square coordinates for the shared file/rank.  If YES is returned 
+ from the isPathClearBetweenPieceCoordinate: method, then the Rook's square is 
+ sent to the isKingSafeWithMoveFromSquare: method.  The result of that method is
+ returned.
+*/
+- (BOOL)isRook:(JMAPiece *)rook rightForMove:(JMAMove *)move
+{
+    JMASquare *destinationSquare = [self.model squareforCoordinate:move.destinationSquareCoordinate];
+    BOOL isRookRightForMove = NO;
+    BOOL isPathClear = NO;
+    
+    if ([rook.square.file isEqualToString:destinationSquare.file]) {
+       NSArray *squaresForFile = self.files[destinationSquare.file];
+        
+        isPathClear = [self isPathClearBetweenPieceCoordinate:rook.square.coordinate
+                                             squareCoordinate:destinationSquare.coordinate
+                                         onRankFileOrDiagonal:squaresForFile];
+        
+    } else if ([rook.square.rank isEqualToString:destinationSquare.rank]) {
+        NSArray *squaresForRank = self.ranks[destinationSquare.rank];
+        
+        isPathClear = [self isPathClearBetweenPieceCoordinate:rook.square.coordinate
+                                             squareCoordinate:destinationSquare.coordinate
+                                         onRankFileOrDiagonal:squaresForRank];
     }
     
-    return nil;
+    if (isPathClear) {
+        isRookRightForMove = [self isKingSafeWithMoveFromSquare:rook.square
+                                                       toSquare:destinationSquare];
+    }
+    
+    return isRookRightForMove;
 }
 
 #pragma mark - Queen Move Methods
