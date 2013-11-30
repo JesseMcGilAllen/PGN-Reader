@@ -43,6 +43,7 @@ Saturday November 30th
 - 12:30 pm - 1:30 pm: write method to check kings safety on individual rank,
                       file or diagonal
 - 1:30 pm - 2:00 pm: finish king safety check code
+- 2:00 pm - 3:05 pm: coded for bishop move
 
-    daily hours: 2 hour 45 minutes
-    weekly hours: 16 hours 45 minutes
+    daily hours: 3 hours 50 minutes
+    weekly hours: 17 hours 50 minutes

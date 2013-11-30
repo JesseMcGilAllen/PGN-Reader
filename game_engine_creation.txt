@@ -59,3 +59,11 @@ Move Generator
 
 - squares or array of enums(integers)
 
+Saturday November 30th
+----------------------
+What do I have left?
+    - Bishop Move
+    - Queen Move
+    - Rook Move
+    -Promotion
+        - need to have check in Move Class

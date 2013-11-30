@@ -544,7 +544,9 @@ Otherwise an empty pawn object is returned to satisfy xCode.
  */
 - (JMAPiece *)bishopInvolvedInMove:(JMAMove *)move
 {
+    JMAPiece *bishop;
     NSArray *bishops;
+    NSUInteger moveLength = [move.moveString length];
     
     if ([self.sideToMove isEqualToString:WHITE]) {
         bishops = self.model.whiteBishops;
@@ -552,7 +554,112 @@ Otherwise an empty pawn object is returned to satisfy xCode.
         bishops = self.model.blackBishops;
     }
     
+    if (moveLength == THREE || (moveLength == FOUR && move.isCapture)) {
+        bishop = [self knightFromKnights:bishops forMove:move];
+    } else {
+        NSString *rankOrFile = [move.moveString substringWithRange:NSMakeRange(ONE, ONE)];
+        bishop = [self pieceFromPieces:bishops withRankOrFile:rankOrFile];
+    }
+    
+    return bishop;
+}
+
+/*
+ This method returns the proper bishop from the bishops array for the move 
+ object
+*/
+- (JMAPiece *)bishopFromBishops:(NSArray *)bishops forMove:(JMAMove *)move
+{
+    for (JMAPiece *bishop in bishops) {
+        if ([self isBishop:bishop rightForMove:move]) {
+            return bishop;
+        }
+    }
+    
     return nil;
+}
+
+/*
+ This method gets the diagonals that contain both the coordinate of the square
+ the piece sits on and the coordinate of the destination square.
+*/
+- (BOOL)isBishop:(JMAPiece *)bishop rightForMove:(JMAMove *)move
+{
+    BOOL isBishopRightForMove = NO;
+    NSString *pieceCoordinate = bishop.square.coordinate;
+    NSString *squareCoordinate = move.destinationSquareCoordinate;
+    
+    NSArray *diagonal = [self diagonalContainingPieceCoordinate:pieceCoordinate
+                                                 SquareCoordinate:squareCoordinate];
+    
+    
+    if ([diagonal count] > ZERO) {
+        BOOL isPathClear = [self isPathClearBetweenPieceCoordinate:pieceCoordinate
+                                                  squareCoordinate:squareCoordinate
+                                              onRankFileOrDiagonal:diagonal];
+        
+        if (isPathClear) {
+            
+            isBishopRightForMove = [self isKingSafeWithMoveFromSquare:bishop.square
+                                                             toSquare:[self.model squareforCoordinate:squareCoordinate]];
+        }
+        
+    }
+    return isBishopRightForMove;
+}
+/*
+ This method check each square on the incoming rankFileOrDiagonal array to make 
+ sure no squares are occupied by pieces in between the piece and destination 
+ square.
+ 
+*/
+- (BOOL)isPathClearBetweenPieceCoordinate:(NSString *)pieceCoordinate squareCoordinate:(NSString *)squareCoordinate onRankFileOrDiagonal:(NSArray *)rankFileOrDiagonal
+{
+    BOOL isPathClear = NO;
+    BOOL isInBetween = NO;
+    
+    for (NSString *coordinate in rankFileOrDiagonal) {
+        
+        if ([coordinate isEqualToString:pieceCoordinate] || [coordinate isEqualToString:squareCoordinate]) {
+            
+            if (isInBetween) {
+                if (isPathClear) {
+                    return isPathClear;
+                }
+            }
+            
+            isPathClear = YES;
+            isInBetween = YES;
+            
+        } else if (isInBetween) {
+            JMASquare *square = [self.model squareforCoordinate:coordinate];
+            
+            if (square.piece) {
+                isPathClear = NO;
+                return isPathClear;
+            }
+        }
+    }
+    
+    
+    return isPathClear;
+}
+
+/*
+ This method checks the validDiagonals property for a diagonal array that 
+ contains both parameters.  If a diagonal contains both parameters it is returned.
+*/
+- (NSArray *)diagonalContainingPieceCoordinate:(NSString *)pieceCoordinate SquareCoordinate:(NSString *)squareCoordinate
+{
+    for (NSArray *diagonal in self.validDiagonals) {
+        if ([diagonal containsObject:pieceCoordinate] &&
+            [diagonal containsObject:squareCoordinate]) {
+            
+            return diagonal;
+        }
+    }
+    
+    return @[];
 }
 
 /*
