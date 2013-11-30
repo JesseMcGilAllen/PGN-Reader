@@ -597,52 +597,28 @@ Otherwise an empty pawn object is returned to satisfy xCode.
 - (BOOL)isKingSafeWithMoveFromSquare:(JMASquare *)originSquare
                             toSquare:(JMASquare *)destinationSquare
 {
-    /*
-     Setup
-     -----
-     get piece on originSquare 
-     get piece on destinationSquare
-     JMAPiece *pieceToMove = originSquare.piece;
-     JMAPiece *pieceToRemove = destinationSquare.piece;
-     
-     clear piece off origin square
-     put piece of destinationSquare
-     originSquare.piece = nil;
-     destinationSquare.piece = pieceToMove;
-     */
-     
+    
      JMAPiece *destinationSquarePiece = [self pieceFromKingCheckSetupWithOriginSquare:originSquare
                                                                     destinationSquare:destinationSquare];
     
-    /*
-     get squareOfKing for side to move
-    */
      JMASquare *squareOfKing = [self squareOfKing];
     
-    /*
-     - (BOOL) check diagonals
-        - for Opposite Color Queens and Bishops
-     - (BOOL) check files
-        - for Opposite Color Queens and Rooks
-     - (BOOL) check ranks
-        - for Opposite Color Queens and Rooks
-    
-     
-       if files, ranks, and diagonals are clear
-        return YES
-       else
-         return NO
+    BOOL isKingSafe;
 
-     Clean up
-     originSquare.piece = pieceToMove
-     destinationSquare.piece = pieceToRemove;
-    */
-           
+    BOOL isKingSafeOnDiagonals = [self isSafeFromAttackOnDiagonalsWithKingOnSquare:squareOfKing];
+    BOOL isKingSafeOnRankAndFile = [self isSafeFromAttackOnRanksAndFilesForKingSquare:squareOfKing];
+    
+    if (isKingSafeOnDiagonals && isKingSafeOnRankAndFile) {
+        isKingSafe = YES;
+    } else {
+        isKingSafe = NO;
+    }
+    
     [self resetOriginSquare:originSquare
           destinationSquare:destinationSquare
  withDestinationSquarePiece:destinationSquarePiece];
     
-    return NO;
+    return isKingSafe;
 }
 
 
@@ -697,10 +673,10 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
 }
 
 /*
- This method checks the array of diagonals in the validDiagonals property if the
+ This method checks each array of diagonals in the validDiagonals property if the
  king is attacked.
 */
-- (BOOL)isSafeFromAttackOnDiagonalsWithKing:(JMAPiece *)king
+- (BOOL)isSafeFromAttackOnDiagonalsWithKingOnSquare:(JMASquare *)kingSquare
 {
     BOOL isKingSafe = YES;
     
@@ -708,7 +684,7 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
         isKingSafe = [self isSafeFromAttackFromPieceType:BISHOP
                                                PieceType:QUEEN
                                     onRankFileOrDiagonal:diagonal
-                                                withKing:king];
+                                                withKingSquare:kingSquare];
         
         if (!isKingSafe) {
             return isKingSafe;
@@ -717,8 +693,6 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
     
     return isKingSafe;
 }
-
-
 
 /*
  This method checks the incoming rankFileOrDiagonal array for the existence of 
@@ -730,10 +704,9 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
 - (BOOL)isSafeFromAttackFromPieceType:(NSString *)pieceOne
                             PieceType:(NSString *)pieceTwo
                  onRankFileOrDiagonal:(NSArray *)rankFileOrDiagonal
-                             withKing:(JMAPiece *)king
+                             withKingSquare:(JMASquare *)kingSquare
 {
     BOOL isKingSafe = YES;
-    JMASquare *kingSquare = king.square;
     
     if (![rankFileOrDiagonal containsObject:kingSquare.coordinate]) {
         return isKingSafe;
@@ -760,6 +733,33 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
                 }
             }
         }
+    }
+    
+    return isKingSafe;
+}
+
+/*
+ This method gets the array corresponding to kingSquare's rank and the array
+ corresponding to the kingSquare's file.  It calls the 
+ isSafeFromAttackFromPieceType method for both and returns YES if the both 
+ return YES or NO if one or more return NO.
+*/
+- (BOOL)isSafeFromAttackOnRanksAndFilesForKingSquare:(JMASquare *)kingSquare
+{
+    BOOL isKingSafe;
+    NSArray *file = self.files[kingSquare.file];
+    NSArray *rank = self.ranks[kingSquare.rank];
+    
+    isKingSafe = [self isSafeFromAttackFromPieceType:QUEEN
+                                           PieceType:ROOK
+                                onRankFileOrDiagonal:rank
+                                      withKingSquare:kingSquare];
+    
+    if (isKingSafe) {
+        isKingSafe = [self isSafeFromAttackFromPieceType:QUEEN
+                                               PieceType:ROOK
+                                    onRankFileOrDiagonal:file
+                                          withKingSquare:kingSquare];
     }
     
     return isKingSafe;
