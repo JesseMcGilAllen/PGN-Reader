@@ -472,7 +472,9 @@ Otherwise an empty pawn object is returned to satisfy xCode.
 */
 - (JMAPiece *)knightFromKnights:(NSArray *)knights forMove:(JMAMove *)move
 {
-    
+    if ([knights count] == ONE) {
+        return knights[ZERO];
+    }
     
     for (JMAPiece *knight in knights) {
         if ([self isKnight:knight rightForMove:move]) {
@@ -574,6 +576,11 @@ Otherwise an empty pawn object is returned to satisfy xCode.
 */
 - (JMAPiece *)bishopFromBishops:(NSArray *)bishops forMove:(JMAMove *)move
 {
+    
+    if ([bishops count] == ONE) {
+        return bishops[ZERO];
+    }
+    
     for (JMAPiece *bishop in bishops) {
         if ([self isBishop:bishop rightForMove:move]) {
             return bishop;
@@ -701,6 +708,9 @@ Otherwise an empty pawn object is returned to satisfy xCode.
 */
 - (JMAPiece *)rookFromRooks:(NSArray *)rooks forMove:(JMAMove *)move
 {
+    if ([rooks count] == ONE) {
+        return rooks[ZERO];
+    }
     
     for (JMAPiece *rook in rooks) {
         
@@ -711,7 +721,6 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     }
     return nil;
 }
-
 
 /*
  This method determines whether the rook shares the file or rank with the 
@@ -758,7 +767,9 @@ Otherwise an empty pawn object is returned to satisfy xCode.
 */
 - (JMAPiece *)queenInvolvedInMove:(JMAMove *)move
 {
+    JMAPiece *queen;
     NSArray *queens;
+    NSUInteger moveLength = [move.moveString length];
     
     if ([self.sideToMove isEqualToString:WHITE]) {
         queens = self.model.whiteQueens;
@@ -766,6 +777,38 @@ Otherwise an empty pawn object is returned to satisfy xCode.
         queens = self.model.blackQueens;
     }
     
+    if (moveLength == THREE || (moveLength == FOUR && move.isCapture)) {
+        
+    } else {
+        NSString *rankOrFile = [move.moveString substringWithRange:NSMakeRange(ONE, ONE)];
+        queen = [self pieceFromPieces:queens withRankOrFile:rankOrFile];
+    }
+    
+    
+    return nil;
+}
+
+/*
+ This method calls the isQueen:rightForMove: method for each queen in the 
+ incoming queens array. if YES is returned the queen is returned.
+*/
+- (JMAPiece *)queenFromQueens:(NSArray *)queens forMove:(JMAMove *)move
+{
+    if ([queens count] == ONE) {
+        return queens[ZERO];
+    }
+    
+    for (JMAPiece *queen in queens) {
+        if ([self isQueen:queen rightForMove:move]) {
+            return queen;
+        }
+    }
+    
+    return nil;
+}
+
+- (BOOL)isQueen:(JMAPiece *)queen rightForMove:(JMAMove *)move
+{
     return nil;
 }
 
