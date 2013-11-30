@@ -695,4 +695,73 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
     
     return kingSquare;
 }
+
+/*
+ This method checks the array of diagonals in the validDiagonals property if the
+ king is attacked.
+*/
+- (BOOL)isSafeFromAttackOnDiagonalsWithKing:(JMAPiece *)king
+{
+    BOOL isKingSafe = YES;
+    
+    for (NSArray *diagonal in self.validDiagonals) {
+        isKingSafe = [self isSafeFromAttackFromPieceType:BISHOP
+                                               PieceType:QUEEN
+                                    onRankFileOrDiagonal:diagonal
+                                                withKing:king];
+        
+        if (!isKingSafe) {
+            return isKingSafe;
+        }
+    }
+    
+    return isKingSafe;
+}
+
+
+
+/*
+ This method checks the incoming rankFileOrDiagonal array for the existence of 
+ the square the incoming king object sits on.  If the square exists each square 
+ is checked for the existence of either pieceType parameter of the opposite color
+ of the side to move.If an instance of the piece types have a clear path to the king, NO is returned.
+ Otherwise, YES is returned.
+*/
+- (BOOL)isSafeFromAttackFromPieceType:(NSString *)pieceOne
+                            PieceType:(NSString *)pieceTwo
+                 onRankFileOrDiagonal:(NSArray *)rankFileOrDiagonal
+                             withKing:(JMAPiece *)king
+{
+    BOOL isKingSafe = YES;
+    JMASquare *kingSquare = king.square;
+    
+    if (![rankFileOrDiagonal containsObject:kingSquare.coordinate]) {
+        return isKingSafe;
+    }
+    
+    for (NSString *coordinate in rankFileOrDiagonal) {
+        JMASquare *square = [self.model squareforCoordinate:coordinate];
+        JMAPiece *piece = square.piece;
+        
+        if ([square isEqual:kingSquare]) {
+            if (!isKingSafe) {
+                return isKingSafe;
+            }
+        }
+        
+        if (piece) {
+            if ([piece.color isEqualToString:self.sideToMove]) {
+                isKingSafe = YES;
+            } else {
+                if ([piece.type isEqualToString:pieceOne] ||
+                    [piece.type isEqualToString:pieceTwo]) {
+                    
+                    isKingSafe = NO;
+                }
+            }
+        }
+    }
+    
+    return isKingSafe;
+}
 @end
