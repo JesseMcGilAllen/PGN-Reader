@@ -288,9 +288,9 @@
     return @[];
 }
 
+#pragma mark - Pawn Move Methods
 /*
  This method returns an array of squares involved for a pawn move
- 
 */
 - (JMAPiece *)pawnInvolvedInMove:(JMAMove *)move
 {
@@ -436,6 +436,8 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     return NO;
 
 }
+
+#pragma mark - Knight Move Methods
 /*
  This method returns an array of squares involved for a knights move
 */
@@ -539,6 +541,8 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     
     return nil;
 }
+
+#pragma mark - Bishop Move Methods
 /*
  This method returns an array of squares involved for a bishops move
  */
@@ -555,7 +559,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     }
     
     if (moveLength == THREE || (moveLength == FOUR && move.isCapture)) {
-        bishop = [self knightFromKnights:bishops forMove:move];
+        bishop = [self bishopFromBishops:bishops forMove:move];
     } else {
         NSString *rankOrFile = [move.moveString substringWithRange:NSMakeRange(ONE, ONE)];
         bishop = [self pieceFromPieces:bishops withRankOrFile:rankOrFile];
@@ -662,12 +666,16 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     return @[];
 }
 
+#pragma mark - Rook Move Methods
+
 /*
  This method returns an array of squares involved for a rook move
 */
 - (JMAPiece *)rookInvolvedInMove:(JMAMove *)move
 {
     NSArray *rooks;
+    JMAPiece *rook;
+    NSUInteger moveLength = [move.moveString length];
     
     if ([self.sideToMove isEqualToString:WHITE]) {
         rooks = self.model.whiteRooks;
@@ -675,11 +683,27 @@ Otherwise an empty pawn object is returned to satisfy xCode.
         rooks = self.model.blackRooks;
     }
     
+    if (moveLength == THREE || (moveLength == FOUR && move.isCapture)) {
+        rook = [self rookFromRooks:rooks forMove:move];
+    } else {
+        NSString *rankOrFile = [move.moveString substringWithRange:NSMakeRange(ONE, ONE)];
+        rook = [self pieceFromPieces:rooks withRankOrFile:rankOrFile];
+    }
     
     
     return nil;
 }
 
+- (JMAPiece *)rookFromRooks:(NSArray *)rooks forMove:(JMAMove *)move
+{
+    for (JMAPiece *rook in rooks) {
+        
+    }
+    
+    return nil;
+}
+
+#pragma mark - Queen Move Methods
 
 /*
  This method returns an array of squares involved for a queen move
@@ -696,6 +720,8 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     
     return nil;
 }
+
+# pragma mark - King Safety Methods
 
 /*
  This method checks the king for the side to move's color to make sure that is 

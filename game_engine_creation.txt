@@ -62,7 +62,6 @@ Move Generator
 Saturday November 30th
 ----------------------
 What do I have left?
-    - Bishop Move
     - Queen Move
     - Rook Move
     -Promotion
