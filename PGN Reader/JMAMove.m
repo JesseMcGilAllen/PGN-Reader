@@ -9,10 +9,12 @@
 #import "JMAMove.h"
 #import "JMAChessConstants.h"
 #import "JMAConstants.h"
+#import "JMASquare.h"
 
 @interface JMAMove ()
 
 @property (strong, nonatomic) NSString *destinationSquareCoordinate;
+@property (strong, nonatomic) NSString *originSquareCoordinate;
 
 @property (strong, nonatomic) NSString *pieceType;
 
@@ -59,6 +61,11 @@
 - (NSString *)destinationSquareCoordinate
 {
     return self.destinationSquareCoordinate;
+}
+
+- (NSString *)originSquareCoordinate
+{
+    return self.originSquareCoordinate;
 }
 
 - (BOOL)isCapture
@@ -184,5 +191,16 @@
 - (BOOL)isPromotion
 {
     return self.isPromotion;
+}
+
+/*
+ This method sets the originSquareCoordinate using the coordinate property of 
+ the incoming square parameter
+*/
+- (void)originSquareCoordinateFromSquare:(JMASquare *)square
+{
+    if (!self.isCastling) {
+        self.originSquareCoordinate = square.coordinate;
+    }
 }
 @end

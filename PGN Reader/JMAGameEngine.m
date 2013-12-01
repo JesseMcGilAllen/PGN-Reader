@@ -155,6 +155,8 @@
         
     }
     
+    [move originSquareCoordinateFromSquare:squaresInvolved[ZERO]];
+    
     return squaresInvolved;
 }
 

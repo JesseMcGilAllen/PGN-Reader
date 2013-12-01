@@ -4,6 +4,16 @@ Hours Left: 89 hours
 NOTE: I must work a minimum of 44.5 hours this week
       That means I should work at least 6.5 hours a day
 
+IDEA: Try to work in 2 hour 10 minutes blocks.  That way after 3 blocks,
+      I have achieved the minimum needed for the day.
 Sunday December 1st
 -------------------
-- 12:30 pm - 
+- 12:30 pm - 1:15 pm: Looked through current architecture and made rough sketch
+                      plans for making move and undoing move.
+- 1:15 pm - 1:40 pm:  added Moves array to Game Model and method to return
+                      current move.  I also added an origin square coordinate
+                      the move Class and implemented a way of setting it.
+- 1:40 pm - 
+
+    Daily Hours: 1 hour 10 minutes
+    Weekly Hours: 1 hour 10 minutes

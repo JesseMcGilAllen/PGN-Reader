@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class JMASquare;
+
 @interface JMAMove : NSObject
 
 - (id)initWithMoveString:(NSString *)moveString;
@@ -15,8 +17,12 @@
 @property (strong, nonatomic) NSString *moveString;
 @property (assign, nonatomic) BOOL isEnPassant;
 
+
 - (NSString *)pieceType;
 - (NSString *)destinationSquareCoordinate;
+- (NSString *)originSquareCoordinate;
+
+- (void)originSquareCoordinateFromSquare:(JMASquare *)square;
 
 - (BOOL)isCapture;
 - (BOOL)isCastling;

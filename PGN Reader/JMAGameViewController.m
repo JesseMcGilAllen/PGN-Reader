@@ -379,8 +379,7 @@
         if (self.movesListParser.finished) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 self.movesListView.text = [self.movesListParser movesForTextView];
-                
-                // self.gameEngine.moves = [self.movesListParser movesForGame];
+                [self.boardModel movesForGame:[self.movesListParser movesForGame]];
                 [self.movesListView setNeedsDisplay];
             }];
         }
