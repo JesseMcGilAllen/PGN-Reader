@@ -10,6 +10,7 @@
 
 @class JMASquare;
 @class JMAPiece;
+@class JMAMove;
 
 @interface JMABoardModel : NSObject
 
@@ -31,11 +32,11 @@
 
 @property (assign, nonatomic) NSUInteger halfMoveIndex;
 
-
 - (NSString *)sideToMove;
-
 - (NSDictionary *)squaresDictionary;
-
 - (JMASquare *)squareforCoordinate:(NSString *)coordinate;
+
+- (void)movesForGame:(NSArray *)moves;
+- (JMAMove *)currentMove;
 
 @end

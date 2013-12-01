@@ -11,13 +11,13 @@
 #import "JMASquare.h"
 #import "JMAChessConstants.h"
 #import "JMAPiece.h"
+#import "JMAMove.h"
 
 @interface JMABoardModel ()
 
 @property (strong, nonatomic) NSDictionary *squaresDictionary;
-
-
 @property (strong, nonatomic) NSMutableArray *pieces;
+@property (strong, nonatomic) NSArray *moves;
 
 // White Pieces
 @property (strong, nonatomic, readwrite) NSMutableArray *whitePawns;
@@ -282,4 +282,20 @@
     }
 }
 
+/*
+ This method sets the moves array to the incoming moves parameter
+*/
+- (void)movesForGame:(NSArray *)moves
+{
+    self.moves = moves;
+}
+
+/*
+ This method returns the move object for the current halfMoveIndex from the 
+ moves array
+*/
+- (JMAMove *)currentMove
+{
+    return self.moves[self.halfMoveIndex];
+}
 @end

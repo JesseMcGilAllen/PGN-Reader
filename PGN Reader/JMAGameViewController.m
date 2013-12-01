@@ -343,7 +343,7 @@
     
 }
 
-#pragma mark - Playing Through Game
+#pragma mark - Button Taps
 - (IBAction)gameStartButtonTapped:(id)sender
 {
     NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
@@ -379,8 +379,6 @@
         if (self.movesListParser.finished) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 self.movesListView.text = [self.movesListParser movesForTextView];
-                NSLog(@"Moves List Completed!");
-                NSLog(@"%@", [self.movesListParser movesForTextView]);
                 
                 // self.gameEngine.moves = [self.movesListParser movesForGame];
                 [self.movesListView setNeedsDisplay];
