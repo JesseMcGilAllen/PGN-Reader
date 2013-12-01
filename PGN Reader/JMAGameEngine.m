@@ -524,13 +524,19 @@ Otherwise an empty pawn object is returned to satisfy xCode.
 /*
  This method returns the index of the file from the pertinent file array in the
  files dictionary property for the incoming square parameter.
+ First an array of keys from the files property is gotten.  Then that array is 
+ sorted alphabetically. The index of the incoming square's object in the files
+ array is returned.
 */
 - (int)indexOfFileforSquare:(JMASquare *)square
 {
-    NSArray *squaresOnFile = self.files[square.file];
-    NSUInteger fileIndex = [squaresOnFile indexOfObject:square.coordinate];
+    NSArray *files = [self.files allKeys];
     
-    return (int)fileIndex;
+    files = [files sortedArrayUsingSelector:@selector(localizedCompare:)];
+   
+    int fileIndex = [files indexOfObject:square.file];
+    
+    return fileIndex;
 }
 
 

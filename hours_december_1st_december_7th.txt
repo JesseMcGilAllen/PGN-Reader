@@ -14,7 +14,7 @@ Sunday December 1st
                       current move.  I also added an origin square coordinate
                       the move Class and implemented a way of setting it.
 - 1:40 pm - 2:45 pm: Debugging
-- 3:25 pm -
+- 3:25 pm - 4:25 pm: Debugging (piece arrays, pawn and knight moves)
 
-    Daily Hours: 2 hours 15 minutes
-    Weekly Hours: 2 hours 15 minutes
+    Daily Hours: 3 hours 15 minutes
+    Weekly Hours: 3 hours 15 minutes
