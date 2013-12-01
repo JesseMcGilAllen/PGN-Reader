@@ -13,7 +13,7 @@
 @interface JMASquare ()
 
 @property (strong, nonatomic) NSString *file;
-@property (assign, nonatomic) NSString *rank;
+@property (strong, nonatomic) NSString *rank;
 
 @end
 
@@ -33,6 +33,7 @@
     self.file = [coordinate substringToIndex:ONE];
     self.rank = [coordinate substringFromIndex:ONE];
     
+    
     _coordinate = coordinate;
     
 }
@@ -50,12 +51,12 @@
 
 - (NSString *)rank
 {
-    return self.rank;
+    return _rank;
 }
 
 - (NSString *)file
 {
-    return self.file;
+    return _file;
 }
 
 // Only override drawRect: if you perform custom drawing.

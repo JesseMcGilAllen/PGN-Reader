@@ -47,8 +47,7 @@
 {
     self = [super init];
     if (self) {
-        [self createSquares];
-        [self createPieces];
+        
         
         _whitePawns = [[NSMutableArray alloc] init];
         _whiteKnights = [[NSMutableArray alloc] init];
@@ -60,6 +59,9 @@
         _blackKnights = [[NSMutableArray alloc] init];
         _blackQueens = [[NSMutableArray alloc] init];
         _halfMoveIndex = ZERO;
+        
+        [self createSquares];
+        [self createPieces];
 
     }
     return self;

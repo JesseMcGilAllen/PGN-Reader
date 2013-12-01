@@ -147,7 +147,7 @@
 */
 - (void)processComponent:(NSString *)component
 {
-    NSLog(@"Component: %@", component);
+    
     
     if ([self isMoveNumber:component]) {
         

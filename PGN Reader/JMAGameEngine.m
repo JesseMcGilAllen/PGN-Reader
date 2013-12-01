@@ -343,6 +343,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     JMASquare *destinationSquare = [self.model squareforCoordinate:move.destinationSquareCoordinate];
     
     if ([pawn.square.file isEqualToString:destinationSquare.file]) {
+
         NSUInteger pawnRankValue = [pawn.square.rank integerValue];
         NSUInteger squareRankValue = [destinationSquare.rank integerValue];
         
