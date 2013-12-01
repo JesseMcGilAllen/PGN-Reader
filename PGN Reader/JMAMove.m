@@ -42,10 +42,15 @@
     }
     
     [self determinePieceType];
-    [self extractDestinationSquare];
+    [self configureIsCastling];
+    
+    if (!_isCastling) {
+        [self extractDestinationSquare];
+    }
+    
     [self determineWhetherMoveContainsACheck];
     [self determineWhetherMoveContainsACapture];
-    [self configureIsCastling];
+    
     
     
     
@@ -55,35 +60,38 @@
 
 - (NSString *)pieceType
 {
-    return self.pieceType;
-}
-
-- (NSString *)destinationSquareCoordinate
-{
-    return self.destinationSquareCoordinate;
-}
-
-- (NSString *)originSquareCoordinate
-{
-    return self.originSquareCoordinate;
+    return _pieceType;
 }
 
 - (BOOL)isCapture
 {
-    return self.isCapture;
+    return _isCapture;
 }
 
 - (BOOL)isCastling
 {
-    return self.isCastling;
+    return _isCastling;
 }
 
 - (BOOL)isCheck
 {
-    return self.isCheck;
+    return _isCheck;
 }
 
+- (BOOL)isPromotion
+{
+    return _isPromotion;
+}
 
+- (NSString *)destinationSquareCoordinate
+{
+    return _destinationSquareCoordinate;
+}
+
+- (NSString *)originSquareCoordinate
+{
+    return _originSquareCoordinate;
+}
 
 /*
  This method compares the first Character of the moves String to a dictionary
@@ -185,12 +193,6 @@
     } else {
         self.isCastling = NO;
     }
-}
-
-
-- (BOOL)isPromotion
-{
-    return self.isPromotion;
 }
 
 /*

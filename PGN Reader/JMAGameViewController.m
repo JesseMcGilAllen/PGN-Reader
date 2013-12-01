@@ -13,6 +13,8 @@
 #import "JMAMovesListParser.h"
 #import "JMAGameEngine.h"
 #import "JMABoardModel.h"
+#import "JMASquare.h"
+#import "JMAMove.h"
 
 @interface JMAGameViewController ()
 @property (weak, nonatomic) IBOutlet JMABoardView *boardView;
@@ -55,6 +57,7 @@
     
     
     [self setupBoard];
+    [self setupGame];
     
 }
 
@@ -352,6 +355,19 @@
 - (IBAction)playGameButtonTapped:(id)sender
 {
     NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+    JMAMove *move = [self.boardModel currentMove];
+    
+    NSLog(@"Move: %@", move.moveString);
+    
+    NSArray *squaresForMove = [self.gameEngine squaresInvolvedInMove:move];
+    
+    NSLog(@"Squares Count: %d", [squaresForMove count]);
+    
+    for (JMASquare *square in squaresForMove) {
+        NSLog(@"Coordinate: %@", square.coordinate);
+    }
+    
+    self.boardModel.halfMoveIndex++;
     
 }
 

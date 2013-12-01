@@ -147,6 +147,8 @@
 */
 - (void)processComponent:(NSString *)component
 {
+    NSLog(@"Component: %@", component);
+    
     if ([self isMoveNumber:component]) {
         
         [self processMoveNumber:component];
@@ -155,6 +157,7 @@
         
         [self processGameResult:component];
     } else {
+        
         [self processMove:component];
     }
 }
@@ -181,6 +184,8 @@
 */
 - (BOOL)isMoveNumber:(NSString *)component
 {
+    component = [component stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
     int moveValue = [[component stringByReplacingOccurrencesOfString:PERIOD
                                                           withString:SPACE] intValue];
     
@@ -234,6 +239,7 @@
 */
 - (void)processMove:(NSString *)component
 {
+    
     JMAMove *halfMove = [[JMAMove alloc] initWithMoveString:component];
     [self.textViewString appendString:SPACE];
     [self.textViewString appendString:component];

@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @class JMABoardModel;
+@class JMAMove;
 
 @interface JMAGameEngine : NSObject
 
 @property (strong, nonatomic) JMABoardModel *model;
 
-- (NSArray *)squaresInvolvedInMove:(NSString *)move;
+- (NSArray *)squaresInvolvedInMove:(JMAMove *)move;
 
 
 
