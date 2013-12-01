@@ -343,6 +343,7 @@
     
 }
 
+#pragma mark - Playing Through Game
 - (IBAction)gameStartButtonTapped:(id)sender
 {
     NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
@@ -351,6 +352,7 @@
 - (IBAction)playGameButtonTapped:(id)sender
 {
     NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+    
 }
 
 - (IBAction)gameEndButtonTapped:(id)sender

@@ -49,6 +49,7 @@ Saturday November 30th
 - 4:45 pm - 5:15 pm: Rook move coded
 - 5:15 pm - 6:15 pm: Queen move coded
 - 6:15 pm - 6:30 pm: added Promotion check to move class
+- 6:30 pm - 6:45 pm: started making move
 
-    daily hours: 5 hours 50 minutes
-    weekly hours: 19 hours 50 minutes
+    daily hours: 6 hours 05 minutes
+    weekly hours: 20 hours 05 minutes
