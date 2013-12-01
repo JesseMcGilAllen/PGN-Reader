@@ -807,9 +807,48 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     return nil;
 }
 
+/*
+ This method checks if the queen shares a diagonal, file, or rank with the move
+ The isPathClearBetweenPieceCoordinate: is called passing in the piece square's
+ coordinate, the move's destination square coordinate and shared 
+ diagonal/rank/file.  If YES is returned the isKingSafe: method is called.  The 
+ result of that method call is returned.
+*/
 - (BOOL)isQueen:(JMAPiece *)queen rightForMove:(JMAMove *)move
 {
-    return nil;
+    // Check for Shared Diagonal
+    NSString *pieceCoordinate = queen.square.coordinate;
+    NSString *squareCoordinate = move.destinationSquareCoordinate;
+    JMASquare *destinationSquare = [self.model squareforCoordinate:squareCoordinate];
+    
+    NSArray *diagonal = [self diagonalContainingPieceCoordinate:pieceCoordinate
+                                               SquareCoordinate:squareCoordinate];
+    
+    BOOL isPathClear;
+    BOOL isQueenRightForMove = NO;
+    NSArray *diagonalSquareOrFile;
+    
+    if ([diagonal count] > ZERO) {
+        diagonalSquareOrFile = diagonal;
+        
+    } else {
+        
+        if ([queen.square.file isEqualToString:destinationSquare.file]) {
+            diagonalSquareOrFile = self.files[destinationSquare.file];
+            
+        } else if ([queen.square.rank isEqualToString:destinationSquare.rank]) {
+            diagonalSquareOrFile = self.ranks[destinationSquare.rank];
+        }
+    }
+    
+    isPathClear = [self isPathClearBetweenPieceCoordinate:pieceCoordinate squareCoordinate:squareCoordinate onRankFileOrDiagonal:diagonalSquareOrFile];
+    
+    if (isPathClear) {
+        isQueenRightForMove = [self isKingSafeWithMoveFromSquare:queen.square toSquare:destinationSquare];
+    }
+    
+    return isQueenRightForMove;
+
 }
 
 # pragma mark - King Safety Methods
