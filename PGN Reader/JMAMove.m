@@ -19,6 +19,7 @@
 @property (assign, nonatomic) BOOL isCapture;
 @property (assign, nonatomic) BOOL isCastling;
 @property (assign, nonatomic) BOOL isCheck;
+@property (assign, nonatomic) BOOL isPromotion;
 
 @end
 
@@ -139,7 +140,7 @@
 }
 
 /*
- This method looks for in the moveString for an occurrence of an 'x' 
+ This method looks in the moveString for an occurrence of an 'x'
  representing a piece capture if one exists the isCapture property is set to YES
  else it is set to NO
 */
@@ -147,10 +148,26 @@
 {
     NSRange rangeOfX = [self.moveString rangeOfString:@"x"];
     
-    if (rangeOfX.location != NSNotFound) {
-        self.isCapture = YES;
-    } else {
+    if (rangeOfX.location == NSNotFound) {
         self.isCapture = NO;
+    } else {
+        self.isCapture = YES;
+    }
+}
+
+/*
+ This method looks in the moveString for an occurrence of an '=' representing a
+ promotion has occurred.  If the '=' has been found the isPromotion property is
+ set to YES otherwise it is set to NO.
+*/
+- (void)determineWhetherMoveContainsAPromotion
+{
+    NSRange rangeOfPromotion = [self.moveString rangeOfString:@"="];
+    
+    if (rangeOfPromotion.location == NSNotFound) {
+        self.isPromotion = NO;
+    } else {
+        self.isPromotion = YES;
     }
 }
 
@@ -163,4 +180,9 @@
     }
 }
 
+
+- (BOOL)isPromotion
+{
+    return self.isPromotion;
+}
 @end

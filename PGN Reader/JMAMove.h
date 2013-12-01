@@ -21,6 +21,7 @@
 - (BOOL)isCapture;
 - (BOOL)isCastling;
 - (BOOL)isCheck;
+- (BOOL)isPromotion;
 
 
 

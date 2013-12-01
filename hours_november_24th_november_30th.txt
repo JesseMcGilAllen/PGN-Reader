@@ -48,6 +48,7 @@ Saturday November 30th
                      added pragma marks for each move section
 - 4:45 pm - 5:15 pm: Rook move coded
 - 5:15 pm - 6:15 pm: Queen move coded
+- 6:15 pm - 6:30 pm: added Promotion check to move class
 
-    daily hours: 5 hours 35 minutes
-    weekly hours: 19 hours 35 minutes
+    daily hours: 5 hours 50 minutes
+    weekly hours: 19 hours 50 minutes
