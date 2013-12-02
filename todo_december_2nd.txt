@@ -1,0 +1,3 @@
+I need to take a break from debugging to implement the games sort.
+It will make it easier to debug if I can focus on the same game at once instead
+of a random game everytime I restart the app.
