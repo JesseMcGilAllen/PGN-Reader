@@ -113,6 +113,8 @@
         
         [self configureViewForPortraitOrientation];
     }
+    
+    [self.boardView drawBoard];
 }
 
 /*
@@ -218,6 +220,7 @@
     }
     
     [self.boardView setNeedsDisplay];
+    [self.boardView drawBoard];
     
 }
 
@@ -248,6 +251,7 @@
     
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
+    
 }
 
 /*

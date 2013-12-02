@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @class JMABoardModel;
+@class JMAMove;
 
 @interface JMABoardView : UIView
 
 @property (strong, nonatomic) JMABoardModel *model;
 
 - (void)resetBoard;
+- (void)drawBoard;
+
+- (void)updateBoardWithMove:(JMAMove *)move squares:(NSArray *)squares;
 
 @end
