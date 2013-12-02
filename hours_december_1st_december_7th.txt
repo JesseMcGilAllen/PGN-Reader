@@ -20,6 +20,7 @@ Sunday December 1st
 - 7:15 pm - 8:00 pm: added piece move methods in model, laying down architecture
 - 8:00 pm - 8:20 pm: journaled about last week's experience
 - 8:20 pm - 9:30 pm: Started making move code in board model
+- 10:50 pm - 
 
     Daily Hours: 6 hours 00 minutes
     Weekly Hours: 6 hours 00 minutes

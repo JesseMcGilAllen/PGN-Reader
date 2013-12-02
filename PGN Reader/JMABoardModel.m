@@ -339,6 +339,19 @@
 */
 - (void)makeCastlingMove:(JMAMove *)move withSquares:(NSArray *)squares
 {
+    JMASquare *kingOriginSquare = squares[ZERO];
+    JMASquare *kingDestinationSquare = squares[ONE];
+    JMASquare *rookOriginSquare = squares[TWO];
+    JMASquare *rookDestinationSquare = squares[THREE];
+    
+    JMAPiece *rook = rookOriginSquare.piece;
+    JMAPiece *king = kingOriginSquare.piece;
+    
+    rookOriginSquare.piece = nil;
+    kingOriginSquare.piece = nil;
+    
+    kingDestinationSquare.piece = king;
+    rookDestinationSquare.piece = rook;
     
 }
 
