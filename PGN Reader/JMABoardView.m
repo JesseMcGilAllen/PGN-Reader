@@ -12,6 +12,7 @@
 #import "JMAConstants.h"
 #import "JMAPiece.h"
 #import "JMABoardModel.h"
+#import "JMAMove.h"
 
 @interface JMABoardView ()
 
@@ -107,7 +108,20 @@
     
 }
 
+/*
+ This method will move the piece's location from the first square in array
+ to the second if the move is not a castling move
+*/
 - (void)updateBoardWithMove:(JMAMove *)move squares:(NSArray *)squares
+{
+   
+}
+
+/*
+ This method will use the first two elements in the array to move the king and
+ the last two elements of the array to move the rook
+*/
+- (void)updateBoardWithSquaresForCastling:(NSArray *)squares
 {
     
 }
