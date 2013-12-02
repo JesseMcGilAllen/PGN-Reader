@@ -559,6 +559,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
  */
 - (JMAPiece *)bishopInvolvedInMove:(JMAMove *)move
 {
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     JMAPiece *bishop;
     NSArray *bishops;
     NSUInteger moveLength = [move.moveString length];
@@ -585,11 +586,11 @@ Otherwise an empty pawn object is returned to satisfy xCode.
 */
 - (JMAPiece *)bishopFromBishops:(NSArray *)bishops forMove:(JMAMove *)move
 {
-    
+   NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     if ([bishops count] == ONE) {
         return bishops[ZERO];
     }
-    
+ NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     for (JMAPiece *bishop in bishops) {
         if ([self isBishop:bishop rightForMove:move]) {
             return bishop;
@@ -605,6 +606,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
 */
 - (BOOL)isBishop:(JMAPiece *)bishop rightForMove:(JMAMove *)move
 {
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     BOOL isBishopRightForMove = NO;
     NSString *pieceCoordinate = bishop.square.coordinate;
     NSString *squareCoordinate = move.destinationSquareCoordinate;

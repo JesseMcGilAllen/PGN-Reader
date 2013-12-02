@@ -35,6 +35,7 @@
 @property (strong, nonatomic, readwrite) NSMutableArray *blackQueens;
 @property (strong, nonatomic, readwrite) JMAPiece *blackKing;
 
+@property (strong, nonatomic) NSMutableArray *capturedPieces;
 
 @property (strong, nonatomic) NSArray *positions;
 @property (strong, nonatomic) NSArray *squares;
@@ -299,5 +300,124 @@
 - (JMAMove *)currentMove
 {
     return self.moves[self.halfMoveIndex];
+}
+
+/*
+ This method moves the piece on the first square object in the squares array
+ to the second square object for the incoming square object.
+*/
+- (void)makeMove:(JMAMove *)move withSquares:(NSArray *)squares
+{
+    // check if move.isCastling
+    // if isCastling call makeCastlingMove method
+    if (move.isCastling) {
+        [self makeCastlingMove:move withSquares:squares];
+    }
+    
+    // grab reference to piece
+    JMASquare *originSquare = squares[ZERO];
+    JMASquare *destinationSquare = squares[ONE];
+    
+    JMAPiece *pieceToMove = originSquare.piece;
+    
+    // remove piece from origin square
+    originSquare.piece = nil;
+    
+    // if Move.isCapture remove square.piece reference
+    if (move.isCapture) {
+        [self capturedPiece:destinationSquare.piece forMove:move];
+        destinationSquare.piece = nil;
+    }
+    
+    // add piece to destination square
+    pieceToMove.square = destinationSquare;
+    destinationSquare.piece = pieceToMove;
+}
+
+/*
+ This method will process a move if the isCastling Boolean is set to YES
+*/
+- (void)makeCastlingMove:(JMAMove *)move withSquares:(NSArray *)squares
+{
+    
+}
+
+/*
+ This method adds the incoming piece parameter to the captured pieces array
+ and calls a method to remove the piece from its piece type array.
+*/
+- (void)capturedPiece:(JMAPiece *)piece forMove:(JMAMove *)move
+{
+    // save piece in capturedPieces
+    if (!self.capturedPieces) {
+        self.capturedPieces = [[NSMutableArray alloc] init];
+    }
+    
+    [self.capturedPieces addObject:piece];
+    
+    // remove piece from pieceArray
+    if ([piece.color isEqualToString:WHITE]) {
+        [self removeWhitePiece:piece];
+    } else {
+        [self removeBlackPiece:piece];
+    }
+    
+}
+
+/*
+ This method removes the piece parameter from the white piece arrays for the 
+ array of the piece type
+*/
+- (void)removeWhitePiece:(JMAPiece *)piece
+{
+    if ([piece.type isEqualToString:PAWN]) {
+        
+        [self.whitePawns removeObject:piece];
+        
+    } else if ([piece.type isEqualToString:KNIGHT]) {
+        
+        [self.whiteKnights removeObject:piece];
+        
+    } else if ([piece.type isEqualToString:BISHOP]) {
+        
+        [self.whiteBishops removeObject:piece];
+        
+    }  else if ([piece.type isEqualToString:ROOK]) {
+        
+        [self.whiteRooks removeObject:piece];
+        
+    } else {
+        
+        [self.whiteQueens removeObject:piece];
+    }
+}
+
+/*
+ This method removes the piece parameter from the black piece arrays for the
+ array of the piece type
+*/
+- (void)removeBlackPiece:(JMAPiece *)piece
+{
+    if ([piece.type isEqualToString:PAWN]) {
+        
+        [self.blackPawns removeObject:piece];
+        
+    } else if ([piece.type isEqualToString:KNIGHT]) {
+        
+        [self.blackKnights removeObject:piece];
+        
+    } else if ([piece.type isEqualToString:BISHOP]) {
+        
+        [self.blackBishops removeObject:piece];
+        
+    }  else if ([piece.type isEqualToString:ROOK]) {
+        
+        [self.blackRooks removeObject:piece];
+        
+    } else {
+        
+        [self.blackQueens removeObject:piece];
+    }
+
 }
 @end

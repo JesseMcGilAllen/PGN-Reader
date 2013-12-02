@@ -149,6 +149,7 @@
 {
     if ([self.moveString hasSuffix:@"+"]) {
         self.isCheck = YES;
+        self.moveString = [self.moveString stringByReplacingOccurrencesOfString:@"+" withString:@""];
     } else {
         self.isCheck = NO;
     }

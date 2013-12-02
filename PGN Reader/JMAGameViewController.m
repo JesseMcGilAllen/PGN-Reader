@@ -367,6 +367,10 @@
         NSLog(@"Coordinate: %@", square.coordinate);
     }
     
+    [self.boardModel makeMove:move withSquares:squaresForMove];
+    
+    // update BoardView
+    
     self.boardModel.halfMoveIndex++;
     
 }

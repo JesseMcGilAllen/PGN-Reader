@@ -15,6 +15,11 @@ Sunday December 1st
                       the move Class and implemented a way of setting it.
 - 1:40 pm - 2:45 pm: Debugging
 - 3:25 pm - 4:25 pm: Debugging (piece arrays, pawn and knight moves)
+- 4:25 pm - 4:45 pm: Debugging Bishop Code
+- 4:45 pm - 4:55 pm: started piece move in board model
+- 7:15 pm - 8:00 pm: added piece move methods in model, laying down architecture
+- 8:00 pm - 8:20 pm: journaled about last week's experience
+- 8:20 pm - 9:30 pm: Started making move code in board model
 
-    Daily Hours: 3 hours 15 minutes
-    Weekly Hours: 3 hours 15 minutes
+    Daily Hours: 6 hours 00 minutes
+    Weekly Hours: 6 hours 00 minutes
