@@ -118,9 +118,7 @@
     if (move.isCastling) {
         [self updateBoardWithSquaresForCastling:squares];
     }
-    
-   
-    
+        
     JMASquare *originSquare = squares[ZERO];
     JMASquare *destinationSquare = squares[ONE];
     JMAPiece *pieceToRemove;

@@ -352,10 +352,17 @@
     kingOriginSquare.piece = nil;
     
     kingDestinationSquare.piece = king;
+    
+    
     rookDestinationSquare.piece = rook;
     
     rook.square = rookDestinationSquare;
     king.square = kingDestinationSquare;
+    
+    NSLog(@"Destination Square Piece: %@",king.square.piece.type);
+    NSLog(@"Destination Square Piece: %@",kingDestinationSquare.piece.type);
+    
+    NSLog(@"Destination Square Piece: %@", [self squareforCoordinate:kingDestinationSquare.coordinate].piece.type);
     
 }
 

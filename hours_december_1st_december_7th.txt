@@ -31,7 +31,8 @@ Monday December 2nd
 -------------------
 - 12:50 pm - 2:35 pm: Started moving pieces, various piece move debugging
 - 2:35 pm - 3:20 pm: Debugging various piece move errors
-- 4:00 pm - 
+- 4:00 pm - 5:05 pm: debugged king move and isKingSafe methods
+                     reached end of first game.
 
-    Daily Hours: 2 hour 30 minutes
-    Weekly Hours: 9 hours 00 minutes
+    Daily Hours: 3 hour 35 minutes
+    Weekly Hours: 10 hours 05 minutes

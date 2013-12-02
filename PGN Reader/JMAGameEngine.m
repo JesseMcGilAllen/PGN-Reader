@@ -209,6 +209,9 @@
 - (NSArray *)squaresInvolvedforKing:(JMAPiece *)king withMove:(JMAMove *)move
 {
     JMASquare *destinationSquare = [self.model squareforCoordinate:move.destinationSquareCoordinate];
+    if (!king.square.piece) {
+        king.square.piece = king;
+    }
     NSArray *squaresInvolved = @[king.square, destinationSquare];
     
     return squaresInvolved;
@@ -769,7 +772,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
                                              squareCoordinate:destinationSquare.coordinate
                                          onRankFileOrDiagonal:squaresForRank];
     }
-    
+    NSLog(@"IS Path Clear: %d", isPathClear);
     if (isPathClear) {
         isRookRightForMove = [self isKingSafeWithMoveFromSquare:rook.square
                                                        toSquare:destinationSquare];
@@ -951,6 +954,7 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
     }
     
     kingSquare = king.square;
+    NSLog(@"King Square: %@", king.square.coordinate);
     
     return kingSquare;
 }
@@ -990,6 +994,7 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
                              withKingSquare:(JMASquare *)kingSquare
 {
     BOOL isKingSafe = YES;
+    BOOL kingOccurred = NO;
     
     if (![rankFileOrDiagonal containsObject:kingSquare.coordinate]) {
         return isKingSafe;
@@ -1000,6 +1005,7 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
         JMAPiece *piece = square.piece;
         
         if ([square isEqual:kingSquare]) {
+            kingOccurred = YES;
             if (!isKingSafe) {
                 return isKingSafe;
             }
@@ -1008,6 +1014,10 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
         if (piece) {
             if ([piece.color isEqualToString:self.sideToMove]) {
                 isKingSafe = YES;
+                
+                if (kingOccurred) {
+                    return isKingSafe;
+                }
             } else {
                 if ([piece.type isEqualToString:pieceOne] ||
                     [piece.type isEqualToString:pieceTwo]) {
