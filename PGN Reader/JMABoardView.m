@@ -125,6 +125,7 @@
     
     [UIView animateWithDuration:ONE animations:^{
         piece.frame = destinationSquare.frame;
+        [self bringSubviewToFront:piece];
     }];
 }
 
@@ -146,6 +147,8 @@
     [UIView animateWithDuration:ONE animations:^{
         king.frame = kingDestinationSquare.frame;
         rook.frame = rookDestinationSquare.frame;
+        [self bringSubviewToFront:king];
+        [self bringSubviewToFront:rook];
     }];
     
 }

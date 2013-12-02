@@ -591,7 +591,9 @@ Otherwise an empty pawn object is returned to satisfy xCode.
         return bishops[ZERO];
     }
  NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+    NSLog(@"Bishops: %@", bishops);
     for (JMAPiece *bishop in bishops) {
+        NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
         if ([self isBishop:bishop rightForMove:move]) {
             return bishop;
         }
@@ -674,6 +676,10 @@ Otherwise an empty pawn object is returned to satisfy xCode.
 - (NSArray *)diagonalContainingPieceCoordinate:(NSString *)pieceCoordinate SquareCoordinate:(NSString *)squareCoordinate
 {
     for (NSArray *diagonal in self.validDiagonals) {
+        NSLog(@"Piece: %@", pieceCoordinate);
+        NSLog(@"Square: %@", squareCoordinate);
+        NSLog(@"Diagonal: %@", diagonal);
+        
         if ([diagonal containsObject:pieceCoordinate] &&
             [diagonal containsObject:squareCoordinate]) {
             
@@ -789,7 +795,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     }
     
     if (moveLength == THREE || (moveLength == FOUR && move.isCapture)) {
-        
+        [self queenFromQueens:queens forMove:move];
     } else {
         NSString *rankOrFile = [move.moveString substringWithRange:NSMakeRange(ONE, ONE)];
         queen = [self pieceFromPieces:queens withRankOrFile:rankOrFile];
@@ -805,6 +811,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
 */
 - (JMAPiece *)queenFromQueens:(NSArray *)queens forMove:(JMAMove *)move
 {
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     if ([queens count] == ONE) {
         return queens[ZERO];
     }

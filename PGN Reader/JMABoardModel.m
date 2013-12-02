@@ -58,6 +58,7 @@
         _blackPawns = [[NSMutableArray alloc] init];
         _blackRooks = [[NSMutableArray alloc] init];
         _blackKnights = [[NSMutableArray alloc] init];
+        _blackBishops = [[NSMutableArray alloc] init];
         _blackQueens = [[NSMutableArray alloc] init];
         _halfMoveIndex = ZERO;
         
