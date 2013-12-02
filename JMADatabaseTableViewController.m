@@ -34,7 +34,9 @@
 {
     [super viewDidLoad];
     self.title = self.database.name;
-    self.games = [self.database.games allObjects];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"orderingValue" ascending:YES];
+    self.games = [[self.database.games allObjects] sortedArrayUsingDescriptors:@[sortDescriptor]];
     
     
     // Uncomment the following line to preserve selection between presentations.
