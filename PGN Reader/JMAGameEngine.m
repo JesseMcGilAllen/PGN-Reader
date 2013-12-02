@@ -171,13 +171,13 @@
         [squaresInvolved addObject:[self.model squareforCoordinate:E1]];
         
         if ([move isEqualToString:KINGSIDE_CASTLING]) {
-            
+           NSLog(@"Move: %@, Kingside Castling: %@", move, KINGSIDE_CASTLING);
             [squaresInvolved addObject:[self.model squareforCoordinate:G1]];
             [squaresInvolved addObject:[self.model squareforCoordinate:H1]];
             [squaresInvolved addObject:[self.model squareforCoordinate:F1]];
             
         } else {
-            
+            NSLog(@"Move: %@, Queenside Castling: %@", move, QUEENSIDE_CASTLING);
             [squaresInvolved addObject:[self.model squareforCoordinate:C1]];
             [squaresInvolved addObject:[self.model squareforCoordinate:A1]];
             [squaresInvolved addObject:[self.model squareforCoordinate:D1]];
@@ -812,6 +812,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
 - (JMAPiece *)queenFromQueens:(NSArray *)queens forMove:(JMAMove *)move
 {
     NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+    
     if ([queens count] == ONE) {
         return queens[ZERO];
     }
