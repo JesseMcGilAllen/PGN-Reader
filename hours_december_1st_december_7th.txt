@@ -1,4 +1,4 @@
-Hours Worked BeforeThis Week: 127 hours
+Hours Worked Before This Week: 127 hours
 Hours Left: 89 hours
 
 NOTE: I must work a minimum of 44.5 hours this week
@@ -6,6 +6,7 @@ NOTE: I must work a minimum of 44.5 hours this week
 
 IDEA: Try to work in 2 hour 10 minutes blocks.  That way after 3 blocks,
       I have achieved the minimum needed for the day.
+
 Sunday December 1st
 -------------------
 - 12:30 pm - 1:15 pm: Looked through current architecture and made rough sketch
@@ -24,4 +25,11 @@ Sunday December 1st
                        Board View Move Code
 
     Daily Hours: 6 hours 30 minutes
+    Weekly Hours: 6 hours 30 minutes
+
+Monday December 2nd
+-------------------
+- 12:50 -
+
+    Daily Hours: 0 hours 00 minutes
     Weekly Hours: 6 hours 30 minutes

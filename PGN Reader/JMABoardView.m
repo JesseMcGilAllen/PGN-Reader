@@ -114,7 +114,18 @@
 */
 - (void)updateBoardWithMove:(JMAMove *)move squares:(NSArray *)squares
 {
-   
+    if (move.isCastling) {
+        [self updateBoardWithSquaresForCastling:squares];
+    }
+    
+    JMASquare *originSquare = squares[ZERO];
+    JMASquare *destinationSquare = squares[ONE];
+    
+    JMAPiece *piece = originSquare.piece;
+    
+    [UIView animateWithDuration:ONE animations:^{
+        piece.frame = destinationSquare.frame;
+    }];
 }
 
 /*
@@ -123,6 +134,19 @@
 */
 - (void)updateBoardWithSquaresForCastling:(NSArray *)squares
 {
+    JMASquare *kingOriginSquare = squares[ZERO];
+    JMASquare *kingDestinationSquare = squares[ONE];
+    
+    JMASquare *rookOriginSquare = squares[TWO];
+    JMASquare *rookDestinationSquare = squares[THREE];
+    
+    JMAPiece *king = kingOriginSquare.piece;
+    JMAPiece *rook = rookOriginSquare.piece;
+    
+    [UIView animateWithDuration:ONE animations:^{
+        king.frame = kingDestinationSquare.frame;
+        rook.frame = rookDestinationSquare.frame;
+    }];
     
 }
 /*
