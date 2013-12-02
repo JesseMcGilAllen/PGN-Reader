@@ -534,7 +534,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     
     files = [files sortedArrayUsingSelector:@selector(localizedCompare:)];
    
-    int fileIndex = [files indexOfObject:square.file];
+    int fileIndex = (int)[files indexOfObject:square.file];
     
     return fileIndex;
 }
@@ -812,8 +812,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
 */
 - (JMAPiece *)queenFromQueens:(NSArray *)queens forMove:(JMAMove *)move
 {
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
-    NSLog(@"Queens count: %d", [queens count]);
+
     JMAPiece *queen;
     if ([queens count] == ONE) {
         queen = queens[ZERO];

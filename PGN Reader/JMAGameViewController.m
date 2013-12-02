@@ -365,7 +365,7 @@
     
     NSArray *squaresForMove = [self.gameEngine squaresInvolvedInMove:move];
     
-    NSLog(@"Squares Count: %d", [squaresForMove count]);
+
     
     for (JMASquare *square in squaresForMove) {
         NSLog(@"Coordinate: %@", square.coordinate);
