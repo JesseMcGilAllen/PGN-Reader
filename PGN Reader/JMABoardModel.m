@@ -354,6 +354,9 @@
     kingDestinationSquare.piece = king;
     rookDestinationSquare.piece = rook;
     
+    rook.square = rookDestinationSquare;
+    king.square = kingDestinationSquare;
+    
 }
 
 /*
