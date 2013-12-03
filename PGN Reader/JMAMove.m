@@ -205,10 +205,11 @@
 */
 - (void)extractPromotionPieceTypeWithRange:(NSRange)range
 {
-    range.location = range.location++;
+    range.location = range.location + ONE;
     NSString *pieceTypeCharacter = [self.moveString substringWithRange:range];
-    
+    NSLog(@"Piece Type Character: %@", pieceTypeCharacter);
     self.promotionPieceType = self.pieceTypes[pieceTypeCharacter];
+    NSLog(@"Promotion Piece Type: %@", self.promotionPieceType);
 }
 /*
  This method sets the originSquareCoordinate using the coordinate property of 

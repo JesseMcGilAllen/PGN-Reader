@@ -133,12 +133,7 @@
     
     JMAPiece *piece = originSquare.piece;
     
-    [UIView animateWithDuration:ONE animations:^{
-        piece.frame = destinationSquare.frame;
-        [self bringSubviewToFront:piece];
-    }];
-    
-    [UIView animateWithDuration:ONE
+    [UIView animateWithDuration:(ONE / TWO)
                      animations:^{
                          piece.frame = destinationSquare.frame;
                          [self bringSubviewToFront:piece];
@@ -146,6 +141,17 @@
                      completion:^(BOOL finished) {
                          if (pieceToRemove) {
                             [pieceToRemove removeFromSuperview];
+                         }
+                         
+                         if (move.isPromotion) {
+                             JMAPiece *promotedPiece = [[JMAPiece alloc] initWithSquare:destinationSquare
+                                                                           type:move.promotionPieceType
+                                                                       forColor:[self.model sideToMove]];
+                             
+                             NSLog(@"Side To Move: %@", [self.model sideToMove]);
+                             [piece removeFromSuperview];
+                             promotedPiece.frame = destinationSquare.frame;
+                             [self addSubview:promotedPiece];
                          }
                     }
      ];
@@ -175,6 +181,9 @@
     }];
     
 }
+
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

@@ -342,9 +342,23 @@
         destinationSquare.piece = nil;
     }
     
-    // add piece to destination square
     pieceToMove.square = destinationSquare;
     destinationSquare.piece = pieceToMove;
+    
+    if (move.isPromotion) {
+        [self capturedPiece:pieceToMove forMove:move];
+        JMAPiece *promotedPiece = [[JMAPiece alloc] initWithSquare:destinationSquare type:move.promotionPieceType forColor:self.sideToMove];
+        
+        if ([self.sideToMove isEqualToString:WHITE]) {
+            [self addWhitePiece:promotedPiece];
+        } else {
+            [self addBlackPiece:promotedPiece];
+        }
+        
+    }
+    
+    // add piece to destination square
+   
 }
 
 /*
@@ -390,6 +404,7 @@
     }
     
     [self.capturedPieces addObject:piece];
+    [self.pieces removeObject:piece];
     
     // remove piece from pieceArray
     if ([piece.color isEqualToString:WHITE]) {
@@ -453,6 +468,55 @@
     } else {
         
         [self.blackQueens removeObject:piece];
+    }
+
+}
+
+- (void)addWhitePiece:(JMAPiece *)piece
+{
+    if ([piece.type isEqualToString:PAWN]) {
+        
+        [self.whitePawns addObject:piece];
+        
+    } else if ([piece.type isEqualToString:KNIGHT]) {
+        
+        [self.whiteKnights addObject:piece];
+        
+    } else if ([piece.type isEqualToString:BISHOP]) {
+        
+        [self.whiteBishops addObject:piece];
+        
+    }  else if ([piece.type isEqualToString:ROOK]) {
+        
+        [self.whiteRooks addObject:piece];
+        
+    } else {
+        
+        [self.whiteQueens addObject:piece];
+    }
+}
+
+- (void)addBlackPiece:(JMAPiece *)piece
+{
+    if ([piece.type isEqualToString:PAWN]) {
+        
+        [self.blackPawns addObject:piece];
+        
+    } else if ([piece.type isEqualToString:KNIGHT]) {
+        
+        [self.blackKnights addObject:piece];
+        
+    } else if ([piece.type isEqualToString:BISHOP]) {
+        
+        [self.blackBishops addObject:piece];
+        
+    }  else if ([piece.type isEqualToString:ROOK]) {
+        
+        [self.blackRooks addObject:piece];
+        
+    } else {
+        
+        [self.blackQueens addObject:piece];
     }
 
 }

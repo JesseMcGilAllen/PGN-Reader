@@ -41,4 +41,5 @@
 - (JMAMove *)currentMove;
 
 - (void)makeMove:(JMAMove *)move withSquares:(NSArray *)squares;
+
 @end
