@@ -36,6 +36,9 @@ Monday December 2nd
 - 5:55 pm - 6:30 pm: debugged pawn move which a pawn on its original square
                      will leapfrog a pawn in front of it for a move.
                      finished second game.
+- 6:30 pm - 7:20 pm: Tested playing through games in TWIC 993 file.
+                     implemented code to handle en Passant capture.
+                     Successfully played though 6 games.
 
-    Daily Hours: 4 hour 10 minutes
-    Weekly Hours: 10 hours 40 minutes
+    Daily Hours: 5 hour 00 minutes
+    Weekly Hours: 11 hours 30 minutes

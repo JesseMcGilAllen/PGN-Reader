@@ -333,7 +333,11 @@
     originSquare.piece = nil;
     
     // if Move.isCapture remove square.piece reference
-    if (move.isCapture) {
+    if (move.isEnPassant) {
+        JMASquare *square = [self squareforCoordinate:move.capturedPieceSquareCoordinate];
+        [self capturedPiece:square.piece forMove:move];
+        square.piece = nil;
+    } else if (move.isCapture) {
         [self capturedPiece:destinationSquare.piece forMove:move];
         destinationSquare.piece = nil;
     }

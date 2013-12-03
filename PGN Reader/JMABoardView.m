@@ -123,7 +123,10 @@
     JMASquare *destinationSquare = squares[ONE];
     JMAPiece *pieceToRemove;
     
-    if (move.isCapture) {
+    if (move.isEnPassant) {
+        JMASquare *square = [self.model squareforCoordinate:move.capturedPieceSquareCoordinate];
+        pieceToRemove = square.piece;
+    } else if (move.isCapture) {
         pieceToRemove = destinationSquare.piece;
         
     }

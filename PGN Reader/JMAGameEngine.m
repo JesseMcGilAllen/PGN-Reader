@@ -464,7 +464,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
         capturedPieceSquareRankValue = destinationSquareRankValue + ONE;
     }
     
-    NSString *capturedPieceSquareCoordinate = [[NSString alloc] initWithFormat:@"%@%ld", destinationSquare.file, (unsigned long)destinationSquareRankValue];
+    NSString *capturedPieceSquareCoordinate = [[NSString alloc] initWithFormat:@"%@%ld", destinationSquare.file, (unsigned long)capturedPieceSquareRankValue];
     
     move.capturedPieceSquareCoordinate = capturedPieceSquareCoordinate;
 }
