@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) NSString *destinationSquareCoordinate;
 @property (strong, nonatomic) NSString *originSquareCoordinate;
-
+@property (strong, nonatomic) NSDictionary *pieceTypes;
 @property (strong, nonatomic) NSString *pieceType;
 
 @property (assign, nonatomic) BOOL isCapture;
@@ -50,6 +50,7 @@
     
     [self determineWhetherMoveContainsACheck];
     [self determineWhetherMoveContainsACapture];
+    [self determineWhetherMoveContainsAPromotion];
     
     
     
@@ -104,7 +105,7 @@
 */
 - (void)determinePieceType
 {
-    NSDictionary *pieceTypes = @{@"K" : KING,
+    self.pieceTypes = @{@"K" : KING,
                                  @"Q" : QUEEN,
                                  @"R" : ROOK,
                                  @"B" : BISHOP,
@@ -112,7 +113,7 @@
                                  @"O" : CASTLE};
     
     NSString *firstCharacter = [self.moveString substringToIndex:ONE];
-    self.pieceType = pieceTypes[firstCharacter];
+    self.pieceType = self.pieceTypes[firstCharacter];
     
     if (!self.pieceType) {
         self.pieceType = PAWN;
@@ -184,6 +185,7 @@
         self.isPromotion = NO;
     } else {
         self.isPromotion = YES;
+        [self extractPromotionPieceTypeWithRange:rangeOfPromotion];
     }
 }
 
@@ -196,6 +198,18 @@
     }
 }
 
+/*
+ This method uses the incoming range parameter to get the next character in the
+ move string after the '=' and sets the promotionPieceType property to the the 
+ valuer for that character's key in the pieceTypes dictionary
+*/
+- (void)extractPromotionPieceTypeWithRange:(NSRange)range
+{
+    range.location = range.location++;
+    NSString *pieceTypeCharacter = [self.moveString substringWithRange:range];
+    
+    self.promotionPieceType = self.pieceTypes[pieceTypeCharacter];
+}
 /*
  This method sets the originSquareCoordinate using the coordinate property of 
  the incoming square parameter

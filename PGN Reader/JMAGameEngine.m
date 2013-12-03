@@ -314,6 +314,10 @@
         pawn = [self pawnFromPawns:pawns forMoveInvolvingCapture:move];
     }
     
+    if (move.isPromotion) {
+        
+    }
+    
     return pawn;
 }
 
