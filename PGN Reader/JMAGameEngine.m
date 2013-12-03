@@ -404,7 +404,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
         nextRank = [rank intValue] - ONE;
     }
     
-    NSString *coordinate = [[NSString alloc] initWithFormat:@"%@%lud", file, nextRank];
+    NSString *coordinate = [[NSString alloc] initWithFormat:@"%@%ld", file, (unsigned long)nextRank];
     
     JMASquare *square = [self.model squareforCoordinate:coordinate];
     
@@ -434,6 +434,9 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     
     if (!destinationSquarePiece) {
         move.isEnPassant = YES;
+        [self calculateCapturedPieceSquareCoordinateForMove:move
+                                      withDestinationSquare:destinationSquare];
+        
     }
     
     for (JMAPiece *pawn in pawns) {
@@ -443,6 +446,27 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     }
     
     return nil;
+}
+
+/*
+ This method calculates the square coordinate that a captured pawn sits on for 
+ a en Passant move
+*/
+- (void)calculateCapturedPieceSquareCoordinateForMove:(JMAMove *)move
+                           withDestinationSquare:(JMASquare *)destinationSquare
+{
+    NSUInteger destinationSquareRankValue = destinationSquare.rank.integerValue;
+    NSUInteger capturedPieceSquareRankValue;
+    
+    if ([self.sideToMove isEqualToString:WHITE]) {
+        capturedPieceSquareRankValue = destinationSquareRankValue - ONE;
+    } else {
+        capturedPieceSquareRankValue = destinationSquareRankValue + ONE;
+    }
+    
+    NSString *capturedPieceSquareCoordinate = [[NSString alloc] initWithFormat:@"%@%ld", destinationSquare.file, (unsigned long)destinationSquareRankValue];
+    
+    move.capturedPieceSquareCoordinate = capturedPieceSquareCoordinate;
 }
 
 
