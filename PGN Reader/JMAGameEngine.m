@@ -1072,9 +1072,7 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
             if (!isKingSafe) {
                 return isKingSafe;
             }
-        }
-        
-        if (piece) {
+        } else if (piece) {
             if ([piece.color isEqualToString:self.sideToMove]) {
                 isKingSafe = YES;
                 
