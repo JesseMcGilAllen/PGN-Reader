@@ -35,6 +35,7 @@
 - (NSString *)sideToMove;
 - (NSDictionary *)squaresDictionary;
 - (JMASquare *)squareforCoordinate:(NSString *)coordinate;
+- (NSUInteger)halfMoveCount;
 
 - (void)movesForGame:(NSArray *)moves;
 - (JMAMove *)currentMove;

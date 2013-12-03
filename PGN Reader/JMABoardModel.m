@@ -295,6 +295,14 @@
 }
 
 /*
+ The method returns the count of the moves array property
+*/
+- (NSUInteger)halfMoveCount
+{
+    return [self.moves count];
+}
+
+/*
  This method returns the move object for the current halfMoveIndex from the 
  moves array
 */

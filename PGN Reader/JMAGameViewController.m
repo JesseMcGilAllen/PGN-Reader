@@ -359,6 +359,11 @@
 - (IBAction)playGameButtonTapped:(id)sender
 {
     NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+    
+    if ((self.boardModel.halfMoveIndex) == [self.boardModel halfMoveCount]) {
+        return;
+    }
+    
     JMAMove *move = [self.boardModel currentMove];
     
     NSLog(@"Move: %@", move.moveString);
