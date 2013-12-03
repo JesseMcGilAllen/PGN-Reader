@@ -358,7 +358,12 @@ Otherwise an empty pawn object is returned to satisfy xCode.
             } else if ([pawn onOriginalSquare] &&
                        (pawnRankValue + TWO) == squareRankValue) {
                 
-                return YES;
+                if (![self isPieceOnNextRank:pawn.square.rank withFile:pawn.square.file]) {
+                    return YES;
+                } else {
+                    return NO;
+                }
+
             }
         } else  {
             
@@ -368,13 +373,47 @@ Otherwise an empty pawn object is returned to satisfy xCode.
             } else if ([pawn onOriginalSquare] &&
                        (pawnRankValue - TWO) == squareRankValue) {
                 
-                return YES;
+                if (![self isPieceOnNextRank:pawn.square.rank withFile:pawn.square.file]) {
+                    return YES;
+                } else {
+                    return NO;
+                }
+
             }
         }
     }
     
     return NO;
 
+}
+
+
+/*
+ This method calculates the next rank for the incoming parameters depending on
+ whose move it is.  Then the square on that rank is gotten and checked if a piece
+ currently sits on it.  The result of that check is returned.
+*/
+- (BOOL)isPieceOnNextRank:(NSString *)rank withFile:(NSString *)file
+{
+    BOOL isPieceOnNextRank = NO;
+    NSUInteger nextRank;
+    
+    if ([self.sideToMove isEqualToString:WHITE]) {
+        nextRank = [rank intValue] + ONE;
+    } else {
+        nextRank = [rank intValue] - ONE;
+    }
+    
+    NSString *coordinate = [[NSString alloc] initWithFormat:@"%@%lud", file, nextRank];
+    
+    JMASquare *square = [self.model squareforCoordinate:coordinate];
+    
+    if (square.piece) {
+        isPieceOnNextRank = YES;
+    }
+    
+    return isPieceOnNextRank;
+    
 }
 
 /*

@@ -33,7 +33,9 @@ Monday December 2nd
 - 2:35 pm - 3:20 pm: Debugging various piece move errors
 - 4:00 pm - 5:05 pm: debugged king move and isKingSafe methods
                      reached end of first game.
-- 5:55 pm - 
+- 5:55 pm - 6:30 pm: debugged pawn move which a pawn on its original square
+                     will leapfrog a pawn in front of it for a move.
+                     finished second game.
 
-    Daily Hours: 3 hour 35 minutes
-    Weekly Hours: 10 hours 05 minutes
+    Daily Hours: 4 hour 10 minutes
+    Weekly Hours: 10 hours 40 minutes
