@@ -1084,6 +1084,10 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
                     isKingSafe = NO;
                 } else {
                     isKingSafe = YES;
+                    
+                    if (kingOccurred) {
+                        return isKingSafe;
+                    }
                 }
             }
         }

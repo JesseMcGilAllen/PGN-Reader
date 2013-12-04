@@ -27,6 +27,8 @@
 @property (assign, nonatomic) UIEdgeInsets portraitInsets;
 @property (assign, nonatomic) UIEdgeInsets landscapeInsets;
 
+
+
 @end
 
 @implementation JMAGameViewController
@@ -313,10 +315,10 @@
 {
     UIEdgeInsets defaultInsets = self.movesListView.textContainerInset;
     
-    CGFloat topPortraitInset = defaultInsets.top * EIGHT;
+    CGFloat topPortraitInset = defaultInsets.top * TWO;
     
-    self.landscapeInsets = defaultInsets;
-    self.portraitInsets = UIEdgeInsetsMake(topPortraitInset, defaultInsets.left, defaultInsets.bottom, defaultInsets.right);
+    self.landscapeInsets = UIEdgeInsetsMake(FIFTEEN, ZERO, FIFTEEN, ZERO);
+    self.portraitInsets = UIEdgeInsetsMake(FIFTEEN, ZERO, FIFTEEN, ZERO);
 
 }
 
