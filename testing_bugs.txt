@@ -1,0 +1,6 @@
+TWIC 993
+--------
+Vachier Lagrave,M - Pavasovic,D
+    on 25...Rxf3 it crashes
+    Board view is correct
+    no obvious bugs seen.

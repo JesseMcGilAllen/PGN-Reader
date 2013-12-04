@@ -364,9 +364,7 @@
 {
     NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     
-    if ((self.boardModel.halfMoveIndex) == [self.boardModel halfMoveCount]) {
-        return;
-    }
+    
     
     
     
@@ -378,6 +376,11 @@
 - (IBAction)gameEndButtonTapped:(id)sender
 {
     NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+    
+    if ((self.boardModel.halfMoveIndex) == [self.boardModel halfMoveCount]) {
+        return;
+    }
+    
     [self makeMove];
 }
 
