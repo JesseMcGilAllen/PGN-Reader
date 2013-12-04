@@ -366,16 +366,8 @@
     
     JMAMove *move = [self.boardModel currentMove];
     
-    NSLog(@"Move: %@", move.moveString);
-    
     NSArray *squaresForMove = [self.gameEngine squaresInvolvedInMove:move];
-    
 
-    
-    for (JMASquare *square in squaresForMove) {
-        NSLog(@"Coordinate: %@", square.coordinate);
-    }
-    
     [self.boardView updateBoardWithMove:move squares:squaresForMove];
     [self.boardModel makeMove:move withSquares:squaresForMove];
     

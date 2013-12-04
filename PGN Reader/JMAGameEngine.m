@@ -16,12 +16,11 @@
 
 @interface JMAGameEngine ()
 
-@property NSArray *validDiagonals;
-@property NSDictionary *files;
-@property NSDictionary *ranks;
-@property NSDictionary *pieceTypeDictionary;
-
-@property NSString *sideToMove;
+@property (strong, nonatomic) NSArray *validDiagonals;
+@property (strong, nonatomic) NSDictionary *files;
+@property (strong, nonatomic) NSDictionary *ranks;
+@property (strong, nonatomic) NSDictionary *pieceTypeDictionary;
+@property (strong, nonatomic) NSString *sideToMove;
 
 @end
 
@@ -134,17 +133,19 @@
 */
 - (NSArray *)squaresInvolvedInMove:(JMAMove *)move
 {
-    self.sideToMove = [self.model sideToMove];
+    move.sideToMove = [self.model sideToMove];
+    self.sideToMove = move.sideToMove;
+    
     NSArray *squaresInvolved;
     
     
     if ([move.pieceType isEqualToString:CASTLE]) {
         
-        squaresInvolved = [self squaresInvolvedForCastlingMove:move.moveString];
+        squaresInvolved = [self squaresInvolvedForCastlingMove:move];
         
     } else if ([move.pieceType isEqualToString:KING]) {
         
-        JMAPiece *king = [self kingForSideToMove:self.sideToMove];
+        JMAPiece *king = [self kingForSideToMove:move.sideToMove];
         squaresInvolved = [self squaresInvolvedforKing:king withMove:move];
         
     } else {
@@ -163,14 +164,14 @@
 /*
  This method returns an array of the squares involved for a castling move
 */
-- (NSArray *)squaresInvolvedForCastlingMove:(NSString *)move
+- (NSArray *)squaresInvolvedForCastlingMove:(JMAMove *)move
 {
     NSMutableArray *squaresInvolved = [[NSMutableArray alloc] init];
     
     if ([self.sideToMove isEqualToString:WHITE]) {
         [squaresInvolved addObject:[self.model squareforCoordinate:E1]];
         
-        if ([move isEqualToString:KINGSIDE_CASTLING]) {
+        if ([move.moveString isEqualToString:KINGSIDE_CASTLING]) {
 
             [squaresInvolved addObject:[self.model squareforCoordinate:G1]];
             [squaresInvolved addObject:[self.model squareforCoordinate:H1]];
@@ -186,7 +187,7 @@
     } else {
         [squaresInvolved addObject:[self.model squareforCoordinate:E8]];
         
-        if ([move isEqualToString:KINGSIDE_CASTLING]) {
+        if ([move.moveString isEqualToString:KINGSIDE_CASTLING]) {
             
             [squaresInvolved addObject:[self.model squareforCoordinate:G8]];
             [squaresInvolved addObject:[self.model squareforCoordinate:H8]];
@@ -354,7 +355,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
         NSUInteger pawnRankValue = [pawn.square.rank integerValue];
         NSUInteger squareRankValue = [destinationSquare.rank integerValue];
         
-        if ([self.sideToMove isEqualToString:WHITE]) {
+        if ([move.sideToMove isEqualToString:WHITE]) {
             
             if ((pawnRankValue + ONE) == squareRankValue) {
                 return YES;
@@ -377,7 +378,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
             } else if ([pawn onOriginalSquare] &&
                        (pawnRankValue - TWO) == squareRankValue) {
                 
-                if (![self isPieceOnNextRank:pawn.square.rank withFile:pawn.square.file]) {
+                if (![self isPieceOnNextRank:pawn.square.rank withFile:pawn.square.file ]) {
                     return YES;
                 } else {
                     return NO;
@@ -629,7 +630,6 @@ Otherwise an empty pawn object is returned to satisfy xCode.
  */
 - (JMAPiece *)bishopInvolvedInMove:(JMAMove *)move
 {
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     JMAPiece *bishop;
     NSArray *bishops;
     NSUInteger moveLength = [move.moveString length];
@@ -661,7 +661,6 @@ Otherwise an empty pawn object is returned to satisfy xCode.
         return bishops[ZERO];
     }
 
-    NSLog(@"Bishops: %@", bishops);
     for (JMAPiece *bishop in bishops) {
     
         if ([self isBishop:bishop rightForMove:move]) {
@@ -678,7 +677,6 @@ Otherwise an empty pawn object is returned to satisfy xCode.
 */
 - (BOOL)isBishop:(JMAPiece *)bishop rightForMove:(JMAMove *)move
 {
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     BOOL isBishopRightForMove = NO;
     NSString *pieceCoordinate = bishop.square.coordinate;
     NSString *squareCoordinate = move.destinationSquareCoordinate;
@@ -798,13 +796,9 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     
     for (JMAPiece *rook in rooks) {
         
-        NSLog(@"Rook Square: %@ Move: %@", rook.square.coordinate, move.moveString);
         if ([self isRook:rook rightForMove:move]) {
-            NSLog(@"Rook is right");
             return rook;
         }
-        
-        NSLog(@"Rook is Wrong");
         
     }
     return nil;
@@ -839,7 +833,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
                                              squareCoordinate:destinationSquare.coordinate
                                          onRankFileOrDiagonal:squaresForRank];
     }
-    NSLog(@"IS Path Clear: %d", isPathClear);
+
     if (isPathClear) {
         isRookRightForMove = [self isKingSafeWithMoveFromSquare:rook.square
                                                        toSquare:destinationSquare];
@@ -886,14 +880,15 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     JMAPiece *queen;
     if ([queens count] == ONE) {
         queen = queens[ZERO];
-    }
-    
-    for (JMAPiece *queen in queens) {
-        if ([self isQueen:queen rightForMove:move]) {
+    } else {
+        for (JMAPiece *queen in queens) {
+            if ([self isQueen:queen rightForMove:move]) {
             return queen;
+            }
         }
     }
     
+    NSLog(@"Queens coordinate: %@", queen.square.coordinate);
     return queen;
 }
 
@@ -1021,7 +1016,6 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
     }
     
     kingSquare = king.square;
-    NSLog(@"King Square: %@", king.square.coordinate);
     
     return kingSquare;
 }

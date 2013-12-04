@@ -144,11 +144,8 @@
                          }
                          
                          if (move.isPromotion) {
-                             JMAPiece *promotedPiece = [[JMAPiece alloc] initWithSquare:destinationSquare
-                                                                           type:move.promotionPieceType
-                                                                       forColor:[self.model sideToMove]];
+                             JMAPiece *promotedPiece = [self.model createPieceOnSquare:destinationSquare forMove:move];
                              
-                             NSLog(@"Side To Move: %@", [self.model sideToMove]);
                              [piece removeFromSuperview];
                              promotedPiece.frame = destinationSquare.frame;
                              [self addSubview:promotedPiece];

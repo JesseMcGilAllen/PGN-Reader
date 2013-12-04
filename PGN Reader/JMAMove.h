@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSString *capturedPieceSquareCoordinate;
 @property (assign, nonatomic) BOOL isEnPassant;
 @property (strong, nonatomic) NSString *promotionPieceType;
+@property (strong, nonatomic) NSString *sideToMove;
 
 - (NSString *)pieceType;
 - (NSString *)destinationSquareCoordinate;

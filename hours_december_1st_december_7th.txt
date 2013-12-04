@@ -43,3 +43,12 @@ Monday December 2nd
 
     Daily Hours: 6 hour 30 minutes
     Weekly Hours: 13 hours 00 minutes
+
+Tuesday December 3rd
+--------------------
+- 1:45 pm - 4:15 pm: Corrected Promoted Piece Color. Spent time unsuccessfully
+                     debugging promoted piece code.
+- 6:00 pm - 
+
+    Daily Hours: 2 hours 30 minutes
+    Weekly Hours: 15 hours 30 minutes

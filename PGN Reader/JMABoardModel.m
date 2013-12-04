@@ -341,22 +341,15 @@
         [self capturedPiece:destinationSquare.piece forMove:move];
         destinationSquare.piece = nil;
     }
-    
-    pieceToMove.square = destinationSquare;
-    destinationSquare.piece = pieceToMove;
-    
-    if (move.isPromotion) {
+    if (!move.isPromotion) {
+        pieceToMove.square = destinationSquare;
+        destinationSquare.piece = pieceToMove;
+    } else {
         [self capturedPiece:pieceToMove forMove:move];
-        JMAPiece *promotedPiece = [[JMAPiece alloc] initWithSquare:destinationSquare type:move.promotionPieceType forColor:self.sideToMove];
-        
-        if ([self.sideToMove isEqualToString:WHITE]) {
-            [self addWhitePiece:promotedPiece];
-        } else {
-            [self addBlackPiece:promotedPiece];
-        }
-        
     }
     
+    NSLog(@"Piece: %@\n Coordinate: %@\n", pieceToMove.type, pieceToMove.square.coordinate);
+
     // add piece to destination square
    
 }
@@ -384,11 +377,6 @@
     
     rook.square = rookDestinationSquare;
     king.square = kingDestinationSquare;
-    
-    NSLog(@"Destination Square Piece: %@",king.square.piece.type);
-    NSLog(@"Destination Square Piece: %@",kingDestinationSquare.piece.type);
-    
-    NSLog(@"Destination Square Piece: %@", [self squareforCoordinate:kingDestinationSquare.coordinate].piece.type);
     
 }
 
@@ -519,5 +507,21 @@
         [self.blackQueens addObject:piece];
     }
 
+}
+
+- (JMAPiece *)createPieceOnSquare:(JMASquare *)square forMove:(JMAMove *)move
+{
+    JMAPiece *newPiece = [[JMAPiece alloc] initWithSquare:square type:move.promotionPieceType forColor:move.sideToMove];
+    
+    if ([self.sideToMove isEqualToString:WHITE]) {
+        [self addWhitePiece:newPiece];
+    } else {
+        [self addBlackPiece:newPiece];
+    }
+
+    [self.pieces addObject:newPiece];
+    
+    return newPiece;
+    
 }
 @end

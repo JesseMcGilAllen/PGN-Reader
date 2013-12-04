@@ -41,5 +41,6 @@
 - (JMAMove *)currentMove;
 
 - (void)makeMove:(JMAMove *)move withSquares:(NSArray *)squares;
+- (JMAPiece *)createPieceOnSquare:(JMASquare *)square forMove:(JMAMove *)move;
 
 @end
