@@ -337,7 +337,7 @@
     
     UIBarButtonItem *gameEndButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward
                                                                                        target:self
-                                                                                       action:@selector(gameEndButtonTapped:)];
+                                                                                       action:@selector(makeMoveButtonTapped:)];
 
     
     UIBarButtonItem *playGameButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay
@@ -346,7 +346,7 @@
     
     UIBarButtonItem *gameStartButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind
                                                                                      target:self
-                                                                                     action:@selector(gameStartButtonTapped:)];
+                                                                                     action:@selector(takebackMoveButtonTapped:)];
     toolbarItems = @[gameStartButton, playGameButton, gameEndButton];
     
     [self setToolbarItems:toolbarItems animated:YES];
@@ -356,9 +356,13 @@
 
 #pragma mark - Button Taps
 
-- (IBAction)gameStartButtonTapped:(id)sender
+
+- (IBAction)takebackMoveButtonTapped:(id)sender
 {
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+    if (![self isStartOfGame]) {
+        [self undoMove];
+    }
+    
 }
 
 /*
@@ -382,16 +386,13 @@
 /*
  Currently this method advances the game one half move.
  */
-- (IBAction)gameEndButtonTapped:(id)sender
+- (IBAction)makeMoveButtonTapped:(id)sender
 {
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+
     
     if (![self isEndOfGame]) {
         [self makeMove];
     }
-    
-    NSLog(@"End of Game : %d", [self isEndOfGame]);
-    
     
 }
 
@@ -440,6 +441,15 @@
     self.repeatingTimer = nil;
 }
 
+/*
+ This method checks if a move has been played
+*/
+-(BOOL)isStartOfGame
+{
+    BOOL isStartOfGame = self.boardModel.halfMoveIndex == ZERO;
+    
+    return isStartOfGame;
+}
 
 /*
  This method checks if the game has reached its end.
@@ -466,6 +476,12 @@
     [self.boardModel makeMove:move withSquares:squaresForMove];
 
     self.boardModel.halfMoveIndex++;
+
+}
+
+- (void)undoMove
+{
+    self.boardModel.halfMoveIndex--;
 
 }
 # pragma mark - Move List
