@@ -332,6 +332,11 @@
     // remove piece from origin square
     originSquare.piece = nil;
     
+    if (move.isPromotion) {
+        [self capturedPiece:pieceToMove forMove:move];
+        return;
+    }
+    
     // if Move.isCapture remove square.piece reference
     if (move.isEnPassant) {
         JMASquare *square = [self squareforCoordinate:move.capturedPieceSquareCoordinate];
@@ -341,15 +346,11 @@
         [self capturedPiece:destinationSquare.piece forMove:move];
         destinationSquare.piece = nil;
     }
-    if (!move.isPromotion) {
-        pieceToMove.square = destinationSquare;
-        destinationSquare.piece = pieceToMove;
-    } else {
-        [self capturedPiece:pieceToMove forMove:move];
-    }
     
-    NSLog(@"Piece: %@\n Coordinate: %@\n", pieceToMove.type, pieceToMove.square.coordinate);
-
+    pieceToMove.square = destinationSquare;
+    destinationSquare.piece = pieceToMove;
+    
+    
     // add piece to destination square
    
 }
@@ -509,8 +510,12 @@
 
 }
 
-- (JMAPiece *)createPieceOnSquare:(JMASquare *)square forMove:(JMAMove *)move
+- (JMAPiece *)createPieceForPromotionOnSquare:(JMASquare *)square forMove:(JMAMove *)move
 {
+    if (square.piece) {
+        [self capturedPiece:square.piece forMove:move];
+    }
+    
     JMAPiece *newPiece = [[JMAPiece alloc] initWithSquare:square type:move.promotionPieceType forColor:move.sideToMove];
     
     if ([self.sideToMove isEqualToString:WHITE]) {

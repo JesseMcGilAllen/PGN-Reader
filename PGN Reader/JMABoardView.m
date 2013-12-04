@@ -122,6 +122,7 @@
     JMASquare *originSquare = squares[ZERO];
     JMASquare *destinationSquare = squares[ONE];
     JMAPiece *pieceToRemove;
+    JMAPiece *piece = originSquare.piece;
     
     if (move.isEnPassant) {
         JMASquare *square = [self.model squareforCoordinate:move.capturedPieceSquareCoordinate];
@@ -129,30 +130,25 @@
     } else if (move.isCapture) {
         pieceToRemove = destinationSquare.piece;
         
+    } else if (move.isPromotion) {
+        pieceToRemove = piece;
     }
-    
-    JMAPiece *piece = originSquare.piece;
     
     [UIView animateWithDuration:(ONE / TWO)
                      animations:^{
                          piece.frame = destinationSquare.frame;
                          [self bringSubviewToFront:piece];
-                     }
-                     completion:^(BOOL finished) {
                          if (pieceToRemove) {
-                            [pieceToRemove removeFromSuperview];
+                             [pieceToRemove removeFromSuperview];
                          }
                          
                          if (move.isPromotion) {
-                             JMAPiece *promotedPiece = [self.model createPieceOnSquare:destinationSquare forMove:move];
+                             JMAPiece *promotedPiece = [self.model createPieceForPromotionOnSquare:destinationSquare forMove:move];
                              
-                             [piece removeFromSuperview];
                              promotedPiece.frame = destinationSquare.frame;
                              [self addSubview:promotedPiece];
                          }
-                    }
-     ];
-
+                     }];
 }
 
 /*
