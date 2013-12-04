@@ -368,12 +368,47 @@
 {
     NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     
+    NSTimer *timer;
+    
+    if (!self.repeatingTimer) {
+        timer = [NSTimer scheduledTimerWithTimeInterval:ONE
+                                                 target:self
+                                               selector:@selector(timerFireMethod:)
+                                               userInfo:nil
+                                                repeats:YES];
+        
+       self.repeatingTimer = timer;
+    } else {
+        
+        [self stopTimer];
+        
+    }
+    
+    
+    
     
     
     
     
 }
 
+- (void)timerFireMethod:(NSTimer *)timer
+{
+    if (![self isEndOfGame]) {
+        [self makeMove];
+    } else {
+        [self stopTimer];
+    }
+    
+    
+}
+
+
+- (void)stopTimer
+{
+    [self.repeatingTimer invalidate];
+    self.repeatingTimer = nil;
+}
 /*
  Currently this method advances the game one half move.
 */
@@ -381,11 +416,23 @@
 {
     NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     
-    if ((self.boardModel.halfMoveIndex) == [self.boardModel halfMoveCount]) {
-        return;
+    if (![self isEndOfGame]) {
+        [self makeMove];
     }
     
-    [self makeMove];
+    
+}
+
+/*
+ 
+*/
+- (BOOL)isEndOfGame
+{
+    if (!(self.boardModel.halfMoveIndex) == [self.boardModel halfMoveCount]) {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 /*
