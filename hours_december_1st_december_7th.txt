@@ -48,7 +48,8 @@ Tuesday December 3rd
 --------------------
 - 1:45 pm - 4:15 pm: Corrected Promoted Piece Color. Spent time unsuccessfully
                      debugging promoted piece code.
-- 6:00 pm - 
+- 6:00 pm - 6:45 pm: fixed promotion code bug
+- 6:45 pm - 7:30 pm: updated comments, started implementing timer.
 
-    Daily Hours: 2 hours 30 minutes
-    Weekly Hours: 15 hours 30 minutes
+    Daily Hours: 4 hours 00 minutes
+    Weekly Hours: 17 hours 00 minutes

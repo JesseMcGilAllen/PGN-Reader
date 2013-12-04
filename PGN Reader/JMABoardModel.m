@@ -510,6 +510,10 @@
 
 }
 
+/*
+ This method creates a piece in the case of a promotion move and returns it.  
+ In the process it is added to the piece arrays.
+*/
 - (JMAPiece *)createPieceForPromotionOnSquare:(JMASquare *)square forMove:(JMAMove *)move
 {
     if (square.piece) {

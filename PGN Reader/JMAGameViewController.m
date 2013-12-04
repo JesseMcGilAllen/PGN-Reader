@@ -356,6 +356,10 @@
     NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
 }
 
+/*
+ This method uses a timer to play through the entire game until the end or the 
+ user taps the pause button.
+*/
 - (IBAction)playGameButtonTapped:(id)sender
 {
     NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
@@ -364,24 +368,36 @@
         return;
     }
     
-    JMAMove *move = [self.boardModel currentMove];
     
-    NSArray *squaresForMove = [self.gameEngine squaresInvolvedInMove:move];
-
-    [self.boardView updateBoardWithMove:move squares:squaresForMove];
-    [self.boardModel makeMove:move withSquares:squaresForMove];
-    
-    // update BoardView
-    
-    self.boardModel.halfMoveIndex++;
     
 }
 
+/*
+ Currently this method advances the game one half move.
+*/
 - (IBAction)gameEndButtonTapped:(id)sender
 {
     NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+    [self makeMove];
 }
 
+/*
+ This method gets the current move from the board model.  Then it gets the 
+ squares needed to make that move. After that the view and model are updated 
+ using those squares.  Finally, the board model's halfMoveIndex is incremented.
+*/
+- (void)makeMove
+{
+    JMAMove *move = [self.boardModel currentMove];
+    
+    NSArray *squaresForMove = [self.gameEngine squaresInvolvedInMove:move];
+    
+    [self.boardView updateBoardWithMove:move squares:squaresForMove];
+    [self.boardModel makeMove:move withSquares:squaresForMove];
+
+    self.boardModel.halfMoveIndex++;
+
+}
 # pragma mark - Move List
 /*
  This method configures the movesListView text view.  
