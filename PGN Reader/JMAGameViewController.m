@@ -355,6 +355,7 @@
 }
 
 #pragma mark - Button Taps
+
 - (IBAction)gameStartButtonTapped:(id)sender
 {
     NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
@@ -364,34 +365,61 @@
  This method uses a timer to play through the entire game until the end or the 
  user taps the pause button.
 */
+
 - (IBAction)playGameButtonTapped:(id)sender
 {
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
-    
-    NSTimer *timer;
-    
     if (!self.repeatingTimer) {
-        timer = [NSTimer scheduledTimerWithTimeInterval:ONE
-                                                 target:self
-                                               selector:@selector(timerFireMethod:)
-                                               userInfo:nil
-                                                repeats:YES];
         
-       self.repeatingTimer = timer;
+        [self startTimer];
+        
     } else {
         
         [self stopTimer];
         
     }
+}
+
+/*
+ Currently this method advances the game one half move.
+ */
+- (IBAction)gameEndButtonTapped:(id)sender
+{
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     
+    if (![self isEndOfGame]) {
+        [self makeMove];
+    }
     
-    
-    
-    
+    NSLog(@"End of Game : %d", [self isEndOfGame]);
     
     
 }
 
+
+#pragma mark - Timer Methods
+
+/*
+ This method create a timer object that calls the timerFireMethod: method every 
+ second and sets it to the repeating timer property
+*/
+- (void)startTimer
+{
+    NSTimer *timer;
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:ONE
+                                             target:self
+                                           selector:@selector(timerFireMethod:)
+                                           userInfo:nil
+                                            repeats:YES];
+    
+    self.repeatingTimer = timer;
+
+}
+
+/*
+ This method checks if the Game has reached its end.  If it hasn't the makeMove
+ method is called.  If the game has ended the stopTimer method is called.
+*/
 - (void)timerFireMethod:(NSTimer *)timer
 {
     if (![self isEndOfGame]) {
@@ -403,36 +431,24 @@
     
 }
 
-
+/*
+ This method stops the repeatingTimer method
+*/
 - (void)stopTimer
 {
     [self.repeatingTimer invalidate];
     self.repeatingTimer = nil;
 }
-/*
- Currently this method advances the game one half move.
-*/
-- (IBAction)gameEndButtonTapped:(id)sender
-{
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
-    
-    if (![self isEndOfGame]) {
-        [self makeMove];
-    }
-    
-    
-}
+
 
 /*
- 
+ This method checks if the game has reached its end.
 */
 - (BOOL)isEndOfGame
 {
-    if (!(self.boardModel.halfMoveIndex) == [self.boardModel halfMoveCount]) {
-        return NO;
-    } else {
-        return YES;
-    }
+    BOOL isEndOfGame = self.boardModel.halfMoveIndex == [self.boardModel halfMoveCount];
+    
+    return isEndOfGame;
 }
 
 /*
