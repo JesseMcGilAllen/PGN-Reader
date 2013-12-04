@@ -27,6 +27,8 @@
 @property (assign, nonatomic) UIEdgeInsets portraitInsets;
 @property (assign, nonatomic) UIEdgeInsets landscapeInsets;
 
+@property (weak, nonatomic) NSTimer *repeatingTimer;
+
 
 
 @end
