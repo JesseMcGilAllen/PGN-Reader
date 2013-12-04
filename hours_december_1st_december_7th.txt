@@ -54,6 +54,7 @@ Tuesday December 3rd
 - 8:05 pm - 9:05 pm: fixed a couple playback bugs
 - 9:45 pm - 10:15 pm: debugged Safarli - Tikkanean, another issue in isKingSafe method.
 - 10:35 pm - 11:00 pm: content inset fun
+- 11:00 pm - 11:30 pm: fixed content insets
 
-    Daily Hours: 6 hours 30 minutes
-    Weekly Hours: 19 hours 30 minutes
+    Daily Hours: 7 hours 00 minutes
+    Weekly Hours: 20 hours 00 minutes

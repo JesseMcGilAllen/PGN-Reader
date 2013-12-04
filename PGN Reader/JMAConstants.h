@@ -12,6 +12,7 @@
 
 
 // Integers
+extern NSInteger const NEGATIVE_FOURTY;
 extern NSUInteger const ZERO;
 extern NSUInteger const ONE;
 extern NSUInteger const TWO;

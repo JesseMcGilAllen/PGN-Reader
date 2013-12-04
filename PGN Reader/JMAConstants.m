@@ -11,6 +11,7 @@
 @implementation JMAConstants
 
 // Integers
+NSInteger const NEGATIVE_FOURTY = -40;
 NSUInteger const ZERO = 0;
 NSUInteger const ONE = 1;
 NSUInteger const TWO = 2;

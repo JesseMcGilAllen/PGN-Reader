@@ -315,10 +315,10 @@
 {
     UIEdgeInsets defaultInsets = self.movesListView.textContainerInset;
     
-    CGFloat topPortraitInset = defaultInsets.top * TWO;
+    //CGFloat topPortraitInset = defaultInsets.top * TWO;
     
-    self.landscapeInsets = UIEdgeInsetsMake(FIFTEEN, ZERO, FIFTEEN, ZERO);
-    self.portraitInsets = UIEdgeInsetsMake(FIFTEEN, ZERO, FIFTEEN, ZERO);
+    self.landscapeInsets = UIEdgeInsetsMake(NEGATIVE_FOURTY, defaultInsets.left, defaultInsets.bottom, defaultInsets.right);
+    self.portraitInsets = UIEdgeInsetsMake(TWENTY_FIVE, ZERO, FIFTEEN, ZERO);
 
 }
 
