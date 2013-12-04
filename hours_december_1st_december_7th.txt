@@ -50,6 +50,7 @@ Tuesday December 3rd
                      debugging promoted piece code.
 - 6:00 pm - 6:45 pm: fixed promotion code bug
 - 6:45 pm - 7:30 pm: updated comments, started implementing timer.
+- 7:30 pm - 8:05 pm: Testing app
 
-    Daily Hours: 4 hours 00 minutes
-    Weekly Hours: 17 hours 00 minutes
+    Daily Hours: 4 hours 35 minutes
+    Weekly Hours: 17 hours 35 minutes

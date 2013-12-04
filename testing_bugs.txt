@@ -4,3 +4,11 @@ Vachier Lagrave,M - Pavasovic,D
     on 25...Rxf3 it crashes
     Board view is correct
     no obvious bugs seen.
+
+FIXED - Gdanski,J - Howell,D
+    on 30.exd8=Q the pawn is not removed from the board.
+
+Safarli,E - Tikkanen,H
+    on 21...Nxd4 it crashes
+    Board view is correct.
+    no obvious bugs seen.

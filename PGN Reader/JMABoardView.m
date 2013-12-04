@@ -143,6 +143,10 @@
                          }
                          
                          if (move.isPromotion) {
+                             
+                             if (move.isCapture) {
+                                 [piece removeFromSuperview];
+                             }
                              JMAPiece *promotedPiece = [self.model createPieceForPromotionOnSquare:destinationSquare forMove:move];
                              
                              promotedPiece.frame = destinationSquare.frame;
