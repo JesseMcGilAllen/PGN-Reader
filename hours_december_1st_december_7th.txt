@@ -51,6 +51,7 @@ Tuesday December 3rd
 - 6:00 pm - 6:45 pm: fixed promotion code bug
 - 6:45 pm - 7:30 pm: updated comments, started implementing timer.
 - 7:30 pm - 8:05 pm: Testing app
+- 8:05 pm - 9:05 pm: fixed a couple playback bugs
 
-    Daily Hours: 4 hours 35 minutes
-    Weekly Hours: 17 hours 35 minutes
+    Daily Hours: 5 hours 35 minutes
+    Weekly Hours: 18 hours 35 minutes

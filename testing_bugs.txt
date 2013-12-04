@@ -1,6 +1,6 @@
 TWIC 993
 --------
-Vachier Lagrave,M - Pavasovic,D
+FIXED - Vachier Lagrave,M - Pavasovic,D
     on 25...Rxf3 it crashes
     Board view is correct
     no obvious bugs seen.
@@ -8,7 +8,12 @@ Vachier Lagrave,M - Pavasovic,D
 FIXED - Gdanski,J - Howell,D
     on 30.exd8=Q the pawn is not removed from the board.
 
-Safarli,E - Tikkanen,H
+FIXED - Safarli,E - Tikkanen,H
     on 21...Nxd4 it crashes
     Board view is correct.
+    no obvious bugs seen.
+
+Safarli, E - Tikkanen, H
+    on 23.Bxh6 move
+    Board View is correct.
     no obvious bugs seen.

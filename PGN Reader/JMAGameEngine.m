@@ -1082,6 +1082,8 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
                     [piece.type isEqualToString:pieceTwo]) {
                     
                     isKingSafe = NO;
+                } else {
+                    isKingSafe = YES;
                 }
             }
         }
