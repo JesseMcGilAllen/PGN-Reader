@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class JMASquare;
+@class JMAPiece;
 
 @interface JMAMove : NSObject
 
@@ -19,12 +20,11 @@
 @property (assign, nonatomic) BOOL isEnPassant;
 @property (strong, nonatomic) NSString *promotionPieceType;
 @property (strong, nonatomic) NSString *sideToMove;
+@property (strong, nonatomic) NSString *originSquareCoordinate;
+@property (strong, nonatomic) JMAPiece *pieceToMove;
 
 - (NSString *)pieceType;
 - (NSString *)destinationSquareCoordinate;
-- (NSString *)originSquareCoordinate;
-
-- (void)originSquareCoordinateFromSquare:(JMASquare *)square;
 
 - (BOOL)isCapture;
 - (BOOL)isCastling;

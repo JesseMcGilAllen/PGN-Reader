@@ -155,9 +155,7 @@
         squaresInvolved = [self squaresInvolvedWithPieceInPieces:pieces forMove:move];
         
     }
-    
-    [move originSquareCoordinateFromSquare:squaresInvolved[ZERO]];
-    
+        
     return squaresInvolved;
 }
 
@@ -253,6 +251,8 @@
         piece = [self queenInvolvedInMove:move];
     }
     
+    move.pieceToMove = piece;
+    move.originSquareCoordinate = piece.square.coordinate;
     squaresInvolved = @[piece.square, destinationSquare];
     
     return squaresInvolved;
@@ -779,7 +779,6 @@ Otherwise an empty pawn object is returned to satisfy xCode.
         rook = [self pieceFromPieces:rooks withRankOrFile:rankOrFile];
     }
     
-    
     return rook;
 }
 
@@ -797,6 +796,7 @@ Otherwise an empty pawn object is returned to satisfy xCode.
     for (JMAPiece *rook in rooks) {
         
         if ([self isRook:rook rightForMove:move]) {
+            
             return rook;
         }
         
@@ -888,7 +888,6 @@ Otherwise an empty pawn object is returned to satisfy xCode.
         }
     }
     
-    NSLog(@"Queens coordinate: %@", queen.square.coordinate);
     return queen;
 }
 
