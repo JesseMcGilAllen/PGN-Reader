@@ -71,6 +71,7 @@ Wednesday December 4th
 - 10:25 pm - 11:05 pm: testing takeback code, heavy abuse crashes app: i.e:
                        lots of forward and background without rest.
 - 11:05 pm - 11:25 pm: testing 
+- 11:25 pm - 12:25 am: textview research
 
-    Daily Hours: 5 hours 30 minutes
-    Weekly Hours: 25 hours 30 minutes
+    Daily Hours: 6 hours 30 minutes
+    Weekly Hours: 26 hours 30 minutes
