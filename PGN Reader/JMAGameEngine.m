@@ -1121,4 +1121,38 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
     
     return isKingSafe;
 }
+
+# pragma mark - Taking Back Move
+/*
+ This method returns the squares involved for taking back a move.
+ If the move is not a caslting move, the squaresInvolved in making the move are 
+ sent back in reverse order.  If the move is a Castling move the squaresInvolved
+ is gotten from the return value from the squaresInvolvedTakingBackCastlingMove: method.
+*/
+- (NSArray *)squaresInvolvedTakingBackMove:(JMAMove *)move;
+{
+    NSArray *squaresInvolved;
+    
+    if (!move.isCastling) {
+        JMASquare *originSquare = [self.model squareforCoordinate:move.destinationSquareCoordinate];
+        JMASquare *destinationSquare = [self.model squareforCoordinate:move.originSquareCoordinate];
+        squaresInvolved = @[originSquare, destinationSquare];
+    } else {
+        squaresInvolved = [self squaresInvolvedTakingBackCastlingMove:move];
+    }
+    
+    
+    return squaresInvolved;
+    
+}
+
+/*
+ 
+*/
+- (NSArray *)squaresInvolvedTakingBackCastlingMove:(JMAMove *)move;
+{
+    NSMutableArray *squaresInvolved = [[NSMutableArray alloc] init];
+    
+    return squaresInvolved;
+}
 @end

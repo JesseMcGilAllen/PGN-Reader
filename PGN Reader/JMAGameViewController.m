@@ -479,8 +479,18 @@
 
 }
 
+
+/*
+ This method takes back a previously played move
+*/
 - (void)undoMove
 {
+    // squares involved from gameEngine
+    
+    // update BoardView
+    
+    // update BoardModel
+    
     self.boardModel.halfMoveIndex--;
 
 }

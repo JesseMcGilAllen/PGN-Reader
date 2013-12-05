@@ -17,6 +17,7 @@
 
 - (NSArray *)squaresInvolvedInMove:(JMAMove *)move;
 
+- (NSArray *)squaresInvolvedTakingBackMove:(JMAMove *)move;
 
 
 @end
