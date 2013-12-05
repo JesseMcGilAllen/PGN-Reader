@@ -459,6 +459,8 @@
     [self.boardView updateBoardWithMove:move squares:squaresForMove];
     [self.boardModel makeMove:move withSquares:squaresForMove];
 
+    [self highlightMove:move forMoveIndex:self.boardModel.halfMoveIndex];
+    
     self.boardModel.halfMoveIndex++;
 
 }
@@ -480,6 +482,9 @@
     // update BoardModel
     [self.boardModel takebackMove:move withSquares:squaresForTakingBackMove];
     
+    JMAMove *previousMove = [self.boardModel previousMove];
+    
+    [self highlightMove:previousMove forMoveIndex:self.boardModel.halfMoveIndex - ONE];
     
 
 }
@@ -530,8 +535,27 @@
  This method highlights the move in the moves list Text View that has just been
  made on the board
 */
-- (void)highlightMoveInMoveList
+- (void)highlightMove:(JMAMove *)move forMoveIndex:(NSUInteger)moveIndex;
 {
+    NSUInteger currentMoveNumber = (moveIndex / TWO) + ONE;
+
+    NSString *moveNumberString = [[NSString alloc] initWithFormat:@"%ld.", (unsigned long)currentMoveNumber];
+    
+    NSString *movesList = self.movesListView.text;
+    NSRange rangeOfMoveNumber = [movesList rangeOfString:moveNumberString];
+
+    NSRange rangeOfMove = [[movesList substringFromIndex:rangeOfMoveNumber.location] rangeOfString:move.moveString];
+    
+    rangeOfMove.location += rangeOfMoveNumber.location;
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:movesList];
+    
+    [attributedString addAttribute:NSForegroundColorAttributeName
+                             value:[UIColor blueColor]
+                             range:rangeOfMove];
+    
+    self.movesListView.attributedText = attributedString;
+    
+    
     
 }
 

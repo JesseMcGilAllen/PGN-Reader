@@ -38,7 +38,9 @@
 - (NSUInteger)halfMoveCount;
 
 - (void)movesForGame:(NSArray *)moves;
+
 - (JMAMove *)currentMove;
+- (JMAMove *)previousMove;
 
 - (void)makeMove:(JMAMove *)move withSquares:(NSArray *)squares;
 - (JMAPiece *)createPieceForPromotionOnSquare:(JMASquare *)square

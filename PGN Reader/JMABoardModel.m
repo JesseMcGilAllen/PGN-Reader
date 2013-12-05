@@ -312,6 +312,13 @@
 }
 
 /*
+ This method returns the previous move object
+*/
+- (JMAMove *)previousMove
+{
+    return self.moves[self.halfMoveIndex - ONE];
+}
+/*
  This method moves the piece on the first square object in the squares array
  to the second square object for the incoming square object.
 */
