@@ -70,6 +70,7 @@ Wednesday December 4th
 - 9:50 pm - 10:25 pm: fixed King Takeback move bug
 - 10:25 pm - 11:05 pm: testing takeback code, heavy abuse crashes app: i.e:
                        lots of forward and background without rest.
+- 11:05 pm - 11:25 pm: testing 
 
-    Daily Hours: 5 hours 10 minutes
-    Weekly Hours: 25 hours 10 minutes
+    Daily Hours: 5 hours 30 minutes
+    Weekly Hours: 25 hours 30 minutes
