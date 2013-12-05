@@ -179,7 +179,10 @@
     
 }
 
-
+- (void)updateBoardWithTakebackMove:(JMAMove *)move squares:(NSArray *)squares;
+{
+    
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

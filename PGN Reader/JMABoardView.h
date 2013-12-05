@@ -19,5 +19,5 @@
 - (void)drawBoard;
 
 - (void)updateBoardWithMove:(JMAMove *)move squares:(NSArray *)squares;
-
+- (void)updateBoardWithTakebackMove:(JMAMove *)move squares:(NSArray *)squares;
 @end

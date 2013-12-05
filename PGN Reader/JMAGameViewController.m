@@ -485,13 +485,17 @@
 */
 - (void)undoMove
 {
+    self.boardModel.halfMoveIndex--;
+    JMAMove *move = [self.boardModel currentMove];
+    
     // squares involved from gameEngine
+    NSArray *squaresForTakingBackMove = [self.gameEngine squaresInvolvedTakingBackMove:move];
     
     // update BoardView
     
     // update BoardModel
     
-    self.boardModel.halfMoveIndex--;
+    
 
 }
 # pragma mark - Move List

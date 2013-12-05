@@ -533,4 +533,9 @@
     return newPiece;
     
 }
+
+- (void)takeBackMove:(JMAMove *)move withSquares:(NSArray *)squares;
+{
+    
+}
 @end

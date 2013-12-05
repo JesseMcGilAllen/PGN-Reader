@@ -64,6 +64,8 @@ Wednesday December 4th
 - 2:45 pm - 3:30 pm: implemented timer on play button and moved individual move
                      to gameEndButton.
 - 5:20 pm - 6:25 pm: coded Takeback methods in Game Engine Class.
+- 6:25 pm - 6:35 pm: added Takeback methods to BoardView & BoardModel classes
+- 6:35 pm - 
 
-    Daily Hours: 1 hours 50 minutes
-    Weekly Hours: 21 hours 50 minutes
+    Daily Hours: 2 hours 00 minutes
+    Weekly Hours: 22 hours 00 minutes
