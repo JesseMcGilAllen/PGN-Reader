@@ -18,5 +18,4 @@
 
 - (NSArray *)movesForGame;
 
-
 @end

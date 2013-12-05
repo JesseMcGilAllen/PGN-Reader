@@ -492,8 +492,9 @@
     NSArray *squaresForTakingBackMove = [self.gameEngine squaresInvolvedTakingBackMove:move];
     
     // update BoardView
-    
+    [self.boardView updateBoardWithTakebackMove:move squares:squaresForTakingBackMove];
     // update BoardModel
+    [self.boardModel takebackMove:move withSquares:squaresForTakingBackMove];
     
     
 

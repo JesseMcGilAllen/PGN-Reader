@@ -257,5 +257,4 @@
     [self.textViewString appendString:component];
 }
 
-
 @end
