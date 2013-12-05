@@ -302,6 +302,8 @@
     
 }
 
+# pragma mark - Toolbar
+
 /*
  This method returns the toolbar's height
  */
@@ -310,23 +312,6 @@
     return self.navigationController.toolbar.frame.size.height;
 }
 
-/*
- This method sets the inset properties to set the textView contentInset 
- properties.
-*/
-- (void)configureInsets
-{
-    UIEdgeInsets defaultInsets = self.movesListView.textContainerInset;
-    
-    //CGFloat topPortraitInset = defaultInsets.top * TWO;
-    
-    self.landscapeInsets = UIEdgeInsetsMake(NEGATIVE_FOURTY, defaultInsets.left, defaultInsets.bottom, defaultInsets.right);
-    self.portraitInsets = UIEdgeInsetsMake(TWENTY_FIVE, ZERO, FIFTEEN, ZERO);
-
-}
-
-
-# pragma mark - Toolbar
 /*
  This method adds the buttons require for playing through the chess game.
 */
@@ -429,8 +414,6 @@
     } else {
         [self stopTimer];
     }
-    
-    
 }
 
 /*
@@ -501,6 +484,23 @@
 
 }
 # pragma mark - Move List
+
+
+/*
+ This method sets the inset properties to set the textView contentInset
+ properties.
+ */
+- (void)configureInsets
+{
+    UIEdgeInsets defaultInsets = self.movesListView.textContainerInset;
+    
+    //CGFloat topPortraitInset = defaultInsets.top * TWO;
+    
+    self.landscapeInsets = UIEdgeInsetsMake(NEGATIVE_FOURTY, defaultInsets.left, defaultInsets.bottom, defaultInsets.right);
+    self.portraitInsets = UIEdgeInsetsMake(TWENTY_FIVE, ZERO, FIFTEEN, ZERO);
+    
+}
+
 /*
  This method configures the movesListView text view.  
  The background color is set to white.  An operation queue is created to create
@@ -524,6 +524,15 @@
             }];
         }
     }];
+}
+
+/*
+ This method highlights the move in the moves list Text View that has just been
+ made on the board
+*/
+- (void)highlightMoveInMoveList
+{
+    
 }
 
 @end
