@@ -117,6 +117,7 @@
     
     if (move.isCastling) {
         [self updateBoardWithSquaresForCastling:squares];
+        return;
     }
         
     JMASquare *originSquare = squares[ZERO];
@@ -181,6 +182,26 @@
 
 - (void)updateBoardWithTakebackMove:(JMAMove *)move squares:(NSArray *)squares;
 {
+    if (move.isCastling) {
+        [self updateBoardWithSquaresForCastling:squares];
+        return;
+    }
+    
+    
+    JMASquare *originSquare = squares[ZERO];
+    JMASquare *destinationSquare = squares[ONE];
+    JMAPiece *pieceToMove = move.pieceToMove;
+    
+    [UIView animateWithDuration:(ONE / TWO) animations:^{
+        if (move.isPromotion) {
+            JMAPiece *pieceToRemove = destinationSquare.piece;
+            [pieceToRemove removeFromSuperview];
+            destinationSquare.piece = pieceToMove;
+        }
+        
+        
+    }];
+    
     
 }
 
