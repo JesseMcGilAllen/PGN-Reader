@@ -534,7 +534,9 @@
     
     NSOperationQueue *aQueue = [[NSOperationQueue alloc] init];
     
-    self.movesListView.font = [UIFont systemFontOfSize:TWENTY_FIVE];
+    
+    //[self.movesListView setNeedsDisplay];
+    
     self.movesListView.contentSize = CGSizeMake(self.movesListView.frame.size.width * TWO, self.movesListView.frame.size.height * TWO);
     
     [aQueue addOperationWithBlock:^{
@@ -543,6 +545,8 @@
         if (self.movesListParser.finished) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 self.movesListView.text = [self.movesListParser movesForTextView];
+                self.movesListView.font = [UIFont systemFontOfSize:TWENTY_FIVE];
+
                 [self.boardModel movesForGame:[self.movesListParser movesForGame]];
                 [self.movesListView setNeedsDisplay];
             }];
@@ -575,6 +579,7 @@
                              range:rangeOfMove];
     
     self.movesListView.attributedText = attributedString;
+    self.movesListView.font = [UIFont systemFontOfSize:TWENTY];
     
     [self.movesListView scrollRangeToVisible:NSMakeRange(rangeOfMove.location, ZERO)];
     
