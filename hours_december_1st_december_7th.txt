@@ -67,7 +67,9 @@ Wednesday December 4th
 - 6:25 pm - 6:35 pm: added Takeback methods to BoardView & BoardModel classes
 - 6:35 pm - 8:30 pm: implement undoMove mostly successfully.  The only takeback
                      left to debug is a promotion move.
-- 9:50 pm -
+- 9:50 pm - 10:25 pm: fixed King Takeback move bug
+- 10:25 pm - 11:05 pm: testing takeback code, heavy abuse crashes app: i.e:
+                       lots of forward and background without rest.
 
-    Daily Hours: 3 hours 55 minutes
-    Weekly Hours: 23 hours 55 minutes
+    Daily Hours: 5 hours 10 minutes
+    Weekly Hours: 25 hours 10 minutes
