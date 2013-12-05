@@ -211,8 +211,10 @@
     if (!king.square.piece) {
         king.square.piece = king;
     }
+    
     NSArray *squaresInvolved = @[king.square, destinationSquare];
     
+    move.originSquareCoordinate = king.square.coordinate;
     return squaresInvolved;
 }
 
@@ -222,6 +224,7 @@
 */
 - (JMAPiece *)kingForSideToMove:(NSString *)sideToMove
 {
+    
     if ([sideToMove isEqualToString:WHITE]) {
         return self.model.whiteKing;
     } else {

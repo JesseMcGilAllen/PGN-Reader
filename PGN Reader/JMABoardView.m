@@ -198,9 +198,10 @@
     
     [UIView animateWithDuration:(ONE / TWO) animations:^{
         if (move.isPromotion) {
-            JMAPiece *pieceToRemove = destinationSquare.piece;
+            JMAPiece *pieceToRemove = originSquare.piece;
             [pieceToRemove removeFromSuperview];
-            destinationSquare.piece = pieceToMove;
+            originSquare.piece = pieceToMove;
+            [self addSubview:pieceToMove];
         }
         
         pieceToMove.frame = destinationSquare.frame;

@@ -65,7 +65,9 @@ Wednesday December 4th
                      to gameEndButton.
 - 5:20 pm - 6:25 pm: coded Takeback methods in Game Engine Class.
 - 6:25 pm - 6:35 pm: added Takeback methods to BoardView & BoardModel classes
-- 6:35 pm - 
+- 6:35 pm - 8:30 pm: implement undoMove mostly successfully.  The only takeback
+                     left to debug is a promotion move.
+- 9:50 pm -
 
-    Daily Hours: 2 hours 00 minutes
-    Weekly Hours: 22 hours 00 minutes
+    Daily Hours: 3 hours 55 minutes
+    Weekly Hours: 23 hours 55 minutes
