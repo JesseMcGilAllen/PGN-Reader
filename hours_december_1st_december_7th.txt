@@ -81,6 +81,8 @@ Thursday December 5th
 - 12:00 pm - 1:30 pm: Incorporated move highlighting, research
 - 1:30 pm - 2:30 pm: Added alert View at Game End.
 - 3:40 pm - 4:30 pm: played around with scroll view position, fonts.
+- 4:35 pm - 4:45 pm: changed text size
+- 4:45 pm - 5:00 pm: met with Ken
 
-    Daily Hours: 3 hour 20 minutes
-    Weekly Hours: 29 hours 50 minutes
+    Daily Hours: 3 hour 45 minutes
+    Weekly Hours: 30 hours 10 minutes
