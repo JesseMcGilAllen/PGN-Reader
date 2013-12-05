@@ -370,11 +370,11 @@
     JMAPiece *rook = rookOriginSquare.piece;
     JMAPiece *king = kingOriginSquare.piece;
     
-    rookOriginSquare.piece = nil;
-    kingOriginSquare.piece = nil;
-    
     kingDestinationSquare.piece = king;
     rookDestinationSquare.piece = rook;
+    
+    rookOriginSquare.piece = nil;
+    kingOriginSquare.piece = nil;
     
     rook.square = rookDestinationSquare;
     king.square = kingDestinationSquare;

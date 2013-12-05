@@ -1171,6 +1171,10 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
             rookDestinationSquare = [self.model squareforCoordinate:A1];
         }
         
+        if (!kingOriginSquare.piece) {
+            kingOriginSquare.piece = self.model.whiteKing;
+        }
+        
     } else {
         kingDestinationSquare = [self.model squareforCoordinate:E8];
         
@@ -1183,6 +1187,10 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
             rookOriginSquare = [self.model squareforCoordinate:D8];
             rookDestinationSquare = [self.model squareforCoordinate:A8];
 
+        }
+        
+        if (!kingOriginSquare.piece) {
+            kingOriginSquare.piece = self.model.blackKing;
         }
     }
     
