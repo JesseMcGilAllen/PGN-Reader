@@ -31,6 +31,7 @@
 
 
 
+
 @end
 
 @implementation JMAGameViewController
@@ -53,6 +54,8 @@
     
     self.title = titleString;
     
+    
+    NSLog(@"Result: %@", self.game.result);
     self.movesListView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin
     | UIViewAutoresizingFlexibleRightMargin;
     
@@ -151,6 +154,7 @@
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
     
+    
 }
 
 /*
@@ -181,6 +185,7 @@
     
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
+    
     
 }
 
@@ -411,8 +416,13 @@
 {
     if (![self isEndOfGame]) {
         [self makeMove];
+        
+    
+        
+        
     } else {
         [self stopTimer];
+
     }
 }
 
@@ -462,6 +472,12 @@
     [self highlightMove:move forMoveIndex:self.boardModel.halfMoveIndex];
     
     self.boardModel.halfMoveIndex++;
+    
+    if ([self isEndOfGame]) {
+        UIAlertView *alert = [self alertForEndOfGame];
+        
+        [alert show];
+    }
 
 }
 
@@ -518,6 +534,9 @@
     
     NSOperationQueue *aQueue = [[NSOperationQueue alloc] init];
     
+    self.movesListView.font = [UIFont systemFontOfSize:TWENTY_FIVE];
+    self.movesListView.contentSize = CGSizeMake(self.movesListView.frame.size.width * TWO, self.movesListView.frame.size.height * TWO);
+    
     [aQueue addOperationWithBlock:^{
         self.movesListParser = [[JMAMovesListParser alloc] initWithMoves:self.game.moves];
         
@@ -529,6 +548,8 @@
             }];
         }
     }];
+    
+
 }
 
 /*
@@ -555,8 +576,36 @@
     
     self.movesListView.attributedText = attributedString;
     
+    [self.movesListView scrollRangeToVisible:NSMakeRange(rangeOfMove.location, ZERO)];
     
+}
+
+/*
+ This method creates an alert view to be displayed at the end of the game.  
+ The message of the alert is customized depending on the result of the game.
+ The alertView is returned after created.
+*/
+- (UIAlertView *)alertForEndOfGame
+{
+    NSString *message;
     
+    NSLog(@"Game Result: %@", self.game.result);
+    
+    NSString *result = [self.game.result stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([result isEqualToString:@"1-0"]) {
+        message = @"White Wins";
+    } else if ([result isEqualToString:@"0-1"]) {
+        message = @"Black Wins";
+    } else if ([result isEqualToString:@"1/2-1/2"]) {
+        message = @"Game Drawn";
+    } else {
+        message = @"Line Ends";
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:message delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    
+    return alert;
 }
 
 @end

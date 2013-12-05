@@ -75,3 +75,12 @@ Wednesday December 4th
 
     Daily Hours: 6 hours 30 minutes
     Weekly Hours: 26 hours 30 minutes
+
+Thursday December 5th
+---------------------
+- 12:00 pm - 1:30 pm: Incorporated move highlighting, research
+- 1:30 pm - 2:30 pm: Added alert View at Game End.
+- 3:40 pm - 4:30 pm: played around with scroll view position, fonts.
+
+    Daily Hours: 3 hour 20 minutes
+    Weekly Hours: 29 hours 50 minutes
