@@ -341,9 +341,11 @@
     if (move.isEnPassant) {
         JMASquare *square = [self squareforCoordinate:move.capturedPieceSquareCoordinate];
         [self capturedPiece:square.piece forMove:move];
+        move.capturedPiece = square.piece;
         square.piece = nil;
     } else if (move.isCapture) {
         [self capturedPiece:destinationSquare.piece forMove:move];
+        move.capturedPiece = destinationSquare.piece;
         destinationSquare.piece = nil;
     }
     

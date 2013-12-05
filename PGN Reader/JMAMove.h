@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSString *sideToMove;
 @property (strong, nonatomic) NSString *originSquareCoordinate;
 @property (strong, nonatomic) JMAPiece *pieceToMove;
+@property (strong, nonatomic) JMAPiece *capturedPiece;
 
 - (NSString *)pieceType;
 - (NSString *)destinationSquareCoordinate;
