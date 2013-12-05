@@ -44,6 +44,6 @@
 - (JMAPiece *)createPieceForPromotionOnSquare:(JMASquare *)square
                                       forMove:(JMAMove *)move;
 
-- (void)takeBackMove:(JMAMove *)move withSquares:(NSArray *)squares;
+- (void)takebackMove:(JMAMove *)move withSquares:(NSArray *)squares;
 
 @end

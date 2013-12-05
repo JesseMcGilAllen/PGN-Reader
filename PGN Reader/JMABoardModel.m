@@ -374,8 +374,6 @@
     kingOriginSquare.piece = nil;
     
     kingDestinationSquare.piece = king;
-    
-    
     rookDestinationSquare.piece = rook;
     
     rook.square = rookDestinationSquare;
@@ -463,6 +461,10 @@
 
 }
 
+/*
+ This method adds the incoming piece parameter to the corresponding White Piece
+ array
+*/
 - (void)addWhitePiece:(JMAPiece *)piece
 {
     if ([piece.type isEqualToString:PAWN]) {
@@ -487,6 +489,10 @@
     }
 }
 
+/*
+ This method adds the incoming piece parameter to the corresponding Black Piece
+ array
+*/
 - (void)addBlackPiece:(JMAPiece *)piece
 {
     if ([piece.type isEqualToString:PAWN]) {
@@ -536,8 +542,106 @@
     
 }
 
-- (void)takeBackMove:(JMAMove *)move withSquares:(NSArray *)squares;
+/*
+ This move resets the pieces and square to their state before the incoming
+ move parameter.  First, if the move isCastling it is sent to the 
+ makeCastlingMove method.  Then the originSquare and destinationSquare are 
+ grabbed from the incoming squares array.  Then if the move isPromotion flag is 
+ set it is sent to takebackPromotionMoveWithOriginSquare: method.  If the move 
+ is not a Capture.  The piece on the origin square is set to the destination 
+ square.  If the move is a capture the takebackCaptureMove: method is called.
+*/
+- (void)takebackMove:(JMAMove *)move withSquares:(NSArray *)squares;
 {
+    if (move.isCastling) {
+        [self makeCastlingMove:move withSquares:squares];
+        return;
+    }
+    
+    JMASquare *originSquare = squares[ZERO];
+    JMASquare *destinationSquare = squares[ONE];
+    
+    if (move.isPromotion) {
+        [self takebackPromotionMoveWithOriginSquare:originSquare
+                                  destinationSquare:destinationSquare];
+    }
+    
+    if (!move.isCapture) {
+        JMAPiece *piece = originSquare.piece;
+        originSquare.piece = nil;
+        destinationSquare.piece = piece;
+        piece.square = destinationSquare;
+    } else {
+        [self takebackCaptureMove:move withOriginSquare:originSquare destinationSquare:destinationSquare];
+    }
+}
+
+/*
+ This method takes back the promotion portion of a move and replaces the 
+ promoted piece with the pawn it was before promoting
+*/
+- (void)takebackPromotionMoveWithOriginSquare:(JMASquare *)originSquare
+            destinationSquare:(JMASquare *)destinationSquare
+{
+    JMAPiece *pieceToRemove = originSquare.piece;
+    JMAPiece *pieceToMove = [self.capturedPieces lastObject];
+    
+    if ([pieceToRemove.color isEqualToString:WHITE]) {
+        [self removeWhitePiece:pieceToRemove];
+        [self addWhitePiece:pieceToMove];
+    } else {
+        [self removeBlackPiece:pieceToRemove];
+        [self addBlackPiece:pieceToMove];
+    }
+    
+    [self.pieces addObject:pieceToMove];
+    
+    [self.pieces removeObject:pieceToRemove];
+    [self.capturedPieces removeLastObject];
+    
+    pieceToMove.square = originSquare;
+    originSquare.piece = pieceToMove;
+
+}
+
+/*
+ This method processes the move if it is a capture move for a takeback.  First 
+ the pieceon the originSquare is moved to the destination square.  Then the last
+ captured piece is grabbed from the capturedPieces MutableArray and removed from
+ that array.  Then if the capturedPiece is added back to the pieces' arrays.
+ Finally, if the capture is not an en passant the origin square's piece property
+ is set to the captured piece and vice versa.  If the capture is an en passant
+ the captured piece's squareCoordinate property is used to grab the square to 
+ put the captured piece on.
+*/
+- (void)takebackCaptureMove:(JMAMove *)move withOriginSquare:(JMASquare *)originSquare
+                          destinationSquare:(JMASquare *)destinationSquare
+{
+    JMAPiece *pieceToMove = originSquare.piece;
+    destinationSquare.piece = pieceToMove;
+    pieceToMove.square = destinationSquare;
+    
+    JMAPiece *capturedPiece = [self.capturedPieces lastObject];
+    [self.capturedPieces removeLastObject];
+    
+    if ([capturedPiece.color isEqualToString:WHITE]) {
+        [self addWhitePiece:capturedPiece];
+    } else {
+        [self addBlackPiece:capturedPiece];
+    }
+    
+    [self.pieces addObject:capturedPiece];
+    
+    if (!move.isEnPassant) {
+        originSquare.piece = capturedPiece;
+        capturedPiece.square = originSquare;
+    } else {
+        JMASquare *square = [self squareforCoordinate:move.capturedPieceSquareCoordinate];
+        square.piece = capturedPiece;
+        capturedPiece.square = square;
+        originSquare.piece = nil;
+    }
+    
     
 }
 @end
