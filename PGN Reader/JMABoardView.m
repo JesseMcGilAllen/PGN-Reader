@@ -180,6 +180,10 @@
     
 }
 
+/*
+ This method updates the board by moving the move's pieceToMove from the origin
+ Square to the destinationSquare and adding captured pieces back if necessary.
+*/
 - (void)updateBoardWithTakebackMove:(JMAMove *)move squares:(NSArray *)squares;
 {
     if (move.isCastling) {
@@ -199,10 +203,14 @@
             destinationSquare.piece = pieceToMove;
         }
         
+        pieceToMove.frame = destinationSquare.frame;
+        
+        if (move.isCapture) {
+            move.capturedPiece.frame = originSquare.frame;
+            [self addSubview:move.capturedPiece];
+        }
         
     }];
-    
-    
 }
 
 /*
