@@ -205,7 +205,13 @@
         
         pieceToMove.frame = destinationSquare.frame;
         
-        if (move.isCapture) {
+        
+        if (move.isEnPassant) {
+            JMASquare *square = [self.model squareforCoordinate:move.capturedPieceSquareCoordinate];
+            move.capturedPiece.frame = square.frame;
+            [self addSubview:move.capturedPiece];
+            
+        } else if (move.isCapture) {
             move.capturedPiece.frame = originSquare.frame;
             [self addSubview:move.capturedPiece];
         }
