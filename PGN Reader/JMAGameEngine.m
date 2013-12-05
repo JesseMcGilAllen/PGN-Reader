@@ -1147,11 +1147,47 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
 }
 
 /*
- 
+ This method returns the squares involved in taking back a castling move.
 */
 - (NSArray *)squaresInvolvedTakingBackCastlingMove:(JMAMove *)move;
 {
-    NSMutableArray *squaresInvolved = [[NSMutableArray alloc] init];
+    NSArray *squaresInvolved;
+    JMASquare *kingOriginSquare;
+    JMASquare *kingDestinationSquare;
+    JMASquare *rookOriginSquare;
+    JMASquare *rookDestinationSquare;
+    
+    if ([move.sideToMove isEqualToString:WHITE]) {
+        kingDestinationSquare = [self.model squareforCoordinate:E1];
+        
+        if ([move.moveString isEqualToString:KINGSIDE_CASTLING]) {
+            kingOriginSquare = [self.model squareforCoordinate:G1];
+            rookOriginSquare = [self.model squareforCoordinate:F1];
+            rookDestinationSquare = [self.model squareforCoordinate:H1];
+            
+        } else {
+            kingOriginSquare = [self.model squareforCoordinate:C1];
+            rookOriginSquare = [self.model squareforCoordinate:D1];
+            rookDestinationSquare = [self.model squareforCoordinate:A1];
+        }
+        
+    } else {
+        kingDestinationSquare = [self.model squareforCoordinate:E8];
+        
+        if ([move.moveString isEqualToString:KINGSIDE_CASTLING]) {
+            kingOriginSquare = [self.model squareforCoordinate:G8];
+            rookOriginSquare = [self.model squareforCoordinate:F8];
+            rookDestinationSquare = [self.model squareforCoordinate:H8];
+        } else {
+            kingOriginSquare = [self.model squareforCoordinate:C8];
+            rookOriginSquare = [self.model squareforCoordinate:D8];
+            rookDestinationSquare = [self.model squareforCoordinate:A8];
+
+        }
+    }
+    
+    squaresInvolved = @[kingOriginSquare, kingDestinationSquare,
+                        rookOriginSquare, rookDestinationSquare];
     
     return squaresInvolved;
 }

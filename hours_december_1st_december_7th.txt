@@ -63,7 +63,7 @@ Wednesday December 4th
 ----------------------
 - 2:45 pm - 3:30 pm: implemented timer on play button and moved individual move
                      to gameEndButton.
--5:20 pm - 
+- 5:20 pm - 6:25 pm: coded Takeback methods in Game Engine Class.
 
-    Daily Hours: 0 hours 45 minutes
-    Weekly Hours: 20 hours 45 minutes
+    Daily Hours: 1 hours 50 minutes
+    Weekly Hours: 21 hours 50 minutes
