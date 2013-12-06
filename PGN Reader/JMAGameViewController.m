@@ -26,6 +26,7 @@
 
 @property (assign, nonatomic) UIEdgeInsets portraitInsets;
 @property (assign, nonatomic) UIEdgeInsets landscapeInsets;
+@property (assign, nonatomic) NSUInteger contentOffsetMultiplier;
 
 @property (weak, nonatomic) NSTimer *repeatingTimer;
 
@@ -537,6 +538,7 @@
 */
 - (void)configureMovesList
 {
+    self.contentOffsetMultiplier = ZERO;
     self.movesListView.backgroundColor = [UIColor whiteColor];
     
     NSOperationQueue *aQueue = [[NSOperationQueue alloc] init];
@@ -574,6 +576,7 @@
     }
     
     
+    
     NSUInteger currentMoveNumber = (moveIndex / TWO) + ONE;
     
     NSString *moveNumberString = [[NSString alloc] initWithFormat:@"%ld.", (unsigned long)currentMoveNumber];
@@ -593,14 +596,37 @@
     self.movesListView.attributedText = attributedString;
     self.movesListView.font = self.textViewFont;
     
-    self.movesListView.scrollEnabled = NO;
-    [self.movesListView setContentOffset:CGPointMake(ZERO, (currentMoveNumber * self.textViewFont.pointSize) + EIGHT) animated:YES];
-    self.movesListView.scrollEnabled = YES;
+    //[move.moveString sizeWithAttributes:@{ UITextAtt: self.textViewFont};
+    
+    NSLog(@"Font Point Size: %f", self.textViewFont.pointSize);
+    
+    if ((currentMoveNumber - ONE) % 10 == ZERO) {
+        
+        [self updateTextViewContentOffsetWith:currentMoveNumber];
+        
+    }
+    
+    
     
     
 
     
 }
+
+- (void)updateTextViewContentOffsetWith:(NSUInteger)currentMoveNumber
+{
+    self.contentOffsetMultiplier = currentMoveNumber;
+    
+    NSUInteger numberDividedByTen = currentMoveNumber / 10;
+    
+    CGFloat contentOffsetValue = (self.contentOffsetMultiplier * self.textViewFont.pointSize) +
+                                 (self.textViewFont.pointSize * numberDividedByTen);
+    
+    self.movesListView.scrollEnabled = NO;
+    [self.movesListView setContentOffset:CGPointMake(ZERO, contentOffsetValue) animated:YES];
+    self.movesListView.scrollEnabled = YES;
+}
+
 
 /*
  This method creates an alert view to be displayed at the end of the game.  
