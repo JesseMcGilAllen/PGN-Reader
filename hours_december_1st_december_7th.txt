@@ -101,8 +101,8 @@ Friday December 6th
 -------------------
 - 1:40 pm - 1:50 pm: calculated hours left
 - 1:50 pm - 2:20 pm: changed Board size for portrait orientation to increase
-size of moves list.
-- 2:20 pm - 
+                     size of moves list.
+- 2:20 pm - 3:00 pm: experimenting with contentSize Offset
 
-    Daily Hours: 0 hours 40 minutes
-    Weekly Hours: 33 hours 40 minutes
+    Daily Hours: 1 hour 20 minutes
+    Weekly Hours: 34 hours 20 minutes

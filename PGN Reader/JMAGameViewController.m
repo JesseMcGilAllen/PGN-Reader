@@ -593,13 +593,9 @@
     self.movesListView.attributedText = attributedString;
     self.movesListView.font = self.textViewFont;
     
-    
-    
-    if (currentMoveNumber % 10 == ZERO) {
-        self.movesListView.scrollEnabled = NO;
-        [self.movesListView setContentOffset:CGPointMake(ZERO, currentMoveNumber * TWENTY_FIVE) animated:YES];
-        self.movesListView.scrollEnabled = YES;
-    }
+    self.movesListView.scrollEnabled = NO;
+    [self.movesListView setContentOffset:CGPointMake(ZERO, (currentMoveNumber * self.textViewFont.pointSize) + EIGHT) animated:YES];
+    self.movesListView.scrollEnabled = YES;
     
     
 
