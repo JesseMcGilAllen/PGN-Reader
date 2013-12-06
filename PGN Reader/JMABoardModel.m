@@ -316,7 +316,12 @@
 */
 - (JMAMove *)previousMove
 {
-    return self.moves[self.halfMoveIndex - ONE];
+    if (self.halfMoveIndex > ONE) {
+        return self.moves[self.halfMoveIndex - ONE];
+    } else {
+        return nil;
+    }
+    
 }
 /*
  This method moves the piece on the first square object in the squares array

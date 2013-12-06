@@ -565,8 +565,13 @@
 */
 - (void)highlightMove:(JMAMove *)move forMoveIndex:(NSUInteger)moveIndex;
 {
+    if ([self isStartOfGame]) {
+        return;
+    }
+    
+    
     NSUInteger currentMoveNumber = (moveIndex / TWO) + ONE;
-
+    
     NSString *moveNumberString = [[NSString alloc] initWithFormat:@"%ld.", (unsigned long)currentMoveNumber];
     
     NSString *movesList = self.movesListView.text;
@@ -585,7 +590,7 @@
     self.movesListView.font = self.textViewFont;
     
     self.movesListView.scrollEnabled = NO;
-    [self.movesListView setContentOffset:CGPointMake(ZERO, currentMoveNumber * THREE) animated:YES];
+    [self.movesListView setContentOffset:CGPointMake(ZERO, currentMoveNumber * 18) animated:YES];
     self.movesListView.scrollEnabled = YES;
 
     
