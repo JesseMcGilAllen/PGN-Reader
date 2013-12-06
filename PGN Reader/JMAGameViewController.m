@@ -27,6 +27,7 @@
 @property (assign, nonatomic) UIEdgeInsets portraitInsets;
 @property (assign, nonatomic) UIEdgeInsets landscapeInsets;
 @property (assign, nonatomic) NSUInteger contentOffsetMultiplier;
+@property (assign, nonatomic) CGFloat contentOffsetY;
 
 @property (weak, nonatomic) NSTimer *repeatingTimer;
 
@@ -186,6 +187,11 @@
     CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, viewWidth, boardLength);
     CGRect movesListRect = CGRectMake(ZERO, boardLength, viewWidth, listLength);
     
+    NSLog(@"Toolbar location y: %f height: %f", self.navigationController.toolbar.frame.origin.y, self.navigationController.toolbar.frame.size.height);
+    NSLog(@"Moves List Location: %f", boardLength);
+    NSLog(@"Viewable Moves List Space: %f", (self.navigationController.toolbar.frame.origin.y - self.navigationController.toolbar.frame.size.height - boardLength));
+    
+    
     
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
@@ -322,6 +328,8 @@
  */
 - (CGFloat)toolbarHeight
 {
+    NSLog(@"Toolbar location y: %f height: %f", self.navigationController.toolbar.frame.origin.y, self.navigationController.toolbar.frame.size.height);
+    
     return self.navigationController.toolbar.frame.size.height;
 }
 
@@ -600,36 +608,38 @@
     
     NSLog(@"Font Point Size: %f", self.textViewFont.pointSize);
     
-    if ((currentMoveNumber - ONE) % 10 == ZERO) {
+    if (currentMoveNumber > 9 && (currentMoveNumber - ONE) % 10 == ZERO) {
         
         [self updateTextViewContentOffsetWith:currentMoveNumber];
         
     }
     
+    self.movesListView.scrollEnabled = NO;
+    [self.movesListView setContentOffset:CGPointMake(ZERO, self.contentOffsetY) animated:YES];
+    self.movesListView.scrollEnabled = YES;
     
-    
-    
+    NSLog(@"Content Offset: %f", self.movesListView.contentOffset.y);
 
     
 }
 
 - (void)updateTextViewContentOffsetWith:(NSUInteger)currentMoveNumber
 {
-    self.contentOffsetMultiplier = currentMoveNumber;
+    self.contentOffsetMultiplier = currentMoveNumber - ONE;
     
     NSUInteger numberDividedByTen = currentMoveNumber / 10;
     
-    CGFloat contentOffsetValue = (self.contentOffsetMultiplier * self.textViewFont.pointSize) +
-                                 (self.textViewFont.pointSize * numberDividedByTen);
+    CGFloat buffer = (self.textViewFont.pointSize / TWO) * numberDividedByTen + self.textViewFont.pointSize;
     
-    self.movesListView.scrollEnabled = NO;
-    [self.movesListView setContentOffset:CGPointMake(ZERO, contentOffsetValue) animated:YES];
-    self.movesListView.scrollEnabled = YES;
+    self.contentOffsetY = (self.contentOffsetMultiplier * (self.textViewFont.pointSize)) +
+    (self.textViewFont.pointSize * numberDividedByTen) + buffer;
+    
+    
 }
 
 
 /*
- This method creates an alert view to be displayed at the end of the game.  
+ This method creates an alert view to be displayed at the end of the game.
  The message of the alert is customized depending on the result of the game.
  The alertView is returned after created.
 */
