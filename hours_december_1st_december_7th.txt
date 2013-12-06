@@ -87,7 +87,7 @@ Thursday December 5th
                      talked to Eric.
 - 5:45 pm - 6:30 pm: more scroll view research
 - 6:45 pm - 7:00 pm: brainstormed scrollview issue on way home
-- 1:10 am - 
+- 1:10 am - 2:10 am: Found solution to scrollview issue
 
-    Daily Hours: 5 hour 30 minutes
-    Weekly Hours: 32 hours 00 minutes
+    Daily Hours: 6 hour 30 minutes
+    Weekly Hours: 33 hours 00 minutes
