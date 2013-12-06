@@ -86,6 +86,8 @@ Thursday December 5th
 - 5:00 pm - 5:45 pm: worked on scroll view position code
                      talked to Eric.
 - 5:45 pm - 6:30 pm: more scroll view research
+- 6:45 pm - 7:00 pm: brainstormed scrollview issue on way home
+- 1:10 am - 
 
-    Daily Hours: 5 hour 15 minutes
-    Weekly Hours: 31 hours 45 minutes
+    Daily Hours: 5 hour 30 minutes
+    Weekly Hours: 32 hours 00 minutes

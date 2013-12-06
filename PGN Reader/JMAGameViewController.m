@@ -584,7 +584,8 @@
     self.movesListView.attributedText = attributedString;
     self.movesListView.font = self.textViewFont;
     
-    self.movesListView.selectedRange = NSMakeRange(rangeOfMove.location, ZERO);
+    UIEdgeInsets currentInsets = self.movesListView.textContainerInset;
+    self.movesListView.textContainerInset = UIEdgeInsetsMake(currentInsets.top - currentMoveNumber, currentInsets.left, currentInsets.bottom, currentInsets.right);
     [self.movesListView flashScrollIndicators];
     
 
