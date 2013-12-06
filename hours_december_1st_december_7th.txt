@@ -91,3 +91,15 @@ Thursday December 5th
 
     Daily Hours: 6 hour 30 minutes
     Weekly Hours: 33 hours 00 minutes
+
+Hours So Far: 160 hours
+Hours Left: 56 hours
+Days Left: 9 days
+Hours per Day Left: 6 hours 15 minutes
+
+Friday December 6th
+-------------------
+- 1:40 pm - 1:50 pm: calculated hours left
+
+    Daily Hours: 0 hours 00 minutes
+    Weekly Hours: 33 hours 00 minutes
