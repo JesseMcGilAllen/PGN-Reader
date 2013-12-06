@@ -103,6 +103,7 @@ Friday December 6th
 - 1:50 pm - 2:20 pm: changed Board size for portrait orientation to increase
                      size of moves list.
 - 2:20 pm - 3:00 pm: experimenting with contentSize Offset
+- 3:00 pm - 4:15 pm: Continued with experimentation
 
-    Daily Hours: 1 hour 20 minutes
-    Weekly Hours: 34 hours 20 minutes
+    Daily Hours: 2 hour 35 minutes
+    Weekly Hours: 35 hours 35 minutes
