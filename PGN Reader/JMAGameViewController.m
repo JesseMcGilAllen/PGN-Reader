@@ -584,9 +584,9 @@
     self.movesListView.attributedText = attributedString;
     self.movesListView.font = self.textViewFont;
     
+    self.movesListView.scrollEnabled = NO;
     [self.movesListView setContentOffset:CGPointMake(ZERO, currentMoveNumber * THREE) animated:YES];
-    [self.movesListView flashScrollIndicators];
-    
+    self.movesListView.scrollEnabled = YES;
 
     
 }
