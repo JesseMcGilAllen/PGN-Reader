@@ -584,8 +584,7 @@
     self.movesListView.attributedText = attributedString;
     self.movesListView.font = self.textViewFont;
     
-    UIEdgeInsets currentInsets = self.movesListView.textContainerInset;
-    self.movesListView.textContainerInset = UIEdgeInsetsMake(currentInsets.top - currentMoveNumber, currentInsets.left, currentInsets.bottom, currentInsets.right);
+    [self.movesListView setContentOffset:CGPointMake(ZERO, currentMoveNumber * THREE) animated:YES];
     [self.movesListView flashScrollIndicators];
     
 
