@@ -100,6 +100,9 @@ Hours per Day Left: 6 hours 15 minutes
 Friday December 6th
 -------------------
 - 1:40 pm - 1:50 pm: calculated hours left
+- 1:50 pm - 2:20 pm: changed Board size for portrait orientation to increase
+size of moves list.
+- 2:20 pm - 
 
-    Daily Hours: 0 hours 00 minutes
-    Weekly Hours: 33 hours 00 minutes
+    Daily Hours: 0 hours 40 minutes
+    Weekly Hours: 33 hours 40 minutes

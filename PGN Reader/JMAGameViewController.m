@@ -178,7 +178,7 @@
     
     CGFloat availableLength = self.view.frame.size.height - occupiedHeight;
     
-    CGFloat boardLength = availableLength * (double)FOUR/FIVE;
+    CGFloat boardLength = availableLength * (double)THREE/FOUR;
     
     CGFloat listLength = self.view.frame.size.height - boardLength;
     
@@ -279,10 +279,14 @@
     [self.movesListView setNeedsDisplay];
     
     CGFloat navigationControllerHeight = [self navigationControllerHeight];
+    CGFloat toolbarHeight = [self toolbarHeight];
+    
+    CGFloat occupiedHeight = navigationControllerHeight + toolbarHeight;
+    CGFloat availableLength = self.view.frame.size.width - occupiedHeight;
     
     CGFloat viewWidth = self.view.frame.size.height;
     
-    CGFloat boardLength = self.view.frame.size.width * (double)FOUR/FIVE;
+    CGFloat boardLength = availableLength * (double)THREE/FOUR;
     
     CGFloat listLength = self.view.frame.size.width - (boardLength);
     
@@ -520,8 +524,8 @@
     
     //CGFloat topPortraitInset = defaultInsets.top * TWO;
     
-    self.landscapeInsets = UIEdgeInsetsMake(NEGATIVE_FOURTY, defaultInsets.left, defaultInsets.bottom, defaultInsets.right);
-    self.portraitInsets = UIEdgeInsetsMake(TWENTY_FIVE, ZERO, FIFTEEN, ZERO);
+    self.landscapeInsets = UIEdgeInsetsMake(-64, defaultInsets.left, defaultInsets.bottom, defaultInsets.right);
+     self.portraitInsets = UIEdgeInsetsMake(ZERO, ZERO, FIFTEEN, ZERO);
     
 }
 
@@ -589,9 +593,15 @@
     self.movesListView.attributedText = attributedString;
     self.movesListView.font = self.textViewFont;
     
-    self.movesListView.scrollEnabled = NO;
-    [self.movesListView setContentOffset:CGPointMake(ZERO, currentMoveNumber * 18) animated:YES];
-    self.movesListView.scrollEnabled = YES;
+    
+    
+    if (currentMoveNumber % 10 == ZERO) {
+        self.movesListView.scrollEnabled = NO;
+        [self.movesListView setContentOffset:CGPointMake(ZERO, currentMoveNumber * TWENTY_FIVE) animated:YES];
+        self.movesListView.scrollEnabled = YES;
+    }
+    
+    
 
     
 }
