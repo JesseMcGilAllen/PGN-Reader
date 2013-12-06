@@ -29,6 +29,8 @@
 
 @property (weak, nonatomic) NSTimer *repeatingTimer;
 
+@property (weak, nonatomic) UIFont *textViewFont;
+
 
 
 
@@ -56,12 +58,13 @@
     
     
     NSLog(@"Result: %@", self.game.result);
+    NSLog(@"Scroll Enabled? %d", self.movesListView.scrollEnabled);
     self.movesListView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin
     | UIViewAutoresizingFlexibleRightMargin;
     
     [self configureMovesList];
     
-    
+    self.textViewFont = [UIFont systemFontOfSize:18];
     
     [self setupBoard];
     [self setupGame];
@@ -545,7 +548,7 @@
         if (self.movesListParser.finished) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 self.movesListView.text = [self.movesListParser movesForTextView];
-                self.movesListView.font = [UIFont systemFontOfSize:TWENTY_FIVE];
+                self.movesListView.font = self.textViewFont;
 
                 [self.boardModel movesForGame:[self.movesListParser movesForGame]];
                 [self.movesListView setNeedsDisplay];
@@ -579,9 +582,12 @@
                              range:rangeOfMove];
     
     self.movesListView.attributedText = attributedString;
-    self.movesListView.font = [UIFont systemFontOfSize:TWENTY];
+    self.movesListView.font = self.textViewFont;
     
-    [self.movesListView scrollRangeToVisible:NSMakeRange(rangeOfMove.location, ZERO)];
+    self.movesListView.selectedRange = NSMakeRange(rangeOfMove.location, ZERO);
+    [self.movesListView flashScrollIndicators];
+    
+
     
 }
 

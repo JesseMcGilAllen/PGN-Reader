@@ -83,6 +83,9 @@ Thursday December 5th
 - 3:40 pm - 4:30 pm: played around with scroll view position, fonts.
 - 4:35 pm - 4:45 pm: changed text size
 - 4:45 pm - 5:00 pm: met with Ken
+- 5:00 pm - 5:45 pm: worked on scroll view position code
+                     talked to Eric.
+- 5:45 pm - 6:30 pm: more scroll view research
 
-    Daily Hours: 3 hour 45 minutes
-    Weekly Hours: 30 hours 10 minutes
+    Daily Hours: 5 hour 15 minutes
+    Weekly Hours: 31 hours 45 minutes
