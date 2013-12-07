@@ -635,7 +635,7 @@
 //    self.contentOffsetY = (self.contentOffsetMultiplier * (self.textViewFont.pointSize)) +
 //    (self.textViewFont.pointSize * numberDividedByTen) + buffer;
     
-    CGFloat offset = ((self.textViewFont.pointSize * FOUR) / THREE) - ONE;
+    CGFloat offset = ((self.textViewFont.pointSize * FOUR) / THREE) - 2.68;
     self.contentOffsetY += offset;
     
     
