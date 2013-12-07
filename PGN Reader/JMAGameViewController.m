@@ -624,18 +624,14 @@
     
 }
 
+/*
+ 
+*/
 - (void)updateTextViewContentOffsetY
 {
-//    self.contentOffsetMultiplier = currentMoveNumber - ONE;
-//    
-//    NSUInteger numberDividedByTen = currentMoveNumber / 10;
-//    
-//    CGFloat buffer = (self.textViewFont.pointSize / TWO) * numberDividedByTen + self.textViewFont.pointSize;
-//    
-//    self.contentOffsetY = (self.contentOffsetMultiplier * (self.textViewFont.pointSize)) +
-//    (self.textViewFont.pointSize * numberDividedByTen) + buffer;
-    
-    CGFloat offset = ((self.textViewFont.pointSize * FOUR) / THREE) - 2.68;
+
+    // found through experimentation
+    CGFloat offset = ((self.textViewFont.pointSize * FOUR) / THREE) - 2.55;
     self.contentOffsetY += offset;
     
     
