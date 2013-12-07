@@ -107,6 +107,8 @@ Friday December 6th
 - 4:15 pm - 5:00 pm: Same
 - 5:00 pm - 5:15 pm: brainstormed about current problem
 - 6:15 pm - 7:15 pm: fooling around with contentSizeOffset
+- 7:15 pm - 7:45 pm: found desired contentSizeOffset float for scrolling
+- 7:45 pm - 
 
-    Daily Hours: 4 hour 35 minutes
-    Weekly Hours: 37 hours 35 minutes
+    Daily Hours: 5 hour 05 minutes
+    Weekly Hours: 38 hours 05 minutes

@@ -67,7 +67,7 @@
     
     [self configureMovesList];
     
-    self.textViewFont = [UIFont systemFontOfSize:18];
+    self.textViewFont = [UIFont systemFontOfSize:EIGHTEEN];
     
     [self setupBoard];
     [self setupGame];
@@ -609,7 +609,7 @@
     
     NSLog(@"Font Point Size: %f", self.textViewFont.pointSize);
     
-    if (currentMoveNumber > 9 && [move.sideToMove isEqualToString:WHITE]) {
+    if (currentMoveNumber > NINE && [move.sideToMove isEqualToString:WHITE]) {
         
         [self updateTextViewContentOffsetY];
         
@@ -625,7 +625,8 @@
 }
 
 /*
- 
+ This method calculates the amount the scroll position should change for the 
+ move and adds it to the contentOffsetY property.
 */
 - (void)updateTextViewContentOffsetY
 {
