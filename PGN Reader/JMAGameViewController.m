@@ -9,6 +9,7 @@
 #import "JMAGameViewController.h"
 #import "Game.h"
 #import "JMABoardView.h"
+#import "JMAChessConstants.h"
 #import "JMAConstants.h"
 #import "JMAMovesListParser.h"
 #import "JMAGameEngine.h"
@@ -608,9 +609,9 @@
     
     NSLog(@"Font Point Size: %f", self.textViewFont.pointSize);
     
-    if (currentMoveNumber > 9 && (currentMoveNumber - ONE) % 10 == ZERO) {
+    if (currentMoveNumber > 9 && [move.sideToMove isEqualToString:WHITE]) {
         
-        [self updateTextViewContentOffsetWith:currentMoveNumber];
+        [self updateTextViewContentOffsetY];
         
     }
     
@@ -623,16 +624,19 @@
     
 }
 
-- (void)updateTextViewContentOffsetWith:(NSUInteger)currentMoveNumber
+- (void)updateTextViewContentOffsetY
 {
-    self.contentOffsetMultiplier = currentMoveNumber - ONE;
+//    self.contentOffsetMultiplier = currentMoveNumber - ONE;
+//    
+//    NSUInteger numberDividedByTen = currentMoveNumber / 10;
+//    
+//    CGFloat buffer = (self.textViewFont.pointSize / TWO) * numberDividedByTen + self.textViewFont.pointSize;
+//    
+//    self.contentOffsetY = (self.contentOffsetMultiplier * (self.textViewFont.pointSize)) +
+//    (self.textViewFont.pointSize * numberDividedByTen) + buffer;
     
-    NSUInteger numberDividedByTen = currentMoveNumber / 10;
-    
-    CGFloat buffer = (self.textViewFont.pointSize / TWO) * numberDividedByTen + self.textViewFont.pointSize;
-    
-    self.contentOffsetY = (self.contentOffsetMultiplier * (self.textViewFont.pointSize)) +
-    (self.textViewFont.pointSize * numberDividedByTen) + buffer;
+    CGFloat offset = (self.textViewFont.pointSize * FOUR) / THREE;
+    self.contentOffsetY += offset;
     
     
 }
