@@ -25,6 +25,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSError *error = nil;
+     NSArray *paths = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
+    NSString *documentDirectory = paths[ZERO];
+    
+    NSArray *documentContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentDirectory error:&error];
+    
+    NSLog(@"%@", documentContents);
     
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     
@@ -158,6 +165,27 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+// Returns the
+- (NSString *)applicationPrivateDocumentsDirectory {
+    static NSString *path;
+    if (!path) {
+        NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];
+        path = [libraryPath stringByAppendingPathComponent:@"Private Documents"];
+        BOOL isDirectory;
+        if (![[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDirectory]) {
+            NSError *error = nil;
+            if (![[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error]) {
+                NSLog(@"Can't create directory %@ [%@]", path, error);
+                abort(); // replace with proper error handling
+            }
+        }
+        else if (!isDirectory) {
+            NSLog(@"Path %@ exists but is no directory", path);
+            abort(); // replace with error handling
+        }
+    }
+    return path;
+}
 
 /* 
  Handles pgn files as they enter the app
@@ -205,7 +233,7 @@
                 }
                 
                 if (pgnURL) {
-                    [[NSFileManager defaultManager] removeItemAtPath:url.path error:&error];
+                    [[NSFileManager defaultManager] removeItemAtPath:oldURL.path error:&error];
                 } else {
                     [[NSFileManager defaultManager] removeItemAtPath:url.path error:&error];
                 }

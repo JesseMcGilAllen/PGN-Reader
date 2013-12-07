@@ -119,7 +119,10 @@ Friday December 6th
 
 Saturday December 7th
 ---------------------
--10:50 am - 11:20 am: brainstormed future ideas/plans
+- 10:50 am - 11:20 am: brainstormed future ideas/plans
+- 1:20 pm - 1:50 pm: checking out the competition
+- 1:50 pm - 3:20 pm: Enabled iTunes File Sharing
+                     Researched where to put Core Data Files
 
-    Daily Hours: 0 hours 30 minutes
-    Weekly Hours: 40 hours 15 minutes
+    Daily Hours: 2 hours 30 minutes
+    Weekly Hours: 42 hours 15 minutes
