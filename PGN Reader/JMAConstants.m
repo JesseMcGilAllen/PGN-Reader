@@ -57,4 +57,7 @@ NSString *const NEW_LINE = @"\n";
 NSString *const EMPTY_STRING = @"";
 NSString *const PERIOD = @".";
 
+NSString *const FORWARD = @"Forward";
+NSString *const BACKWARD = @"Backward";
+
 @end

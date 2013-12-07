@@ -61,4 +61,7 @@ extern NSString *const NEW_LINE;
 extern NSString *const EMPTY_STRING;
 extern NSString *const PERIOD;
 
+extern NSString *const FORWARD;
+extern NSString *const BACKWARD;
+
 @end

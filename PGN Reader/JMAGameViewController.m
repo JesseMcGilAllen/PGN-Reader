@@ -247,6 +247,7 @@
 - (void)configureViewForLandscapeOrientationForRotation
 {
     self.movesListView.textContainerInset = self.landscapeInsets;
+     NSLog(@"ContentOffset: %f", self.movesListView.contentOffset.y);
     
     CGFloat navigationControllerHeight = [self navigationControllerHeight];
     CGFloat toolbarHeight = [self toolbarHeight];
@@ -267,6 +268,13 @@
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
     
+    [self updateMovesListScrollForMove:nil withDirection:nil];
+    
+    if (self.movesListView.contentOffset.y == -(SIXTY_FOUR)) {
+
+        self.movesListView.textContainerInset = UIEdgeInsetsZero;
+    }
+
 }
 
 /*
@@ -276,9 +284,8 @@
 */
 - (void)configureViewForPortraitOrientationForRotation
 {
-    
+   
     self.movesListView.textContainerInset = self.portraitInsets;
-    [self.movesListView setNeedsDisplay];
     
     CGFloat navigationControllerHeight = [self navigationControllerHeight];
     CGFloat toolbarHeight = [self toolbarHeight];
@@ -299,6 +306,18 @@
     self.boardView.frame = boardViewRect;
     
     self.movesListView.frame = movesListRect;
+    
+    NSLog(@"top Inset: %f", self.movesListView.textContainerInset.top);
+    
+    
+    [self updateMovesListScrollForMove:nil withDirection:nil];
+    NSLog(@"ContentOffset: %f", self.movesListView.contentOffset.y);
+    
+    
+//    CGPoint contentOffset = self.movesListView.contentOffset;
+//    
+//    self.movesListView.contentOffset = CGPointZero;
+//    self.movesListView.contentOffset = contentOffset;
 
 }
 
@@ -488,6 +507,8 @@
         
         [alert show];
     }
+    
+     [self updateMovesListScrollForMove:move withDirection:FORWARD];
 
 }
 
@@ -519,11 +540,11 @@
     [self highlightMove:previousMove forMoveIndex:self.boardModel.halfMoveIndex - ONE];
         
     
+    [self updateMovesListScrollForMove:move withDirection:BACKWARD];
     
 
 }
 # pragma mark - Move List
-
 
 /*
  This method sets the inset properties to set the textView contentInset
@@ -533,7 +554,7 @@
 {
     UIEdgeInsets defaultInsets = self.movesListView.textContainerInset;
     
-    //CGFloat topPortraitInset = defaultInsets.top * TWO;
+    // CGFloat topPortraitInset = defaultInsets.top * TWO;
     
     self.landscapeInsets = UIEdgeInsetsMake(-64, defaultInsets.left, defaultInsets.bottom, defaultInsets.right);
      self.portraitInsets = UIEdgeInsetsMake(ZERO, ZERO, FIFTEEN, ZERO);
@@ -581,10 +602,6 @@
 */
 - (void)highlightMove:(JMAMove *)move forMoveIndex:(NSUInteger)moveIndex;
 {
-
-    if (moveIndex == ONE) {
-        moveIndex--;
-    }
     
     if (!move) {
         [self unHighlightTextView];
@@ -611,21 +628,6 @@
     
     self.movesListView.attributedText = attributedString;
     self.movesListView.font = self.textViewFont;
-    
-    //[move.moveString sizeWithAttributes:@{ UITextAtt: self.textViewFont};
-    
-
-    
-    if (currentMoveNumber > NINE && [move.sideToMove isEqualToString:WHITE]) {
-        
-        [self updateTextViewContentOffsetY];
-        
-    }
-    
-    self.movesListView.scrollEnabled = NO;
-    [self.movesListView setContentOffset:CGPointMake(ZERO, self.contentOffsetY) animated:YES];
-    self.movesListView.scrollEnabled = YES;
-    
 }
 
 /*
@@ -638,16 +640,42 @@
     self.movesListView.attributedText = attributedString;
     self.movesListView.font = self.textViewFont;
 }
+
+/*
+ This method calls the updateTextViewContentOffsetYForDirection method 
+ and updates the ContentOffset accordingly.
+*/
+- (void)updateMovesListScrollForMove:(JMAMove *)move withDirection:(NSString *)direction
+{
+    NSUInteger currentMoveNumber = (self.boardModel.halfMoveIndex / TWO) + ONE;
+    
+    if (currentMoveNumber > NINE && [move.sideToMove isEqualToString:WHITE]) {
+        
+            [self updateTextViewContentOffsetYForDirection:direction];
+            
+        }
+    
+    self.movesListView.scrollEnabled = NO;
+    [self.movesListView setContentOffset:CGPointMake(ZERO, self.contentOffsetY) animated:YES];
+    self.movesListView.scrollEnabled = YES;
+}
+
 /*
  This method calculates the amount the scroll position should change for the
  move and adds it to the contentOffsetY property.
 */
-- (void)updateTextViewContentOffsetY
+- (void)updateTextViewContentOffsetYForDirection:(NSString *)direction
 {
 
     // found through experimentation
     CGFloat offset = ((self.textViewFont.pointSize * FOUR) / THREE) - 2.55;
-    self.contentOffsetY += offset;
+    
+    if ([direction isEqualToString:FORWARD]) {
+        self.contentOffsetY += offset;
+    } else {
+        self.contentOffsetY -= offset;
+    }
+    
     
     
 }

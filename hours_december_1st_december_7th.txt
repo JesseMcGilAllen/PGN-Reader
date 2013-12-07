@@ -108,7 +108,11 @@ Friday December 6th
 - 5:00 pm - 5:15 pm: brainstormed about current problem
 - 6:15 pm - 7:15 pm: fooling around with contentSizeOffset
 - 7:15 pm - 7:45 pm: found desired contentSizeOffset float for scrolling
-- 7:45 pm - 
+- 7:45 pm - 8:30 pm: fixed some bugs with the highlighting method
+- 8:30 pm - 8:55 pm: moved the scroll view code into own method
+                     and moved the call of those methods to make/undo move 
+                     methods
+- 10:40 pm - 11:10 pm: fixed textview scroll location changing on rotation.
 
-    Daily Hours: 5 hour 05 minutes
-    Weekly Hours: 38 hours 05 minutes
+    Daily Hours: 6 hour 45 minutes
+    Weekly Hours: 39 hours 45 minutes
