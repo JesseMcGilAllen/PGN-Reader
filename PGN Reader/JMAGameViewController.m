@@ -188,12 +188,6 @@
     CGRect boardViewRect = CGRectMake(ZERO, navigationControllerHeight, viewWidth, boardLength);
     CGRect movesListRect = CGRectMake(ZERO, boardLength, viewWidth, listLength);
     
-    NSLog(@"Toolbar location y: %f height: %f", self.navigationController.toolbar.frame.origin.y, self.navigationController.toolbar.frame.size.height);
-    NSLog(@"Moves List Location: %f", boardLength);
-    NSLog(@"Viewable Moves List Space: %f", (self.navigationController.toolbar.frame.origin.y - self.navigationController.toolbar.frame.size.height - boardLength));
-    
-    
-    
     self.boardView.frame = boardViewRect;
     self.movesListView.frame = movesListRect;
     
@@ -329,7 +323,6 @@
  */
 - (CGFloat)toolbarHeight
 {
-    NSLog(@"Toolbar location y: %f height: %f", self.navigationController.toolbar.frame.origin.y, self.navigationController.toolbar.frame.size.height);
     
     return self.navigationController.toolbar.frame.size.height;
 }
@@ -504,6 +497,12 @@
 */
 - (void)undoMove
 {
+    
+    if ([self isStartOfGame]) {
+        return;
+    }
+    
+    
     self.boardModel.halfMoveIndex--;
     JMAMove *move = [self.boardModel currentMove];
     
@@ -516,8 +515,10 @@
     [self.boardModel takebackMove:move withSquares:squaresForTakingBackMove];
     
     JMAMove *previousMove = [self.boardModel previousMove];
-    
+
     [self highlightMove:previousMove forMoveIndex:self.boardModel.halfMoveIndex - ONE];
+        
+    
     
 
 }
@@ -580,11 +581,15 @@
 */
 - (void)highlightMove:(JMAMove *)move forMoveIndex:(NSUInteger)moveIndex;
 {
-    if ([self isStartOfGame]) {
-        return;
+
+    if (moveIndex == ONE) {
+        moveIndex--;
     }
     
-    
+    if (!move) {
+        [self unHighlightTextView];
+        return;
+    }
     
     NSUInteger currentMoveNumber = (moveIndex / TWO) + ONE;
     
@@ -593,6 +598,8 @@
     NSString *movesList = self.movesListView.text;
     NSRange rangeOfMoveNumber = [movesList rangeOfString:moveNumberString];
 
+    
+    NSLog(@"Move Index: %d", moveIndex);
     NSRange rangeOfMove = [[movesList substringFromIndex:rangeOfMoveNumber.location] rangeOfString:move.moveString];
     
     rangeOfMove.location += rangeOfMoveNumber.location;
@@ -607,7 +614,7 @@
     
     //[move.moveString sizeWithAttributes:@{ UITextAtt: self.textViewFont};
     
-    NSLog(@"Font Point Size: %f", self.textViewFont.pointSize);
+
     
     if (currentMoveNumber > NINE && [move.sideToMove isEqualToString:WHITE]) {
         
@@ -619,13 +626,20 @@
     [self.movesListView setContentOffset:CGPointMake(ZERO, self.contentOffsetY) animated:YES];
     self.movesListView.scrollEnabled = YES;
     
-    NSLog(@"Content Offset: %f", self.movesListView.contentOffset.y);
-
-    
 }
 
 /*
- This method calculates the amount the scroll position should change for the 
+ This method removes the blue highlighting from the moves in the text view
+*/
+- (void)unHighlightTextView
+{
+    NSString *movesList = self.movesListView.text;
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:movesList];
+    self.movesListView.attributedText = attributedString;
+    self.movesListView.font = self.textViewFont;
+}
+/*
+ This method calculates the amount the scroll position should change for the
  move and adds it to the contentOffsetY property.
 */
 - (void)updateTextViewContentOffsetY

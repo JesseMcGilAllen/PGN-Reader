@@ -316,7 +316,7 @@
 */
 - (JMAMove *)previousMove
 {
-    if (self.halfMoveIndex > ONE) {
+    if (self.halfMoveIndex > ZERO) {
         return self.moves[self.halfMoveIndex - ONE];
     } else {
         return nil;
