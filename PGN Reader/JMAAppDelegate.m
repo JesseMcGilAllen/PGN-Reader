@@ -26,12 +26,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSError *error = nil;
-     NSArray *paths = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
-    NSString *documentDirectory = paths[ZERO];
     
-    NSArray *documentContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentDirectory error:&error];
+    NSURL *libraryDirectory = [self applicationLibraryDirectory];
     
-    NSLog(@"%@", documentContents);
+    NSArray *libraryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:libraryDirectory.path error:&error];
+    
+    
+    
+    NSLog(@"Library Contents: %@", libraryContents);
+    
+    
     
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     
@@ -122,7 +126,7 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"PGN_Reader.sqlite"];
+    NSURL *storeURL = [[self applicationLibraryDirectory] URLByAppendingPathComponent:@"PGN_Reader.sqlite"];
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
@@ -165,26 +169,10 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
-// Returns the
-- (NSString *)applicationPrivateDocumentsDirectory {
-    static NSString *path;
-    if (!path) {
-        NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];
-        path = [libraryPath stringByAppendingPathComponent:@"Private Documents"];
-        BOOL isDirectory;
-        if (![[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDirectory]) {
-            NSError *error = nil;
-            if (![[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error]) {
-                NSLog(@"Can't create directory %@ [%@]", path, error);
-                abort(); // replace with proper error handling
-            }
-        }
-        else if (!isDirectory) {
-            NSLog(@"Path %@ exists but is no directory", path);
-            abort(); // replace with error handling
-        }
-    }
-    return path;
+// Returns the URL to the application's Library directory
+- (NSURL *)applicationLibraryDirectory
+{
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 /* 
@@ -257,11 +245,11 @@
 {
     
     NSError *error = nil;
-    NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
-    NSString *documentDirectory = pathArray[ZERO];
     
-    NSString *destinationPath = [[NSString alloc] initWithFormat:@"%@/%@", documentDirectory, url.lastPathComponent];
+    NSURL *documentsDirectory = [self applicationDocumentsDirectory];
+    
+    NSString *destinationPath = [[NSString alloc] initWithFormat:@"%@/%@", documentsDirectory.path, url.lastPathComponent];
     
     [SSZipArchive unzipFileAtPath:url.path toDestination:destinationPath];
     
