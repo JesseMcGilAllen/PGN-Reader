@@ -229,7 +229,7 @@
     }
     
     
-    
+    component = [component stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     [self.textViewString appendString:component];
     
 }
