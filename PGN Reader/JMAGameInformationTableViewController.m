@@ -10,6 +10,8 @@
 
 @interface JMAGameInformationTableViewController ()
 
+@property (strong, nonatomic) NSArray *sections;
+
 @end
 
 @implementation JMAGameInformationTableViewController
@@ -40,12 +42,26 @@
      date;
      eco;
      event;
-     moves;
      result;
      site;
      white;
      whiteElo;
      
+     section 1: White Player
+        white
+        Elo
+     
+     section 2: Black Player
+        black
+        Elo
+     
+     section 3: Game
+        result
+        eco
+     
+     section 4: Event
+        event
+        site
      */
 }
 
@@ -59,16 +75,18 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
-    return 0;
+    return [self.sections count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
-    return 0;
+    NSArray *attributes = self.sections[section];
+    
+    return [attributes count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

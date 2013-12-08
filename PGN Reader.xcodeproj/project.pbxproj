@@ -306,6 +306,7 @@
 		37AF5AC318103A6200B86F79 /* PGN Reader */ = {
 			isa = PBXGroup;
 			children = (
+				37D1636118542ED90010B772 /* JMAGameInformationTableView */,
 				37077C07182DA6A4006B6AC3 /* Game */,
 				37342336182B4A2900808D62 /* SSZip */,
 				37342324182B296100808D62 /* AppDelegate */,
@@ -317,8 +318,6 @@
 				37F6225C18149A0A0051012C /* Core Data */,
 				37AF5AD218103A6200B86F79 /* Images.xcassets */,
 				37AF5AC418103A6200B86F79 /* Supporting Files */,
-				37D1635E18542BAF0010B772 /* JMAGameInformationTableViewController.h */,
-				37D1635F18542BAF0010B772 /* JMAGameInformationTableViewController.m */,
 			);
 			path = "PGN Reader";
 			sourceTree = "<group>";
@@ -351,6 +350,15 @@
 				37AF5AE318103A6300B86F79 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		37D1636118542ED90010B772 /* JMAGameInformationTableView */ = {
+			isa = PBXGroup;
+			children = (
+				37D1635E18542BAF0010B772 /* JMAGameInformationTableViewController.h */,
+				37D1635F18542BAF0010B772 /* JMAGameInformationTableViewController.m */,
+			);
+			name = JMAGameInformationTableView;
 			sourceTree = "<group>";
 		};
 		37F6225C18149A0A0051012C /* Core Data */ = {
