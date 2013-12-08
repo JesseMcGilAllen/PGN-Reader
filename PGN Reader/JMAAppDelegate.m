@@ -28,12 +28,15 @@
     NSError *error = nil;
     
     NSURL *libraryDirectory = [self applicationLibraryDirectory];
+    NSURL *documentsDirectory = [self applicationDocumentsDirectory];
     
     NSArray *libraryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:libraryDirectory.path error:&error];
-    
+    NSArray *documentsContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory.path error:&error];
     
     
     NSLog(@"Library Contents: %@", libraryContents);
+    NSLog(@"Documents Directory: %@", documentsContents);
+    
     
     
     
@@ -189,7 +192,7 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     NSURL *pgnURL;
-    NSURL *oldURL;
+    NSError *error = nil;
     NSOperationQueue *parserQueue = [[NSOperationQueue alloc] init];
     
     if ([url.pathExtension isEqualToString:@"zip"]) {
@@ -197,7 +200,7 @@
         NSString *pgnFilePath = [self pathForZippedFileUrlPgnFile:url];
         
         pgnURL = [NSURL fileURLWithPath:pgnFilePath];
-        oldURL = url;
+        [[NSFileManager defaultManager] removeItemAtPath:url.path error:&error];
         url = pgnURL;
         
         NSLog(@"Start Time: %@", [NSDate date]);
@@ -214,18 +217,13 @@
         if (finished) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 NSLog(@"in Completion Block");
-                NSError *error = nil;
                 
                 if (self.databasesTableViewController.view.window) {
                     [self.databasesTableViewController reload];
                 }
                 
-                if (pgnURL) {
-                    [[NSFileManager defaultManager] removeItemAtPath:oldURL.path error:&error];
-                } else {
-                    [[NSFileManager defaultManager] removeItemAtPath:url.path error:&error];
-                }
-                
+                [self cleanDocumentsDirectory];
+       
                 
                 NSLog(@"End Time: %@", [NSDate date]);
             }];
@@ -235,6 +233,31 @@
     
     
     return YES;
+}
+
+- (void)cleanDocumentsDirectory
+{
+    NSError *error = nil;
+    NSURL *documentsDirectory = [self applicationDocumentsDirectory];
+    NSArray *documentsDirectoryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory.path error:&error];
+    
+    NSLog(@"Documents Directory Before: %@", documentsDirectoryContents);
+    
+    for (NSString *path in documentsDirectoryContents) {
+        if (![path isEqualToString:@"Inbox"]) {
+            NSURL *documentURL = [documentsDirectory URLByAppendingPathComponent:path];
+            
+            if ([[NSFileManager defaultManager] fileExistsAtPath:documentURL.path]) {
+                [[NSFileManager defaultManager] removeItemAtURL:documentURL error:&error];
+                
+                if (error) {
+                    NSLog(@"error %@", [error localizedDescription]);
+                }
+            }
+        }
+    }
+    NSLog(@"Documents Directory After: %@", documentsDirectoryContents);
+    
 }
 
 /*
