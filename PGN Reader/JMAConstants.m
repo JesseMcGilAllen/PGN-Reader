@@ -12,6 +12,7 @@
 
 // Integers
 NSInteger const NEGATIVE_FOURTY = -40;
+NSInteger const NEGATIVE_EIGHT = -8;
 NSUInteger const ZERO = 0;
 NSUInteger const ONE = 1;
 NSUInteger const TWO = 2;
@@ -25,6 +26,7 @@ NSUInteger const FIFTEEN = 15;
 NSUInteger const EIGHTEEN = 18;
 NSUInteger const TWENTY = 20;
 NSUInteger const TWENTY_FIVE = 25;
+NSUInteger const FORTY = 40;
 NSUInteger const SIXTY_FOUR = 64;
 NSUInteger const EIGHTY = 80;
 

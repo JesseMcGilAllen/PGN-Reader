@@ -13,6 +13,7 @@
 
 // Integers
 extern NSInteger const NEGATIVE_FOURTY;
+extern NSInteger const NEGATIVE_EIGHT;
 extern NSUInteger const ZERO;
 extern NSUInteger const ONE;
 extern NSUInteger const TWO;
@@ -26,6 +27,7 @@ extern NSUInteger const FIFTEEN;
 extern NSUInteger const EIGHTEEN;
 extern NSUInteger const TWENTY;
 extern NSUInteger const TWENTY_FIVE;
+extern NSUInteger const FORTY;
 extern NSUInteger const SIXTY_FOUR;
 extern NSUInteger const EIGHTY;
 

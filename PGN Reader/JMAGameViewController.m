@@ -556,9 +556,10 @@
     
     // CGFloat topPortraitInset = defaultInsets.top * TWO;
     
-    self.landscapeInsets = UIEdgeInsetsMake(-64, defaultInsets.left, defaultInsets.bottom, defaultInsets.right);
-     self.portraitInsets = UIEdgeInsetsMake(ZERO, ZERO, FIFTEEN, ZERO);
-    
+    self.landscapeInsets = UIEdgeInsetsMake(NEGATIVE_EIGHT, defaultInsets.left, defaultInsets.bottom, defaultInsets.right);
+    self.portraitInsets = UIEdgeInsetsMake(FORTY, ZERO, FIFTEEN, ZERO);
+    //self.landscapeInsets = defaultInsets;
+    //self.portraitInsets = defaultInsets;
 }
 
 /*
@@ -616,7 +617,7 @@
     NSRange rangeOfMoveNumber = [movesList rangeOfString:moveNumberString];
 
     
-    NSLog(@"Move Index: %d", moveIndex);
+    NSLog(@"Move Index: %lu", (unsigned long)moveIndex);
     NSRange rangeOfMove = [[movesList substringFromIndex:rangeOfMoveNumber.location] rangeOfString:move.moveString];
     
     rangeOfMove.location += rangeOfMoveNumber.location;
