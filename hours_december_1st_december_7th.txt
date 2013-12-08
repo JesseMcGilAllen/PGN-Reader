@@ -129,7 +129,7 @@ Saturday December 7th
 - 7:00 pm - 8:00 pm: Got iTunes File Sharing to work
 - 8:00 pm - 8:20 pm: Fixed Moves Text View problem caused by twic game adding 
                      2 lines to start of game 
-- 10:20 pm - 
+- 10:20 pm - 11:30 pm: Started on Game Information Table View Controller
 
-    Daily Hours: 5 hours 20 minutes
-    Weekly Hours: 45 hours 05 minutes
+    Daily Hours: 6 hours 30 minutes
+    Weekly Hours: 46 hours 15 minutes

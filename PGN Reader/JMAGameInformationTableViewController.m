@@ -12,6 +12,7 @@
 @interface JMAGameInformationTableViewController ()
 
 @property (strong, nonatomic) NSArray *sections;
+@property (strong, nonatomic) NSArray *sectionTitles;
 
 @end
 
@@ -66,6 +67,7 @@
      */
     
     [self loadSections];
+    [self loadSectionTitles];
     
     
 }
@@ -102,6 +104,12 @@
     // Configure the cell...
     
     return cell;
+}
+
+- (void)loadSectionTitles
+{
+    self.sectionTitles = @[@"White Player", @"Black Player",
+                           @"Game Information", @"Event Information"];
 }
 
 # pragma mark - Load Sections Array
