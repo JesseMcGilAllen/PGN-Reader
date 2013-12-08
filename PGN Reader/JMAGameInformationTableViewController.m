@@ -7,6 +7,7 @@
 //
 
 #import "JMAGameInformationTableViewController.h"
+#import "JMAConstants.h"
 
 @interface JMAGameInformationTableViewController ()
 
@@ -63,6 +64,10 @@
         event
         site
      */
+    
+    [self loadSections];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,12 +96,57 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:GAME_INFORMATION_CELL_IDENTIFIER forIndexPath:indexPath];
     
     // Configure the cell...
     
     return cell;
+}
+
+# pragma mark - Load Sections Array
+
+- (void)loadSections
+{
+    NSArray *sectionZero = [self sectionZero];
+    NSArray *sectionOne = [self sectionOne];
+    NSArray *sectionTwo = [self sectionTwo];
+    NSArray *sectionThree = [self sectionThree];
+    
+    self.sections = @[sectionZero, sectionOne, sectionTwo, sectionThree];
+}
+
+- (NSArray *)sectionZero
+{
+    NSDictionary *whitePlayer = @{@"White" : self.game.white};
+    NSDictionary *whiteElo = @{@"ELO": self.game.whiteElo};
+    
+    return @[whitePlayer, whiteElo];
+}
+
+- (NSArray *)sectionOne
+{
+    NSDictionary *blackPlayer = @{@"Black" : self.game.black};
+    NSDictionary *blackElo = @{@"ELO" : self.game.blackElo};
+    
+    return @[blackPlayer, blackElo];
+}
+
+- (NSArray *)sectionTwo
+{
+    NSDictionary *result = @{@"Black" : self.game.result};
+    NSDictionary *eco = @{@"ECO" : self.game.eco};
+    
+    return @[result, eco];
+}
+
+- (NSArray *)sectionThree
+{
+    NSDictionary *event = @{@"Event" : self.game.event};
+    NSDictionary *site = @{@"Site" : self.game.site};
+    NSDictionary *date = @{@"Date" : self.game.date};
+    
+    return @[event, site, date];
 }
 
 /*
