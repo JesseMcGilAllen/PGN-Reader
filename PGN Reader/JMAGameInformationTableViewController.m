@@ -7,13 +7,13 @@
 //
 
 #import "JMAGameInformationTableViewController.h"
+#import "JMAGameInformationCell.h"
 #import "JMAConstants.h"
 
 @interface JMAGameInformationTableViewController ()
 
 @property (strong, nonatomic) NSArray *sections;
 @property (strong, nonatomic) NSArray *sectionTitles;
-@property (weak, nonatomic) IBOutlet UILabel *cellLabel;
 
 @end
 
@@ -97,6 +97,9 @@
     return [attributes count];
 }
 
+/*
+ This method sets the header title for incoming section
+*/
 - (UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section
 {
     UITableViewHeaderFooterView *header = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:@"HeaderView"];
@@ -109,19 +112,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:GAME_INFORMATION_CELL_IDENTIFIER forIndexPath:indexPath];
+    JMAGameInformationCell *cell = [tableView dequeueReusableCellWithIdentifier:GAME_INFORMATION_CELL_IDENTIFIER forIndexPath:indexPath];
     
     // Configure the cell...
+    
+    [self configureCell:cell forIndexPath:indexPath];
     
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath
+/*
+ This method configure the cell for the indexpath variable
+*/
+- (void)configureCell:(JMAGameInformationCell *)cell forIndexPath:(NSIndexPath *)indexPath
 {
     NSArray *sectionArray = self.sections[indexPath.section];
     NSArray *rowArray = sectionArray[indexPath.row];
     
-    
+    cell.rowLabel = rowArray[ZERO];
+    cell.rowValue = rowArray[ONE];
     
     
 }

@@ -33,6 +33,7 @@
 		3715882A183D717C000FF8F7 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 37158825183D717C000FF8F7 /* Database.m */; };
 		3715882B183D717C000FF8F7 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 37158827183D717C000FF8F7 /* Game.m */; };
 		3715882E183E8D6F000FF8F7 /* JMABoardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3715882D183E8D6F000FF8F7 /* JMABoardModel.m */; };
+		3717A3CF185518A20062A062 /* JMAGameInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3717A3CE185518A20062A062 /* JMAGameInformationCell.m */; };
 		37342322182B1A3400808D62 /* JMADatabasesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37342321182B1A3400808D62 /* JMADatabasesCell.m */; };
 		37342331182B4A0D00808D62 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 37342327182B4A0D00808D62 /* ioapi.c */; };
 		37342332182B4A0D00808D62 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 37342329182B4A0D00808D62 /* mztools.c */; };
@@ -98,6 +99,8 @@
 		37158827183D717C000FF8F7 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		3715882C183E8D6F000FF8F7 /* JMABoardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMABoardModel.h; sourceTree = "<group>"; };
 		3715882D183E8D6F000FF8F7 /* JMABoardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMABoardModel.m; sourceTree = "<group>"; };
+		3717A3CD185518A20062A062 /* JMAGameInformationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAGameInformationCell.h; sourceTree = "<group>"; };
+		3717A3CE185518A20062A062 /* JMAGameInformationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAGameInformationCell.m; sourceTree = "<group>"; };
 		37342320182B1A3400808D62 /* JMADatabasesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMADatabasesCell.h; sourceTree = "<group>"; };
 		37342321182B1A3400808D62 /* JMADatabasesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMADatabasesCell.m; sourceTree = "<group>"; };
 		37342326182B4A0D00808D62 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
@@ -357,6 +360,8 @@
 			children = (
 				37D1635E18542BAF0010B772 /* JMAGameInformationTableViewController.h */,
 				37D1635F18542BAF0010B772 /* JMAGameInformationTableViewController.m */,
+				3717A3CD185518A20062A062 /* JMAGameInformationCell.h */,
+				3717A3CE185518A20062A062 /* JMAGameInformationCell.m */,
 			);
 			name = JMAGameInformationTableView;
 			sourceTree = "<group>";
@@ -534,6 +539,7 @@
 				37D1636018542BAF0010B772 /* JMAGameInformationTableViewController.m in Sources */,
 				37077C0D182DE72E006B6AC3 /* JMASquare.m in Sources */,
 				37AF5AD118103A6200B86F79 /* PGN_Reader.xcdatamodeld in Sources */,
+				3717A3CF185518A20062A062 /* JMAGameInformationCell.m in Sources */,
 				373695BE1831AE5C00793672 /* JMAChessConstants.m in Sources */,
 				373695B8183195E600793672 /* JMAPiece.m in Sources */,
 				37077C0A182DE41F006B6AC3 /* JMABoardView.m in Sources */,
