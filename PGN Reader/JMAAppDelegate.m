@@ -25,7 +25,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self checkDocumentsDirectory];
+    
     
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     
@@ -33,6 +33,11 @@
 
     self.databasesTableViewController.managedObjectContext = self.managedObjectContext;
     
+    NSOperationQueue *newQueue = [[NSOperationQueue alloc] init];
+    
+    [newQueue addOperationWithBlock:^{
+        [self checkDocumentsDirectory];
+    }];
     return YES;
 }
 
@@ -204,8 +209,9 @@
     NSURL *documentsDirectory = [self applicationDocumentsDirectory];
     for (NSString *filePath in filePaths) {
         if (![filePath isEqualToString:@"Inbox"]) {
+            NSLog(@"File: %@", filePath);
             NSURL *url = [documentsDirectory URLByAppendingPathComponent:filePath];
-            
+            NSLog(@"URL: %@", url);
             [self processFileAtURL:url];
         }
     }
@@ -236,6 +242,7 @@
         
         BOOL finished = [parser parseFileWithUrl:url
                   withPersistentStoreCoordinator:self.persistentStoreCoordinator];
+        
         
         if (finished) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{

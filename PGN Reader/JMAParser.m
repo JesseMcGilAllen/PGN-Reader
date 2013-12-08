@@ -156,8 +156,6 @@
      NSMutableArray *headers = [[NSMutableArray alloc] initWithArray:attributes];
     [headers removeLastObject];
     newGame.moves = [attributes lastObject];
-    
-    //NSLog(@"Moves: %@", newGame.moves);
 
     for (NSString *header in headers) {
     
