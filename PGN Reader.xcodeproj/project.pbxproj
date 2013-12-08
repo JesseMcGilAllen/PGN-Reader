@@ -59,6 +59,7 @@
 		37AF5ADD18103A6300B86F79 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37AF5AC118103A6200B86F79 /* CoreData.framework */; };
 		37AF5AE518103A6300B86F79 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37AF5AE318103A6300B86F79 /* InfoPlist.strings */; };
 		37AF5AE718103A6300B86F79 /* PGN_ReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AF5AE618103A6300B86F79 /* PGN_ReaderTests.m */; };
+		37D1636018542BAF0010B772 /* JMAGameInformationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D1635F18542BAF0010B772 /* JMAGameInformationTableViewController.m */; };
 		37F6225B1814967E0051012C /* JMAConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F6225A1814967E0051012C /* JMAConstants.m */; };
 		37F6226118149D4F0051012C /* JMAParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F6226018149D4F0051012C /* JMAParser.m */; };
 		37F637BE1835413300A4BD7D /* JMAMovesListParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F637BD1835413300A4BD7D /* JMAMovesListParser.m */; };
@@ -137,6 +138,8 @@
 		37AF5AE218103A6300B86F79 /* PGN ReaderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PGN ReaderTests-Info.plist"; sourceTree = "<group>"; };
 		37AF5AE418103A6300B86F79 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		37AF5AE618103A6300B86F79 /* PGN_ReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGN_ReaderTests.m; sourceTree = "<group>"; };
+		37D1635E18542BAF0010B772 /* JMAGameInformationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAGameInformationTableViewController.h; sourceTree = "<group>"; };
+		37D1635F18542BAF0010B772 /* JMAGameInformationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAGameInformationTableViewController.m; sourceTree = "<group>"; };
 		37F622591814967E0051012C /* JMAConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAConstants.h; sourceTree = "<group>"; };
 		37F6225A1814967E0051012C /* JMAConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAConstants.m; sourceTree = "<group>"; };
 		37F6225F18149D4F0051012C /* JMAParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAParser.h; sourceTree = "<group>"; };
@@ -314,6 +317,8 @@
 				37F6225C18149A0A0051012C /* Core Data */,
 				37AF5AD218103A6200B86F79 /* Images.xcassets */,
 				37AF5AC418103A6200B86F79 /* Supporting Files */,
+				37D1635E18542BAF0010B772 /* JMAGameInformationTableViewController.h */,
+				37D1635F18542BAF0010B772 /* JMAGameInformationTableViewController.m */,
 			);
 			path = "PGN Reader";
 			sourceTree = "<group>";
@@ -518,6 +523,7 @@
 				37F6226118149D4F0051012C /* JMAParser.m in Sources */,
 				37158828183D717C000FF8F7 /* _Database.m in Sources */,
 				37AF5ACE18103A6200B86F79 /* JMAAppDelegate.m in Sources */,
+				37D1636018542BAF0010B772 /* JMAGameInformationTableViewController.m in Sources */,
 				37077C0D182DE72E006B6AC3 /* JMASquare.m in Sources */,
 				37AF5AD118103A6200B86F79 /* PGN_Reader.xcdatamodeld in Sources */,
 				373695BE1831AE5C00793672 /* JMAChessConstants.m in Sources */,

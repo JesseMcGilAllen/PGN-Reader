@@ -53,6 +53,7 @@ NSString *const DATABASES_CELL_IDENTIFIER = @"databasesCell";
 NSString *const DATABASE_CELL_IDENTIFIER = @"databaseCell";
 NSString *const TO_DATABASE_SEGUE_IDENTIFIER = @"toDatabase";
 NSString *const TO_GAME_SEGUE_IDENTIFIER = @"toGame";
+NSString *const GAME_INFORMATION_CELL_IDENTIFIER = @"gameInformationCell";
 
 NSString *const SPACE = @" ";
 NSString *const NEW_LINE = @"\n";

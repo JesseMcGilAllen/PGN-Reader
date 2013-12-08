@@ -56,6 +56,7 @@ extern NSString *const DATABASES_CELL_IDENTIFIER;
 extern NSString *const DATABASE_CELL_IDENTIFIER;
 extern NSString *const TO_DATABASE_SEGUE_IDENTIFIER;
 extern NSString *const TO_GAME_SEGUE_IDENTIFIER;
+extern NSString *const GAME_INFORMATION_CELL_IDENTIFIER;
 
 
 extern NSString *const SPACE;
