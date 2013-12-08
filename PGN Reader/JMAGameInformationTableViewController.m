@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSArray *sections;
 @property (strong, nonatomic) NSArray *sectionTitles;
+@property (weak, nonatomic) IBOutlet UILabel *cellLabel;
 
 @end
 
@@ -96,6 +97,15 @@
     return [attributes count];
 }
 
+- (UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section
+{
+    UITableViewHeaderFooterView *header = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:@"HeaderView"];
+    
+    header.textLabel.text = self.sectionTitles[section];
+    
+    return header;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
@@ -104,6 +114,16 @@
     // Configure the cell...
     
     return cell;
+}
+
+- (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *sectionArray = self.sections[indexPath.section];
+    NSArray *rowArray = sectionArray[indexPath.row];
+    
+    
+    
+    
 }
 
 - (void)loadSectionTitles
@@ -126,33 +146,33 @@
 
 - (NSArray *)sectionZero
 {
-    NSDictionary *whitePlayer = @{@"White" : self.game.white};
-    NSDictionary *whiteElo = @{@"ELO": self.game.whiteElo};
+    NSArray *whitePlayer = @[@"White", self.game.white];
+    NSArray *whiteElo = @[@"ELO", self.game.whiteElo];
     
     return @[whitePlayer, whiteElo];
 }
 
 - (NSArray *)sectionOne
 {
-    NSDictionary *blackPlayer = @{@"Black" : self.game.black};
-    NSDictionary *blackElo = @{@"ELO" : self.game.blackElo};
+    NSArray *blackPlayer = @[@"Black", self.game.black];
+    NSArray *blackElo = @[@"ELO", self.game.blackElo];
     
     return @[blackPlayer, blackElo];
 }
 
 - (NSArray *)sectionTwo
 {
-    NSDictionary *result = @{@"Black" : self.game.result};
-    NSDictionary *eco = @{@"ECO" : self.game.eco};
+    NSArray *result = @[@"Black", self.game.result];
+    NSArray *eco = @[@"ECO", self.game.eco];
     
     return @[result, eco];
 }
 
 - (NSArray *)sectionThree
 {
-    NSDictionary *event = @{@"Event" : self.game.event};
-    NSDictionary *site = @{@"Site" : self.game.site};
-    NSDictionary *date = @{@"Date" : self.game.date};
+    NSArray *event = @[@"Event", self.game.event];
+    NSArray *site = @[@"Site", self.game.site];
+    NSArray *date = @[@"Date", self.game.date];
     
     return @[event, site, date];
 }
