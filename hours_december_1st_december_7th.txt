@@ -125,7 +125,8 @@ Saturday December 7th
                      Researched where to put Core Data Files
 - 5:30 pm - 6:00 pm: moved Core Data store from Documents Directory
                      to Library Directory
-- 6:00 pm - 
+- 6:00 pm - 7:00 pm: implemented deletion of files in Documents Directory
+- 7:00 pm - 
 
-    Daily Hours: 3 hours 00 minutes
-    Weekly Hours: 42 hours 45 minutes
+    Daily Hours: 4 hours 00 minutes
+    Weekly Hours: 43 hours 45 minutes

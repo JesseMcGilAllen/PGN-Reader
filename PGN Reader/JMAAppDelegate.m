@@ -25,20 +25,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSError *error = nil;
-    
-    NSURL *libraryDirectory = [self applicationLibraryDirectory];
-    NSURL *documentsDirectory = [self applicationDocumentsDirectory];
-    
-    NSArray *libraryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:libraryDirectory.path error:&error];
-    NSArray *documentsContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory.path error:&error];
-    
-    
-    NSLog(@"Library Contents: %@", libraryContents);
-    NSLog(@"Documents Directory: %@", documentsContents);
-    
-    
-    
+    [self checkDocumentsDirectory];
     
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     
@@ -164,7 +151,7 @@
     return _persistentStoreCoordinator;
 }
 
-#pragma mark - Application's Documents directory
+#pragma mark - Application's Documents Directory
 
 // Returns the URL to the application's Documents directory.
 - (NSURL *)applicationDocumentsDirectory
@@ -172,76 +159,115 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+#pragma mark - Application's Library Directory
 // Returns the URL to the application's Library directory
 - (NSURL *)applicationLibraryDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
-/* 
- Handles pgn files as they enter the app
+
+#pragma mark - File Processing
+/*
+ Handles pgn files as they enter the app from Safari or Mail
+*/
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+   
+    [self processFileAtURL:url];
+    
+    
+    return YES;
+}
+
+- (void)checkDocumentsDirectory
+{
+    NSError *error = nil;
+    
+    NSURL *documentsDirectory = [self applicationDocumentsDirectory];
+    
+    NSArray *documentsContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory.path error:&error];
+    
+    if ([documentsContents count] > ONE) {
+        [self processPathsOfNewFiles:documentsContents];
+    }
+
+}
+
+/*
+ This method gets the URL for every element in the incoming Array not equal to 
+ "Inbox".  The URL is then sent to the processFileAtURL: method.
+*/
+- (void)processPathsOfNewFiles:(NSArray *)filePaths
+{
+    
+    NSURL *documentsDirectory = [self applicationDocumentsDirectory];
+    for (NSString *filePath in filePaths) {
+        if (![filePath isEqualToString:@"Inbox"]) {
+            NSURL *url = [documentsDirectory URLByAppendingPathComponent:filePath];
+            
+            [self processFileAtURL:url];
+        }
+    }
+}
+/*
  An operation queue is created to move the file processing to a secondary thread
- If the incoming file is a zip file the pathForZippedFileUrlPgnFile method that 
+ If the incoming file is a zip file the pathForZippedFileUrlPgnFile method that
  returns the path String to the unzipped file.
  The parserQueue add a operation that allocates space the parser object.
  The parseFileWithUrl method from the parser class is called to process the file
- located at the url.  The persistentStoreCoordinator is sent to the parser 
+ located at the url.  The persistentStoreCoordinator is sent to the parser
  instance.  Once the parseFileWithUrl method is done, the main thread is told to
  reload the databasesTableViewController if present.
  */
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+- (void)processFileAtURL:(NSURL *)url
 {
-    NSURL *pgnURL;
-    NSError *error = nil;
-    NSOperationQueue *parserQueue = [[NSOperationQueue alloc] init];
-    
     if ([url.pathExtension isEqualToString:@"zip"]) {
         
-        NSString *pgnFilePath = [self pathForZippedFileUrlPgnFile:url];
-        
-        pgnURL = [NSURL fileURLWithPath:pgnFilePath];
-        [[NSFileManager defaultManager] removeItemAtPath:url.path error:&error];
-        url = pgnURL;
-        
-        NSLog(@"Start Time: %@", [NSDate date]);
+        url = [self unzipFileAtURL:url];
         
     }
     
+     NSOperationQueue *parserQueue = [[NSOperationQueue alloc] init];
+    
     [parserQueue addOperationWithBlock:^{
         JMAParser *parser = [[JMAParser alloc] init];
-      
+        
         
         BOOL finished = [parser parseFileWithUrl:url
                   withPersistentStoreCoordinator:self.persistentStoreCoordinator];
         
         if (finished) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                NSLog(@"in Completion Block");
+                
                 
                 if (self.databasesTableViewController.view.window) {
                     [self.databasesTableViewController reload];
                 }
                 
                 [self cleanDocumentsDirectory];
-       
                 
-                NSLog(@"End Time: %@", [NSDate date]);
             }];
         }
     }];
-    
-    
-    
-    return YES;
+
+
 }
 
+- (NSURL *)unzipFileAtURL:(NSURL *)url
+{
+    NSString *pgnFilePath = [self pathForZippedFileUrlPgnFile:url];
+    
+    return [NSURL fileURLWithPath:pgnFilePath];
+}
+/*
+ This method removes everything in the documents directory but the inbox
+*/
 - (void)cleanDocumentsDirectory
 {
     NSError *error = nil;
     NSURL *documentsDirectory = [self applicationDocumentsDirectory];
     NSArray *documentsDirectoryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory.path error:&error];
-    
-    NSLog(@"Documents Directory Before: %@", documentsDirectoryContents);
     
     for (NSString *path in documentsDirectoryContents) {
         if (![path isEqualToString:@"Inbox"]) {
@@ -256,7 +282,7 @@
             }
         }
     }
-    NSLog(@"Documents Directory After: %@", documentsDirectoryContents);
+    
     
 }
 
