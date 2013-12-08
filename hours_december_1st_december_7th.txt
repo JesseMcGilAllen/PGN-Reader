@@ -127,6 +127,7 @@ Saturday December 7th
                      to Library Directory
 - 6:00 pm - 7:00 pm: implemented deletion of files in Documents Directory
 - 7:00 pm - 8:00 pm: Got iTunes File Sharing to work
-
-    Daily Hours: 5 hours 00 minutes
-    Weekly Hours: 44 hours 45 minutes
+- 8:00 pm - 8:20 pm: Fixed Moves Text View problem caused by twic game adding 
+                     2 lines to start of game 
+    Daily Hours: 5 hours 20 minutes
+    Weekly Hours: 45 hours 05 minutes
