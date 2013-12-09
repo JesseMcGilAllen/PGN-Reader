@@ -355,6 +355,12 @@
     
     [self.navigationController setToolbarHidden:NO animated:YES];
     
+    
+    UIBarButtonItem *nextMoveButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"next_arrow"]
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(makeMoveButtonTapped:)];
+    
     UIBarButtonItem *gameEndButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward
                                                                                        target:self
                                                                                        action:@selector(makeMoveButtonTapped:)];
@@ -367,7 +373,7 @@
     UIBarButtonItem *gameStartButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind
                                                                                      target:self
                                                                                      action:@selector(takebackMoveButtonTapped:)];
-    toolbarItems = @[gameStartButton, playGameButton, gameEndButton];
+    toolbarItems = @[gameStartButton, playGameButton, nextMoveButton];
     
     [self setToolbarItems:toolbarItems animated:YES];
     
