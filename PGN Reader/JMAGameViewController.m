@@ -60,9 +60,6 @@
     
     self.title = titleString;
     
-    
-    NSLog(@"Result: %@", self.game.result);
-    NSLog(@"Scroll Enabled? %d", self.movesListView.scrollEnabled);
     self.movesListView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin
     | UIViewAutoresizingFlexibleRightMargin;
     
@@ -77,6 +74,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     [self configureToolbar];
     
     [self configureInsets];

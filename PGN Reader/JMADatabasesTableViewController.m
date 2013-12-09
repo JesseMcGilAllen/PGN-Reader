@@ -31,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+   
     
      self.title = @"Databases";
     
@@ -44,8 +45,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     
     self.databases = self.fetchedResultsController.fetchedObjects;
+     self.navigationController.toolbarHidden = YES;
 //    
 //    id <NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultsController.sections[ONE];
 //    

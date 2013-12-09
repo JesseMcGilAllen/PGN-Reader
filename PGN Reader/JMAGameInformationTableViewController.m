@@ -32,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -39,40 +40,19 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    /*
-     
-     black;
-     blackElo;
-     date;
-     eco;
-     event;
-     result;
-     site;
-     white;
-     whiteElo;
-     
-     section 1: White Player
-        white
-        Elo
-     
-     section 2: Black Player
-        black
-        Elo
-     
-     section 3: Game
-        result
-        eco
-     
-     section 4: Event
-        event
-        site
-     */
-    NSLog(@"Game: %@ - %@", self.game.white, self.game.black);
+
     
     [self loadSections];
     [self loadSectionTitles];
     
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.toolbarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
