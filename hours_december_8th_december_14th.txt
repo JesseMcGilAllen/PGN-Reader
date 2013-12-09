@@ -6,7 +6,8 @@ Suggested Daily Average: 6 hours 10 minutes
 Sunday December 8th
 -------------------
 - 2:40 pm - 3:30 pm: worked on GameInformationViewController
-- 6:00 pm - 
+- 6:00 pm - 7:00 pm: Got the GameInformationView to appear 
+- 7:00 pm - 8:25 pm: Coloring in White Queen
 
-    Daily Hours: 0 hours 50 minutes
-    Weekly Hours: 0 hours 00 minutes
+    Daily Hours: 3 hours 15 minutes
+    Weekly Hours: 3 hours 15 minutes
