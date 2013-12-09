@@ -1,11 +1,12 @@
-Hours at Start of Week: 173
-Required Hours Left: 43
-Suggested # of Hours This Week: 43
+Hours at Start of Week: 173 hours 15 minutes
+Required Hours Left: 42 hours 45 minutes
+Suggested # of Hours This Week: 42 hours 45 minutes
 Suggested Daily Average: 6 hours 10 minutes 
 
 Sunday December 8th
 -------------------
-- 2:40 pm - 
+- 2:40 pm - 3:30 pm: worked on GameInformationViewController
+- 6:00 pm - 
 
-    Daily Hours: 0 hours 00 minutes
+    Daily Hours: 0 hours 50 minutes
     Weekly Hours: 0 hours 00 minutes

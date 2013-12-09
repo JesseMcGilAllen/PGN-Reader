@@ -111,15 +111,15 @@
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kXc-pz-LXI">
                                             <rect key="frame" x="96" y="11" width="427" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="rowLabel" destination="ERe-W9-NUE" id="wrn-Po-X4u"/>
-                                    <outlet property="rowValue" destination="kXc-pz-LXI" id="yPg-66-A00"/>
+                                    <outlet property="rowLabel" destination="ERe-W9-NUE" id="q2W-w9-Lbs"/>
+                                    <outlet property="rowValue" destination="kXc-pz-LXI" id="Alc-QW-uuY"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -129,9 +129,6 @@
                             <outlet property="delegate" destination="uJd-tP-wuV" id="BMy-Qr-YQs"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <outlet property="cellLabel" destination="ERe-W9-NUE" id="T3N-bU-JZK"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Fg-8D-Qpp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -160,7 +157,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Zwz-A3-b1g"/>
+                    <navigationItem key="navigationItem" id="Zwz-A3-b1g">
+                        <barButtonItem key="rightBarButtonItem" title="Information" id="7XX-Jy-2F5">
+                            <connections>
+                                <segue destination="uJd-tP-wuV" kind="modal" identifier="toInformation" id="ABB-JE-to5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="boardView" destination="rbp-Gp-kgI" id="ekS-Iu-KND"/>
                         <outlet property="movesListView" destination="Pf2-Ev-Wgc" id="hDH-4q-hST"/>

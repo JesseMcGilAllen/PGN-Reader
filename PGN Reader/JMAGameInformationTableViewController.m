@@ -9,6 +9,7 @@
 #import "JMAGameInformationTableViewController.h"
 #import "JMAGameInformationCell.h"
 #import "JMAConstants.h"
+#import "Game.h"
 
 @interface JMAGameInformationTableViewController ()
 
@@ -66,6 +67,7 @@
         event
         site
      */
+    NSLog(@"Game: %@ - %@", self.game.white, self.game.black);
     
     [self loadSections];
     [self loadSectionTitles];
@@ -97,6 +99,11 @@
     return [attributes count];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return self.sectionTitles[section];
+}
+
 /*
  This method sets the header title for incoming section
 */
@@ -116,7 +123,7 @@
     
     // Configure the cell...
     
-    [self configureCell:cell forIndexPath:indexPath];
+   cell = [self configureCell:cell forIndexPath:indexPath];
     
     return cell;
 }
@@ -124,15 +131,15 @@
 /*
  This method configure the cell for the indexpath variable
 */
-- (void)configureCell:(JMAGameInformationCell *)cell forIndexPath:(NSIndexPath *)indexPath
+- (JMAGameInformationCell *)configureCell:(JMAGameInformationCell *)cell forIndexPath:(NSIndexPath *)indexPath
 {
     NSArray *sectionArray = self.sections[indexPath.section];
     NSArray *rowArray = sectionArray[indexPath.row];
     
-    cell.rowLabel = rowArray[ZERO];
-    cell.rowValue = rowArray[ONE];
+    cell.rowLabel.text = rowArray[ZERO];
+    cell.rowValue.text = [NSString stringWithFormat:@"%@", rowArray[ONE]];
     
-    
+    return cell;
 }
 
 - (void)loadSectionTitles
@@ -171,7 +178,7 @@
 
 - (NSArray *)sectionTwo
 {
-    NSArray *result = @[@"Black", self.game.result];
+    NSArray *result = @[@"Result", self.game.result];
     NSArray *eco = @[@"ECO", self.game.eco];
     
     return @[result, eco];

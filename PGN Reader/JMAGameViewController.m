@@ -16,6 +16,7 @@
 #import "JMABoardModel.h"
 #import "JMASquare.h"
 #import "JMAMove.h"
+#import "JMAGameInformationTableViewController.h"
 
 @interface JMAGameViewController ()
 @property (weak, nonatomic) IBOutlet JMABoardView *boardView;
@@ -708,6 +709,15 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:message delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     
     return alert;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:TO_INFORMATION_SEGUE_IDENTIFIER]) {
+        JMAGameInformationTableViewController *destinationViewController = segue.destinationViewController;
+        
+        destinationViewController.game = self.game;
+    }
 }
 
 @end
