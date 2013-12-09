@@ -10,6 +10,7 @@
 #import "JMAConstants.h"
 #import "Database.h"
 #import "Game.h"
+#import "JMADatabaseCell.h"
 #import "JMAGameViewController.h"
 
 @interface JMADatabaseTableViewController ()
@@ -71,20 +72,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-       UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:DATABASE_CELL_IDENTIFIER forIndexPath:indexPath];
+       JMADatabaseCell *cell = [tableView dequeueReusableCellWithIdentifier:DATABASE_CELL_IDENTIFIER forIndexPath:indexPath];
     
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(JMADatabaseCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Game *game = self.games[indexPath.row];
     
-    NSString *gameString = [NSString stringWithFormat:@"%@ - %@", game.white, game.black];
+    NSString *playersString = [NSString stringWithFormat:@"%@ - %@, %@", game.white, game.black, game.result];
+    NSString *informationString = [NSString stringWithFormat:@"%@, %@.  Date: %@ ECO: %@", game.event, game.site, game.date, game.eco];
 
-    cell.textLabel.text = gameString;
+    cell.playersLabel.text = playersString;
+    cell.indormationLabel.text = informationString;
 }
 
 /*

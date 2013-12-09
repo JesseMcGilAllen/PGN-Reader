@@ -8,6 +8,11 @@ Sunday December 8th
 - 2:40 pm - 3:30 pm: worked on GameInformationViewController
 - 6:00 pm - 7:00 pm: Got the GameInformationView to appear 
 - 7:00 pm - 8:25 pm: Coloring in White Queen
-
-    Daily Hours: 3 hours 15 minutes
-    Weekly Hours: 3 hours 15 minutes
+- 8:25 pm - 9:00 pm: Created information icon and implemented it
+- 9:10 pm - 9:20 pm: Failed to add buton to tv cell
+- 11:00 pm - 11:40 pm: customized cell on database tvc to display
+                       more information.
+- 11:40 pm - 
+                       
+    Daily Hours: 4 hours 40 minutes
+    Weekly Hours: 4 hours 40 minutes
