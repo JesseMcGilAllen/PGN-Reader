@@ -158,7 +158,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Zwz-A3-b1g">
-                        <barButtonItem key="rightBarButtonItem" title="Information" id="7XX-Jy-2F5">
+                        <barButtonItem key="rightBarButtonItem" image="information" id="7XX-Jy-2F5">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="uJd-tP-wuV" kind="push" identifier="toInformation" id="ABB-JE-to5"/>
                             </connections>
@@ -192,6 +193,9 @@
             <point key="canvasLocation" x="75" y="-10"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="information" width="22" height="22"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="lightContent"/>
         <simulatedOrientationMetrics key="orientation"/>
