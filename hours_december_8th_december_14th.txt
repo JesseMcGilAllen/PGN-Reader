@@ -12,7 +12,17 @@ Sunday December 8th
 - 9:10 pm - 9:20 pm: Failed to add buton to tv cell
 - 11:00 pm - 11:40 pm: customized cell on database tvc to display
                        more information.
-- 11:40 pm - 
+- 11:40 pm - 1:00 am: created custom images for next move and previous move 
+                      buttons.  Fixed a number of small bugs.  Tried hand at
+                      icon - failed.
+- 1:00 am - 1:15 am: sketched potential app icon
                        
-    Daily Hours: 4 hours 40 minutes
-    Weekly Hours: 4 hours 40 minutes
+    Daily Hours: 6 hours 15 minutes
+    Weekly Hours: 6 hours 15 minutes
+    
+Monday December 9th
+-------------------
+- 12:45 pm - 
+
+    Daily Hours: 0 hours 00 minutes
+    Weekly Hours: 6 hours 15 minutes
