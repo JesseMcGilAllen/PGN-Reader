@@ -444,10 +444,12 @@
     if (!self.repeatingTimer) {
         
         [self startTimer];
+        [self configureToolbar];
                 
     } else {
         
         [self stopTimer];
+        [self configureToolbar];
         
     }
 }
