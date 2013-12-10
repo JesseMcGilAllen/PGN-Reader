@@ -27,7 +27,7 @@ Monday December 9th
 - 3:00 pm - 3:30 pm: added Launch Images
 - 3:30 pm - 4:00 pm: started working on presentation
 - 6:00 pm - 6:30 pm: reviewed various Apple documentation
-- 6:30 pm - 
+- 6:30 pm - 7:15 pm: coded Activity Indicator"
 
-    Daily Hours: 3 hours 30 minutes
-    Weekly Hours: 9 hours 15 minutes
+    Daily Hours: 4 hours 15 minutes
+    Weekly Hours: 10 hours 15 minutes
