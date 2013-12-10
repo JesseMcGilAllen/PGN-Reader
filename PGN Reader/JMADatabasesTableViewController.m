@@ -330,11 +330,17 @@
 */
 - (void)configureActivityIndicator
 {
-    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     
     self.activityIndicator.color = [UIColor blueColor];
     
+    CGRect frame = self.activityIndicator.frame;
+    
+    self.activityIndicator.frame = CGRectMake(self.view.center.x, self.view.center.y, frame.size.width, frame.size.height);
+    
     self.activityIndicator.hidesWhenStopped = YES;
+    
+    [self.view addSubview:self.activityIndicator];
 }
 
 @end

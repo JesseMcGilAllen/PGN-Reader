@@ -210,9 +210,7 @@
     NSURL *documentsDirectory = [self applicationDocumentsDirectory];
     for (NSString *filePath in filePaths) {
         if (![filePath isEqualToString:@"Inbox"]) {
-            NSLog(@"File: %@", filePath);
             NSURL *url = [documentsDirectory URLByAppendingPathComponent:filePath];
-            NSLog(@"URL: %@", url);
             [self processFileAtURL:url];
         }
     }
@@ -235,9 +233,11 @@
         
     }
     
+    [self.databasesTableViewController startActivityIndicator];
      NSOperationQueue *parserQueue = [[NSOperationQueue alloc] init];
     
     [parserQueue addOperationWithBlock:^{
+        
         JMAParser *parser = [[JMAParser alloc] init];
         
         
@@ -248,6 +248,7 @@
         if (finished) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 
+                [self.databasesTableViewController stopActivityIndicator];
                 
                 if (self.databasesTableViewController.view.window) {
                     [self.databasesTableViewController reload];
