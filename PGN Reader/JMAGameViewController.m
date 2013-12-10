@@ -373,7 +373,10 @@
     
     [self.navigationController setToolbarHidden:NO animated:YES];
     
-    
+    UIBarButtonItem *flexibleSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                      target:nil
+                                                                                      action:nil];
+
     UIBarButtonItem *nextMoveButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"next_arrow"]
                                                                       style:UIBarButtonItemStylePlain
                                                                      target:self
@@ -388,7 +391,11 @@
                                                                                     target:self
                                                                                     action:@selector(playGameButtonTapped:)];
     
-    toolbarItems = @[previousMoveButton, playGameButton, nextMoveButton];
+    toolbarItems = @[previousMoveButton,
+                     flexibleSpaceButton,
+                     playGameButton,
+                     flexibleSpaceButton,
+                     nextMoveButton];
     
     [self setToolbarItems:toolbarItems animated:YES];
 }
@@ -403,13 +410,16 @@
     
     [self.navigationController setToolbarHidden:NO animated:YES];
     
-    
-    UIBarButtonItem *nextMoveButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"next_arrow"]
+    UIBarButtonItem *flexibleSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                      target:nil
+                                                                                      action:nil];
+ 
+    UIBarButtonItem *nextMoveButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"next_arrow"]
                                                                       style:UIBarButtonItemStylePlain
                                                                      target:self
                                                                      action:@selector(makeMoveButtonTapped:)];
     
-    UIBarButtonItem *previousMoveButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"previous_arrow"]
+    UIBarButtonItem *previousMoveButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"previous_arrow"]
                                                                           style:UIBarButtonItemStylePlain
                                                                          target:self
                                                                          action:@selector(takebackMoveButtonTapped:)];
@@ -418,7 +428,11 @@
                                                                                     target:self
                                                                                     action:@selector(playGameButtonTapped:)];
     
-    toolbarItems = @[previousMoveButton, pauseGameButton, nextMoveButton];
+    toolbarItems = @[previousMoveButton,
+                     flexibleSpaceButton,
+                     pauseGameButton,
+                     flexibleSpaceButton,
+                     nextMoveButton];
     
     [self setToolbarItems:toolbarItems animated:YES];
 

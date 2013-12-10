@@ -41,7 +41,7 @@ Tuesday December 10th
 - 11:00 am - 11:30 am: brainstorming
 - 1:10 pm - 1:25 pm: started keynote
 - 2:15 pm - 3:15 pm: finished creating keynote
-- 3:50 pm - 
+- 3:50 pm - 4:00 pm: implemented pause button in Game View Controller toolbar.
 
-    Daily Hours: 1 hours 45 minutes
-    Weekly Hours: 14 hours 15 minutes
+    Daily Hours: 1 hours 55 minutes
+    Weekly Hours: 14 hours 25 minutes
