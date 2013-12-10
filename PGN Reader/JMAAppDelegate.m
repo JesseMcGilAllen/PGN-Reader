@@ -313,6 +313,12 @@
     
     NSArray *zippedContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:destinationPath error:&error];
     
+    if (error) {
+        NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+        NSLog(@"Documents: %@", [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory.path error:&error]);
+        NSLog(@"error %@", [error localizedDescription]);
+    }
+    
     NSString *pgnFilePath = [[NSString alloc] initWithFormat:@"%@/%@", destinationPath, zippedContents[ZERO]];
     
     return pgnFilePath;

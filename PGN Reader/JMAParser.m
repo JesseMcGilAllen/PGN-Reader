@@ -60,18 +60,25 @@
 - (NSString *)stringForURL:(NSURL *)url
 {
     NSError *error = nil;
+    //NSStringEncoding *encoding = NSISOLatin1StringEncoding;
+    
     NSString *fileContents = [NSString stringWithContentsOfURL:url
-                                                      encoding:NSUTF8StringEncoding
+                                                      encoding:NSISOLatin1StringEncoding
                                                          error:&error];
     
-    //nslog(@"%@", [url lastPathComponent]);
+//    NSString *fileContents = [NSString stringWithContentsOfURL:url
+//                                                  usedEncoding:encoding
+//                                                         error:&error];
     
+    //nslog(@"%@", [url lastPathComponent]);
     if (error) {
+        NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
         NSLog(@"%@", [error localizedDescription]);
         return @"Error";
-    } else {
-        return fileContents;
+
+       
     }
+        return fileContents;
 }
 
 /*
