@@ -458,12 +458,12 @@
     if (!self.repeatingTimer) {
         
         [self startTimer];
-        [self configureToolbar];
+        
                 
     } else {
         
         [self stopTimer];
-        [self configureToolbar];
+        
         
     }
 }
@@ -499,6 +499,8 @@
                                             repeats:YES];
     
     self.repeatingTimer = timer;
+    
+    [self configureToolBarWithPauseButton];
 
 }
 
@@ -516,6 +518,7 @@
         
     } else {
         [self stopTimer];
+        [self configureToolbar];
 
     }
 }
@@ -527,6 +530,8 @@
 {
     [self.repeatingTimer invalidate];
     self.repeatingTimer = nil;
+    
+    [self configureToolbarWithPlayButton];
 }
 
 /*
