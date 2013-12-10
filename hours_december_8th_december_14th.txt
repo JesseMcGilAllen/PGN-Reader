@@ -30,6 +30,7 @@ Monday December 9th
 - 6:30 pm - 7:15 pm: coded Activity Indicator"
 - 7:15 pm - 7:30 pm: a little bit of testing
 - 7:30 pm - 8:30 pm: fixed encoding error that was encountered with twic996
+- 1:20 am - 1:50 am: fixed bug linking up previousMove toolbar button
 
-    Daily Hours: 5 hours 30 minutes
-    Weekly Hours: 11 hours 45 minutes
+    Daily Hours: 6 hours 00 minutes
+    Weekly Hours: 12 hours 15 minutes

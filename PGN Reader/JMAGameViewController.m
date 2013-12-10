@@ -521,7 +521,7 @@
 */
 - (void)undoMove
 {
-    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
+
     
     if ([self isStartOfGame]) {
         return;
@@ -620,8 +620,6 @@
     NSString *movesList = self.movesListView.text;
     NSRange rangeOfMoveNumber = [movesList rangeOfString:moveNumberString];
 
-    
-    NSLog(@"Move Index: %lu", (unsigned long)moveIndex);
     NSRange rangeOfMove = [[movesList substringFromIndex:rangeOfMoveNumber.location] rangeOfString:move.moveString];
     
     rangeOfMove.location += rangeOfMoveNumber.location;
@@ -689,27 +687,27 @@
 /*
  This method creates an alert view to be displayed at the end of the game.
  The message of the alert is customized depending on the result of the game.
- The alertView is returned after created.
+ The alertView is returned after created.  Replacing the title with the message 
+ and eliminating the need for the message portion of the alert to be accordance
+ with the HIG.
 */
 - (UIAlertView *)alertForEndOfGame
 {
-    NSString *message;
-    
-    NSLog(@"Game Result: %@", self.game.result);
+    NSString *title;
     
     NSString *result = [self.game.result stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if ([result isEqualToString:@"1-0"]) {
-        message = @"White Wins";
+        title = @"White Wins";
     } else if ([result isEqualToString:@"0-1"]) {
-        message = @"Black Wins";
+        title = @"Black Wins";
     } else if ([result isEqualToString:@"1/2-1/2"]) {
-        message = @"Game Drawn";
+        title = @"Game Drawn";
     } else {
-        message = @"Line Ends";
+        title = @"Line Ends";
     }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:message delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     
     return alert;
 }

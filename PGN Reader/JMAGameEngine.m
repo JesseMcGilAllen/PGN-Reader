@@ -217,7 +217,7 @@
     move.pieceToMove = king;
     
     NSArray *squaresInvolved = @[originSquare, destinationSquare];
-    NSLog(@"Origin Square: %@", originSquare.coordinate);
+
     
     move.originSquareCoordinate = originSquare.coordinate;
     return squaresInvolved;
@@ -1144,7 +1144,7 @@ withDestinationSquarePiece:(JMAPiece *)destinationSquarePiece
     if (!move.isCastling) {
         JMASquare *originSquare = [self.model squareforCoordinate:move.destinationSquareCoordinate];
         JMASquare *destinationSquare = [self.model squareforCoordinate:move.originSquareCoordinate];
-        NSLog(@"TakeBack move Destination: %@", destinationSquare.coordinate);
+
         squaresInvolved = @[originSquare, destinationSquare];
     } else {
         squaresInvolved = [self squaresInvolvedTakingBackCastlingMove:move];
