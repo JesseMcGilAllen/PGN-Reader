@@ -351,6 +351,24 @@
 */
 - (void)configureToolbar
 {
+    
+    if (!self.repeatingTimer) {
+        [self configureToolbarWithPlayButton];
+
+    } else {
+        [self configureToolBarWithPauseButton];
+    }
+    
+    
+    
+}
+
+/*
+ This method adds three buttons to the toolbar, a previousMove button, 
+ playGameButton, and nextMoveButton.
+*/
+- (void)configureToolbarWithPlayButton
+{
     NSArray *toolbarItems;
     
     [self.navigationController setToolbarHidden:NO animated:YES];
@@ -362,9 +380,9 @@
                                                                      action:@selector(makeMoveButtonTapped:)];
     
     UIBarButtonItem *previousMoveButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"previous_arrow"]
-                                                                      style:UIBarButtonItemStylePlain
-                                                                     target:self
-                                                                     action:@selector(takebackMoveButtonTapped:)];
+                                                                          style:UIBarButtonItemStylePlain
+                                                                         target:self
+                                                                         action:@selector(takebackMoveButtonTapped:)];
     
     UIBarButtonItem *playGameButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay
                                                                                     target:self
@@ -373,10 +391,38 @@
     toolbarItems = @[previousMoveButton, playGameButton, nextMoveButton];
     
     [self setToolbarItems:toolbarItems animated:YES];
-    
-    
 }
 
+/*
+ This method adds three buttons to the toolbar, a previousMove button,
+ playGameButton, and nextMoveButton.
+*/
+- (void)configureToolBarWithPauseButton
+{
+    NSArray *toolbarItems;
+    
+    [self.navigationController setToolbarHidden:NO animated:YES];
+    
+    
+    UIBarButtonItem *nextMoveButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"next_arrow"]
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(makeMoveButtonTapped:)];
+    
+    UIBarButtonItem *previousMoveButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"previous_arrow"]
+                                                                          style:UIBarButtonItemStylePlain
+                                                                         target:self
+                                                                         action:@selector(takebackMoveButtonTapped:)];
+    
+    UIBarButtonItem *pauseGameButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPause
+                                                                                    target:self
+                                                                                    action:@selector(playGameButtonTapped:)];
+    
+    toolbarItems = @[previousMoveButton, pauseGameButton, nextMoveButton];
+    
+    [self setToolbarItems:toolbarItems animated:YES];
+
+}
 #pragma mark - Button Taps
 
 
