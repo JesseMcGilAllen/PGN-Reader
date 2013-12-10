@@ -31,6 +31,7 @@ Monday December 9th
 - 7:15 pm - 7:30 pm: a little bit of testing
 - 7:30 pm - 8:30 pm: fixed encoding error that was encountered with twic996
 - 1:20 am - 1:50 am: fixed bug linking up previousMove toolbar button
+- 1:50 am - 2:05 am: changed alertView to be in better accordance with the HIG
 
-    Daily Hours: 6 hours 00 minutes
-    Weekly Hours: 12 hours 15 minutes
+    Daily Hours: 6 hours 15 minutes
+    Weekly Hours: 12 hours 30 minutes
