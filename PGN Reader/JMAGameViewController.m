@@ -364,20 +364,12 @@
     UIBarButtonItem *previousMoveButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"previous_arrow"]
                                                                       style:UIBarButtonItemStylePlain
                                                                      target:self
-                                                                     action:@selector(makeMoveButtonTapped:)];
-    
-    UIBarButtonItem *gameEndButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward
-                                                                                       target:self
-                                                                                       action:@selector(makeMoveButtonTapped:)];
-
+                                                                     action:@selector(takebackMoveButtonTapped:)];
     
     UIBarButtonItem *playGameButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay
                                                                                     target:self
                                                                                     action:@selector(playGameButtonTapped:)];
     
-    UIBarButtonItem *gameStartButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind
-                                                                                     target:self
-                                                                                     action:@selector(takebackMoveButtonTapped:)];
     toolbarItems = @[previousMoveButton, playGameButton, nextMoveButton];
     
     [self setToolbarItems:toolbarItems animated:YES];
@@ -529,6 +521,7 @@
 */
 - (void)undoMove
 {
+    NSLog(@"\n\tFunction\t=>\t%s\n\tLine\t\t=>\t%d", __func__, __LINE__);
     
     if ([self isStartOfGame]) {
         return;
