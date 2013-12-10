@@ -194,6 +194,7 @@
     NSArray *documentsContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory.path error:&error];
     
     if ([documentsContents count] > ONE) {
+        
         [self processPathsOfNewFiles:documentsContents];
     }
 

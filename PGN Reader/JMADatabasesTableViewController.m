@@ -15,6 +15,7 @@
 @interface JMADatabasesTableViewController ()
 
 @property (strong, nonatomic) NSArray *databases;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 @end
 
 @implementation JMADatabasesTableViewController
@@ -300,6 +301,40 @@
     if (![self.managedObjectContext save:&error]) {
         NSLog(@"FAIL!!!: %@", [error localizedDescription]);
     }
+}
+
+/*
+ This method starts animating activity indicator.  If the activity Indicator
+ hasn't been initialized yet the configureActivityIndicator method is called.
+*/
+- (void)startActivityIndicator
+{
+    if (!self.activityIndicator) {
+        [self configureActivityIndicator];
+    }
+    
+    [self.activityIndicator startAnimating];
+}
+
+
+/*
+ This method stops the Activity Indicator from Animating
+*/
+- (void)stopActivityIndicator
+{
+    [self.activityIndicator stopAnimating];
+}
+/*
+ This method initializes the activity indicator and sets the color and 
+ the hidesWhenStopped property.
+*/
+- (void)configureActivityIndicator
+{
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    self.activityIndicator.color = [UIColor blueColor];
+    
+    self.activityIndicator.hidesWhenStopped = YES;
 }
 
 @end

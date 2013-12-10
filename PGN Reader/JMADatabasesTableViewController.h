@@ -14,4 +14,7 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 - (void)reload;
+- (void)startActivityIndicator;
+- (void)stopActivityIndicator;
+
 @end
