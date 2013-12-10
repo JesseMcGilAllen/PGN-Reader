@@ -1,0 +1,13 @@
+Tuesday November 10
+-------------------
+- add pause button to interchange with play button when the timer is firing
+ - possibly remove button when invalid to tap
+ - things about spacing button out further
+
+### PRIORITY ###
+- get cord from Eric
+- Create KeyNote presentation for the internship class
+- present presentation
+
+- look into how the app handles iTunes file sharing while running
+    - possible case for multitasking?
