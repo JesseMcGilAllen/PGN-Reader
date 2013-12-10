@@ -29,6 +29,7 @@ Monday December 9th
 - 6:00 pm - 6:30 pm: reviewed various Apple documentation
 - 6:30 pm - 7:15 pm: coded Activity Indicator"
 - 7:15 pm - 7:30 pm: a little bit of testing
+- 7:30 pm - 8:30 pm: fixed encoding error that was encountered with twic996
 
-    Daily Hours: 4 hours 30 minutes
-    Weekly Hours: 10 hours 45 minutes
+    Daily Hours: 5 hours 30 minutes
+    Weekly Hours: 11 hours 45 minutes
