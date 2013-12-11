@@ -44,6 +44,7 @@ Tuesday December 10th
 - 3:50 pm - 4:00 pm: implemented pause button in Game View Controller toolbar.
 - 4:00 pm - 4:10 pm: added flexible space buttons to toolbar to improve look.
 - 4:10 pm - 5:50 pm: talked to Eric, presented app, minor improvements
+- 11:30 pm - 
 
     Daily Hours: 3 hours 45 minutes
-    Weekly Hours: 16 hours 25 minutes
+    Weekly Hours: 16 hours 15 minutes

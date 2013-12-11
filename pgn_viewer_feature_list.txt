@@ -1,0 +1,23 @@
+I am currently debating whether to make my app free or paid.
+The problem I have is the rest of the apps that currently perform the PGN reader
+functionality that my app is currently performs.
+I have decided to make a feature list of potentials to add.
+
+Feature List
+------------
+    Free
+        - combine databases/database into a Split View Controller
+        - support for annotated games
+        - Search
+
+    Paid
+        - FEN support
+        - create new database
+        - create new game
+        - add annotations
+        - export
+        - engine analysis
+
+I think I could implement the features currently on the free list
+in Version 1.0 and add the other features in updates.
+ 
